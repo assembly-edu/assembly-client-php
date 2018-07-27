@@ -1,5 +1,5 @@
 {
-    "name": "assembly/assembly-client-php",
+    "name": "assembly-edu/assembly-client-php",
     "version": "1.0.0",
     "description": "",
     "keywords": [
@@ -9,7 +9,7 @@
         "api"
     ],
     "homepage": "https://assembly.education",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Ian Tasker",

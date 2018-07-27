@@ -21,11 +21,11 @@ To install the bindings via [Composer](http://getcomposer.org/), add the followi
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/assembly/assembly-client-php.git"
+      "url": "https://github.com/assembly-edu/assembly-client-php.git"
     }
   ],
   "require": {
-    "assembly/assembly-client-php": "*@dev"
+    "assembly-edu/assembly-client-php": "*@dev"
   }
 }
 ```
