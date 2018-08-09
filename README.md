@@ -14,23 +14,9 @@ PHP 5.5 and later
 ## Installation & Usage
 ### Composer
 
-To install the bindings via [Composer](http://getcomposer.org/), add the following to `composer.json`:
+To install the bindings via [Composer](http://getcomposer.org/):
 
-```
-{
-  "repositories": [
-    {
-      "type": "git",
-      "url": "https://github.com/assembly-edu/assembly-client-php.git"
-    }
-  ],
-  "require": {
-    "assembly-edu/assembly-client-php": "*@dev"
-  }
-}
-```
-
-Then run `composer install`
+Run `composer require assembly-edu/assembly-client-php`
 
 ### Manual Installation
 
