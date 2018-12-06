@@ -14,7 +14,7 @@
  *
  * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
- * API version: 1.0.0
+ * API version: 1.1.0
  * Contact: help@assembly.education
  *
  * NOTE: This class is auto generated. Do not edit the class manually.

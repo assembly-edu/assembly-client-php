@@ -5,7 +5,7 @@
  *
  * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
- * API version: 1.0.0
+ * API version: 1.1.0
  * Contact: help@assembly.education
  *
  * NOTE: This class is auto generated. Do not edit the class manually.
@@ -283,7 +283,7 @@ class Configuration
         $report  = 'PHP SDK (Assembly\Client) Debug Report:' . PHP_EOL;
         $report .= '    OS: ' . php_uname() . PHP_EOL;
         $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
-        $report .= '    OpenAPI Spec Version: 1.0.0' . PHP_EOL;
+        $report .= '    OpenAPI Spec Version: 1.1.0' . PHP_EOL;
         $report .= '    SDK Package Version: 1.1.0' . PHP_EOL;
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 

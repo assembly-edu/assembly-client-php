@@ -2,7 +2,7 @@
 ## Description
 The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
 
-- API version: 1.0.0
+- API version: 1.1.0
 - Package version: 1.1.0
 
 For more information, please visit [http://developers.assembly.education](http://developers.assembly.education)
