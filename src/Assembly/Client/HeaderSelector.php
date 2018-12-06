@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education

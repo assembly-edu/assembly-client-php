@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * SchoolDetails Class Doc Comment
  *
  * @category Class
- * @description Returns details for the school associated with the provided access_token.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'school_details';
+    protected static $swaggerModelName = 'SchoolDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,13 +41,11 @@ class SchoolDetails implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
-        'id' => 'int',
         'name' => 'string',
         'urn' => 'string',
-        'la_code' => 'string',
+        'la_code' => 'int',
         'la_name' => 'string',
-        'establishment_number' => 'string',
+        'establishment_number' => 'int',
         'establishment_type' => 'string',
         'phase' => 'string',
         'street' => 'string',
@@ -63,13 +60,11 @@ class SchoolDetails implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
-        'id' => 'int32',
         'name' => null,
         'urn' => null,
-        'la_code' => null,
+        'la_code' => 'int32',
         'la_name' => null,
-        'establishment_number' => null,
+        'establishment_number' => 'int32',
         'establishment_type' => null,
         'phase' => null,
         'street' => null,
@@ -105,8 +100,6 @@ class SchoolDetails implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
-        'id' => 'id',
         'name' => 'name',
         'urn' => 'urn',
         'la_code' => 'la_code',
@@ -126,8 +119,6 @@ class SchoolDetails implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
-        'id' => 'setId',
         'name' => 'setName',
         'urn' => 'setUrn',
         'la_code' => 'setLaCode',
@@ -147,8 +138,6 @@ class SchoolDetails implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
-        'id' => 'getId',
         'name' => 'getName',
         'urn' => 'getUrn',
         'la_code' => 'getLaCode',
@@ -222,8 +211,6 @@ class SchoolDetails implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['urn'] = isset($data['urn']) ? $data['urn'] : null;
         $this->container['la_code'] = isset($data['la_code']) ? $data['la_code'] : null;
@@ -263,54 +250,6 @@ class SchoolDetails implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id Internal stable ID given to all schools on Platform
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string
@@ -323,7 +262,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name Name of the school
+     * @param string $name name
      *
      * @return $this
      */
@@ -347,7 +286,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Sets urn
      *
-     * @param string $urn Unique Reference Number (URN) of the school
+     * @param string $urn urn
      *
      * @return $this
      */
@@ -361,7 +300,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Gets la_code
      *
-     * @return string
+     * @return int
      */
     public function getLaCode()
     {
@@ -371,7 +310,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Sets la_code
      *
-     * @param string $la_code The code of the local authority that the school belongs to
+     * @param int $la_code la_code
      *
      * @return $this
      */
@@ -395,7 +334,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Sets la_name
      *
-     * @param string $la_name The name of the local authority that the school belongs to
+     * @param string $la_name la_name
      *
      * @return $this
      */
@@ -409,7 +348,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Gets establishment_number
      *
-     * @return string
+     * @return int
      */
     public function getEstablishmentNumber()
     {
@@ -419,7 +358,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Sets establishment_number
      *
-     * @param string $establishment_number The school's establishment or 'DfE number'
+     * @param int $establishment_number establishment_number
      *
      * @return $this
      */
@@ -443,7 +382,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Sets establishment_type
      *
-     * @param string $establishment_type The type of establishment
+     * @param string $establishment_type establishment_type
      *
      * @return $this
      */
@@ -467,7 +406,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Sets phase
      *
-     * @param string $phase The phase of the school (i.e. 'Secondary', 'Primary' or 'All through')
+     * @param string $phase phase
      *
      * @return $this
      */
@@ -491,7 +430,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Sets street
      *
-     * @param string $street The street that the school is on
+     * @param string $street street
      *
      * @return $this
      */
@@ -515,7 +454,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Sets town
      *
-     * @param string $town The town that the school is in
+     * @param string $town town
      *
      * @return $this
      */
@@ -539,7 +478,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Sets postcode
      *
-     * @param string $postcode The postcode of the school
+     * @param string $postcode postcode
      *
      * @return $this
      */
@@ -563,7 +502,7 @@ class SchoolDetails implements ModelInterface, ArrayAccess
     /**
      * Sets head_teacher
      *
-     * @param string $head_teacher The school's head teacher name
+     * @param string $head_teacher head_teacher
      *
      * @return $this
      */

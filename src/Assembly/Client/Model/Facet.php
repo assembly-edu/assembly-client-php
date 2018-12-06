@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * Facet Class Doc Comment
  *
  * @category Class
- * @description All results belong to one of four facets, with each facet reflecting a different type of grade. Facets can be used to compare 2 grades of the same assessment.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class Facet implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'facet';
+    protected static $swaggerModelName = 'Facet';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,7 +41,6 @@ class Facet implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
         'id' => 'int',
         'name' => 'string'
     ];
@@ -53,7 +51,6 @@ class Facet implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
         'id' => 'int32',
         'name' => null
     ];
@@ -85,7 +82,6 @@ class Facet implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'id' => 'id',
         'name' => 'name'
     ];
@@ -96,7 +92,6 @@ class Facet implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'id' => 'setId',
         'name' => 'setName'
     ];
@@ -107,7 +102,6 @@ class Facet implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'id' => 'getId',
         'name' => 'getName'
     ];
@@ -153,27 +147,8 @@ class Facet implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const NAME_TARGET = 'target';
-    const NAME_ACHIEVED = 'achieved';
-    const NAME_BASELINE = 'baseline';
-    const NAME_PREDICTION = 'prediction';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getNameAllowableValues()
-    {
-        return [
-            self::NAME_TARGET,
-            self::NAME_ACHIEVED,
-            self::NAME_BASELINE,
-            self::NAME_PREDICTION,
-        ];
-    }
     
 
     /**
@@ -191,7 +166,6 @@ class Facet implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     }
@@ -205,14 +179,6 @@ class Facet implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getNameAllowableValues();
-        if (!in_array($this->container['name'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'name', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -225,37 +191,9 @@ class Facet implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        $allowedValues = $this->getNameAllowableValues();
-        if (!in_array($this->container['name'], $allowedValues)) {
-            return false;
-        }
         return true;
     }
 
-
-    /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
 
     /**
      * Gets id
@@ -270,7 +208,7 @@ class Facet implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Internal stable ID given to all facets on the Platform
+     * @param int $id id
      *
      * @return $this
      */
@@ -294,21 +232,12 @@ class Facet implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name The name of the facet *Values*  |Value|Description| |---|---| |`target`|Result has been set as a target to achieve| |`achieved`|Result has been achieved| |`baseline`|Result is a baseline comparison value| |`prediction`|Result is a prediction|
+     * @param string $name name
      *
      * @return $this
      */
     public function setName($name)
     {
-        $allowedValues = $this->getNameAllowableValues();
-        if (!is_null($name) && !in_array($name, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'name', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['name'] = $name;
 
         return $this;

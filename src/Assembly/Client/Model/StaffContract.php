@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * StaffContract Class Doc Comment
  *
  * @category Class
- * @description A staff contract object represents a contract for a staff member within a school.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class StaffContract implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'staff_contract';
+    protected static $swaggerModelName = 'StaffContract';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,9 +41,8 @@ class StaffContract implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
         'id' => 'int',
-        'staff_member_id' => 'string',
+        'staff_member_id' => 'int',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
         'national_insurance_number' => 'string',
@@ -55,9 +53,9 @@ class StaffContract implements ModelInterface, ArrayAccess
         'destination' => 'string',
         'daily_rate' => 'bool',
         'pay_review_date' => '\DateTime',
-        'roles' => '\Assembly\Client\Model\StaffContractRoles[]',
-        'salaries' => '\Assembly\Client\Model\StaffContractSalaries[]',
-        'allowances' => '\Assembly\Client\Model\StaffContractAllowances[]'
+        'roles' => '\Assembly\Client\Model\StaffRole[]',
+        'salaries' => '\Assembly\Client\Model\StaffSalary[]',
+        'allowances' => '\Assembly\Client\Model\StaffAllowance[]'
     ];
 
     /**
@@ -66,9 +64,8 @@ class StaffContract implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
         'id' => 'int32',
-        'staff_member_id' => null,
+        'staff_member_id' => 'int32',
         'start_date' => 'date-time',
         'end_date' => 'date-time',
         'national_insurance_number' => null,
@@ -111,7 +108,6 @@ class StaffContract implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'id' => 'id',
         'staff_member_id' => 'staff_member_id',
         'start_date' => 'start_date',
@@ -135,7 +131,6 @@ class StaffContract implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'id' => 'setId',
         'staff_member_id' => 'setStaffMemberId',
         'start_date' => 'setStartDate',
@@ -159,7 +154,6 @@ class StaffContract implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'id' => 'getId',
         'staff_member_id' => 'getStaffMemberId',
         'start_date' => 'getStartDate',
@@ -237,7 +231,6 @@ class StaffContract implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['staff_member_id'] = isset($data['staff_member_id']) ? $data['staff_member_id'] : null;
         $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
@@ -281,30 +274,6 @@ class StaffContract implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return int
@@ -317,7 +286,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Internal stable ID given to each contract in the Platform
+     * @param int $id id
      *
      * @return $this
      */
@@ -331,7 +300,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Gets staff_member_id
      *
-     * @return string
+     * @return int
      */
     public function getStaffMemberId()
     {
@@ -341,7 +310,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets staff_member_id
      *
-     * @param string $staff_member_id The ID of the staff member
+     * @param int $staff_member_id staff_member_id
      *
      * @return $this
      */
@@ -365,7 +334,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date Contract start date
+     * @param \DateTime $start_date start_date
      *
      * @return $this
      */
@@ -389,7 +358,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date Contract end date
+     * @param \DateTime $end_date end_date
      *
      * @return $this
      */
@@ -413,7 +382,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets national_insurance_number
      *
-     * @param string $national_insurance_number Employee NI number
+     * @param string $national_insurance_number national_insurance_number
      *
      * @return $this
      */
@@ -437,7 +406,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets payroll_number
      *
-     * @param string $payroll_number Employee payroll number
+     * @param string $payroll_number payroll_number
      *
      * @return $this
      */
@@ -461,7 +430,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets contract_type
      *
-     * @param string $contract_type Contract type
+     * @param string $contract_type contract_type
      *
      * @return $this
      */
@@ -485,7 +454,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets post
      *
-     * @param string $post No description
+     * @param string $post post
      *
      * @return $this
      */
@@ -509,7 +478,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets origin
      *
-     * @param string $origin No description
+     * @param string $origin origin
      *
      * @return $this
      */
@@ -533,7 +502,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets destination
      *
-     * @param string $destination Completed after a contract has been terminated; this captures a post-holder’s destination
+     * @param string $destination destination
      *
      * @return $this
      */
@@ -557,7 +526,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets daily_rate
      *
-     * @param bool $daily_rate No description
+     * @param bool $daily_rate daily_rate
      *
      * @return $this
      */
@@ -581,7 +550,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets pay_review_date
      *
-     * @param \DateTime $pay_review_date No description
+     * @param \DateTime $pay_review_date pay_review_date
      *
      * @return $this
      */
@@ -595,7 +564,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Gets roles
      *
-     * @return \Assembly\Client\Model\StaffContractRoles[]
+     * @return \Assembly\Client\Model\StaffRole[]
      */
     public function getRoles()
     {
@@ -605,7 +574,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets roles
      *
-     * @param \Assembly\Client\Model\StaffContractRoles[] $roles No description
+     * @param \Assembly\Client\Model\StaffRole[] $roles roles
      *
      * @return $this
      */
@@ -619,7 +588,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Gets salaries
      *
-     * @return \Assembly\Client\Model\StaffContractSalaries[]
+     * @return \Assembly\Client\Model\StaffSalary[]
      */
     public function getSalaries()
     {
@@ -629,7 +598,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets salaries
      *
-     * @param \Assembly\Client\Model\StaffContractSalaries[] $salaries No description
+     * @param \Assembly\Client\Model\StaffSalary[] $salaries salaries
      *
      * @return $this
      */
@@ -643,7 +612,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Gets allowances
      *
-     * @return \Assembly\Client\Model\StaffContractAllowances[]
+     * @return \Assembly\Client\Model\StaffAllowance[]
      */
     public function getAllowances()
     {
@@ -653,7 +622,7 @@ class StaffContract implements ModelInterface, ArrayAccess
     /**
      * Sets allowances
      *
-     * @param \Assembly\Client\Model\StaffContractAllowances[] $allowances No description
+     * @param \Assembly\Client\Model\StaffAllowance[] $allowances allowances
      *
      * @return $this
      */

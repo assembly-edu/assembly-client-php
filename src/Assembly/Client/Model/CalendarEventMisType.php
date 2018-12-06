@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * CalendarEventMisType Class Doc Comment
  *
  * @category Class
- * @description Details the type of event - whether it is a regular calendar event, a staff meeting or inset day
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'calendar_event_mis_type';
+    protected static $swaggerModelName = 'CalendarEventMisType';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,7 +41,6 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
         'name' => 'string',
         'description' => 'string'
     ];
@@ -53,7 +51,6 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
         'name' => null,
         'description' => null
     ];
@@ -85,7 +82,6 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'name' => 'name',
         'description' => 'description'
     ];
@@ -96,7 +92,6 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'name' => 'setName',
         'description' => 'setDescription'
     ];
@@ -107,7 +102,6 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'name' => 'getName',
         'description' => 'getDescription'
     ];
@@ -172,7 +166,6 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['description'] = isset($data['description']) ? $data['description'] : null;
     }
@@ -203,30 +196,6 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
      * Gets name
      *
      * @return string
@@ -239,7 +208,7 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name Name of the event type in the MIS
+     * @param string $name name
      *
      * @return $this
      */
@@ -263,7 +232,7 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
     /**
      * Sets description
      *
-     * @param string $description Description of the event type in the MIS
+     * @param string $description description
      *
      * @return $this
      */

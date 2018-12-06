@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * StaffMemberDemographics Class Doc Comment
  *
  * @category Class
- * @description Demographic information about a staff member.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'staff_member_demographics';
+    protected static $swaggerModelName = 'StaffMemberDemographics';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,9 +41,9 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'gender' => 'string',
         'ethnicity_code' => 'string',
         'ethnicity_group' => 'string',
+        'gender' => 'string',
         'disability' => 'string'
     ];
 
@@ -54,9 +53,9 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'gender' => null,
         'ethnicity_code' => null,
         'ethnicity_group' => null,
+        'gender' => null,
         'disability' => null
     ];
 
@@ -87,9 +86,9 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'gender' => 'gender',
         'ethnicity_code' => 'ethnicity_code',
         'ethnicity_group' => 'ethnicity_group',
+        'gender' => 'gender',
         'disability' => 'disability'
     ];
 
@@ -99,9 +98,9 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'gender' => 'setGender',
         'ethnicity_code' => 'setEthnicityCode',
         'ethnicity_group' => 'setEthnicityGroup',
+        'gender' => 'setGender',
         'disability' => 'setDisability'
     ];
 
@@ -111,9 +110,9 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'gender' => 'getGender',
         'ethnicity_code' => 'getEthnicityCode',
         'ethnicity_group' => 'getEthnicityGroup',
+        'gender' => 'getGender',
         'disability' => 'getDisability'
     ];
 
@@ -158,23 +157,8 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const GENDER_F = 'F';
-    const GENDER_M = 'M';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getGenderAllowableValues()
-    {
-        return [
-            self::GENDER_F,
-            self::GENDER_M,
-        ];
-    }
     
 
     /**
@@ -192,9 +176,9 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
         $this->container['ethnicity_code'] = isset($data['ethnicity_code']) ? $data['ethnicity_code'] : null;
         $this->container['ethnicity_group'] = isset($data['ethnicity_group']) ? $data['ethnicity_group'] : null;
+        $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
         $this->container['disability'] = isset($data['disability']) ? $data['disability'] : null;
     }
 
@@ -206,14 +190,6 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!in_array($this->container['gender'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'gender', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -227,46 +203,9 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!in_array($this->container['gender'], $allowedValues)) {
-            return false;
-        }
         return true;
     }
 
-
-    /**
-     * Gets gender
-     *
-     * @return string
-     */
-    public function getGender()
-    {
-        return $this->container['gender'];
-    }
-
-    /**
-     * Sets gender
-     *
-     * @param string $gender The gender of a staff member *Values*  |Value|Description| |---|---| |`F`|Female| |`M`|Male|
-     *
-     * @return $this
-     */
-    public function setGender($gender)
-    {
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!is_null($gender) && !in_array($gender, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'gender', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['gender'] = $gender;
-
-        return $this;
-    }
 
     /**
      * Gets ethnicity_code
@@ -281,7 +220,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     /**
      * Sets ethnicity_code
      *
-     * @param string $ethnicity_code A detailed, Dfe standardised way of categorising the ethnicity of a student
+     * @param string $ethnicity_code ethnicity_code
      *
      * @return $this
      */
@@ -305,13 +244,37 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     /**
      * Sets ethnicity_group
      *
-     * @param string $ethnicity_group A broader categorisation of ethnicity that is standardised across the country, with all ethnicity codes grouped in to 8 sections
+     * @param string $ethnicity_group ethnicity_group
      *
      * @return $this
      */
     public function setEthnicityGroup($ethnicity_group)
     {
         $this->container['ethnicity_group'] = $ethnicity_group;
+
+        return $this;
+    }
+
+    /**
+     * Gets gender
+     *
+     * @return string
+     */
+    public function getGender()
+    {
+        return $this->container['gender'];
+    }
+
+    /**
+     * Sets gender
+     *
+     * @param string $gender gender
+     *
+     * @return $this
+     */
+    public function setGender($gender)
+    {
+        $this->container['gender'] = $gender;
 
         return $this;
     }
@@ -329,7 +292,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     /**
      * Sets disability
      *
-     * @param string $disability The disability status of a staff member
+     * @param string $disability disability
      *
      * @return $this
      */

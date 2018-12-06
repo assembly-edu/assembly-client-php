@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * StaffAbsence Class Doc Comment
  *
  * @category Class
- * @description Details of staff absences recorded on the MIS.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'staff_absence';
+    protected static $swaggerModelName = 'StaffAbsence';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,12 +41,11 @@ class StaffAbsence implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
         'id' => 'int',
         'staff_member_id' => 'int',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
-        'working_days_lost' => 'float',
+        'working_days_lost' => 'string',
         'absence_category' => 'string',
         'illness_category' => 'string',
         'pay_rate' => 'string'
@@ -59,12 +57,11 @@ class StaffAbsence implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
         'id' => 'int32',
         'staff_member_id' => 'int32',
         'start_date' => 'date-time',
         'end_date' => 'date-time',
-        'working_days_lost' => 'float',
+        'working_days_lost' => null,
         'absence_category' => null,
         'illness_category' => null,
         'pay_rate' => null
@@ -97,7 +94,6 @@ class StaffAbsence implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'id' => 'id',
         'staff_member_id' => 'staff_member_id',
         'start_date' => 'start_date',
@@ -114,7 +110,6 @@ class StaffAbsence implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'id' => 'setId',
         'staff_member_id' => 'setStaffMemberId',
         'start_date' => 'setStartDate',
@@ -131,7 +126,6 @@ class StaffAbsence implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'id' => 'getId',
         'staff_member_id' => 'getStaffMemberId',
         'start_date' => 'getStartDate',
@@ -202,7 +196,6 @@ class StaffAbsence implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['staff_member_id'] = isset($data['staff_member_id']) ? $data['staff_member_id'] : null;
         $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
@@ -239,30 +232,6 @@ class StaffAbsence implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return int
@@ -275,7 +244,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Internal stable ID given to all absences on the Platform
+     * @param int $id id
      *
      * @return $this
      */
@@ -299,7 +268,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     /**
      * Sets staff_member_id
      *
-     * @param int $staff_member_id The ID of the staff member who the absence is for
+     * @param int $staff_member_id staff_member_id
      *
      * @return $this
      */
@@ -323,7 +292,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date The start date of the absence
+     * @param \DateTime $start_date start_date
      *
      * @return $this
      */
@@ -347,7 +316,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date The end date of the absence
+     * @param \DateTime $end_date end_date
      *
      * @return $this
      */
@@ -361,7 +330,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     /**
      * Gets working_days_lost
      *
-     * @return float
+     * @return string
      */
     public function getWorkingDaysLost()
     {
@@ -371,7 +340,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     /**
      * Sets working_days_lost
      *
-     * @param float $working_days_lost Number of working days that were lost during the absence
+     * @param string $working_days_lost working_days_lost
      *
      * @return $this
      */
@@ -395,7 +364,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     /**
      * Sets absence_category
      *
-     * @param string $absence_category The category of the absence
+     * @param string $absence_category absence_category
      *
      * @return $this
      */
@@ -419,7 +388,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     /**
      * Sets illness_category
      *
-     * @param string $illness_category If the absence category was 'Illness', the specific code
+     * @param string $illness_category illness_category
      *
      * @return $this
      */
@@ -443,7 +412,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     /**
      * Sets pay_rate
      *
-     * @param string $pay_rate Whether or not the staff member was paid for the absence, and at what rate
+     * @param string $pay_rate pay_rate
      *
      * @return $this
      */

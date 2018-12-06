@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * TeachingGroup Class Doc Comment
  *
  * @category Class
- * @description A teaching group object represents the grouping in which students are taught a subject.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class TeachingGroup implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'teaching_group';
+    protected static $swaggerModelName = 'TeachingGroup';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,15 +41,13 @@ class TeachingGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
         'id' => 'int',
         'name' => 'string',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
         'supervisor_ids' => 'int[]',
         'student_ids' => 'int[]',
-        'subject' => '\Assembly\Client\Model\TeachingGroupSubject',
-        'mis_level' => 'string'
+        'subject' => '\Assembly\Client\Model\Subject'
     ];
 
     /**
@@ -59,15 +56,13 @@ class TeachingGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
         'id' => 'int32',
         'name' => null,
         'start_date' => 'date-time',
         'end_date' => 'date-time',
-        'supervisor_ids' => null,
-        'student_ids' => null,
-        'subject' => null,
-        'mis_level' => null
+        'supervisor_ids' => 'int32',
+        'student_ids' => 'int32',
+        'subject' => null
     ];
 
     /**
@@ -97,15 +92,13 @@ class TeachingGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'id' => 'id',
         'name' => 'name',
         'start_date' => 'start_date',
         'end_date' => 'end_date',
         'supervisor_ids' => 'supervisor_ids',
         'student_ids' => 'student_ids',
-        'subject' => 'subject',
-        'mis_level' => 'mis_level'
+        'subject' => 'subject'
     ];
 
     /**
@@ -114,15 +107,13 @@ class TeachingGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'id' => 'setId',
         'name' => 'setName',
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
         'supervisor_ids' => 'setSupervisorIds',
         'student_ids' => 'setStudentIds',
-        'subject' => 'setSubject',
-        'mis_level' => 'setMisLevel'
+        'subject' => 'setSubject'
     ];
 
     /**
@@ -131,15 +122,13 @@ class TeachingGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'id' => 'getId',
         'name' => 'getName',
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
         'supervisor_ids' => 'getSupervisorIds',
         'student_ids' => 'getStudentIds',
-        'subject' => 'getSubject',
-        'mis_level' => 'getMisLevel'
+        'subject' => 'getSubject'
     ];
 
     /**
@@ -202,7 +191,6 @@ class TeachingGroup implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
@@ -210,7 +198,6 @@ class TeachingGroup implements ModelInterface, ArrayAccess
         $this->container['supervisor_ids'] = isset($data['supervisor_ids']) ? $data['supervisor_ids'] : null;
         $this->container['student_ids'] = isset($data['student_ids']) ? $data['student_ids'] : null;
         $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
-        $this->container['mis_level'] = isset($data['mis_level']) ? $data['mis_level'] : null;
     }
 
     /**
@@ -239,30 +226,6 @@ class TeachingGroup implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return int
@@ -275,7 +238,7 @@ class TeachingGroup implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Internal stable ID given to all teaching groups in the Platform
+     * @param int $id id
      *
      * @return $this
      */
@@ -299,7 +262,7 @@ class TeachingGroup implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name Name of teaching group
+     * @param string $name name
      *
      * @return $this
      */
@@ -323,7 +286,7 @@ class TeachingGroup implements ModelInterface, ArrayAccess
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date The start date of the teaching group
+     * @param \DateTime $start_date start_date
      *
      * @return $this
      */
@@ -347,7 +310,7 @@ class TeachingGroup implements ModelInterface, ArrayAccess
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date The end date of the teaching group
+     * @param \DateTime $end_date end_date
      *
      * @return $this
      */
@@ -371,7 +334,7 @@ class TeachingGroup implements ModelInterface, ArrayAccess
     /**
      * Sets supervisor_ids
      *
-     * @param int[] $supervisor_ids The IDs of supervisors associated with the teaching group
+     * @param int[] $supervisor_ids supervisor_ids
      *
      * @return $this
      */
@@ -395,7 +358,7 @@ class TeachingGroup implements ModelInterface, ArrayAccess
     /**
      * Sets student_ids
      *
-     * @param int[] $student_ids The IDs of students associated with the teaching group
+     * @param int[] $student_ids student_ids
      *
      * @return $this
      */
@@ -409,7 +372,7 @@ class TeachingGroup implements ModelInterface, ArrayAccess
     /**
      * Gets subject
      *
-     * @return \Assembly\Client\Model\TeachingGroupSubject
+     * @return \Assembly\Client\Model\Subject
      */
     public function getSubject()
     {
@@ -419,37 +382,13 @@ class TeachingGroup implements ModelInterface, ArrayAccess
     /**
      * Sets subject
      *
-     * @param \Assembly\Client\Model\TeachingGroupSubject $subject subject
+     * @param \Assembly\Client\Model\Subject $subject subject
      *
      * @return $this
      */
     public function setSubject($subject)
     {
         $this->container['subject'] = $subject;
-
-        return $this;
-    }
-
-    /**
-     * Gets mis_level
-     *
-     * @return string
-     */
-    public function getMisLevel()
-    {
-        return $this->container['mis_level'];
-    }
-
-    /**
-     * Sets mis_level
-     *
-     * @param string $mis_level The official examination or assessment 'level' of the teaching group taken directly from the MIS
-     *
-     * @return $this
-     */
-    public function setMisLevel($mis_level)
-    {
-        $this->container['mis_level'] = $mis_level;
 
         return $this;
     }

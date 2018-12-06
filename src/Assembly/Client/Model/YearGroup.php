@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * YearGroup Class Doc Comment
  *
  * @category Class
- * @description A year group object represents the pastoral year group that a student belongs to.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class YearGroup implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'year_group';
+    protected static $swaggerModelName = 'YearGroup';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,11 +41,13 @@ class YearGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
-        'code' => 'string',
+        'id' => 'int',
         'name' => 'string',
+        'start_date' => '\DateTime',
+        'end_date' => '\DateTime',
+        'supervisor_ids' => 'int[]',
         'student_ids' => 'int[]',
-        'supervisor_ids' => 'int[]'
+        'subject' => '\Assembly\Client\Model\Subject'
     ];
 
     /**
@@ -55,11 +56,13 @@ class YearGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
-        'code' => null,
+        'id' => 'int32',
         'name' => null,
-        'student_ids' => null,
-        'supervisor_ids' => null
+        'start_date' => 'date-time',
+        'end_date' => 'date-time',
+        'supervisor_ids' => 'int32',
+        'student_ids' => 'int32',
+        'subject' => null
     ];
 
     /**
@@ -89,11 +92,13 @@ class YearGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
-        'code' => 'code',
+        'id' => 'id',
         'name' => 'name',
+        'start_date' => 'start_date',
+        'end_date' => 'end_date',
+        'supervisor_ids' => 'supervisor_ids',
         'student_ids' => 'student_ids',
-        'supervisor_ids' => 'supervisor_ids'
+        'subject' => 'subject'
     ];
 
     /**
@@ -102,11 +107,13 @@ class YearGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
-        'code' => 'setCode',
+        'id' => 'setId',
         'name' => 'setName',
+        'start_date' => 'setStartDate',
+        'end_date' => 'setEndDate',
+        'supervisor_ids' => 'setSupervisorIds',
         'student_ids' => 'setStudentIds',
-        'supervisor_ids' => 'setSupervisorIds'
+        'subject' => 'setSubject'
     ];
 
     /**
@@ -115,11 +122,13 @@ class YearGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
-        'code' => 'getCode',
+        'id' => 'getId',
         'name' => 'getName',
+        'start_date' => 'getStartDate',
+        'end_date' => 'getEndDate',
+        'supervisor_ids' => 'getSupervisorIds',
         'student_ids' => 'getStudentIds',
-        'supervisor_ids' => 'getSupervisorIds'
+        'subject' => 'getSubject'
     ];
 
     /**
@@ -182,11 +191,13 @@ class YearGroup implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
-        $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['student_ids'] = isset($data['student_ids']) ? $data['student_ids'] : null;
+        $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
+        $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
         $this->container['supervisor_ids'] = isset($data['supervisor_ids']) ? $data['supervisor_ids'] : null;
+        $this->container['student_ids'] = isset($data['student_ids']) ? $data['student_ids'] : null;
+        $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
     }
 
     /**
@@ -215,49 +226,25 @@ class YearGroup implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets object
+     * Gets id
      *
-     * @return string
+     * @return int
      */
-    public function getObject()
+    public function getId()
     {
-        return $this->container['object'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets object
+     * Sets id
      *
-     * @param string $object Object type
+     * @param int $id id
      *
      * @return $this
      */
-    public function setObject($object)
+    public function setId($id)
     {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
-     * Gets code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->container['code'];
-    }
-
-    /**
-     * Sets code
-     *
-     * @param string $code The code of the year that the student belongs to
-     *
-     * @return $this
-     */
-    public function setCode($code)
-    {
-        $this->container['code'] = $code;
+        $this->container['id'] = $id;
 
         return $this;
     }
@@ -275,7 +262,7 @@ class YearGroup implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name The name of internal year group that the student belongs to
+     * @param string $name name
      *
      * @return $this
      */
@@ -287,25 +274,49 @@ class YearGroup implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets student_ids
+     * Gets start_date
      *
-     * @return int[]
+     * @return \DateTime
      */
-    public function getStudentIds()
+    public function getStartDate()
     {
-        return $this->container['student_ids'];
+        return $this->container['start_date'];
     }
 
     /**
-     * Sets student_ids
+     * Sets start_date
      *
-     * @param int[] $student_ids The IDs of students associated with the year group
+     * @param \DateTime $start_date start_date
      *
      * @return $this
      */
-    public function setStudentIds($student_ids)
+    public function setStartDate($start_date)
     {
-        $this->container['student_ids'] = $student_ids;
+        $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime $end_date end_date
+     *
+     * @return $this
+     */
+    public function setEndDate($end_date)
+    {
+        $this->container['end_date'] = $end_date;
 
         return $this;
     }
@@ -323,13 +334,61 @@ class YearGroup implements ModelInterface, ArrayAccess
     /**
      * Sets supervisor_ids
      *
-     * @param int[] $supervisor_ids The IDs of supervisors associated with the year group
+     * @param int[] $supervisor_ids supervisor_ids
      *
      * @return $this
      */
     public function setSupervisorIds($supervisor_ids)
     {
         $this->container['supervisor_ids'] = $supervisor_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets student_ids
+     *
+     * @return int[]
+     */
+    public function getStudentIds()
+    {
+        return $this->container['student_ids'];
+    }
+
+    /**
+     * Sets student_ids
+     *
+     * @param int[] $student_ids student_ids
+     *
+     * @return $this
+     */
+    public function setStudentIds($student_ids)
+    {
+        $this->container['student_ids'] = $student_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets subject
+     *
+     * @return \Assembly\Client\Model\Subject
+     */
+    public function getSubject()
+    {
+        return $this->container['subject'];
+    }
+
+    /**
+     * Sets subject
+     *
+     * @param \Assembly\Client\Model\Subject $subject subject
+     *
+     * @return $this
+     */
+    public function setSubject($subject)
+    {
+        $this->container['subject'] = $subject;
 
         return $this;
     }

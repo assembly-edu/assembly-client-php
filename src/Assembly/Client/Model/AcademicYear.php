@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * AcademicYear Class Doc Comment
  *
  * @category Class
- * @description An academic year object represents a school year within a particular school.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'academic_year';
+    protected static $swaggerModelName = 'AcademicYear';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,8 +56,8 @@ class AcademicYear implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'id' => 'int32',
         'name' => null,
-        'start_date' => 'date',
-        'end_date' => 'date',
+        'start_date' => 'date-time',
+        'end_date' => 'date-time',
         'terms' => null
     ];
 
@@ -227,7 +226,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Internal stable ID given to academic year on Platform
+     * @param int $id id
      *
      * @return $this
      */
@@ -251,7 +250,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name Name of academic year
+     * @param string $name name
      *
      * @return $this
      */
@@ -275,7 +274,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date Date on which academic year starts
+     * @param \DateTime $start_date start_date
      *
      * @return $this
      */
@@ -299,7 +298,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date Date on which academic year ends
+     * @param \DateTime $end_date end_date
      *
      * @return $this
      */
@@ -323,7 +322,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
     /**
      * Sets terms
      *
-     * @param \Assembly\Client\Model\AcademicYearTerms[] $terms Provides details of the individual terms that make up the academic year where available (currently for SIMS schools only)
+     * @param \Assembly\Client\Model\AcademicYearTerms[] $terms terms
      *
      * @return $this
      */

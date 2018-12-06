@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * StaffMember Class Doc Comment
  *
  * @category Class
- * @description A staff member object represents a single staff member within a school.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class StaffMember implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'staff_member';
+    protected static $swaggerModelName = 'StaffMember';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,7 +41,6 @@ class StaffMember implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
         'id' => 'int',
         'mis_id' => 'string',
         'staff_code' => 'string',
@@ -52,15 +50,15 @@ class StaffMember implements ModelInterface, ArrayAccess
         'last_name' => 'string',
         'legal_last_name' => 'string',
         'former_last_name' => 'string',
-        'dob' => 'string',
         'title' => 'string',
+        'dob' => '\DateTime',
         'email' => 'string',
         'is_teaching_staff' => 'bool',
         'included_in_census' => 'bool',
-        'start_date' => '\DateTime',
-        'end_date' => '\DateTime',
-        'demographics' => '\Assembly\Client\Model\StaffMemberDemographics',
-        'qualification_info' => '\Assembly\Client\Model\StaffMemberQualificationInfo'
+        'start_date' => 'string',
+        'end_date' => 'string',
+        'demographics' => '\Assembly\Client\Model\StaffMemberDemographics[]',
+        'qualification_info' => '\Assembly\Client\Model\StaffMemberQualificationInfo[]'
     ];
 
     /**
@@ -69,7 +67,6 @@ class StaffMember implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
         'id' => 'int32',
         'mis_id' => null,
         'staff_code' => null,
@@ -79,13 +76,13 @@ class StaffMember implements ModelInterface, ArrayAccess
         'last_name' => null,
         'legal_last_name' => null,
         'former_last_name' => null,
-        'dob' => null,
         'title' => null,
+        'dob' => 'date-time',
         'email' => null,
         'is_teaching_staff' => null,
         'included_in_census' => null,
-        'start_date' => 'date-time',
-        'end_date' => 'date-time',
+        'start_date' => null,
+        'end_date' => null,
         'demographics' => null,
         'qualification_info' => null
     ];
@@ -117,7 +114,6 @@ class StaffMember implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'id' => 'id',
         'mis_id' => 'mis_id',
         'staff_code' => 'staff_code',
@@ -127,8 +123,8 @@ class StaffMember implements ModelInterface, ArrayAccess
         'last_name' => 'last_name',
         'legal_last_name' => 'legal_last_name',
         'former_last_name' => 'former_last_name',
-        'dob' => 'dob',
         'title' => 'title',
+        'dob' => 'dob',
         'email' => 'email',
         'is_teaching_staff' => 'is_teaching_staff',
         'included_in_census' => 'included_in_census',
@@ -144,7 +140,6 @@ class StaffMember implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'id' => 'setId',
         'mis_id' => 'setMisId',
         'staff_code' => 'setStaffCode',
@@ -154,8 +149,8 @@ class StaffMember implements ModelInterface, ArrayAccess
         'last_name' => 'setLastName',
         'legal_last_name' => 'setLegalLastName',
         'former_last_name' => 'setFormerLastName',
-        'dob' => 'setDob',
         'title' => 'setTitle',
+        'dob' => 'setDob',
         'email' => 'setEmail',
         'is_teaching_staff' => 'setIsTeachingStaff',
         'included_in_census' => 'setIncludedInCensus',
@@ -171,7 +166,6 @@ class StaffMember implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'id' => 'getId',
         'mis_id' => 'getMisId',
         'staff_code' => 'getStaffCode',
@@ -181,8 +175,8 @@ class StaffMember implements ModelInterface, ArrayAccess
         'last_name' => 'getLastName',
         'legal_last_name' => 'getLegalLastName',
         'former_last_name' => 'getFormerLastName',
-        'dob' => 'getDob',
         'title' => 'getTitle',
+        'dob' => 'getDob',
         'email' => 'getEmail',
         'is_teaching_staff' => 'getIsTeachingStaff',
         'included_in_census' => 'getIncludedInCensus',
@@ -252,7 +246,6 @@ class StaffMember implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['mis_id'] = isset($data['mis_id']) ? $data['mis_id'] : null;
         $this->container['staff_code'] = isset($data['staff_code']) ? $data['staff_code'] : null;
@@ -262,8 +255,8 @@ class StaffMember implements ModelInterface, ArrayAccess
         $this->container['last_name'] = isset($data['last_name']) ? $data['last_name'] : null;
         $this->container['legal_last_name'] = isset($data['legal_last_name']) ? $data['legal_last_name'] : null;
         $this->container['former_last_name'] = isset($data['former_last_name']) ? $data['former_last_name'] : null;
-        $this->container['dob'] = isset($data['dob']) ? $data['dob'] : null;
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['dob'] = isset($data['dob']) ? $data['dob'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
         $this->container['is_teaching_staff'] = isset($data['is_teaching_staff']) ? $data['is_teaching_staff'] : null;
         $this->container['included_in_census'] = isset($data['included_in_census']) ? $data['included_in_census'] : null;
@@ -299,30 +292,6 @@ class StaffMember implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return int
@@ -335,7 +304,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Internal stable ID given to each staff member in the Platform
+     * @param int $id id
      *
      * @return $this
      */
@@ -359,7 +328,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets mis_id
      *
-     * @param string $mis_id The ID of the staff member from the MIS
+     * @param string $mis_id mis_id
      *
      * @return $this
      */
@@ -383,7 +352,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets staff_code
      *
-     * @param string $staff_code The staff code from the MIS
+     * @param string $staff_code staff_code
      *
      * @return $this
      */
@@ -407,7 +376,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets first_name
      *
-     * @param string $first_name The first name of the staff member
+     * @param string $first_name first_name
      *
      * @return $this
      */
@@ -431,7 +400,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets legal_first_name
      *
-     * @param string $legal_first_name The legal first name of the staff member
+     * @param string $legal_first_name legal_first_name
      *
      * @return $this
      */
@@ -455,7 +424,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets middle_name
      *
-     * @param string $middle_name The middle name of the staff member
+     * @param string $middle_name middle_name
      *
      * @return $this
      */
@@ -479,7 +448,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets last_name
      *
-     * @param string $last_name The last name of the staff member
+     * @param string $last_name last_name
      *
      * @return $this
      */
@@ -503,7 +472,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets legal_last_name
      *
-     * @param string $legal_last_name The legal last name of the staff member
+     * @param string $legal_last_name legal_last_name
      *
      * @return $this
      */
@@ -527,37 +496,13 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets former_last_name
      *
-     * @param string $former_last_name The former last name of the staff member
+     * @param string $former_last_name former_last_name
      *
      * @return $this
      */
     public function setFormerLastName($former_last_name)
     {
         $this->container['former_last_name'] = $former_last_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets dob
-     *
-     * @return string
-     */
-    public function getDob()
-    {
-        return $this->container['dob'];
-    }
-
-    /**
-     * Sets dob
-     *
-     * @param string $dob The staff member's date of birth
-     *
-     * @return $this
-     */
-    public function setDob($dob)
-    {
-        $this->container['dob'] = $dob;
 
         return $this;
     }
@@ -575,13 +520,37 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets title
      *
-     * @param string $title The title of the staff member
+     * @param string $title title
      *
      * @return $this
      */
     public function setTitle($title)
     {
         $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
+     * Gets dob
+     *
+     * @return \DateTime
+     */
+    public function getDob()
+    {
+        return $this->container['dob'];
+    }
+
+    /**
+     * Sets dob
+     *
+     * @param \DateTime $dob dob
+     *
+     * @return $this
+     */
+    public function setDob($dob)
+    {
+        $this->container['dob'] = $dob;
 
         return $this;
     }
@@ -599,7 +568,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets email
      *
-     * @param string $email The email address of the staff member.
+     * @param string $email email
      *
      * @return $this
      */
@@ -623,7 +592,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets is_teaching_staff
      *
-     * @param bool $is_teaching_staff Indicates whether the staff member is a teacher
+     * @param bool $is_teaching_staff is_teaching_staff
      *
      * @return $this
      */
@@ -647,7 +616,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets included_in_census
      *
-     * @param bool $included_in_census Indicates whether the staff member is a teacher
+     * @param bool $included_in_census included_in_census
      *
      * @return $this
      */
@@ -661,7 +630,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Gets start_date
      *
-     * @return \DateTime
+     * @return string
      */
     public function getStartDate()
     {
@@ -671,7 +640,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date When the staff member's employment started
+     * @param string $start_date start_date
      *
      * @return $this
      */
@@ -685,7 +654,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Gets end_date
      *
-     * @return \DateTime
+     * @return string
      */
     public function getEndDate()
     {
@@ -695,7 +664,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date When the staff member's employment ended/is due to end
+     * @param string $end_date end_date
      *
      * @return $this
      */
@@ -709,7 +678,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Gets demographics
      *
-     * @return \Assembly\Client\Model\StaffMemberDemographics
+     * @return \Assembly\Client\Model\StaffMemberDemographics[]
      */
     public function getDemographics()
     {
@@ -719,7 +688,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets demographics
      *
-     * @param \Assembly\Client\Model\StaffMemberDemographics $demographics demographics
+     * @param \Assembly\Client\Model\StaffMemberDemographics[] $demographics demographics
      *
      * @return $this
      */
@@ -733,7 +702,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Gets qualification_info
      *
-     * @return \Assembly\Client\Model\StaffMemberQualificationInfo
+     * @return \Assembly\Client\Model\StaffMemberQualificationInfo[]
      */
     public function getQualificationInfo()
     {
@@ -743,7 +712,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets qualification_info
      *
-     * @param \Assembly\Client\Model\StaffMemberQualificationInfo $qualification_info qualification_info
+     * @param \Assembly\Client\Model\StaffMemberQualificationInfo[] $qualification_info qualification_info
      *
      * @return $this
      */

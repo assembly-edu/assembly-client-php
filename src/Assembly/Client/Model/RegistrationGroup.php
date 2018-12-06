@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * RegistrationGroup Class Doc Comment
  *
  * @category Class
- * @description A registration group object represents the grouping in which students take AM/PM roll call (morning and afternoon registers).
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'registration_group';
+    protected static $swaggerModelName = 'RegistrationGroup';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,11 +41,13 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
         'id' => 'int',
         'name' => 'string',
+        'start_date' => '\DateTime',
+        'end_date' => '\DateTime',
         'supervisor_ids' => 'int[]',
-        'student_ids' => 'int[]'
+        'student_ids' => 'int[]',
+        'subject' => '\Assembly\Client\Model\Subject'
     ];
 
     /**
@@ -55,11 +56,13 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
         'id' => 'int32',
         'name' => null,
-        'supervisor_ids' => null,
-        'student_ids' => null
+        'start_date' => 'date-time',
+        'end_date' => 'date-time',
+        'supervisor_ids' => 'int32',
+        'student_ids' => 'int32',
+        'subject' => null
     ];
 
     /**
@@ -89,11 +92,13 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'id' => 'id',
         'name' => 'name',
+        'start_date' => 'start_date',
+        'end_date' => 'end_date',
         'supervisor_ids' => 'supervisor_ids',
-        'student_ids' => 'student_ids'
+        'student_ids' => 'student_ids',
+        'subject' => 'subject'
     ];
 
     /**
@@ -102,11 +107,13 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'id' => 'setId',
         'name' => 'setName',
+        'start_date' => 'setStartDate',
+        'end_date' => 'setEndDate',
         'supervisor_ids' => 'setSupervisorIds',
-        'student_ids' => 'setStudentIds'
+        'student_ids' => 'setStudentIds',
+        'subject' => 'setSubject'
     ];
 
     /**
@@ -115,11 +122,13 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'id' => 'getId',
         'name' => 'getName',
+        'start_date' => 'getStartDate',
+        'end_date' => 'getEndDate',
         'supervisor_ids' => 'getSupervisorIds',
-        'student_ids' => 'getStudentIds'
+        'student_ids' => 'getStudentIds',
+        'subject' => 'getSubject'
     ];
 
     /**
@@ -182,11 +191,13 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
+        $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
         $this->container['supervisor_ids'] = isset($data['supervisor_ids']) ? $data['supervisor_ids'] : null;
         $this->container['student_ids'] = isset($data['student_ids']) ? $data['student_ids'] : null;
+        $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
     }
 
     /**
@@ -215,30 +226,6 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return int
@@ -251,7 +238,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Internal stable ID given to all registration groups on the Platform
+     * @param int $id id
      *
      * @return $this
      */
@@ -275,13 +262,61 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name Name of the registration group
+     * @param string $name name
      *
      * @return $this
      */
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_date
+     *
+     * @return \DateTime
+     */
+    public function getStartDate()
+    {
+        return $this->container['start_date'];
+    }
+
+    /**
+     * Sets start_date
+     *
+     * @param \DateTime $start_date start_date
+     *
+     * @return $this
+     */
+    public function setStartDate($start_date)
+    {
+        $this->container['start_date'] = $start_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets end_date
+     *
+     * @return \DateTime
+     */
+    public function getEndDate()
+    {
+        return $this->container['end_date'];
+    }
+
+    /**
+     * Sets end_date
+     *
+     * @param \DateTime $end_date end_date
+     *
+     * @return $this
+     */
+    public function setEndDate($end_date)
+    {
+        $this->container['end_date'] = $end_date;
 
         return $this;
     }
@@ -299,7 +334,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
     /**
      * Sets supervisor_ids
      *
-     * @param int[] $supervisor_ids The IDs of staff members associated with the registration group
+     * @param int[] $supervisor_ids supervisor_ids
      *
      * @return $this
      */
@@ -323,13 +358,37 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
     /**
      * Sets student_ids
      *
-     * @param int[] $student_ids The IDs of students associated with the registration group
+     * @param int[] $student_ids student_ids
      *
      * @return $this
      */
     public function setStudentIds($student_ids)
     {
         $this->container['student_ids'] = $student_ids;
+
+        return $this;
+    }
+
+    /**
+     * Gets subject
+     *
+     * @return \Assembly\Client\Model\Subject
+     */
+    public function getSubject()
+    {
+        return $this->container['subject'];
+    }
+
+    /**
+     * Sets subject
+     *
+     * @param \Assembly\Client\Model\Subject $subject subject
+     *
+     * @return $this
+     */
+    public function setSubject($subject)
+    {
+        $this->container['subject'] = $subject;
 
         return $this;
     }

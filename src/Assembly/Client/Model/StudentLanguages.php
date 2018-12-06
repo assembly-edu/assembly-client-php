@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * StudentLanguages Class Doc Comment
  *
  * @category Class
- * @description A student&#39;s language information.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'student_languages';
+    protected static $swaggerModelName = 'StudentLanguages';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,7 +41,6 @@ class StudentLanguages implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
         'home_language_code' => 'string',
         'home_language_name' => 'string',
         'first_language_code' => 'string',
@@ -57,7 +55,6 @@ class StudentLanguages implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
         'home_language_code' => null,
         'home_language_name' => null,
         'first_language_code' => null,
@@ -93,7 +90,6 @@ class StudentLanguages implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'home_language_code' => 'home_language_code',
         'home_language_name' => 'home_language_name',
         'first_language_code' => 'first_language_code',
@@ -108,7 +104,6 @@ class StudentLanguages implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'home_language_code' => 'setHomeLanguageCode',
         'home_language_name' => 'setHomeLanguageName',
         'first_language_code' => 'setFirstLanguageCode',
@@ -123,7 +118,6 @@ class StudentLanguages implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'home_language_code' => 'getHomeLanguageCode',
         'home_language_name' => 'getHomeLanguageName',
         'first_language_code' => 'getFirstLanguageCode',
@@ -192,7 +186,6 @@ class StudentLanguages implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['home_language_code'] = isset($data['home_language_code']) ? $data['home_language_code'] : null;
         $this->container['home_language_name'] = isset($data['home_language_name']) ? $data['home_language_name'] : null;
         $this->container['first_language_code'] = isset($data['first_language_code']) ? $data['first_language_code'] : null;
@@ -227,30 +220,6 @@ class StudentLanguages implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
      * Gets home_language_code
      *
      * @return string
@@ -263,7 +232,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
     /**
      * Sets home_language_code
      *
-     * @param string $home_language_code The code of a student's home language
+     * @param string $home_language_code home_language_code
      *
      * @return $this
      */
@@ -287,7 +256,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
     /**
      * Sets home_language_name
      *
-     * @param string $home_language_name The name of a student's home language
+     * @param string $home_language_name home_language_name
      *
      * @return $this
      */
@@ -311,7 +280,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
     /**
      * Sets first_language_code
      *
-     * @param string $first_language_code The code of a student's first language
+     * @param string $first_language_code first_language_code
      *
      * @return $this
      */
@@ -335,7 +304,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
     /**
      * Sets first_language_name
      *
-     * @param string $first_language_name The name of a student's first language
+     * @param string $first_language_name first_language_name
      *
      * @return $this
      */
@@ -359,7 +328,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
     /**
      * Sets proficiency_in_english_code
      *
-     * @param string $proficiency_in_english_code A student's proficiency in English code
+     * @param string $proficiency_in_english_code proficiency_in_english_code
      *
      * @return $this
      */
@@ -383,7 +352,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
     /**
      * Sets proficiency_in_english_name
      *
-     * @param string $proficiency_in_english_name A student's proficiency in English name
+     * @param string $proficiency_in_english_name proficiency_in_english_name
      *
      * @return $this
      */

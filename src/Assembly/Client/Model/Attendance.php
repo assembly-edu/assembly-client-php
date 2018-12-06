@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * Attendance Class Doc Comment
  *
  * @category Class
- * @description The attendances resource details AM and PM roll call attendance marks for students.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class Attendance implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'attendance';
+    protected static $swaggerModelName = 'Attendance';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,7 +41,6 @@ class Attendance implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
         'id' => 'int',
         'student_id' => 'int',
         'registration_group_id' => 'int',
@@ -59,7 +57,6 @@ class Attendance implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
         'id' => 'int32',
         'student_id' => 'int32',
         'registration_group_id' => 'int32',
@@ -97,7 +94,6 @@ class Attendance implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'id' => 'id',
         'student_id' => 'student_id',
         'registration_group_id' => 'registration_group_id',
@@ -114,7 +110,6 @@ class Attendance implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'id' => 'setId',
         'student_id' => 'setStudentId',
         'registration_group_id' => 'setRegistrationGroupId',
@@ -131,7 +126,6 @@ class Attendance implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'id' => 'getId',
         'student_id' => 'getStudentId',
         'registration_group_id' => 'getRegistrationGroupId',
@@ -202,7 +196,6 @@ class Attendance implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['student_id'] = isset($data['student_id']) ? $data['student_id'] : null;
         $this->container['registration_group_id'] = isset($data['registration_group_id']) ? $data['registration_group_id'] : null;
@@ -239,30 +232,6 @@ class Attendance implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return int
@@ -275,7 +244,7 @@ class Attendance implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Internal stable ID given to all attendances on the Platform
+     * @param int $id id
      *
      * @return $this
      */
@@ -299,7 +268,7 @@ class Attendance implements ModelInterface, ArrayAccess
     /**
      * Sets student_id
      *
-     * @param int $student_id The ID of the student that the attendance is attached to
+     * @param int $student_id student_id
      *
      * @return $this
      */
@@ -323,7 +292,7 @@ class Attendance implements ModelInterface, ArrayAccess
     /**
      * Sets registration_group_id
      *
-     * @param int $registration_group_id The ID of the subject that the attendance is attached to
+     * @param int $registration_group_id registration_group_id
      *
      * @return $this
      */
@@ -347,7 +316,7 @@ class Attendance implements ModelInterface, ArrayAccess
     /**
      * Sets session_date
      *
-     * @param \DateTime $session_date The date of the attendance
+     * @param \DateTime $session_date session_date
      *
      * @return $this
      */
@@ -371,7 +340,7 @@ class Attendance implements ModelInterface, ArrayAccess
     /**
      * Sets session_name
      *
-     * @param string $session_name Denotes whether the attendance is an AM session or PM session (morning or afternoon)
+     * @param string $session_name session_name
      *
      * @return $this
      */
@@ -395,7 +364,7 @@ class Attendance implements ModelInterface, ArrayAccess
     /**
      * Sets attendance_mark
      *
-     * @param string $attendance_mark The attendance mark
+     * @param string $attendance_mark attendance_mark
      *
      * @return $this
      */
@@ -419,7 +388,7 @@ class Attendance implements ModelInterface, ArrayAccess
     /**
      * Sets minutes_late
      *
-     * @param int $minutes_late If the attendance mark is 'L' for 'Late', how many minutes late the student was
+     * @param int $minutes_late minutes_late
      *
      * @return $this
      */
@@ -443,7 +412,7 @@ class Attendance implements ModelInterface, ArrayAccess
     /**
      * Sets comments
      *
-     * @param string $comments Any additional comments
+     * @param string $comments comments
      *
      * @return $this
      */

@@ -3,22 +3,21 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**object** | **string** | Object type | [optional] 
-**id** | **int** | Internal stable ID given to each contract in the Platform | [optional] 
-**staff_member_id** | **string** | The ID of the staff member | [optional] 
-**start_date** | [**\DateTime**](\DateTime.md) | Contract start date | [optional] 
-**end_date** | [**\DateTime**](\DateTime.md) | Contract end date | [optional] 
-**national_insurance_number** | **string** | Employee NI number | [optional] 
-**payroll_number** | **string** | Employee payroll number | [optional] 
-**contract_type** | **string** | Contract type | [optional] 
-**post** | **string** | No description | [optional] 
-**origin** | **string** | No description | [optional] 
-**destination** | **string** | Completed after a contract has been terminated; this captures a post-holder’s destination | [optional] 
-**daily_rate** | **bool** | No description | [optional] 
-**pay_review_date** | [**\DateTime**](\DateTime.md) | No description | [optional] 
-**roles** | [**\Assembly\Client\Model\StaffContractRoles[]**](StaffContractRoles.md) | No description | [optional] 
-**salaries** | [**\Assembly\Client\Model\StaffContractSalaries[]**](StaffContractSalaries.md) | No description | [optional] 
-**allowances** | [**\Assembly\Client\Model\StaffContractAllowances[]**](StaffContractAllowances.md) | No description | [optional] 
+**id** | **int** |  | [optional] 
+**staff_member_id** | **int** |  | [optional] 
+**start_date** | [**\DateTime**](\DateTime.md) |  | [optional] 
+**end_date** | [**\DateTime**](\DateTime.md) |  | [optional] 
+**national_insurance_number** | **string** |  | [optional] 
+**payroll_number** | **string** |  | [optional] 
+**contract_type** | **string** |  | [optional] 
+**post** | **string** |  | [optional] 
+**origin** | **string** |  | [optional] 
+**destination** | **string** |  | [optional] 
+**daily_rate** | **bool** |  | [optional] 
+**pay_review_date** | [**\DateTime**](\DateTime.md) |  | [optional] 
+**roles** | [**\Assembly\Client\Model\StaffRole[]**](StaffRole.md) |  | [optional] 
+**salaries** | [**\Assembly\Client\Model\StaffSalary[]**](StaffSalary.md) |  | [optional] 
+**allowances** | [**\Assembly\Client\Model\StaffAllowance[]**](StaffAllowance.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

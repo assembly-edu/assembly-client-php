@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * Contact Class Doc Comment
  *
  * @category Class
- * @description A contact object represents a parent or guardian. Students are related to contacts through a student/contact relationship.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class Contact implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'contact';
+    protected static $swaggerModelName = 'Contact';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,7 +41,6 @@ class Contact implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
         'id' => 'int',
         'first_name' => 'string',
         'middle_name' => 'string',
@@ -50,9 +48,9 @@ class Contact implements ModelInterface, ArrayAccess
         'gender' => 'string',
         'title' => 'string',
         'salutation' => 'string',
-        'emails' => '\Assembly\Client\Model\ContactEmails[]',
-        'telephone_numbers' => '\Assembly\Client\Model\ContactTelephoneNumbers[]',
-        'students' => '\Assembly\Client\Model\ContactStudents[]'
+        'emails' => '\Assembly\Client\Model\Email[]',
+        'telephone_numbers' => '\Assembly\Client\Model\TelephoneNumber[]',
+        'students' => '\Assembly\Client\Model\Student[]'
     ];
 
     /**
@@ -61,7 +59,6 @@ class Contact implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
         'id' => 'int32',
         'first_name' => null,
         'middle_name' => null,
@@ -101,7 +98,6 @@ class Contact implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'id' => 'id',
         'first_name' => 'first_name',
         'middle_name' => 'middle_name',
@@ -120,7 +116,6 @@ class Contact implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'id' => 'setId',
         'first_name' => 'setFirstName',
         'middle_name' => 'setMiddleName',
@@ -139,7 +134,6 @@ class Contact implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'id' => 'getId',
         'first_name' => 'getFirstName',
         'middle_name' => 'getMiddleName',
@@ -193,23 +187,8 @@ class Contact implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const GENDER_F = 'F';
-    const GENDER_M = 'M';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getGenderAllowableValues()
-    {
-        return [
-            self::GENDER_F,
-            self::GENDER_M,
-        ];
-    }
     
 
     /**
@@ -227,7 +206,6 @@ class Contact implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['first_name'] = isset($data['first_name']) ? $data['first_name'] : null;
         $this->container['middle_name'] = isset($data['middle_name']) ? $data['middle_name'] : null;
@@ -249,14 +227,6 @@ class Contact implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!in_array($this->container['gender'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'gender', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -269,37 +239,9 @@ class Contact implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!in_array($this->container['gender'], $allowedValues)) {
-            return false;
-        }
         return true;
     }
 
-
-    /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
 
     /**
      * Gets id
@@ -314,7 +256,7 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Internal stable ID given to all contacts on the Platform
+     * @param int $id id
      *
      * @return $this
      */
@@ -338,7 +280,7 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Sets first_name
      *
-     * @param string $first_name The first name of the contact
+     * @param string $first_name first_name
      *
      * @return $this
      */
@@ -362,7 +304,7 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Sets middle_name
      *
-     * @param string $middle_name The middle name of the contact
+     * @param string $middle_name middle_name
      *
      * @return $this
      */
@@ -386,7 +328,7 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Sets last_name
      *
-     * @param string $last_name The last name of the contact
+     * @param string $last_name last_name
      *
      * @return $this
      */
@@ -410,21 +352,12 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Sets gender
      *
-     * @param string $gender The gender of the contact *Values*  |Value|Description| |---|---| |`F`|Female| |`M`|Male|
+     * @param string $gender gender
      *
      * @return $this
      */
     public function setGender($gender)
     {
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!is_null($gender) && !in_array($gender, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'gender', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['gender'] = $gender;
 
         return $this;
@@ -443,7 +376,7 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Sets title
      *
-     * @param string $title The title of the contact
+     * @param string $title title
      *
      * @return $this
      */
@@ -467,7 +400,7 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Sets salutation
      *
-     * @param string $salutation The salutation for the contact
+     * @param string $salutation salutation
      *
      * @return $this
      */
@@ -481,7 +414,7 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Gets emails
      *
-     * @return \Assembly\Client\Model\ContactEmails[]
+     * @return \Assembly\Client\Model\Email[]
      */
     public function getEmails()
     {
@@ -491,7 +424,7 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Sets emails
      *
-     * @param \Assembly\Client\Model\ContactEmails[] $emails A list of emails for the contact
+     * @param \Assembly\Client\Model\Email[] $emails emails
      *
      * @return $this
      */
@@ -505,7 +438,7 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Gets telephone_numbers
      *
-     * @return \Assembly\Client\Model\ContactTelephoneNumbers[]
+     * @return \Assembly\Client\Model\TelephoneNumber[]
      */
     public function getTelephoneNumbers()
     {
@@ -515,7 +448,7 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Sets telephone_numbers
      *
-     * @param \Assembly\Client\Model\ContactTelephoneNumbers[] $telephone_numbers A list of telephone numbers for the contact
+     * @param \Assembly\Client\Model\TelephoneNumber[] $telephone_numbers telephone_numbers
      *
      * @return $this
      */
@@ -529,7 +462,7 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Gets students
      *
-     * @return \Assembly\Client\Model\ContactStudents[]
+     * @return \Assembly\Client\Model\Student[]
      */
     public function getStudents()
     {
@@ -539,7 +472,7 @@ class Contact implements ModelInterface, ArrayAccess
     /**
      * Sets students
      *
-     * @param \Assembly\Client\Model\ContactStudents[] $students A list of student IDs that the contact is responsible for
+     * @param \Assembly\Client\Model\Student[] $students students
      *
      * @return $this
      */

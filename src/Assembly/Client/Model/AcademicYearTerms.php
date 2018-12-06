@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * AcademicYearTerms Class Doc Comment
  *
  * @category Class
- * @description No description
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'academic_year_terms';
+    protected static $swaggerModelName = 'AcademicYearTerms';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -221,7 +220,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Internal stable ID given to term_dates on Platform
+     * @param int $id id
      *
      * @return $this
      */
@@ -245,7 +244,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
     /**
      * Sets name
      *
-     * @param string $name Name of the term
+     * @param string $name name
      *
      * @return $this
      */
@@ -269,7 +268,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
     /**
      * Sets start_date
      *
-     * @param \DateTime $start_date Date on which term begins
+     * @param \DateTime $start_date start_date
      *
      * @return $this
      */
@@ -293,7 +292,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
     /**
      * Sets end_date
      *
-     * @param \DateTime $end_date Date on which term ends
+     * @param \DateTime $end_date end_date
      *
      * @return $this
      */

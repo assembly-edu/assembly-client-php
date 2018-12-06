@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -57,352 +57,342 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for getAcademicYears
+     * Test case for callList
      *
-     * .
+     * List Academic Years.
      *
      */
-    public function testGetAcademicYears()
+    public function testCallList()
     {
     }
 
     /**
-     * Test case for getAssessmentPoints
+     * Test case for callList_0
      *
-     * .
+     * List Assessment Points.
      *
      */
-    public function testGetAssessmentPoints()
+    public function testCallList0()
     {
     }
 
     /**
-     * Test case for getAssessmentPointsAssessmentPointRank
+     * Test case for callList_1
      *
-     * .
+     * List Assessments.
      *
      */
-    public function testGetAssessmentPointsAssessmentPointRank()
+    public function testCallList1()
     {
     }
 
     /**
-     * Test case for getAssessmentPointsAssessmentPointRankResults
+     * Test case for callList_10
      *
-     * .
+     * List Staff Contracts.
      *
      */
-    public function testGetAssessmentPointsAssessmentPointRankResults()
+    public function testCallList10()
     {
     }
 
     /**
-     * Test case for getAssessments
+     * Test case for callList_11
      *
-     * .
+     * List Staff Members.
      *
      */
-    public function testGetAssessments()
+    public function testCallList11()
     {
     }
 
     /**
-     * Test case for getAssessmentsAssessmentId
+     * Test case for callList_12
      *
-     * .
+     * List Students.
      *
      */
-    public function testGetAssessmentsAssessmentId()
+    public function testCallList12()
     {
     }
 
     /**
-     * Test case for getAssessmentsAssessmentIdGradeSet
+     * Test case for callList_13
      *
-     * .
+     * List Subjects.
      *
      */
-    public function testGetAssessmentsAssessmentIdGradeSet()
+    public function testCallList13()
     {
     }
 
     /**
-     * Test case for getAssessmentsAssessmentIdResults
+     * Test case for callList_14
      *
-     * .
+     * List Teaching Groups.
      *
      */
-    public function testGetAssessmentsAssessmentIdResults()
+    public function testCallList14()
     {
     }
 
     /**
-     * Test case for getAttendances
+     * Test case for callList_15
      *
-     * .
+     * List Year Groups.
      *
      */
-    public function testGetAttendances()
+    public function testCallList15()
     {
     }
 
     /**
-     * Test case for getCalendarEvents
+     * Test case for callList_2
      *
-     * .
+     * List Attendances.
      *
      */
-    public function testGetCalendarEvents()
+    public function testCallList2()
     {
     }
 
     /**
-     * Test case for getContacts
+     * Test case for callList_3
      *
-     * .
+     * List Calendar Events.
      *
      */
-    public function testGetContacts()
+    public function testCallList3()
     {
     }
 
     /**
-     * Test case for getExclusions
+     * Test case for callList_4
      *
-     * .
+     * List Contacts.
      *
      */
-    public function testGetExclusions()
+    public function testCallList4()
     {
     }
 
     /**
-     * Test case for getExclusionsStudentId
+     * Test case for callList_5
      *
-     * .
+     * List Exclusions.
      *
      */
-    public function testGetExclusionsStudentId()
+    public function testCallList5()
     {
     }
 
     /**
-     * Test case for getFacetFacetId
+     * Test case for callList_6
      *
-     * .
+     * List Facets.
      *
      */
-    public function testGetFacetFacetId()
+    public function testCallList6()
     {
     }
 
     /**
-     * Test case for getFacets
+     * Test case for callList_7
      *
-     * .
+     * List Registration Group.
      *
      */
-    public function testGetFacets()
+    public function testCallList7()
     {
     }
 
     /**
-     * Test case for getRegistrationGroups
+     * Test case for callList_8
      *
-     * .
+     * List Results.
      *
      */
-    public function testGetRegistrationGroups()
+    public function testCallList8()
     {
     }
 
     /**
-     * Test case for getRegistrationGroupsGroupId
+     * Test case for callList_9
      *
-     * .
+     * List Staff Absences.
      *
      */
-    public function testGetRegistrationGroupsGroupId()
+    public function testCallList9()
     {
     }
 
     /**
-     * Test case for getRegistrationGroupsGroupIdStudents
+     * Test case for find
      *
-     * .
+     * View an Academic Year.
      *
      */
-    public function testGetRegistrationGroupsGroupIdStudents()
+    public function testFind()
     {
     }
 
     /**
-     * Test case for getSchoolDetails
+     * Test case for find_0
      *
-     * .
+     * View an Assessment Point.
      *
      */
-    public function testGetSchoolDetails()
+    public function testFind0()
     {
     }
 
     /**
-     * Test case for getStaffAbsences
+     * Test case for find_1
      *
-     * .
+     * View an Assessment.
      *
      */
-    public function testGetStaffAbsences()
+    public function testFind1()
     {
     }
 
     /**
-     * Test case for getStaffContracts
+     * Test case for find_2
      *
-     * .
+     * View a Facet.
      *
      */
-    public function testGetStaffContracts()
+    public function testFind2()
     {
     }
 
     /**
-     * Test case for getStaffContractsStaffMemberId
+     * Test case for find_3
      *
-     * .
+     * View a Registration Group.
      *
      */
-    public function testGetStaffContractsStaffMemberId()
+    public function testFind3()
     {
     }
 
     /**
-     * Test case for getStaffMembers
+     * Test case for find_4
      *
-     * .
+     * View a Staff Member.
      *
      */
-    public function testGetStaffMembers()
+    public function testFind4()
     {
     }
 
     /**
-     * Test case for getStaffMembersStaffMemberId
+     * Test case for find_5
      *
-     * .
+     * View a Student.
      *
      */
-    public function testGetStaffMembersStaffMemberId()
+    public function testFind5()
     {
     }
 
     /**
-     * Test case for getStudents
+     * Test case for find_6
      *
-     * .
+     * View a Teaching Group.
      *
      */
-    public function testGetStudents()
+    public function testFind6()
     {
     }
 
     /**
-     * Test case for getStudentsStudentId
+     * Test case for find_7
      *
-     * .
+     * View a Year Group.
      *
      */
-    public function testGetStudentsStudentId()
+    public function testFind7()
     {
     }
 
     /**
-     * Test case for getSubjects
+     * Test case for gradeSet
      *
-     * .
+     * View Grade Set for an Assessment.
      *
      */
-    public function testGetSubjects()
+    public function testGradeSet()
     {
     }
 
     /**
-     * Test case for getTeachingGroups
+     * Test case for left
      *
-     * .
+     * List Left Students.
      *
      */
-    public function testGetTeachingGroups()
+    public function testLeft()
     {
     }
 
     /**
-     * Test case for getTeachingGroupsGroupId
+     * Test case for results
      *
-     * .
+     * View Results for an Assessment Point.
      *
      */
-    public function testGetTeachingGroupsGroupId()
+    public function testResults()
     {
     }
 
     /**
-     * Test case for getTeachingGroupsGroupIdStudents
+     * Test case for results_0
      *
-     * .
+     * View Results for an Assessment.
      *
      */
-    public function testGetTeachingGroupsGroupIdStudents()
+    public function testResults0()
     {
     }
 
     /**
-     * Test case for getYearGroups
+     * Test case for show
      *
-     * .
+     * List School Details.
      *
      */
-    public function testGetYearGroups()
+    public function testShow()
     {
     }
 
     /**
-     * Test case for getYearGroupsGroupId
+     * Test case for students
      *
-     * .
+     * List Students for Registration Group.
      *
      */
-    public function testGetYearGroupsGroupId()
+    public function testStudents()
     {
     }
 
     /**
-     * Test case for getYearGroupsGroupIdStudents
+     * Test case for students_0
      *
-     * .
+     * List Students for Teaching Group.
      *
      */
-    public function testGetYearGroupsGroupIdStudents()
+    public function testStudents0()
     {
     }
 
     /**
-     * Test case for patchResults
+     * Test case for students_1
      *
-     * .
-     *
-     */
-    public function testPatchResults()
-    {
-    }
-
-    /**
-     * Test case for patchResultsResultId
-     *
-     * .
+     * List Students for Year Group.
      *
      */
-    public function testPatchResultsResultId()
+    public function testStudents1()
     {
     }
 }

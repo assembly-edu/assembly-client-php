@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * Subject Class Doc Comment
  *
  * @category Class
- * @description A subject object represents an Assembly Platform subject. These subjects are mapped to one or multiple subjects within a school&#39;s MIS and are used to normalise school to school variance in subject naming to a known and fixed set within the Assembly Platform.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class Subject implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'subject';
+    protected static $swaggerModelName = 'Subject';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,11 +41,10 @@ class Subject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
         'id' => 'int',
-        'name' => 'string',
         'code' => 'string',
-        'mis_subjects' => '\Assembly\Client\Model\SubjectMisSubjects'
+        'name' => 'string',
+        'mis_subjects' => '\Assembly\Client\Model\MisSubject[]'
     ];
 
     /**
@@ -55,10 +53,9 @@ class Subject implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
         'id' => 'int32',
-        'name' => null,
         'code' => null,
+        'name' => null,
         'mis_subjects' => null
     ];
 
@@ -89,10 +86,9 @@ class Subject implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'id' => 'id',
-        'name' => 'name',
         'code' => 'code',
+        'name' => 'name',
         'mis_subjects' => 'mis_subjects'
     ];
 
@@ -102,10 +98,9 @@ class Subject implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'id' => 'setId',
-        'name' => 'setName',
         'code' => 'setCode',
+        'name' => 'setName',
         'mis_subjects' => 'setMisSubjects'
     ];
 
@@ -115,10 +110,9 @@ class Subject implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'id' => 'getId',
-        'name' => 'getName',
         'code' => 'getCode',
+        'name' => 'getName',
         'mis_subjects' => 'getMisSubjects'
     ];
 
@@ -182,10 +176,9 @@ class Subject implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['mis_subjects'] = isset($data['mis_subjects']) ? $data['mis_subjects'] : null;
     }
 
@@ -215,30 +208,6 @@ class Subject implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
      * Gets id
      *
      * @return int
@@ -251,37 +220,13 @@ class Subject implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Internal stable ID given to all subjects in the Platform
+     * @param int $id id
      *
      * @return $this
      */
     public function setId($id)
     {
         $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Full name of subject
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
 
         return $this;
     }
@@ -299,7 +244,7 @@ class Subject implements ModelInterface, ArrayAccess
     /**
      * Sets code
      *
-     * @param string $code Shortened code of subject
+     * @param string $code code
      *
      * @return $this
      */
@@ -311,9 +256,33 @@ class Subject implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
      * Gets mis_subjects
      *
-     * @return \Assembly\Client\Model\SubjectMisSubjects
+     * @return \Assembly\Client\Model\MisSubject[]
      */
     public function getMisSubjects()
     {
@@ -323,7 +292,7 @@ class Subject implements ModelInterface, ArrayAccess
     /**
      * Sets mis_subjects
      *
-     * @param \Assembly\Client\Model\SubjectMisSubjects $mis_subjects mis_subjects
+     * @param \Assembly\Client\Model\MisSubject[] $mis_subjects mis_subjects
      *
      * @return $this
      */

@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -73,7 +73,7 @@ class Configuration
      *
      * @var string
      */
-    protected $userAgent = 'Swagger-Codegen/1.0.0/php';
+    protected $userAgent = '1.0.0/php';
 
     /**
      * Debug switch (default set to false)
@@ -105,58 +105,6 @@ class Configuration
     }
 
     /**
-     * Sets API key
-     *
-     * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     * @param string $key              API key or token
-     *
-     * @return $this
-     */
-    public function setApiKey($apiKeyIdentifier, $key)
-    {
-        $this->apiKeys[$apiKeyIdentifier] = $key;
-        return $this;
-    }
-
-    /**
-     * Gets API key
-     *
-     * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     *
-     * @return string API key or token
-     */
-    public function getApiKey($apiKeyIdentifier)
-    {
-        return isset($this->apiKeys[$apiKeyIdentifier]) ? $this->apiKeys[$apiKeyIdentifier] : null;
-    }
-
-    /**
-     * Sets the prefix for API key (e.g. Bearer)
-     *
-     * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     * @param string $prefix           API key prefix, e.g. Bearer
-     *
-     * @return $this
-     */
-    public function setApiKeyPrefix($apiKeyIdentifier, $prefix)
-    {
-        $this->apiKeyPrefixes[$apiKeyIdentifier] = $prefix;
-        return $this;
-    }
-
-    /**
-     * Gets API key prefix
-     *
-     * @param string $apiKeyIdentifier API key identifier (authentication scheme)
-     *
-     * @return string
-     */
-    public function getApiKeyPrefix($apiKeyIdentifier)
-    {
-        return isset($this->apiKeyPrefixes[$apiKeyIdentifier]) ? $this->apiKeyPrefixes[$apiKeyIdentifier] : null;
-    }
-
-    /**
      * Sets the access token for OAuth
      *
      * @param string $accessToken Token for OAuth
@@ -177,52 +125,6 @@ class Configuration
     public function getAccessToken()
     {
         return $this->accessToken;
-    }
-
-    /**
-     * Sets the username for HTTP basic authentication
-     *
-     * @param string $username Username for HTTP basic authentication
-     *
-     * @return $this
-     */
-    public function setUsername($username)
-    {
-        $this->username = $username;
-        return $this;
-    }
-
-    /**
-     * Gets the username for HTTP basic authentication
-     *
-     * @return string Username for HTTP basic authentication
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * Sets the password for HTTP basic authentication
-     *
-     * @param string $password Password for HTTP basic authentication
-     *
-     * @return $this
-     */
-    public function setPassword($password)
-    {
-        $this->password = $password;
-        return $this;
-    }
-
-    /**
-     * Gets the password for HTTP basic authentication
-     *
-     * @return string Password for HTTP basic authentication
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 
     /**
@@ -386,30 +288,5 @@ class Configuration
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;
-    }
-
-    /**
-     * Get API key (with prefix if set)
-     *
-     * @param  string $apiKeyIdentifier name of apikey
-     *
-     * @return string API key with the prefix
-     */
-    public function getApiKeyWithPrefix($apiKeyIdentifier)
-    {
-        $prefix = $this->getApiKeyPrefix($apiKeyIdentifier);
-        $apiKey = $this->getApiKey($apiKeyIdentifier);
-
-        if ($apiKey === null) {
-            return null;
-        }
-
-        if ($prefix === null) {
-            $keyWithPrefix = $apiKey;
-        } else {
-            $keyWithPrefix = $prefix . ' ' . $apiKey;
-        }
-
-        return $keyWithPrefix;
     }
 }

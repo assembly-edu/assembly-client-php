@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * StudentDemographics Class Doc Comment
  *
  * @category Class
- * @description Demographics information about the student.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'student_demographics';
+    protected static $swaggerModelName = 'StudentDemographics';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,19 +41,20 @@ class StudentDemographics implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
         'ethnicity_code' => 'string',
         'ethnicity_group' => 'string',
         'gender' => 'string',
-        'in_care' => 'bool',
-        'is_eal' => 'bool',
-        'is_fsm' => 'bool',
-        'fsm_review_date' => '\DateTime',
         'is_pp' => 'bool',
+        'is_eal' => 'bool',
         'sen_category' => 'string',
-        'sen_needs' => '\Assembly\Client\Model\StudentDemographicsSenNeeds',
         'country_of_birth' => 'string',
-        'nationalities' => 'string[]'
+        'nationalities' => 'string[]',
+        'fsm_review_date' => 'string',
+        'is_fsm' => 'bool',
+        'looked_after' => 'bool',
+        'ever_in_care' => 'bool',
+        'service_child' => 'bool',
+        'sen_needs' => '\Assembly\Client\Model\SenNeed[]'
     ];
 
     /**
@@ -63,19 +63,20 @@ class StudentDemographics implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
         'ethnicity_code' => null,
         'ethnicity_group' => null,
         'gender' => null,
-        'in_care' => null,
-        'is_eal' => null,
-        'is_fsm' => null,
-        'fsm_review_date' => 'date-time',
         'is_pp' => null,
+        'is_eal' => null,
         'sen_category' => null,
-        'sen_needs' => null,
         'country_of_birth' => null,
-        'nationalities' => null
+        'nationalities' => null,
+        'fsm_review_date' => null,
+        'is_fsm' => null,
+        'looked_after' => null,
+        'ever_in_care' => null,
+        'service_child' => null,
+        'sen_needs' => null
     ];
 
     /**
@@ -105,19 +106,20 @@ class StudentDemographics implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
         'ethnicity_code' => 'ethnicity_code',
         'ethnicity_group' => 'ethnicity_group',
         'gender' => 'gender',
-        'in_care' => 'in_care',
-        'is_eal' => 'is_eal',
-        'is_fsm' => 'is_fsm',
-        'fsm_review_date' => 'fsm_review_date',
         'is_pp' => 'is_pp',
+        'is_eal' => 'is_eal',
         'sen_category' => 'sen_category',
-        'sen_needs' => 'sen_needs',
         'country_of_birth' => 'country_of_birth',
-        'nationalities' => 'nationalities'
+        'nationalities' => 'nationalities',
+        'fsm_review_date' => 'fsm_review_date',
+        'is_fsm' => 'is_fsm',
+        'looked_after' => 'looked_after',
+        'ever_in_care' => 'ever_in_care',
+        'service_child' => 'service_child',
+        'sen_needs' => 'sen_needs'
     ];
 
     /**
@@ -126,19 +128,20 @@ class StudentDemographics implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
         'ethnicity_code' => 'setEthnicityCode',
         'ethnicity_group' => 'setEthnicityGroup',
         'gender' => 'setGender',
-        'in_care' => 'setInCare',
-        'is_eal' => 'setIsEal',
-        'is_fsm' => 'setIsFsm',
-        'fsm_review_date' => 'setFsmReviewDate',
         'is_pp' => 'setIsPp',
+        'is_eal' => 'setIsEal',
         'sen_category' => 'setSenCategory',
-        'sen_needs' => 'setSenNeeds',
         'country_of_birth' => 'setCountryOfBirth',
-        'nationalities' => 'setNationalities'
+        'nationalities' => 'setNationalities',
+        'fsm_review_date' => 'setFsmReviewDate',
+        'is_fsm' => 'setIsFsm',
+        'looked_after' => 'setLookedAfter',
+        'ever_in_care' => 'setEverInCare',
+        'service_child' => 'setServiceChild',
+        'sen_needs' => 'setSenNeeds'
     ];
 
     /**
@@ -147,19 +150,20 @@ class StudentDemographics implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
         'ethnicity_code' => 'getEthnicityCode',
         'ethnicity_group' => 'getEthnicityGroup',
         'gender' => 'getGender',
-        'in_care' => 'getInCare',
-        'is_eal' => 'getIsEal',
-        'is_fsm' => 'getIsFsm',
-        'fsm_review_date' => 'getFsmReviewDate',
         'is_pp' => 'getIsPp',
+        'is_eal' => 'getIsEal',
         'sen_category' => 'getSenCategory',
-        'sen_needs' => 'getSenNeeds',
         'country_of_birth' => 'getCountryOfBirth',
-        'nationalities' => 'getNationalities'
+        'nationalities' => 'getNationalities',
+        'fsm_review_date' => 'getFsmReviewDate',
+        'is_fsm' => 'getIsFsm',
+        'looked_after' => 'getLookedAfter',
+        'ever_in_care' => 'getEverInCare',
+        'service_child' => 'getServiceChild',
+        'sen_needs' => 'getSenNeeds'
     ];
 
     /**
@@ -203,48 +207,8 @@ class StudentDemographics implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    const GENDER_F = 'F';
-    const GENDER_M = 'M';
-    const SEN_CATEGORY_A = 'A';
-    const SEN_CATEGORY_E = 'E';
-    const SEN_CATEGORY_K = 'K';
-    const SEN_CATEGORY_N = 'N';
-    const SEN_CATEGORY_P = 'P';
-    const SEN_CATEGORY_S = 'S';
-    const SEN_CATEGORY_NULL = 'null';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getGenderAllowableValues()
-    {
-        return [
-            self::GENDER_F,
-            self::GENDER_M,
-        ];
-    }
-    
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSenCategoryAllowableValues()
-    {
-        return [
-            self::SEN_CATEGORY_A,
-            self::SEN_CATEGORY_E,
-            self::SEN_CATEGORY_K,
-            self::SEN_CATEGORY_N,
-            self::SEN_CATEGORY_P,
-            self::SEN_CATEGORY_S,
-            self::SEN_CATEGORY_NULL,
-        ];
-    }
     
 
     /**
@@ -262,19 +226,20 @@ class StudentDemographics implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
         $this->container['ethnicity_code'] = isset($data['ethnicity_code']) ? $data['ethnicity_code'] : null;
         $this->container['ethnicity_group'] = isset($data['ethnicity_group']) ? $data['ethnicity_group'] : null;
         $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
-        $this->container['in_care'] = isset($data['in_care']) ? $data['in_care'] : null;
-        $this->container['is_eal'] = isset($data['is_eal']) ? $data['is_eal'] : null;
-        $this->container['is_fsm'] = isset($data['is_fsm']) ? $data['is_fsm'] : null;
-        $this->container['fsm_review_date'] = isset($data['fsm_review_date']) ? $data['fsm_review_date'] : null;
         $this->container['is_pp'] = isset($data['is_pp']) ? $data['is_pp'] : null;
+        $this->container['is_eal'] = isset($data['is_eal']) ? $data['is_eal'] : null;
         $this->container['sen_category'] = isset($data['sen_category']) ? $data['sen_category'] : null;
-        $this->container['sen_needs'] = isset($data['sen_needs']) ? $data['sen_needs'] : null;
         $this->container['country_of_birth'] = isset($data['country_of_birth']) ? $data['country_of_birth'] : null;
         $this->container['nationalities'] = isset($data['nationalities']) ? $data['nationalities'] : null;
+        $this->container['fsm_review_date'] = isset($data['fsm_review_date']) ? $data['fsm_review_date'] : null;
+        $this->container['is_fsm'] = isset($data['is_fsm']) ? $data['is_fsm'] : null;
+        $this->container['looked_after'] = isset($data['looked_after']) ? $data['looked_after'] : null;
+        $this->container['ever_in_care'] = isset($data['ever_in_care']) ? $data['ever_in_care'] : null;
+        $this->container['service_child'] = isset($data['service_child']) ? $data['service_child'] : null;
+        $this->container['sen_needs'] = isset($data['sen_needs']) ? $data['sen_needs'] : null;
     }
 
     /**
@@ -285,22 +250,6 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     public function listInvalidProperties()
     {
         $invalidProperties = [];
-
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!in_array($this->container['gender'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'gender', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getSenCategoryAllowableValues();
-        if (!in_array($this->container['sen_category'], $allowedValues)) {
-            $invalidProperties[] = sprintf(
-                "invalid value for 'sen_category', must be one of '%s'",
-                implode("', '", $allowedValues)
-            );
-        }
 
         return $invalidProperties;
     }
@@ -314,41 +263,9 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     public function valid()
     {
 
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!in_array($this->container['gender'], $allowedValues)) {
-            return false;
-        }
-        $allowedValues = $this->getSenCategoryAllowableValues();
-        if (!in_array($this->container['sen_category'], $allowedValues)) {
-            return false;
-        }
         return true;
     }
 
-
-    /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
 
     /**
      * Gets ethnicity_code
@@ -363,7 +280,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     /**
      * Sets ethnicity_code
      *
-     * @param string $ethnicity_code A detailed, Dfe standardised way of categorising the ethnicity of a student
+     * @param string $ethnicity_code ethnicity_code
      *
      * @return $this
      */
@@ -387,7 +304,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     /**
      * Sets ethnicity_group
      *
-     * @param string $ethnicity_group A broader categorisation of ethnicity that is standardised across the country, with all ethnicity codes grouped in to 8 sections
+     * @param string $ethnicity_group ethnicity_group
      *
      * @return $this
      */
@@ -411,118 +328,13 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     /**
      * Sets gender
      *
-     * @param string $gender The gender of the student *Values*  |Value|Description| |---|---| |`F`|Female| |`M`|Male|
+     * @param string $gender gender
      *
      * @return $this
      */
     public function setGender($gender)
     {
-        $allowedValues = $this->getGenderAllowableValues();
-        if (!is_null($gender) && !in_array($gender, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'gender', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['gender'] = $gender;
-
-        return $this;
-    }
-
-    /**
-     * Gets in_care
-     *
-     * @return bool
-     */
-    public function getInCare()
-    {
-        return $this->container['in_care'];
-    }
-
-    /**
-     * Sets in_care
-     *
-     * @param bool $in_care Looked after status - indicates whether the student is 'looked after' by the local authority (this field will only be returned if &demographics=true and &care=true is included in your request)
-     *
-     * @return $this
-     */
-    public function setInCare($in_care)
-    {
-        $this->container['in_care'] = $in_care;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_eal
-     *
-     * @return bool
-     */
-    public function getIsEal()
-    {
-        return $this->container['is_eal'];
-    }
-
-    /**
-     * Sets is_eal
-     *
-     * @param bool $is_eal English as an Additional Language (EAL) - this field will be true for a student whose first language is not English
-     *
-     * @return $this
-     */
-    public function setIsEal($is_eal)
-    {
-        $this->container['is_eal'] = $is_eal;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_fsm
-     *
-     * @return bool
-     */
-    public function getIsFsm()
-    {
-        return $this->container['is_fsm'];
-    }
-
-    /**
-     * Sets is_fsm
-     *
-     * @param bool $is_fsm Free School Meals (FSM) - indicates if the student is eligible for free school meals
-     *
-     * @return $this
-     */
-    public function setIsFsm($is_fsm)
-    {
-        $this->container['is_fsm'] = $is_fsm;
-
-        return $this;
-    }
-
-    /**
-     * Gets fsm_review_date
-     *
-     * @return \DateTime
-     */
-    public function getFsmReviewDate()
-    {
-        return $this->container['fsm_review_date'];
-    }
-
-    /**
-     * Sets fsm_review_date
-     *
-     * @param \DateTime $fsm_review_date Free school meal review date -Review date for pupil's free school meal eligibility
-     *
-     * @return $this
-     */
-    public function setFsmReviewDate($fsm_review_date)
-    {
-        $this->container['fsm_review_date'] = $fsm_review_date;
 
         return $this;
     }
@@ -540,13 +352,37 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     /**
      * Sets is_pp
      *
-     * @param bool $is_pp Pupil Premium (PP) - schools receive extra funding for students who qualify as Pupil Premium. The includes any student who has qualified for Free School Meals (FSM) in the last 6 years, and any student in local-authority care
+     * @param bool $is_pp is_pp
      *
      * @return $this
      */
     public function setIsPp($is_pp)
     {
         $this->container['is_pp'] = $is_pp;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_eal
+     *
+     * @return bool
+     */
+    public function getIsEal()
+    {
+        return $this->container['is_eal'];
+    }
+
+    /**
+     * Sets is_eal
+     *
+     * @param bool $is_eal is_eal
+     *
+     * @return $this
+     */
+    public function setIsEal($is_eal)
+    {
+        $this->container['is_eal'] = $is_eal;
 
         return $this;
     }
@@ -564,46 +400,13 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     /**
      * Sets sen_category
      *
-     * @param string $sen_category Special Education Need (SEN) - indicates a student has learning difficulties and requires special education provision. *Values*  |Value|Description| |---|---| |`A`|School Action (no longer valid)| |`E`|Education, Health and Care Plan| |`K`|SEN Support| |`N`|None| |`P`|School Action Plus (no longer valid)| |`S`|Statement| |`null`|Not eligable|
+     * @param string $sen_category sen_category
      *
      * @return $this
      */
     public function setSenCategory($sen_category)
     {
-        $allowedValues = $this->getSenCategoryAllowableValues();
-        if (!is_null($sen_category) && !in_array($sen_category, $allowedValues)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value for 'sen_category', must be one of '%s'",
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
         $this->container['sen_category'] = $sen_category;
-
-        return $this;
-    }
-
-    /**
-     * Gets sen_needs
-     *
-     * @return \Assembly\Client\Model\StudentDemographicsSenNeeds
-     */
-    public function getSenNeeds()
-    {
-        return $this->container['sen_needs'];
-    }
-
-    /**
-     * Sets sen_needs
-     *
-     * @param \Assembly\Client\Model\StudentDemographicsSenNeeds $sen_needs sen_needs
-     *
-     * @return $this
-     */
-    public function setSenNeeds($sen_needs)
-    {
-        $this->container['sen_needs'] = $sen_needs;
 
         return $this;
     }
@@ -621,7 +424,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     /**
      * Sets country_of_birth
      *
-     * @param string $country_of_birth The country of birth of the student
+     * @param string $country_of_birth country_of_birth
      *
      * @return $this
      */
@@ -645,13 +448,157 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     /**
      * Sets nationalities
      *
-     * @param string[] $nationalities The nationality or nationalities of the student
+     * @param string[] $nationalities nationalities
      *
      * @return $this
      */
     public function setNationalities($nationalities)
     {
         $this->container['nationalities'] = $nationalities;
+
+        return $this;
+    }
+
+    /**
+     * Gets fsm_review_date
+     *
+     * @return string
+     */
+    public function getFsmReviewDate()
+    {
+        return $this->container['fsm_review_date'];
+    }
+
+    /**
+     * Sets fsm_review_date
+     *
+     * @param string $fsm_review_date fsm_review_date
+     *
+     * @return $this
+     */
+    public function setFsmReviewDate($fsm_review_date)
+    {
+        $this->container['fsm_review_date'] = $fsm_review_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_fsm
+     *
+     * @return bool
+     */
+    public function getIsFsm()
+    {
+        return $this->container['is_fsm'];
+    }
+
+    /**
+     * Sets is_fsm
+     *
+     * @param bool $is_fsm is_fsm
+     *
+     * @return $this
+     */
+    public function setIsFsm($is_fsm)
+    {
+        $this->container['is_fsm'] = $is_fsm;
+
+        return $this;
+    }
+
+    /**
+     * Gets looked_after
+     *
+     * @return bool
+     */
+    public function getLookedAfter()
+    {
+        return $this->container['looked_after'];
+    }
+
+    /**
+     * Sets looked_after
+     *
+     * @param bool $looked_after looked_after
+     *
+     * @return $this
+     */
+    public function setLookedAfter($looked_after)
+    {
+        $this->container['looked_after'] = $looked_after;
+
+        return $this;
+    }
+
+    /**
+     * Gets ever_in_care
+     *
+     * @return bool
+     */
+    public function getEverInCare()
+    {
+        return $this->container['ever_in_care'];
+    }
+
+    /**
+     * Sets ever_in_care
+     *
+     * @param bool $ever_in_care ever_in_care
+     *
+     * @return $this
+     */
+    public function setEverInCare($ever_in_care)
+    {
+        $this->container['ever_in_care'] = $ever_in_care;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_child
+     *
+     * @return bool
+     */
+    public function getServiceChild()
+    {
+        return $this->container['service_child'];
+    }
+
+    /**
+     * Sets service_child
+     *
+     * @param bool $service_child service_child
+     *
+     * @return $this
+     */
+    public function setServiceChild($service_child)
+    {
+        $this->container['service_child'] = $service_child;
+
+        return $this;
+    }
+
+    /**
+     * Gets sen_needs
+     *
+     * @return \Assembly\Client\Model\SenNeed[]
+     */
+    public function getSenNeeds()
+    {
+        return $this->container['sen_needs'];
+    }
+
+    /**
+     * Sets sen_needs
+     *
+     * @param \Assembly\Client\Model\SenNeed[] $sen_needs sen_needs
+     *
+     * @return $this
+     */
+    public function setSenNeeds($sen_needs)
+    {
+        $this->container['sen_needs'] = $sen_needs;
 
         return $this;
     }

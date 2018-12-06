@@ -1,9 +1,9 @@
 <?php
 
 /**
- * assembly.education
+ * Assembly Developer API
  *
- * Developer API for assembly.education.
+ * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
  *
  * API version: 1.0.0
  * Contact: help@assembly.education
@@ -20,7 +20,6 @@ use \Assembly\Client\ObjectSerializer;
  * Assessment Class Doc Comment
  *
  * @category Class
- * @description The assessment is the grouping that knits together a range of concepts. The name of the assessment also refers to the source of the result (for example, a Key Stage national assessment, or a standardised assessment provider).
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -34,7 +33,7 @@ class Assessment implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'assessment';
+    protected static $swaggerModelName = 'Assessment';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,12 +41,10 @@ class Assessment implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'object' => 'string',
-        'id' => 'int',
-        'name' => 'string',
         'family_id' => 'int',
         'family_name' => 'string',
-        'mis_mappings' => 'string[]'
+        'id' => 'int',
+        'name' => 'string'
     ];
 
     /**
@@ -56,12 +53,10 @@ class Assessment implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'object' => null,
-        'id' => 'int32',
-        'name' => null,
         'family_id' => 'int32',
         'family_name' => null,
-        'mis_mappings' => null
+        'id' => 'int32',
+        'name' => null
     ];
 
     /**
@@ -91,12 +86,10 @@ class Assessment implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'object' => 'object',
-        'id' => 'id',
-        'name' => 'name',
         'family_id' => 'family_id',
         'family_name' => 'family_name',
-        'mis_mappings' => 'mis_mappings'
+        'id' => 'id',
+        'name' => 'name'
     ];
 
     /**
@@ -105,12 +98,10 @@ class Assessment implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'object' => 'setObject',
-        'id' => 'setId',
-        'name' => 'setName',
         'family_id' => 'setFamilyId',
         'family_name' => 'setFamilyName',
-        'mis_mappings' => 'setMisMappings'
+        'id' => 'setId',
+        'name' => 'setName'
     ];
 
     /**
@@ -119,12 +110,10 @@ class Assessment implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'object' => 'getObject',
-        'id' => 'getId',
-        'name' => 'getName',
         'family_id' => 'getFamilyId',
         'family_name' => 'getFamilyName',
-        'mis_mappings' => 'getMisMappings'
+        'id' => 'getId',
+        'name' => 'getName'
     ];
 
     /**
@@ -187,12 +176,10 @@ class Assessment implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['object'] = isset($data['object']) ? $data['object'] : null;
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['family_id'] = isset($data['family_id']) ? $data['family_id'] : null;
         $this->container['family_name'] = isset($data['family_name']) ? $data['family_name'] : null;
-        $this->container['mis_mappings'] = isset($data['mis_mappings']) ? $data['mis_mappings'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     }
 
     /**
@@ -221,78 +208,6 @@ class Assessment implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets object
-     *
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->container['object'];
-    }
-
-    /**
-     * Sets object
-     *
-     * @param string $object Object type
-     *
-     * @return $this
-     */
-    public function setObject($object)
-    {
-        $this->container['object'] = $object;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id Internal stable ID given to all assessments on the Platform
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name The name of the assessment
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
      * Gets family_id
      *
      * @return int
@@ -305,7 +220,7 @@ class Assessment implements ModelInterface, ArrayAccess
     /**
      * Sets family_id
      *
-     * @param int $family_id Internal stable ID given to all assessment families on the Platform
+     * @param int $family_id family_id
      *
      * @return $this
      */
@@ -329,7 +244,7 @@ class Assessment implements ModelInterface, ArrayAccess
     /**
      * Sets family_name
      *
-     * @param string $family_name The name of the assessment family
+     * @param string $family_name family_name
      *
      * @return $this
      */
@@ -341,25 +256,49 @@ class Assessment implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets mis_mappings
+     * Gets id
      *
-     * @return string[]
+     * @return int
      */
-    public function getMisMappings()
+    public function getId()
     {
-        return $this->container['mis_mappings'];
+        return $this->container['id'];
     }
 
     /**
-     * Sets mis_mappings
+     * Sets id
      *
-     * @param string[] $mis_mappings Names of any MIS assessments (e.g. SIMS Aspects) that have been mapped to the assessment
+     * @param int $id id
      *
      * @return $this
      */
-    public function setMisMappings($mis_mappings)
+    public function setId($id)
     {
-        $this->container['mis_mappings'] = $mis_mappings;
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }
