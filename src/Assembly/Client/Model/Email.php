@@ -43,6 +43,7 @@ class Email implements ModelInterface, ArrayAccess
     protected static $swaggerTypes = [
         'id' => 'int',
         'email' => 'string',
+        'type' => 'string',
         'is_primary' => 'bool'
     ];
 
@@ -54,6 +55,7 @@ class Email implements ModelInterface, ArrayAccess
     protected static $swaggerFormats = [
         'id' => 'int32',
         'email' => null,
+        'type' => null,
         'is_primary' => null
     ];
 
@@ -86,6 +88,7 @@ class Email implements ModelInterface, ArrayAccess
     protected static $attributeMap = [
         'id' => 'id',
         'email' => 'email',
+        'type' => 'type',
         'is_primary' => 'is_primary'
     ];
 
@@ -97,6 +100,7 @@ class Email implements ModelInterface, ArrayAccess
     protected static $setters = [
         'id' => 'setId',
         'email' => 'setEmail',
+        'type' => 'setType',
         'is_primary' => 'setIsPrimary'
     ];
 
@@ -108,6 +112,7 @@ class Email implements ModelInterface, ArrayAccess
     protected static $getters = [
         'id' => 'getId',
         'email' => 'getEmail',
+        'type' => 'getType',
         'is_primary' => 'getIsPrimary'
     ];
 
@@ -173,6 +178,7 @@ class Email implements ModelInterface, ArrayAccess
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['is_primary'] = isset($data['is_primary']) ? $data['is_primary'] : null;
     }
 
@@ -245,6 +251,30 @@ class Email implements ModelInterface, ArrayAccess
     public function setEmail($email)
     {
         $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

@@ -19,8 +19,8 @@ Name | Type | Description | Notes
 **included_in_census** | **bool** |  | [optional] 
 **start_date** | **string** |  | [optional] 
 **end_date** | **string** |  | [optional] 
-**demographics** | [**\Assembly\Client\Model\StaffMemberDemographics[]**](StaffMemberDemographics.md) |  | [optional] 
-**qualification_info** | [**\Assembly\Client\Model\StaffMemberQualificationInfo[]**](StaffMemberQualificationInfo.md) |  | [optional] 
+**demographics** | [**\Assembly\Client\Model\StaffMemberDemographics**](StaffMemberDemographics.md) |  | [optional] 
+**qualification_info** | [**\Assembly\Client\Model\StaffMemberQualificationInfo**](StaffMemberQualificationInfo.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

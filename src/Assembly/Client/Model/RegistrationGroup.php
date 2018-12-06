@@ -46,8 +46,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
         'supervisor_ids' => 'int[]',
-        'student_ids' => 'int[]',
-        'subject' => '\Assembly\Client\Model\Subject'
+        'student_ids' => 'int[]'
     ];
 
     /**
@@ -61,8 +60,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
         'start_date' => 'date-time',
         'end_date' => 'date-time',
         'supervisor_ids' => 'int32',
-        'student_ids' => 'int32',
-        'subject' => null
+        'student_ids' => 'int32'
     ];
 
     /**
@@ -97,8 +95,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
         'start_date' => 'start_date',
         'end_date' => 'end_date',
         'supervisor_ids' => 'supervisor_ids',
-        'student_ids' => 'student_ids',
-        'subject' => 'subject'
+        'student_ids' => 'student_ids'
     ];
 
     /**
@@ -112,8 +109,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
         'supervisor_ids' => 'setSupervisorIds',
-        'student_ids' => 'setStudentIds',
-        'subject' => 'setSubject'
+        'student_ids' => 'setStudentIds'
     ];
 
     /**
@@ -127,8 +123,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
         'supervisor_ids' => 'getSupervisorIds',
-        'student_ids' => 'getStudentIds',
-        'subject' => 'getSubject'
+        'student_ids' => 'getStudentIds'
     ];
 
     /**
@@ -197,7 +192,6 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
         $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
         $this->container['supervisor_ids'] = isset($data['supervisor_ids']) ? $data['supervisor_ids'] : null;
         $this->container['student_ids'] = isset($data['student_ids']) ? $data['student_ids'] : null;
-        $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
     }
 
     /**
@@ -365,30 +359,6 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
     public function setStudentIds($student_ids)
     {
         $this->container['student_ids'] = $student_ids;
-
-        return $this;
-    }
-
-    /**
-     * Gets subject
-     *
-     * @return \Assembly\Client\Model\Subject
-     */
-    public function getSubject()
-    {
-        return $this->container['subject'];
-    }
-
-    /**
-     * Sets subject
-     *
-     * @param \Assembly\Client\Model\Subject $subject subject
-     *
-     * @return $this
-     */
-    public function setSubject($subject)
-    {
-        $this->container['subject'] = $subject;
 
         return $this;
     }

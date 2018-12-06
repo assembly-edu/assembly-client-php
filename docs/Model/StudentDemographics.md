@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **fsm_review_date** | **string** |  | [optional] 
 **is_fsm** | **bool** |  | [optional] 
 **looked_after** | **bool** |  | [optional] 
+**in_care** | **bool** |  | [optional] 
 **ever_in_care** | **bool** |  | [optional] 
 **service_child** | **bool** |  | [optional] 
 **sen_needs** | [**\Assembly\Client\Model\SenNeed[]**](SenNeed.md) |  | [optional] 

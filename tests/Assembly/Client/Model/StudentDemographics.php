@@ -139,6 +139,13 @@ class StudentDemographicsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "in_care"
+     */
+    public function testPropertyInCare()
+    {
+    }
+
+    /**
      * Test attribute "ever_in_care"
      */
     public function testPropertyEverInCare()

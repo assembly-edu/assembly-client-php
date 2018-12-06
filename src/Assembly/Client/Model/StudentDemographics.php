@@ -52,6 +52,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
         'fsm_review_date' => 'string',
         'is_fsm' => 'bool',
         'looked_after' => 'bool',
+        'in_care' => 'bool',
         'ever_in_care' => 'bool',
         'service_child' => 'bool',
         'sen_needs' => '\Assembly\Client\Model\SenNeed[]'
@@ -74,6 +75,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
         'fsm_review_date' => null,
         'is_fsm' => null,
         'looked_after' => null,
+        'in_care' => null,
         'ever_in_care' => null,
         'service_child' => null,
         'sen_needs' => null
@@ -117,6 +119,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
         'fsm_review_date' => 'fsm_review_date',
         'is_fsm' => 'is_fsm',
         'looked_after' => 'looked_after',
+        'in_care' => 'in_care',
         'ever_in_care' => 'ever_in_care',
         'service_child' => 'service_child',
         'sen_needs' => 'sen_needs'
@@ -139,6 +142,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
         'fsm_review_date' => 'setFsmReviewDate',
         'is_fsm' => 'setIsFsm',
         'looked_after' => 'setLookedAfter',
+        'in_care' => 'setInCare',
         'ever_in_care' => 'setEverInCare',
         'service_child' => 'setServiceChild',
         'sen_needs' => 'setSenNeeds'
@@ -161,6 +165,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
         'fsm_review_date' => 'getFsmReviewDate',
         'is_fsm' => 'getIsFsm',
         'looked_after' => 'getLookedAfter',
+        'in_care' => 'getInCare',
         'ever_in_care' => 'getEverInCare',
         'service_child' => 'getServiceChild',
         'sen_needs' => 'getSenNeeds'
@@ -237,6 +242,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
         $this->container['fsm_review_date'] = isset($data['fsm_review_date']) ? $data['fsm_review_date'] : null;
         $this->container['is_fsm'] = isset($data['is_fsm']) ? $data['is_fsm'] : null;
         $this->container['looked_after'] = isset($data['looked_after']) ? $data['looked_after'] : null;
+        $this->container['in_care'] = isset($data['in_care']) ? $data['in_care'] : null;
         $this->container['ever_in_care'] = isset($data['ever_in_care']) ? $data['ever_in_care'] : null;
         $this->container['service_child'] = isset($data['service_child']) ? $data['service_child'] : null;
         $this->container['sen_needs'] = isset($data['sen_needs']) ? $data['sen_needs'] : null;
@@ -527,6 +533,30 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     public function setLookedAfter($looked_after)
     {
         $this->container['looked_after'] = $looked_after;
+
+        return $this;
+    }
+
+    /**
+     * Gets in_care
+     *
+     * @return bool
+     */
+    public function getInCare()
+    {
+        return $this->container['in_care'];
+    }
+
+    /**
+     * Sets in_care
+     *
+     * @param bool $in_care in_care
+     *
+     * @return $this
+     */
+    public function setInCare($in_care)
+    {
+        $this->container['in_care'] = $in_care;
 
         return $this;
     }

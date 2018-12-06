@@ -76,6 +76,13 @@ class EmailTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "type"
+     */
+    public function testPropertyType()
+    {
+    }
+
+    /**
      * Test attribute "is_primary"
      */
     public function testPropertyIsPrimary()

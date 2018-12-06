@@ -102,11 +102,4 @@ class RegistrationGroupTest extends \PHPUnit_Framework_TestCase
     public function testPropertyStudentIds()
     {
     }
-
-    /**
-     * Test attribute "subject"
-     */
-    public function testPropertySubject()
-    {
-    }
 }

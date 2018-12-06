@@ -42,6 +42,7 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'id' => 'int',
+        'type' => 'string',
         'telephone_number' => 'string',
         'is_primary' => 'bool'
     ];
@@ -53,6 +54,7 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'id' => 'int32',
+        'type' => null,
         'telephone_number' => null,
         'is_primary' => null
     ];
@@ -85,6 +87,7 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'type' => 'type',
         'telephone_number' => 'telephone_number',
         'is_primary' => 'is_primary'
     ];
@@ -96,6 +99,7 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
+        'type' => 'setType',
         'telephone_number' => 'setTelephoneNumber',
         'is_primary' => 'setIsPrimary'
     ];
@@ -107,6 +111,7 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
+        'type' => 'getType',
         'telephone_number' => 'getTelephoneNumber',
         'is_primary' => 'getIsPrimary'
     ];
@@ -172,6 +177,7 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
         $this->container['telephone_number'] = isset($data['telephone_number']) ? $data['telephone_number'] : null;
         $this->container['is_primary'] = isset($data['is_primary']) ? $data['is_primary'] : null;
     }
@@ -221,6 +227,30 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
     public function setId($id)
     {
         $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets type
+     *
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->container['type'];
+    }
+
+    /**
+     * Sets type
+     *
+     * @param string $type type
+     *
+     * @return $this
+     */
+    public function setType($type)
+    {
+        $this->container['type'] = $type;
 
         return $this;
     }

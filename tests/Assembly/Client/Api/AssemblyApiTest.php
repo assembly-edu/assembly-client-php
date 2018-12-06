@@ -57,342 +57,332 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test case for callList
-     *
-     * List Academic Years.
-     *
-     */
-    public function testCallList()
-    {
-    }
-
-    /**
-     * Test case for callList_0
-     *
-     * List Assessment Points.
-     *
-     */
-    public function testCallList0()
-    {
-    }
-
-    /**
-     * Test case for callList_1
-     *
-     * List Assessments.
-     *
-     */
-    public function testCallList1()
-    {
-    }
-
-    /**
-     * Test case for callList_10
-     *
-     * List Staff Contracts.
-     *
-     */
-    public function testCallList10()
-    {
-    }
-
-    /**
-     * Test case for callList_11
-     *
-     * List Staff Members.
-     *
-     */
-    public function testCallList11()
-    {
-    }
-
-    /**
-     * Test case for callList_12
-     *
-     * List Students.
-     *
-     */
-    public function testCallList12()
-    {
-    }
-
-    /**
-     * Test case for callList_13
-     *
-     * List Subjects.
-     *
-     */
-    public function testCallList13()
-    {
-    }
-
-    /**
-     * Test case for callList_14
-     *
-     * List Teaching Groups.
-     *
-     */
-    public function testCallList14()
-    {
-    }
-
-    /**
-     * Test case for callList_15
-     *
-     * List Year Groups.
-     *
-     */
-    public function testCallList15()
-    {
-    }
-
-    /**
-     * Test case for callList_2
-     *
-     * List Attendances.
-     *
-     */
-    public function testCallList2()
-    {
-    }
-
-    /**
-     * Test case for callList_3
-     *
-     * List Calendar Events.
-     *
-     */
-    public function testCallList3()
-    {
-    }
-
-    /**
-     * Test case for callList_4
-     *
-     * List Contacts.
-     *
-     */
-    public function testCallList4()
-    {
-    }
-
-    /**
-     * Test case for callList_5
-     *
-     * List Exclusions.
-     *
-     */
-    public function testCallList5()
-    {
-    }
-
-    /**
-     * Test case for callList_6
-     *
-     * List Facets.
-     *
-     */
-    public function testCallList6()
-    {
-    }
-
-    /**
-     * Test case for callList_7
-     *
-     * List Registration Group.
-     *
-     */
-    public function testCallList7()
-    {
-    }
-
-    /**
-     * Test case for callList_8
-     *
-     * List Results.
-     *
-     */
-    public function testCallList8()
-    {
-    }
-
-    /**
-     * Test case for callList_9
-     *
-     * List Staff Absences.
-     *
-     */
-    public function testCallList9()
-    {
-    }
-
-    /**
-     * Test case for find
+     * Test case for findAcademicYear
      *
      * View an Academic Year.
      *
      */
-    public function testFind()
+    public function testFindAcademicYear()
     {
     }
 
     /**
-     * Test case for find_0
-     *
-     * View an Assessment Point.
-     *
-     */
-    public function testFind0()
-    {
-    }
-
-    /**
-     * Test case for find_1
+     * Test case for findAssessment
      *
      * View an Assessment.
      *
      */
-    public function testFind1()
+    public function testFindAssessment()
     {
     }
 
     /**
-     * Test case for find_2
-     *
-     * View a Facet.
-     *
-     */
-    public function testFind2()
-    {
-    }
-
-    /**
-     * Test case for find_3
-     *
-     * View a Registration Group.
-     *
-     */
-    public function testFind3()
-    {
-    }
-
-    /**
-     * Test case for find_4
-     *
-     * View a Staff Member.
-     *
-     */
-    public function testFind4()
-    {
-    }
-
-    /**
-     * Test case for find_5
-     *
-     * View a Student.
-     *
-     */
-    public function testFind5()
-    {
-    }
-
-    /**
-     * Test case for find_6
-     *
-     * View a Teaching Group.
-     *
-     */
-    public function testFind6()
-    {
-    }
-
-    /**
-     * Test case for find_7
-     *
-     * View a Year Group.
-     *
-     */
-    public function testFind7()
-    {
-    }
-
-    /**
-     * Test case for gradeSet
+     * Test case for findAssessmentGradeSet
      *
      * View Grade Set for an Assessment.
      *
      */
-    public function testGradeSet()
+    public function testFindAssessmentGradeSet()
     {
     }
 
     /**
-     * Test case for left
+     * Test case for findAssessmentPoint
      *
-     * List Left Students.
+     * View an Assessment Point.
      *
      */
-    public function testLeft()
+    public function testFindAssessmentPoint()
     {
     }
 
     /**
-     * Test case for results
+     * Test case for findFacet
+     *
+     * View a Facet.
+     *
+     */
+    public function testFindFacet()
+    {
+    }
+
+    /**
+     * Test case for findRegistrationGroup
+     *
+     * View a Registration Group.
+     *
+     */
+    public function testFindRegistrationGroup()
+    {
+    }
+
+    /**
+     * Test case for findStaffMember
+     *
+     * View a Staff Member.
+     *
+     */
+    public function testFindStaffMember()
+    {
+    }
+
+    /**
+     * Test case for findStudent
+     *
+     * View a Student.
+     *
+     */
+    public function testFindStudent()
+    {
+    }
+
+    /**
+     * Test case for findTeachingGroup
+     *
+     * View a Teaching Group.
+     *
+     */
+    public function testFindTeachingGroup()
+    {
+    }
+
+    /**
+     * Test case for findYearGroup
+     *
+     * View a Year Group.
+     *
+     */
+    public function testFindYearGroup()
+    {
+    }
+
+    /**
+     * Test case for getAcademicYears
+     *
+     * List Academic Years.
+     *
+     */
+    public function testGetAcademicYears()
+    {
+    }
+
+    /**
+     * Test case for getAssessmentPointResults
      *
      * View Results for an Assessment Point.
      *
      */
-    public function testResults()
+    public function testGetAssessmentPointResults()
     {
     }
 
     /**
-     * Test case for results_0
+     * Test case for getAssessmentPoints
+     *
+     * List Assessment Points.
+     *
+     */
+    public function testGetAssessmentPoints()
+    {
+    }
+
+    /**
+     * Test case for getAssessmentResults
      *
      * View Results for an Assessment.
      *
      */
-    public function testResults0()
+    public function testGetAssessmentResults()
     {
     }
 
     /**
-     * Test case for show
+     * Test case for getAssessments
      *
-     * List School Details.
+     * List Assessments.
      *
      */
-    public function testShow()
+    public function testGetAssessments()
     {
     }
 
     /**
-     * Test case for students
+     * Test case for getAttendances
+     *
+     * List Attendances.
+     *
+     */
+    public function testGetAttendances()
+    {
+    }
+
+    /**
+     * Test case for getCalendarEvents
+     *
+     * List Calendar Events.
+     *
+     */
+    public function testGetCalendarEvents()
+    {
+    }
+
+    /**
+     * Test case for getContacts
+     *
+     * List Contacts.
+     *
+     */
+    public function testGetContacts()
+    {
+    }
+
+    /**
+     * Test case for getExclusions
+     *
+     * List Exclusions.
+     *
+     */
+    public function testGetExclusions()
+    {
+    }
+
+    /**
+     * Test case for getFacets
+     *
+     * List Facets.
+     *
+     */
+    public function testGetFacets()
+    {
+    }
+
+    /**
+     * Test case for getLeftStudents
+     *
+     * List Left Students.
+     *
+     */
+    public function testGetLeftStudents()
+    {
+    }
+
+    /**
+     * Test case for getRegistrationGroupStudents
      *
      * List Students for Registration Group.
      *
      */
-    public function testStudents()
+    public function testGetRegistrationGroupStudents()
     {
     }
 
     /**
-     * Test case for students_0
+     * Test case for getRegistrationGroups
+     *
+     * List Registration Group.
+     *
+     */
+    public function testGetRegistrationGroups()
+    {
+    }
+
+    /**
+     * Test case for getResults
+     *
+     * List Results.
+     *
+     */
+    public function testGetResults()
+    {
+    }
+
+    /**
+     * Test case for getStaffAbsences
+     *
+     * List Staff Absences.
+     *
+     */
+    public function testGetStaffAbsences()
+    {
+    }
+
+    /**
+     * Test case for getStaffContracts
+     *
+     * List Staff Contracts.
+     *
+     */
+    public function testGetStaffContracts()
+    {
+    }
+
+    /**
+     * Test case for getStaffMembers
+     *
+     * List Staff Members.
+     *
+     */
+    public function testGetStaffMembers()
+    {
+    }
+
+    /**
+     * Test case for getStudents
+     *
+     * List Students.
+     *
+     */
+    public function testGetStudents()
+    {
+    }
+
+    /**
+     * Test case for getSubjects
+     *
+     * List Subjects.
+     *
+     */
+    public function testGetSubjects()
+    {
+    }
+
+    /**
+     * Test case for getTeachingGroupStudents
      *
      * List Students for Teaching Group.
      *
      */
-    public function testStudents0()
+    public function testGetTeachingGroupStudents()
     {
     }
 
     /**
-     * Test case for students_1
+     * Test case for getTeachingGroups
+     *
+     * List Teaching Groups.
+     *
+     */
+    public function testGetTeachingGroups()
+    {
+    }
+
+    /**
+     * Test case for getYearGroupStudents
      *
      * List Students for Year Group.
      *
      */
-    public function testStudents1()
+    public function testGetYearGroupStudents()
+    {
+    }
+
+    /**
+     * Test case for getYearGroups
+     *
+     * List Year Groups.
+     *
+     */
+    public function testGetYearGroups()
     {
     }
 }

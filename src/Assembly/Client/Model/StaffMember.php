@@ -57,8 +57,8 @@ class StaffMember implements ModelInterface, ArrayAccess
         'included_in_census' => 'bool',
         'start_date' => 'string',
         'end_date' => 'string',
-        'demographics' => '\Assembly\Client\Model\StaffMemberDemographics[]',
-        'qualification_info' => '\Assembly\Client\Model\StaffMemberQualificationInfo[]'
+        'demographics' => '\Assembly\Client\Model\StaffMemberDemographics',
+        'qualification_info' => '\Assembly\Client\Model\StaffMemberQualificationInfo'
     ];
 
     /**
@@ -678,7 +678,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Gets demographics
      *
-     * @return \Assembly\Client\Model\StaffMemberDemographics[]
+     * @return \Assembly\Client\Model\StaffMemberDemographics
      */
     public function getDemographics()
     {
@@ -688,7 +688,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets demographics
      *
-     * @param \Assembly\Client\Model\StaffMemberDemographics[] $demographics demographics
+     * @param \Assembly\Client\Model\StaffMemberDemographics $demographics demographics
      *
      * @return $this
      */
@@ -702,7 +702,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Gets qualification_info
      *
-     * @return \Assembly\Client\Model\StaffMemberQualificationInfo[]
+     * @return \Assembly\Client\Model\StaffMemberQualificationInfo
      */
     public function getQualificationInfo()
     {
@@ -712,7 +712,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     /**
      * Sets qualification_info
      *
-     * @param \Assembly\Client\Model\StaffMemberQualificationInfo[] $qualification_info qualification_info
+     * @param \Assembly\Client\Model\StaffMemberQualificationInfo $qualification_info qualification_info
      *
      * @return $this
      */

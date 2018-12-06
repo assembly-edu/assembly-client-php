@@ -69,6 +69,13 @@ class TelephoneNumberTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "type"
+     */
+    public function testPropertyType()
+    {
+    }
+
+    /**
      * Test attribute "telephone_number"
      */
     public function testPropertyTelephoneNumber()

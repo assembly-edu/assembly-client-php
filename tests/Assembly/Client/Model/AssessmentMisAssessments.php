@@ -14,16 +14,16 @@
 namespace Assembly\Client;
 
 /**
- * AssessmentTest Class Doc Comment
+ * AssessmentMisAssessmentsTest Class Doc Comment
  *
  * @category    Class */
-// * @description Assessment
+// * @description AssessmentMisAssessments
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
  * @link        https://github.com/assembly-edu/assembly-client-php
  */
-class AssessmentTest extends \PHPUnit_Framework_TestCase
+class AssessmentMisAssessmentsTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -55,44 +55,16 @@ class AssessmentTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "Assessment"
+     * Test "AssessmentMisAssessments"
      */
-    public function testAssessment()
+    public function testAssessmentMisAssessments()
     {
     }
 
     /**
-     * Test attribute "family_id"
+     * Test attribute "type"
      */
-    public function testPropertyFamilyId()
-    {
-    }
-
-    /**
-     * Test attribute "family_name"
-     */
-    public function testPropertyFamilyName()
-    {
-    }
-
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
-
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-    }
-
-    /**
-     * Test attribute "mis_assessments"
-     */
-    public function testPropertyMisAssessments()
+    public function testPropertyType()
     {
     }
 }

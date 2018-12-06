@@ -17,14 +17,14 @@ use \ArrayAccess;
 use \Assembly\Client\ObjectSerializer;
 
 /**
- * Assessment Class Doc Comment
+ * AssessmentMisAssessments Class Doc Comment
  *
  * @category Class
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
  */
-class Assessment implements ModelInterface, ArrayAccess
+class AssessmentMisAssessments implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class Assessment implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'Assessment';
+    protected static $swaggerModelName = 'AssessmentMisAssessments';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -41,11 +41,7 @@ class Assessment implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'family_id' => 'int',
-        'family_name' => 'string',
-        'id' => 'int',
-        'name' => 'string',
-        'mis_assessments' => '\Assembly\Client\Model\AssessmentMisAssessments[]'
+        'type' => 'string'
     ];
 
     /**
@@ -54,11 +50,7 @@ class Assessment implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'family_id' => 'int32',
-        'family_name' => null,
-        'id' => 'int32',
-        'name' => null,
-        'mis_assessments' => null
+        'type' => null
     ];
 
     /**
@@ -88,11 +80,7 @@ class Assessment implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'family_id' => 'family_id',
-        'family_name' => 'family_name',
-        'id' => 'id',
-        'name' => 'name',
-        'mis_assessments' => 'mis_assessments'
+        'type' => 'type'
     ];
 
     /**
@@ -101,11 +89,7 @@ class Assessment implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'family_id' => 'setFamilyId',
-        'family_name' => 'setFamilyName',
-        'id' => 'setId',
-        'name' => 'setName',
-        'mis_assessments' => 'setMisAssessments'
+        'type' => 'setType'
     ];
 
     /**
@@ -114,11 +98,7 @@ class Assessment implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'family_id' => 'getFamilyId',
-        'family_name' => 'getFamilyName',
-        'id' => 'getId',
-        'name' => 'getName',
-        'mis_assessments' => 'getMisAssessments'
+        'type' => 'getType'
     ];
 
     /**
@@ -181,11 +161,7 @@ class Assessment implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['family_id'] = isset($data['family_id']) ? $data['family_id'] : null;
-        $this->container['family_name'] = isset($data['family_name']) ? $data['family_name'] : null;
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['mis_assessments'] = isset($data['mis_assessments']) ? $data['mis_assessments'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     }
 
     /**
@@ -214,121 +190,25 @@ class Assessment implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets family_id
-     *
-     * @return int
-     */
-    public function getFamilyId()
-    {
-        return $this->container['family_id'];
-    }
-
-    /**
-     * Sets family_id
-     *
-     * @param int $family_id family_id
-     *
-     * @return $this
-     */
-    public function setFamilyId($family_id)
-    {
-        $this->container['family_id'] = $family_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets family_name
+     * Gets type
      *
      * @return string
      */
-    public function getFamilyName()
+    public function getType()
     {
-        return $this->container['family_name'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets family_name
+     * Sets type
      *
-     * @param string $family_name family_name
+     * @param string $type type
      *
      * @return $this
      */
-    public function setFamilyName($family_name)
+    public function setType($type)
     {
-        $this->container['family_name'] = $family_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id id
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets mis_assessments
-     *
-     * @return \Assembly\Client\Model\AssessmentMisAssessments[]
-     */
-    public function getMisAssessments()
-    {
-        return $this->container['mis_assessments'];
-    }
-
-    /**
-     * Sets mis_assessments
-     *
-     * @param \Assembly\Client\Model\AssessmentMisAssessments[] $mis_assessments mis_assessments
-     *
-     * @return $this
-     */
-    public function setMisAssessments($mis_assessments)
-    {
-        $this->container['mis_assessments'] = $mis_assessments;
+        $this->container['type'] = $type;
 
         return $this;
     }
