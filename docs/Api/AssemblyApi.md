@@ -8,7 +8,10 @@ Method | HTTP request | Description
 [**findAssessment**](AssemblyApi.md#findAssessment) | **GET** /assessments/{id} | View an Assessment
 [**findAssessmentGradeSet**](AssemblyApi.md#findAssessmentGradeSet) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
 [**findAssessmentPoint**](AssemblyApi.md#findAssessmentPoint) | **GET** /assessment_points/{id} | View an Assessment Point
+[**findDietaryNeed**](AssemblyApi.md#findDietaryNeed) | **GET** /school/dietary_needs/{id} | View an Dietary Need
 [**findFacet**](AssemblyApi.md#findFacet) | **GET** /facets/{id} | View a Facet
+[**findGradeSet**](AssemblyApi.md#findGradeSet) | **GET** /grade_sets/{id} | View a Grade Set
+[**findMedicalCondition**](AssemblyApi.md#findMedicalCondition) | **GET** /school/medical_conditions/{id} | View an Medical Condition
 [**findRegistrationGroup**](AssemblyApi.md#findRegistrationGroup) | **GET** /registration_groups/{id} | View a Registration Group
 [**findStaffMember**](AssemblyApi.md#findStaffMember) | **GET** /staff_members/{id} | View a Staff Member
 [**findStudent**](AssemblyApi.md#findStudent) | **GET** /students/{id} | View a Student
@@ -18,13 +21,18 @@ Method | HTTP request | Description
 [**getAssessmentPointResults**](AssemblyApi.md#getAssessmentPointResults) | **GET** /assessment_points/{id}/results | View Results for an Assessment Point
 [**getAssessmentPoints**](AssemblyApi.md#getAssessmentPoints) | **GET** /assessment_points | List Assessment Points
 [**getAssessmentResults**](AssemblyApi.md#getAssessmentResults) | **GET** /assessments/{id}/results | View Results for an Assessment
+[**getAssessmentSummaries**](AssemblyApi.md#getAssessmentSummaries) | **GET** /attendances/summaries | List Attendance Summaries
 [**getAssessments**](AssemblyApi.md#getAssessments) | **GET** /assessments | List Assessments
 [**getAttendances**](AssemblyApi.md#getAttendances) | **GET** /attendances | List Attendances
 [**getCalendarEvents**](AssemblyApi.md#getCalendarEvents) | **GET** /calendar_events | List Calendar Events
 [**getContacts**](AssemblyApi.md#getContacts) | **GET** /contacts | List Contacts
+[**getDietaryNeeds**](AssemblyApi.md#getDietaryNeeds) | **GET** /school/dietary_needs | Dietary Needs
 [**getExclusions**](AssemblyApi.md#getExclusions) | **GET** /exclusions | List Exclusions
 [**getFacets**](AssemblyApi.md#getFacets) | **GET** /facets | List Facets
+[**getGradeSets**](AssemblyApi.md#getGradeSets) | **GET** /grade_sets | List Grade Sets
+[**getLeftStaffMembers**](AssemblyApi.md#getLeftStaffMembers) | **GET** /staff_members/left | List Left Staff Members
 [**getLeftStudents**](AssemblyApi.md#getLeftStudents) | **GET** /students/left | List Left Students
+[**getMedicalConditions**](AssemblyApi.md#getMedicalConditions) | **GET** /school/medical_conditions | Medical Conditions
 [**getRegistrationGroupStudents**](AssemblyApi.md#getRegistrationGroupStudents) | **GET** /registration_groups/{id}/students | List Students for Registration Group
 [**getRegistrationGroups**](AssemblyApi.md#getRegistrationGroups) | **GET** /registration_groups | List Registration Group
 [**getResults**](AssemblyApi.md#getResults) | **GET** /results | List Results
@@ -251,6 +259,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **findDietaryNeed**
+> \Assembly\Client\Model\DietaryNeed findDietaryNeed($id)
+
+View an Dietary Need
+
+Returns a single dietary need for the given id.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int | id of the entity
+
+try {
+    $result = $apiInstance->findDietaryNeed($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->findDietaryNeed: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| id of the entity |
+
+### Return type
+
+[**\Assembly\Client\Model\DietaryNeed**](../Model/DietaryNeed.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **findFacet**
 > \Assembly\Client\Model\Facet findFacet($id)
 
@@ -292,6 +353,112 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Assembly\Client\Model\Facet**](../Model/Facet.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **findGradeSet**
+> \Assembly\Client\Model\GradeSet findGradeSet($id)
+
+View a Grade Set
+
+Returns a single grade set for the given id.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int | id of the entity
+
+try {
+    $result = $apiInstance->findGradeSet($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->findGradeSet: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| id of the entity |
+
+### Return type
+
+[**\Assembly\Client\Model\GradeSet**](../Model/GradeSet.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **findMedicalCondition**
+> \Assembly\Client\Model\MedicalCondition findMedicalCondition($id)
+
+View an Medical Condition
+
+Returns a single medical condition for the given id.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int | id of the entity
+
+try {
+    $result = $apiInstance->findMedicalCondition($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->findMedicalCondition: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| id of the entity |
+
+### Return type
+
+[**\Assembly\Client\Model\MedicalCondition**](../Model/MedicalCondition.md)
 
 ### Authorization
 
@@ -825,6 +992,61 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getAssessmentSummaries**
+> \Assembly\Client\Model\AttendanceSummary[] getAssessmentSummaries($student_id, $registration_group_id)
+
+List Attendance Summaries
+
+Returns a list of attendance summaries.  **Note:** Note the `If-Modified-Since` header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$student_id = 56; // int | a student_id to filter by
+$registration_group_id = 56; // int | id of a registration group
+
+try {
+    $result = $apiInstance->getAssessmentSummaries($student_id, $registration_group_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->getAssessmentSummaries: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **student_id** | **int**| a student_id to filter by | [optional]
+ **registration_group_id** | **int**| id of a registration group | [optional]
+
+### Return type
+
+[**\Assembly\Client\Model\AttendanceSummary[]**](../Model/AttendanceSummary.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getAssessments**
 > \Assembly\Client\Model\Assessment[] getAssessments($per_page, $page)
 
@@ -1057,6 +1279,61 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getDietaryNeeds**
+> \Assembly\Client\Model\DietaryNeed[] getDietaryNeeds($per_page, $page)
+
+Dietary Needs
+
+Returns a list of all the Dietary Needs defined by the school.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$per_page = 100; // int | Number of results to return
+$page = 1; // int | Page number to return
+
+try {
+    $result = $apiInstance->getDietaryNeeds($per_page, $page);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->getDietaryNeeds: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**\Assembly\Client\Model\DietaryNeed[]**](../Model/DietaryNeed.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getExclusions**
 > \Assembly\Client\Model\Exclusion[] getExclusions($student_id, $start_date, $end_date, $per_page, $page)
 
@@ -1173,12 +1450,120 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getGradeSets**
+> \Assembly\Client\Model\GradeSet[] getGradeSets($per_page, $page)
+
+List Grade Sets
+
+Returns a list of grade sets.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$per_page = 100; // int | Number of results to return
+$page = 1; // int | Page number to return
+
+try {
+    $result = $apiInstance->getGradeSets($per_page, $page);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->getGradeSets: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**\Assembly\Client\Model\GradeSet[]**](../Model/GradeSet.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getLeftStaffMembers**
+> \Assembly\Client\Model\StaffMember[] getLeftStaffMembers($if_modified_since)
+
+List Left Staff Members
+
+Returns a list of staff members who have left the school.  **Note:** The `If-Modified-Since` header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).'
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+
+try {
+    $result = $apiInstance->getLeftStaffMembers($if_modified_since);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->getLeftStaffMembers: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **if_modified_since** | **\DateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+
+### Return type
+
+[**\Assembly\Client\Model\StaffMember[]**](../Model/StaffMember.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getLeftStudents**
 > \Assembly\Client\Model\Student[] getLeftStudents($if_modified_since)
 
 List Left Students
 
-Returns a list of students who have left the school.<br><br>**Note:** This will include any students who have left the school during the current academic year. If the school has been connected to Assembly for more than one academic year, all left students will be returned. The `If-Modified-Since` header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).
+'Returns a list of students who have left the school.  **Note:** Note the `If-Modified-Since` header is optional (see the page on [Conditional Requests](/api#conditional-requests) for more details).'
 
 ### Example
 ```php
@@ -1214,6 +1599,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Assembly\Client\Model\Student[]**](../Model/Student.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getMedicalConditions**
+> \Assembly\Client\Model\MedicalCondition[] getMedicalConditions($per_page, $page)
+
+Medical Conditions
+
+Returns a list of all the Medical Conditions defined by the school.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$per_page = 100; // int | Number of results to return
+$page = 1; // int | Page number to return
+
+try {
+    $result = $apiInstance->getMedicalConditions($per_page, $page);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->getMedicalConditions: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**\Assembly\Client\Model\MedicalCondition[]**](../Model/MedicalCondition.md)
 
 ### Authorization
 

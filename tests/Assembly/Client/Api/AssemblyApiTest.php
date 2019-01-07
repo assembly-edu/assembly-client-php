@@ -97,12 +97,42 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for findDietaryNeed
+     *
+     * View an Dietary Need.
+     *
+     */
+    public function testFindDietaryNeed()
+    {
+    }
+
+    /**
      * Test case for findFacet
      *
      * View a Facet.
      *
      */
     public function testFindFacet()
+    {
+    }
+
+    /**
+     * Test case for findGradeSet
+     *
+     * View a Grade Set.
+     *
+     */
+    public function testFindGradeSet()
+    {
+    }
+
+    /**
+     * Test case for findMedicalCondition
+     *
+     * View an Medical Condition.
+     *
+     */
+    public function testFindMedicalCondition()
     {
     }
 
@@ -197,6 +227,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for getAssessmentSummaries
+     *
+     * List Attendance Summaries.
+     *
+     */
+    public function testGetAssessmentSummaries()
+    {
+    }
+
+    /**
      * Test case for getAssessments
      *
      * List Assessments.
@@ -237,6 +277,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for getDietaryNeeds
+     *
+     * Dietary Needs.
+     *
+     */
+    public function testGetDietaryNeeds()
+    {
+    }
+
+    /**
      * Test case for getExclusions
      *
      * List Exclusions.
@@ -257,12 +307,42 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for getGradeSets
+     *
+     * List Grade Sets.
+     *
+     */
+    public function testGetGradeSets()
+    {
+    }
+
+    /**
+     * Test case for getLeftStaffMembers
+     *
+     * List Left Staff Members.
+     *
+     */
+    public function testGetLeftStaffMembers()
+    {
+    }
+
+    /**
      * Test case for getLeftStudents
      *
      * List Left Students.
      *
      */
     public function testGetLeftStudents()
+    {
+    }
+
+    /**
+     * Test case for getMedicalConditions
+     *
+     * Medical Conditions.
+     *
+     */
+    public function testGetMedicalConditions()
     {
     }
 

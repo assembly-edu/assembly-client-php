@@ -74,7 +74,10 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**findAssessment**](docs/Api/AssemblyApi.md#findassessment) | **GET** /assessments/{id} | View an Assessment
 *AssemblyApi* | [**findAssessmentGradeSet**](docs/Api/AssemblyApi.md#findassessmentgradeset) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
 *AssemblyApi* | [**findAssessmentPoint**](docs/Api/AssemblyApi.md#findassessmentpoint) | **GET** /assessment_points/{id} | View an Assessment Point
+*AssemblyApi* | [**findDietaryNeed**](docs/Api/AssemblyApi.md#finddietaryneed) | **GET** /school/dietary_needs/{id} | View an Dietary Need
 *AssemblyApi* | [**findFacet**](docs/Api/AssemblyApi.md#findfacet) | **GET** /facets/{id} | View a Facet
+*AssemblyApi* | [**findGradeSet**](docs/Api/AssemblyApi.md#findgradeset) | **GET** /grade_sets/{id} | View a Grade Set
+*AssemblyApi* | [**findMedicalCondition**](docs/Api/AssemblyApi.md#findmedicalcondition) | **GET** /school/medical_conditions/{id} | View an Medical Condition
 *AssemblyApi* | [**findRegistrationGroup**](docs/Api/AssemblyApi.md#findregistrationgroup) | **GET** /registration_groups/{id} | View a Registration Group
 *AssemblyApi* | [**findStaffMember**](docs/Api/AssemblyApi.md#findstaffmember) | **GET** /staff_members/{id} | View a Staff Member
 *AssemblyApi* | [**findStudent**](docs/Api/AssemblyApi.md#findstudent) | **GET** /students/{id} | View a Student
@@ -84,13 +87,18 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getAssessmentPointResults**](docs/Api/AssemblyApi.md#getassessmentpointresults) | **GET** /assessment_points/{id}/results | View Results for an Assessment Point
 *AssemblyApi* | [**getAssessmentPoints**](docs/Api/AssemblyApi.md#getassessmentpoints) | **GET** /assessment_points | List Assessment Points
 *AssemblyApi* | [**getAssessmentResults**](docs/Api/AssemblyApi.md#getassessmentresults) | **GET** /assessments/{id}/results | View Results for an Assessment
+*AssemblyApi* | [**getAssessmentSummaries**](docs/Api/AssemblyApi.md#getassessmentsummaries) | **GET** /attendances/summaries | List Attendance Summaries
 *AssemblyApi* | [**getAssessments**](docs/Api/AssemblyApi.md#getassessments) | **GET** /assessments | List Assessments
 *AssemblyApi* | [**getAttendances**](docs/Api/AssemblyApi.md#getattendances) | **GET** /attendances | List Attendances
 *AssemblyApi* | [**getCalendarEvents**](docs/Api/AssemblyApi.md#getcalendarevents) | **GET** /calendar_events | List Calendar Events
 *AssemblyApi* | [**getContacts**](docs/Api/AssemblyApi.md#getcontacts) | **GET** /contacts | List Contacts
+*AssemblyApi* | [**getDietaryNeeds**](docs/Api/AssemblyApi.md#getdietaryneeds) | **GET** /school/dietary_needs | Dietary Needs
 *AssemblyApi* | [**getExclusions**](docs/Api/AssemblyApi.md#getexclusions) | **GET** /exclusions | List Exclusions
 *AssemblyApi* | [**getFacets**](docs/Api/AssemblyApi.md#getfacets) | **GET** /facets | List Facets
+*AssemblyApi* | [**getGradeSets**](docs/Api/AssemblyApi.md#getgradesets) | **GET** /grade_sets | List Grade Sets
+*AssemblyApi* | [**getLeftStaffMembers**](docs/Api/AssemblyApi.md#getleftstaffmembers) | **GET** /staff_members/left | List Left Staff Members
 *AssemblyApi* | [**getLeftStudents**](docs/Api/AssemblyApi.md#getleftstudents) | **GET** /students/left | List Left Students
+*AssemblyApi* | [**getMedicalConditions**](docs/Api/AssemblyApi.md#getmedicalconditions) | **GET** /school/medical_conditions | Medical Conditions
 *AssemblyApi* | [**getRegistrationGroupStudents**](docs/Api/AssemblyApi.md#getregistrationgroupstudents) | **GET** /registration_groups/{id}/students | List Students for Registration Group
 *AssemblyApi* | [**getRegistrationGroups**](docs/Api/AssemblyApi.md#getregistrationgroups) | **GET** /registration_groups | List Registration Group
 *AssemblyApi* | [**getResults**](docs/Api/AssemblyApi.md#getresults) | **GET** /results | List Results
@@ -113,14 +121,17 @@ Class | Method | HTTP request | Description
  - [AssessmentMisAssessments](docs/Model/AssessmentMisAssessments.md)
  - [AssessmentPoint](docs/Model/AssessmentPoint.md)
  - [Attendance](docs/Model/Attendance.md)
+ - [AttendanceSummary](docs/Model/AttendanceSummary.md)
  - [CalendarEvent](docs/Model/CalendarEvent.md)
  - [CalendarEventMisType](docs/Model/CalendarEventMisType.md)
  - [Contact](docs/Model/Contact.md)
+ - [DietaryNeed](docs/Model/DietaryNeed.md)
  - [Email](docs/Model/Email.md)
  - [Exclusion](docs/Model/Exclusion.md)
  - [Facet](docs/Model/Facet.md)
  - [Grade](docs/Model/Grade.md)
  - [GradeSet](docs/Model/GradeSet.md)
+ - [MedicalCondition](docs/Model/MedicalCondition.md)
  - [MisSubject](docs/Model/MisSubject.md)
  - [RegistrationGroup](docs/Model/RegistrationGroup.md)
  - [Result](docs/Model/Result.md)
