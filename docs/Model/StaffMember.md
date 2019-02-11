@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **title** | **string** |  | [optional] 
 **dob** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **email** | **string** |  | [optional] 
+**telephone_numbers** | [**\Assembly\Client\Model\TelephoneNumber[]**](TelephoneNumber.md) |  | [optional] 
 **is_teaching_staff** | **bool** |  | [optional] 
 **included_in_census** | **bool** |  | [optional] 
 **start_date** | **string** |  | [optional] 

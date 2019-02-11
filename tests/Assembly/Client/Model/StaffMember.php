@@ -146,6 +146,13 @@ class StaffMemberTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "telephone_numbers"
+     */
+    public function testPropertyTelephoneNumbers()
+    {
+    }
+
+    /**
      * Test attribute "is_teaching_staff"
      */
     public function testPropertyIsTeachingStaff()

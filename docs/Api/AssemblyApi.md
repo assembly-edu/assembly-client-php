@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**findGradeSet**](AssemblyApi.md#findGradeSet) | **GET** /grade_sets/{id} | View a Grade Set
 [**findMedicalCondition**](AssemblyApi.md#findMedicalCondition) | **GET** /school/medical_conditions/{id} | View an Medical Condition
 [**findRegistrationGroup**](AssemblyApi.md#findRegistrationGroup) | **GET** /registration_groups/{id} | View a Registration Group
+[**findSchool**](AssemblyApi.md#findSchool) | **GET** /school | Get School Details
 [**findStaffMember**](AssemblyApi.md#findStaffMember) | **GET** /staff_members/{id} | View a Staff Member
 [**findStudent**](AssemblyApi.md#findStudent) | **GET** /students/{id} | View a Student
 [**findTeachingGroup**](AssemblyApi.md#findTeachingGroup) | **GET** /teaching_groups/{id} | View a Teaching Group
@@ -45,6 +46,7 @@ Method | HTTP request | Description
 [**getTeachingGroups**](AssemblyApi.md#getTeachingGroups) | **GET** /teaching_groups | List Teaching Groups
 [**getYearGroupStudents**](AssemblyApi.md#getYearGroupStudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 [**getYearGroups**](AssemblyApi.md#getYearGroups) | **GET** /year_groups | List Year Groups
+[**status**](AssemblyApi.md#status) | **GET** /school/status | Get School Sync Status
 
 
 # **findAcademicYear**
@@ -516,6 +518,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Assembly\Client\Model\RegistrationGroup**](../Model/RegistrationGroup.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **findSchool**
+> \Assembly\Client\Model\School findSchool($id)
+
+Get School Details
+
+Returns details for the school associated with the provided access_token.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int | id of the entity
+
+try {
+    $result = $apiInstance->findSchool($id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->findSchool: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| id of the entity |
+
+### Return type
+
+[**\Assembly\Client\Model\School**](../Model/School.md)
 
 ### Authorization
 
@@ -1506,7 +1561,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getLeftStaffMembers**
-> \Assembly\Client\Model\StaffMember[] getLeftStaffMembers($if_modified_since)
+> \Assembly\Client\Model\StaffMember[] getLeftStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications)
 
 List Left Staff Members
 
@@ -1527,9 +1582,12 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
     $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
+$teachers_only = True; // bool | return only staff who are teachers
+$demographics = True; // bool | include demographics data
+$qualifications = True; // bool | include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 
 try {
-    $result = $apiInstance->getLeftStaffMembers($if_modified_since);
+    $result = $apiInstance->getLeftStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AssemblyApi->getLeftStaffMembers: ', $e->getMessage(), PHP_EOL;
@@ -1542,6 +1600,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| If-Modified-Since is optional (see the page on Conditional Requests for more details). | [optional]
+ **teachers_only** | **bool**| return only staff who are teachers | [optional]
+ **demographics** | **bool**| include demographics data | [optional]
+ **qualifications** | **bool**| include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
 
 ### Return type
 
@@ -2452,6 +2513,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Assembly\Client\Model\YearGroup[]**](../Model/YearGroup.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **status**
+> \Assembly\Client\Model\SchoolStatus status()
+
+Get School Sync Status
+
+Returns status for the school associated with the provided access_token.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->status();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->status: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\Assembly\Client\Model\SchoolStatus**](../Model/SchoolStatus.md)
 
 ### Authorization
 

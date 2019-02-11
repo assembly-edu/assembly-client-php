@@ -42,12 +42,18 @@ class TeachingGroup implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'id' => 'int',
+        'school_id' => 'int',
+        'source_id' => 'string',
         'name' => 'string',
+        'created_at' => '\DateTime',
+        'updated_at' => '\DateTime',
+        'academic_year_id' => 'int',
+        'subject_id' => 'int',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
-        'supervisor_ids' => 'int[]',
-        'student_ids' => 'int[]',
-        'subject' => '\Assembly\Client\Model\Subject'
+        'level' => 'string',
+        'assessment_id' => 'int',
+        'effective_at' => '\DateTime'
     ];
 
     /**
@@ -57,12 +63,18 @@ class TeachingGroup implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'id' => 'int32',
+        'school_id' => 'int32',
+        'source_id' => null,
         'name' => null,
+        'created_at' => 'date-time',
+        'updated_at' => 'date-time',
+        'academic_year_id' => 'int32',
+        'subject_id' => 'int32',
         'start_date' => 'date-time',
         'end_date' => 'date-time',
-        'supervisor_ids' => 'int32',
-        'student_ids' => 'int32',
-        'subject' => null
+        'level' => null,
+        'assessment_id' => 'int32',
+        'effective_at' => 'date-time'
     ];
 
     /**
@@ -93,12 +105,18 @@ class TeachingGroup implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'id' => 'id',
+        'school_id' => 'school_id',
+        'source_id' => 'source_id',
         'name' => 'name',
+        'created_at' => 'created_at',
+        'updated_at' => 'updated_at',
+        'academic_year_id' => 'academic_year_id',
+        'subject_id' => 'subject_id',
         'start_date' => 'start_date',
         'end_date' => 'end_date',
-        'supervisor_ids' => 'supervisor_ids',
-        'student_ids' => 'student_ids',
-        'subject' => 'subject'
+        'level' => 'level',
+        'assessment_id' => 'assessment_id',
+        'effective_at' => 'effective_at'
     ];
 
     /**
@@ -108,12 +126,18 @@ class TeachingGroup implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'id' => 'setId',
+        'school_id' => 'setSchoolId',
+        'source_id' => 'setSourceId',
         'name' => 'setName',
+        'created_at' => 'setCreatedAt',
+        'updated_at' => 'setUpdatedAt',
+        'academic_year_id' => 'setAcademicYearId',
+        'subject_id' => 'setSubjectId',
         'start_date' => 'setStartDate',
         'end_date' => 'setEndDate',
-        'supervisor_ids' => 'setSupervisorIds',
-        'student_ids' => 'setStudentIds',
-        'subject' => 'setSubject'
+        'level' => 'setLevel',
+        'assessment_id' => 'setAssessmentId',
+        'effective_at' => 'setEffectiveAt'
     ];
 
     /**
@@ -123,12 +147,18 @@ class TeachingGroup implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'id' => 'getId',
+        'school_id' => 'getSchoolId',
+        'source_id' => 'getSourceId',
         'name' => 'getName',
+        'created_at' => 'getCreatedAt',
+        'updated_at' => 'getUpdatedAt',
+        'academic_year_id' => 'getAcademicYearId',
+        'subject_id' => 'getSubjectId',
         'start_date' => 'getStartDate',
         'end_date' => 'getEndDate',
-        'supervisor_ids' => 'getSupervisorIds',
-        'student_ids' => 'getStudentIds',
-        'subject' => 'getSubject'
+        'level' => 'getLevel',
+        'assessment_id' => 'getAssessmentId',
+        'effective_at' => 'getEffectiveAt'
     ];
 
     /**
@@ -192,12 +222,18 @@ class TeachingGroup implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['school_id'] = isset($data['school_id']) ? $data['school_id'] : null;
+        $this->container['source_id'] = isset($data['source_id']) ? $data['source_id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['academic_year_id'] = isset($data['academic_year_id']) ? $data['academic_year_id'] : null;
+        $this->container['subject_id'] = isset($data['subject_id']) ? $data['subject_id'] : null;
         $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
         $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
-        $this->container['supervisor_ids'] = isset($data['supervisor_ids']) ? $data['supervisor_ids'] : null;
-        $this->container['student_ids'] = isset($data['student_ids']) ? $data['student_ids'] : null;
-        $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
+        $this->container['level'] = isset($data['level']) ? $data['level'] : null;
+        $this->container['assessment_id'] = isset($data['assessment_id']) ? $data['assessment_id'] : null;
+        $this->container['effective_at'] = isset($data['effective_at']) ? $data['effective_at'] : null;
     }
 
     /**
@@ -250,6 +286,54 @@ class TeachingGroup implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets school_id
+     *
+     * @return int
+     */
+    public function getSchoolId()
+    {
+        return $this->container['school_id'];
+    }
+
+    /**
+     * Sets school_id
+     *
+     * @param int $school_id school_id
+     *
+     * @return $this
+     */
+    public function setSchoolId($school_id)
+    {
+        $this->container['school_id'] = $school_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets source_id
+     *
+     * @return string
+     */
+    public function getSourceId()
+    {
+        return $this->container['source_id'];
+    }
+
+    /**
+     * Sets source_id
+     *
+     * @param string $source_id source_id
+     *
+     * @return $this
+     */
+    public function setSourceId($source_id)
+    {
+        $this->container['source_id'] = $source_id;
+
+        return $this;
+    }
+
+    /**
      * Gets name
      *
      * @return string
@@ -269,6 +353,102 @@ class TeachingGroup implements ModelInterface, ArrayAccess
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at created_at
+     *
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at updated_at
+     *
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets academic_year_id
+     *
+     * @return int
+     */
+    public function getAcademicYearId()
+    {
+        return $this->container['academic_year_id'];
+    }
+
+    /**
+     * Sets academic_year_id
+     *
+     * @param int $academic_year_id academic_year_id
+     *
+     * @return $this
+     */
+    public function setAcademicYearId($academic_year_id)
+    {
+        $this->container['academic_year_id'] = $academic_year_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets subject_id
+     *
+     * @return int
+     */
+    public function getSubjectId()
+    {
+        return $this->container['subject_id'];
+    }
+
+    /**
+     * Sets subject_id
+     *
+     * @param int $subject_id subject_id
+     *
+     * @return $this
+     */
+    public function setSubjectId($subject_id)
+    {
+        $this->container['subject_id'] = $subject_id;
 
         return $this;
     }
@@ -322,73 +502,73 @@ class TeachingGroup implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets supervisor_ids
+     * Gets level
      *
-     * @return int[]
+     * @return string
      */
-    public function getSupervisorIds()
+    public function getLevel()
     {
-        return $this->container['supervisor_ids'];
+        return $this->container['level'];
     }
 
     /**
-     * Sets supervisor_ids
+     * Sets level
      *
-     * @param int[] $supervisor_ids supervisor_ids
+     * @param string $level level
      *
      * @return $this
      */
-    public function setSupervisorIds($supervisor_ids)
+    public function setLevel($level)
     {
-        $this->container['supervisor_ids'] = $supervisor_ids;
+        $this->container['level'] = $level;
 
         return $this;
     }
 
     /**
-     * Gets student_ids
+     * Gets assessment_id
      *
-     * @return int[]
+     * @return int
      */
-    public function getStudentIds()
+    public function getAssessmentId()
     {
-        return $this->container['student_ids'];
+        return $this->container['assessment_id'];
     }
 
     /**
-     * Sets student_ids
+     * Sets assessment_id
      *
-     * @param int[] $student_ids student_ids
+     * @param int $assessment_id assessment_id
      *
      * @return $this
      */
-    public function setStudentIds($student_ids)
+    public function setAssessmentId($assessment_id)
     {
-        $this->container['student_ids'] = $student_ids;
+        $this->container['assessment_id'] = $assessment_id;
 
         return $this;
     }
 
     /**
-     * Gets subject
+     * Gets effective_at
      *
-     * @return \Assembly\Client\Model\Subject
+     * @return \DateTime
      */
-    public function getSubject()
+    public function getEffectiveAt()
     {
-        return $this->container['subject'];
+        return $this->container['effective_at'];
     }
 
     /**
-     * Sets subject
+     * Sets effective_at
      *
-     * @param \Assembly\Client\Model\Subject $subject subject
+     * @param \DateTime $effective_at effective_at
      *
      * @return $this
      */
-    public function setSubject($subject)
+    public function setEffectiveAt($effective_at)
     {
-        $this->container['subject'] = $subject;
+        $this->container['effective_at'] = $effective_at;
 
         return $this;
     }

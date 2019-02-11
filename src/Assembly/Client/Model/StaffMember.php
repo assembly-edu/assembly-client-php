@@ -53,6 +53,7 @@ class StaffMember implements ModelInterface, ArrayAccess
         'title' => 'string',
         'dob' => '\DateTime',
         'email' => 'string',
+        'telephone_numbers' => '\Assembly\Client\Model\TelephoneNumber[]',
         'is_teaching_staff' => 'bool',
         'included_in_census' => 'bool',
         'start_date' => 'string',
@@ -79,6 +80,7 @@ class StaffMember implements ModelInterface, ArrayAccess
         'title' => null,
         'dob' => 'date-time',
         'email' => null,
+        'telephone_numbers' => null,
         'is_teaching_staff' => null,
         'included_in_census' => null,
         'start_date' => null,
@@ -126,6 +128,7 @@ class StaffMember implements ModelInterface, ArrayAccess
         'title' => 'title',
         'dob' => 'dob',
         'email' => 'email',
+        'telephone_numbers' => 'telephone_numbers',
         'is_teaching_staff' => 'is_teaching_staff',
         'included_in_census' => 'included_in_census',
         'start_date' => 'start_date',
@@ -152,6 +155,7 @@ class StaffMember implements ModelInterface, ArrayAccess
         'title' => 'setTitle',
         'dob' => 'setDob',
         'email' => 'setEmail',
+        'telephone_numbers' => 'setTelephoneNumbers',
         'is_teaching_staff' => 'setIsTeachingStaff',
         'included_in_census' => 'setIncludedInCensus',
         'start_date' => 'setStartDate',
@@ -178,6 +182,7 @@ class StaffMember implements ModelInterface, ArrayAccess
         'title' => 'getTitle',
         'dob' => 'getDob',
         'email' => 'getEmail',
+        'telephone_numbers' => 'getTelephoneNumbers',
         'is_teaching_staff' => 'getIsTeachingStaff',
         'included_in_census' => 'getIncludedInCensus',
         'start_date' => 'getStartDate',
@@ -258,6 +263,7 @@ class StaffMember implements ModelInterface, ArrayAccess
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
         $this->container['dob'] = isset($data['dob']) ? $data['dob'] : null;
         $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['telephone_numbers'] = isset($data['telephone_numbers']) ? $data['telephone_numbers'] : null;
         $this->container['is_teaching_staff'] = isset($data['is_teaching_staff']) ? $data['is_teaching_staff'] : null;
         $this->container['included_in_census'] = isset($data['included_in_census']) ? $data['included_in_census'] : null;
         $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
@@ -575,6 +581,30 @@ class StaffMember implements ModelInterface, ArrayAccess
     public function setEmail($email)
     {
         $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets telephone_numbers
+     *
+     * @return \Assembly\Client\Model\TelephoneNumber[]
+     */
+    public function getTelephoneNumbers()
+    {
+        return $this->container['telephone_numbers'];
+    }
+
+    /**
+     * Sets telephone_numbers
+     *
+     * @param \Assembly\Client\Model\TelephoneNumber[] $telephone_numbers telephone_numbers
+     *
+     * @return $this
+     */
+    public function setTelephoneNumbers($telephone_numbers)
+    {
+        $this->container['telephone_numbers'] = $telephone_numbers;
 
         return $this;
     }

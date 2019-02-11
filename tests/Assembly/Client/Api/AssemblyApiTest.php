@@ -147,6 +147,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for findSchool
+     *
+     * Get School Details.
+     *
+     */
+    public function testFindSchool()
+    {
+    }
+
+    /**
      * Test case for findStaffMember
      *
      * View a Staff Member.
@@ -463,6 +473,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testGetYearGroups()
+    {
+    }
+
+    /**
+     * Test case for status
+     *
+     * Get School Sync Status.
+     *
+     */
+    public function testStatus()
     {
     }
 }

@@ -2498,6 +2498,272 @@ class AssemblyApi
     }
 
     /**
+     * Operation findSchool
+     *
+     * Get School Details
+     *
+     * @param  int $id id of the entity (required)
+     *
+     * @throws \Assembly\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Assembly\Client\Model\School
+     */
+    public function findSchool($id)
+    {
+        list($response) = $this->findSchoolWithHttpInfo($id);
+        return $response;
+    }
+
+    /**
+     * Operation findSchoolWithHttpInfo
+     *
+     * Get School Details
+     *
+     * @param  int $id id of the entity (required)
+     *
+     * @throws \Assembly\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Assembly\Client\Model\School, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function findSchoolWithHttpInfo($id)
+    {
+        $returnType = '\Assembly\Client\Model\School';
+        $request = $this->findSchoolRequest($id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Assembly\Client\Model\School',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation findSchoolAsync
+     *
+     * Get School Details
+     *
+     * @param  int $id id of the entity (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function findSchoolAsync($id)
+    {
+        return $this->findSchoolAsyncWithHttpInfo($id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation findSchoolAsyncWithHttpInfo
+     *
+     * Get School Details
+     *
+     * @param  int $id id of the entity (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function findSchoolAsyncWithHttpInfo($id)
+    {
+        $returnType = '\Assembly\Client\Model\School';
+        $request = $this->findSchoolRequest($id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'findSchool'
+     *
+     * @param  int $id id of the entity (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function findSchoolRequest($id)
+    {
+        // verify the required parameter 'id' is set
+        if ($id === null || (is_array($id) && count($id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $id when calling findSchool'
+            );
+        }
+
+        $resourcePath = '/school';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'id' . '}',
+                ObjectSerializer::toPathValue($id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/vnd.assembly+json; version=1.1']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/vnd.assembly+json; version=1.1'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation findStaffMember
      *
      * View a Staff Member
@@ -7275,14 +7541,17 @@ class AssemblyApi
      * List Left Staff Members
      *
      * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+     * @param  bool $teachers_only return only staff who are teachers (optional)
+     * @param  bool $demographics include demographics data (optional)
+     * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
      *
      * @throws \Assembly\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Assembly\Client\Model\StaffMember[]
      */
-    public function getLeftStaffMembers($if_modified_since = null)
+    public function getLeftStaffMembers($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null)
     {
-        list($response) = $this->getLeftStaffMembersWithHttpInfo($if_modified_since);
+        list($response) = $this->getLeftStaffMembersWithHttpInfo($if_modified_since, $teachers_only, $demographics, $qualifications);
         return $response;
     }
 
@@ -7292,15 +7561,18 @@ class AssemblyApi
      * List Left Staff Members
      *
      * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+     * @param  bool $teachers_only return only staff who are teachers (optional)
+     * @param  bool $demographics include demographics data (optional)
+     * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
      *
      * @throws \Assembly\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Assembly\Client\Model\StaffMember[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLeftStaffMembersWithHttpInfo($if_modified_since = null)
+    public function getLeftStaffMembersWithHttpInfo($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null)
     {
         $returnType = '\Assembly\Client\Model\StaffMember[]';
-        $request = $this->getLeftStaffMembersRequest($if_modified_since);
+        $request = $this->getLeftStaffMembersRequest($if_modified_since, $teachers_only, $demographics, $qualifications);
 
         try {
             $options = $this->createHttpClientOption();
@@ -7367,13 +7639,16 @@ class AssemblyApi
      * List Left Staff Members
      *
      * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+     * @param  bool $teachers_only return only staff who are teachers (optional)
+     * @param  bool $demographics include demographics data (optional)
+     * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLeftStaffMembersAsync($if_modified_since = null)
+    public function getLeftStaffMembersAsync($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null)
     {
-        return $this->getLeftStaffMembersAsyncWithHttpInfo($if_modified_since)
+        return $this->getLeftStaffMembersAsyncWithHttpInfo($if_modified_since, $teachers_only, $demographics, $qualifications)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -7387,14 +7662,17 @@ class AssemblyApi
      * List Left Staff Members
      *
      * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+     * @param  bool $teachers_only return only staff who are teachers (optional)
+     * @param  bool $demographics include demographics data (optional)
+     * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getLeftStaffMembersAsyncWithHttpInfo($if_modified_since = null)
+    public function getLeftStaffMembersAsyncWithHttpInfo($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null)
     {
         $returnType = '\Assembly\Client\Model\StaffMember[]';
-        $request = $this->getLeftStaffMembersRequest($if_modified_since);
+        $request = $this->getLeftStaffMembersRequest($if_modified_since, $teachers_only, $demographics, $qualifications);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7437,11 +7715,14 @@ class AssemblyApi
      * Create request for operation 'getLeftStaffMembers'
      *
      * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+     * @param  bool $teachers_only return only staff who are teachers (optional)
+     * @param  bool $demographics include demographics data (optional)
+     * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function getLeftStaffMembersRequest($if_modified_since = null)
+    protected function getLeftStaffMembersRequest($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null)
     {
 
         $resourcePath = '/staff_members/left';
@@ -7451,6 +7732,18 @@ class AssemblyApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($teachers_only !== null) {
+            $queryParams['teachers_only'] = ObjectSerializer::toQueryValue($teachers_only);
+        }
+        // query params
+        if ($demographics !== null) {
+            $queryParams['demographics'] = ObjectSerializer::toQueryValue($demographics);
+        }
+        // query params
+        if ($qualifications !== null) {
+            $queryParams['qualifications'] = ObjectSerializer::toQueryValue($qualifications);
+        }
         // header params
         if ($if_modified_since !== null) {
             $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
@@ -11819,6 +12112,253 @@ class AssemblyApi
         if ($if_modified_since !== null) {
             $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
         }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/vnd.assembly+json; version=1.1']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/vnd.assembly+json; version=1.1'],
+                []
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+        // this endpoint requires HTTP basic authentication
+        if ($this->config->getUsername() !== null || $this->config->getPassword() !== null) {
+            $headers['Authorization'] = 'Basic ' . base64_encode($this->config->getUsername() . ":" . $this->config->getPassword());
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation status
+     *
+     * Get School Sync Status
+     *
+     *
+     * @throws \Assembly\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Assembly\Client\Model\SchoolStatus
+     */
+    public function status()
+    {
+        list($response) = $this->statusWithHttpInfo();
+        return $response;
+    }
+
+    /**
+     * Operation statusWithHttpInfo
+     *
+     * Get School Sync Status
+     *
+     *
+     * @throws \Assembly\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Assembly\Client\Model\SchoolStatus, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function statusWithHttpInfo()
+    {
+        $returnType = '\Assembly\Client\Model\SchoolStatus';
+        $request = $this->statusRequest();
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Assembly\Client\Model\SchoolStatus',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation statusAsync
+     *
+     * Get School Sync Status
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function statusAsync()
+    {
+        return $this->statusAsyncWithHttpInfo()
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation statusAsyncWithHttpInfo
+     *
+     * Get School Sync Status
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function statusAsyncWithHttpInfo()
+    {
+        $returnType = '\Assembly\Client\Model\SchoolStatus';
+        $request = $this->statusRequest();
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'status'
+     *
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function statusRequest()
+    {
+
+        $resourcePath = '/school/status';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
 
 
         // body params

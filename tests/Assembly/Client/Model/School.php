@@ -14,16 +14,16 @@
 namespace Assembly\Client;
 
 /**
- * TeachingGroupTest Class Doc Comment
+ * SchoolTest Class Doc Comment
  *
  * @category    Class */
-// * @description TeachingGroup
+// * @description School
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
  * @link        https://github.com/assembly-edu/assembly-client-php
  */
-class TeachingGroupTest extends \PHPUnit_Framework_TestCase
+class SchoolTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -55,30 +55,9 @@ class TeachingGroupTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "TeachingGroup"
+     * Test "School"
      */
-    public function testTeachingGroup()
-    {
-    }
-
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
-
-    /**
-     * Test attribute "school_id"
-     */
-    public function testPropertySchoolId()
-    {
-    }
-
-    /**
-     * Test attribute "source_id"
-     */
-    public function testPropertySourceId()
+    public function testSchool()
     {
     }
 
@@ -90,65 +69,72 @@ class TeachingGroupTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "created_at"
+     * Test attribute "urn"
      */
-    public function testPropertyCreatedAt()
+    public function testPropertyUrn()
     {
     }
 
     /**
-     * Test attribute "updated_at"
+     * Test attribute "la_code"
      */
-    public function testPropertyUpdatedAt()
+    public function testPropertyLaCode()
     {
     }
 
     /**
-     * Test attribute "academic_year_id"
+     * Test attribute "la_name"
      */
-    public function testPropertyAcademicYearId()
+    public function testPropertyLaName()
     {
     }
 
     /**
-     * Test attribute "subject_id"
+     * Test attribute "establishment_number"
      */
-    public function testPropertySubjectId()
+    public function testPropertyEstablishmentNumber()
     {
     }
 
     /**
-     * Test attribute "start_date"
+     * Test attribute "establishment_type"
      */
-    public function testPropertyStartDate()
+    public function testPropertyEstablishmentType()
     {
     }
 
     /**
-     * Test attribute "end_date"
+     * Test attribute "phase"
      */
-    public function testPropertyEndDate()
+    public function testPropertyPhase()
     {
     }
 
     /**
-     * Test attribute "level"
+     * Test attribute "street"
      */
-    public function testPropertyLevel()
+    public function testPropertyStreet()
     {
     }
 
     /**
-     * Test attribute "assessment_id"
+     * Test attribute "town"
      */
-    public function testPropertyAssessmentId()
+    public function testPropertyTown()
     {
     }
 
     /**
-     * Test attribute "effective_at"
+     * Test attribute "postcode"
      */
-    public function testPropertyEffectiveAt()
+    public function testPropertyPostcode()
+    {
+    }
+
+    /**
+     * Test attribute "head_teacher"
+     */
+    public function testPropertyHeadTeacher()
     {
     }
 }

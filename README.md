@@ -79,6 +79,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**findGradeSet**](docs/Api/AssemblyApi.md#findgradeset) | **GET** /grade_sets/{id} | View a Grade Set
 *AssemblyApi* | [**findMedicalCondition**](docs/Api/AssemblyApi.md#findmedicalcondition) | **GET** /school/medical_conditions/{id} | View an Medical Condition
 *AssemblyApi* | [**findRegistrationGroup**](docs/Api/AssemblyApi.md#findregistrationgroup) | **GET** /registration_groups/{id} | View a Registration Group
+*AssemblyApi* | [**findSchool**](docs/Api/AssemblyApi.md#findschool) | **GET** /school | Get School Details
 *AssemblyApi* | [**findStaffMember**](docs/Api/AssemblyApi.md#findstaffmember) | **GET** /staff_members/{id} | View a Staff Member
 *AssemblyApi* | [**findStudent**](docs/Api/AssemblyApi.md#findstudent) | **GET** /students/{id} | View a Student
 *AssemblyApi* | [**findTeachingGroup**](docs/Api/AssemblyApi.md#findteachinggroup) | **GET** /teaching_groups/{id} | View a Teaching Group
@@ -111,6 +112,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getTeachingGroups**](docs/Api/AssemblyApi.md#getteachinggroups) | **GET** /teaching_groups | List Teaching Groups
 *AssemblyApi* | [**getYearGroupStudents**](docs/Api/AssemblyApi.md#getyeargroupstudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 *AssemblyApi* | [**getYearGroups**](docs/Api/AssemblyApi.md#getyeargroups) | **GET** /year_groups | List Year Groups
+*AssemblyApi* | [**status**](docs/Api/AssemblyApi.md#status) | **GET** /school/status | Get School Sync Status
 
 
 ## Documentation For Models
@@ -135,6 +137,8 @@ Class | Method | HTTP request | Description
  - [MisSubject](docs/Model/MisSubject.md)
  - [RegistrationGroup](docs/Model/RegistrationGroup.md)
  - [Result](docs/Model/Result.md)
+ - [School](docs/Model/School.md)
+ - [SchoolStatus](docs/Model/SchoolStatus.md)
  - [SenNeed](docs/Model/SenNeed.md)
  - [StaffAbsence](docs/Model/StaffAbsence.md)
  - [StaffAllowance](docs/Model/StaffAllowance.md)
