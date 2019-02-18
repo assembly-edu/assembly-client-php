@@ -1,4 +1,4 @@
-# PHP SDK for the Assembly API 
+# PHP SDK for the Assembly API
 ## Description
 The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
 
@@ -39,12 +39,32 @@ composer install
 
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
+The following variable are requied to be defined in your `.env` file.
+```
+ASSEMBLY_ENVIRONMENT=[sandbox / production]
+ASSEMBLY_CLIENT_ID=[YOUR_CLIENT_ID]
+ASSEMBLY_CLIENT_SECRET=[YOUR_CLIENT_SECRET]
+```
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
+
+$provider = new AssemblyAuth();
+
+//GetTokenFromDatastore is a implementation placeholder which should be replace with your own data retrieval process.
+$accessToken = new AccessToken(GetTokenFromDatastore());
+
+if ($accessToken->hasExpired()) {
+    $accessToken = $provider->getAccessToken('refresh_token', ['refresh_token' => $accessToken->getRefreshToken()]);
+
+    //SaveTokenToDatastore is a implementation placeholder which should be replace with your own data storage process.
+    SaveTokenToDatastore($accessToken->jsonSerialize())
+}
+
 // Configure OAuth2 access token for authorization: bearerAuth
-$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken($accessToken->getToken());
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -52,15 +72,72 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
     new GuzzleHttp\Client(),
     $config
 );
-$id = 56; // int | id of the entity
 
 try {
+    $id = 56; // int | id of the entity
+
     $result = $apiInstance->findAcademicYear($id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AssemblyApi->findAcademicYear: ', $e->getMessage(), PHP_EOL;
 }
 
+?>
+```
+
+## Request School Authorization Token
+
+There is more information available on our [developer documentation](https://developers.assembly.education/api/oauth/) site.
+
+```php
+<?php
+    $provider = new \Assembly\Client\Auth\AssemblyAuth([
+                    'redirectUri' => 'http://example.com/your-redirect-url/',
+                    'scopes'      => ['school:required'],
+                ]);
+
+    $authorizationUrl = $provider->getAuthorizationUrl();
+
+    //SaveSateToDataStore is a implementation placeholder which should be replace with your own data storage process.
+    SaveSateToDataStore($provider->getState());
+
+    // Redirect the user to the authorization URL.
+    header('Location: ' . $authorizationUrl);
+
+?>
+```
+
+### Handling Authorization Callback
+
+```php
+<?php
+
+    $provider = new \Assembly\Client\Auth\AssemblyAuth([
+                'redirectUri' => 'http://example.com/your-redirect-url/',
+            ]);
+
+    //GetStateFromDataStore is a implementation placeholder which should be replace with your own data retrieval process.
+    $state = GetStateFromDataStore();
+
+    if (empty($_GET['state']) || (empty($state) && $_GET['state'] !== $state)) {
+
+        exit('Invalid state');
+    }
+
+    // Try to get an access token using the authorization code grant.
+    $accessToken = $provider->getAccessToken('authorization_code', [
+        'code' => $_GET['code']
+    ]);
+
+    // We have an access token, which we may use in authenticated
+    // requests against the service provider's API.
+    echo 'Access Token: ' . $accessToken->getToken() . "<br>";
+    echo 'Refresh Token: ' . $accessToken->getRefreshToken() . "<br>";
+    echo 'Expired in: ' . $accessToken->getExpires() . "<br>";
+    echo 'Already expired? ' . ($accessToken->hasExpired() ? 'expired' : 'not expired') . "<br>";
+
+    //SaveTokenToDatastore is a implementation placeholder which should be replace with your own data storage process.
+    SaveTokenToDatastore($accessToken->jsonSerialize())
 ?>
 ```
 
@@ -161,16 +238,7 @@ Class | Method | HTTP request | Description
  - [YearGroup](docs/Model/YearGroup.md)
 
 
-## Documentation For Authorization
-
-
-## bearerAuth
-
-- **Type**: HTTP basic authentication
-
-
 ## Author
 
 help@assembly.education
-
 

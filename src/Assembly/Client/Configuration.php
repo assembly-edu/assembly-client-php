@@ -62,11 +62,18 @@ class Configuration
     protected $password = '';
 
     /**
-     * The host
+     * The sandBoxHost
      *
      * @var string
      */
-    protected $host = 'https://api-sandbox.assembly.education';
+    protected $sandBoxHost = 'https://api-sandbox.assembly.education';
+
+    /**
+     * The productionHost
+     *
+     * @var string
+     */
+    protected $productionHost = 'https://api.assembly.education';
 
     /**
      * User agent of the HTTP request, set to "PHP-Swagger" by default
@@ -128,26 +135,13 @@ class Configuration
     }
 
     /**
-     * Sets the host
-     *
-     * @param string $host Host
-     *
-     * @return $this
-     */
-    public function setHost($host)
-    {
-        $this->host = $host;
-        return $this;
-    }
-
-    /**
      * Gets the host
      *
      * @return string Host
      */
     public function getHost()
     {
-        return $this->host;
+        return ($this->useSandbox()) ? $this->sandboxHost : $this->productionHost;
     }
 
     /**
@@ -288,5 +282,10 @@ class Configuration
         $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
         return $report;
+    }
+
+    private function useSandbox()
+    {
+        return ( env('ASSEMBLY_ENVIRONMENT' ) != "production" );
     }
 }
