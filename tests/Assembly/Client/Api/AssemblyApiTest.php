@@ -57,6 +57,26 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test case for bulkUpdateResults
+     *
+     * Update Multiple Results.
+     *
+     */
+    public function testBulkUpdateResults()
+    {
+    }
+
+    /**
+     * Test case for createResult
+     *
+     * Write Results.
+     *
+     */
+    public function testCreateResult()
+    {
+    }
+
+    /**
      * Test case for findAcademicYear
      *
      * View an Academic Year.
@@ -483,6 +503,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
      *
      */
     public function testStatus()
+    {
+    }
+
+    /**
+     * Test case for updateResults
+     *
+     * Update a Single Result.
+     *
+     */
+    public function testUpdateResults()
     {
     }
 }

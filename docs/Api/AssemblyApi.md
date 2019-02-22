@@ -4,6 +4,8 @@ All URIs are relative to *https://api-sandbox.assembly.education*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**bulkUpdateResults**](AssemblyApi.md#bulkUpdateResults) | **PATCH** /results | Update Multiple Results
+[**createResult**](AssemblyApi.md#createResult) | **POST** /results | Write Results
 [**findAcademicYear**](AssemblyApi.md#findAcademicYear) | **GET** /academic_years/{id} | View an Academic Year
 [**findAssessment**](AssemblyApi.md#findAssessment) | **GET** /assessments/{id} | View an Assessment
 [**findAssessmentGradeSet**](AssemblyApi.md#findAssessmentGradeSet) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
@@ -47,7 +49,114 @@ Method | HTTP request | Description
 [**getYearGroupStudents**](AssemblyApi.md#getYearGroupStudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 [**getYearGroups**](AssemblyApi.md#getYearGroups) | **GET** /year_groups | List Year Groups
 [**status**](AssemblyApi.md#status) | **GET** /school/status | Get School Sync Status
+[**updateResults**](AssemblyApi.md#updateResults) | **PATCH** /results/{id} | Update a Single Result
 
+
+# **bulkUpdateResults**
+> \Assembly\Client\Model\ApiResponse bulkUpdateResults($bulk_results_body)
+
+Update Multiple Results
+
+Multiple results can be updated simultaneously by providing the relevant result_ids in the body of your request. The response will tell you whether the batch of updates has either been successful or failed.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$bulk_results_body = new \Assembly\Client\Model\BulkResultsBody(); // \Assembly\Client\Model\BulkResultsBody | 
+
+try {
+    $result = $apiInstance->bulkUpdateResults($bulk_results_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->bulkUpdateResults: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **bulk_results_body** | [**\Assembly\Client\Model\BulkResultsBody**](../Model/BulkResultsBody.md)|  | [optional]
+
+### Return type
+
+[**\Assembly\Client\Model\ApiResponse**](../Model/ApiResponse.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **createResult**
+> \Assembly\Client\Model\Result[] createResult($result_body)
+
+Write Results
+
+Given a subject_id, facet_id, assessment_point_rank and assessment_id results can be sent to the Platform, along with a student_id, the grade_id and (optionally) the result_date.  **Permissions**: A school level access token with the assessments.write scope is needed to write results back to the Platform.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$result_body = new \Assembly\Client\Model\ResultBody(); // \Assembly\Client\Model\ResultBody | 
+
+try {
+    $result = $apiInstance->createResult($result_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->createResult: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **result_body** | [**\Assembly\Client\Model\ResultBody**](../Model/ResultBody.md)|  | [optional]
+
+### Return type
+
+[**\Assembly\Client\Model\Result[]**](../Model/Result.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **findAcademicYear**
 > \Assembly\Client\Model\AcademicYear findAcademicYear($id)
@@ -2570,6 +2679,61 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **updateResults**
+> \Assembly\Client\Model\Result updateResults($id, $result_entry)
+
+Update a Single Result
+
+Once a result has been created, it can be updated on the Platform by passing the required field values in the request body. A list of the fields that were changed are returned in the response.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: bearerAuth
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 56; // int | id of the entity
+$result_entry = new \Assembly\Client\Model\ResultEntry(); // \Assembly\Client\Model\ResultEntry | 
+
+try {
+    $result = $apiInstance->updateResults($id, $result_entry);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AssemblyApi->updateResults: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| id of the entity |
+ **result_entry** | [**\Assembly\Client\Model\ResultEntry**](../Model/ResultEntry.md)|  | [optional]
+
+### Return type
+
+[**\Assembly\Client\Model\Result**](../Model/Result.md)
+
+### Authorization
+
+[bearerAuth](../../README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/vnd.assembly+json; version=1.1
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)

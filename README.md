@@ -74,12 +74,12 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 
 try {
-    $id = 56; // int | id of the entity
+    $bulk_results_body = new \Assembly\Client\Model\BulkResultsBody(); // \Assembly\Client\Model\BulkResultsBody | 
 
-    $result = $apiInstance->findAcademicYear($id);
+    $result = $apiInstance->bulkUpdateResults($bulk_results_body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findAcademicYear: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AssemblyApi->bulkUpdateResults: ', $e->getMessage(), PHP_EOL;
 }
 
 ?>
@@ -147,6 +147,8 @@ All URIs are relative to *https://api-sandbox.assembly.education*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AssemblyApi* | [**bulkUpdateResults**](docs/Api/AssemblyApi.md#bulkupdateresults) | **PATCH** /results | Update Multiple Results
+*AssemblyApi* | [**createResult**](docs/Api/AssemblyApi.md#createresult) | **POST** /results | Write Results
 *AssemblyApi* | [**findAcademicYear**](docs/Api/AssemblyApi.md#findacademicyear) | **GET** /academic_years/{id} | View an Academic Year
 *AssemblyApi* | [**findAssessment**](docs/Api/AssemblyApi.md#findassessment) | **GET** /assessments/{id} | View an Assessment
 *AssemblyApi* | [**findAssessmentGradeSet**](docs/Api/AssemblyApi.md#findassessmentgradeset) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
@@ -190,17 +192,20 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getYearGroupStudents**](docs/Api/AssemblyApi.md#getyeargroupstudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 *AssemblyApi* | [**getYearGroups**](docs/Api/AssemblyApi.md#getyeargroups) | **GET** /year_groups | List Year Groups
 *AssemblyApi* | [**status**](docs/Api/AssemblyApi.md#status) | **GET** /school/status | Get School Sync Status
+*AssemblyApi* | [**updateResults**](docs/Api/AssemblyApi.md#updateresults) | **PATCH** /results/{id} | Update a Single Result
 
 
 ## Documentation For Models
 
  - [AcademicYear](docs/Model/AcademicYear.md)
  - [AcademicYearTerms](docs/Model/AcademicYearTerms.md)
+ - [ApiResponse](docs/Model/ApiResponse.md)
  - [Assessment](docs/Model/Assessment.md)
  - [AssessmentMisAssessments](docs/Model/AssessmentMisAssessments.md)
  - [AssessmentPoint](docs/Model/AssessmentPoint.md)
  - [Attendance](docs/Model/Attendance.md)
  - [AttendanceSummary](docs/Model/AttendanceSummary.md)
+ - [BulkResultsBody](docs/Model/BulkResultsBody.md)
  - [CalendarEvent](docs/Model/CalendarEvent.md)
  - [CalendarEventMisType](docs/Model/CalendarEventMisType.md)
  - [Contact](docs/Model/Contact.md)
@@ -214,6 +219,8 @@ Class | Method | HTTP request | Description
  - [MisSubject](docs/Model/MisSubject.md)
  - [RegistrationGroup](docs/Model/RegistrationGroup.md)
  - [Result](docs/Model/Result.md)
+ - [ResultBody](docs/Model/ResultBody.md)
+ - [ResultEntry](docs/Model/ResultEntry.md)
  - [School](docs/Model/School.md)
  - [SchoolStatus](docs/Model/SchoolStatus.md)
  - [SenNeed](docs/Model/SenNeed.md)
