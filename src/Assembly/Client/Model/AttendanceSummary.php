@@ -47,11 +47,11 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
         'academic_year_id' => 'int',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
-        'possible_sessions' => 'string',
-        'attended_sessions' => 'string',
-        'late_sessions' => 'string',
-        'authorised_absence_sessions' => 'string',
-        'unauthorised_absence_sessions' => 'string'
+        'possible_sessions' => 'float',
+        'attended_sessions' => 'float',
+        'late_sessions' => 'float',
+        'authorised_absence_sessions' => 'float',
+        'unauthorised_absence_sessions' => 'float'
     ];
 
     /**
@@ -66,11 +66,11 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
         'academic_year_id' => 'int32',
         'start_date' => 'date-time',
         'end_date' => 'date-time',
-        'possible_sessions' => null,
-        'attended_sessions' => null,
-        'late_sessions' => null,
-        'authorised_absence_sessions' => null,
-        'unauthorised_absence_sessions' => null
+        'possible_sessions' => 'float',
+        'attended_sessions' => 'float',
+        'late_sessions' => 'float',
+        'authorised_absence_sessions' => 'float',
+        'unauthorised_absence_sessions' => 'float'
     ];
 
     /**
@@ -396,7 +396,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     /**
      * Gets possible_sessions
      *
-     * @return string
+     * @return float
      */
     public function getPossibleSessions()
     {
@@ -406,7 +406,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     /**
      * Sets possible_sessions
      *
-     * @param string $possible_sessions possible_sessions
+     * @param float $possible_sessions possible_sessions
      *
      * @return $this
      */
@@ -420,7 +420,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     /**
      * Gets attended_sessions
      *
-     * @return string
+     * @return float
      */
     public function getAttendedSessions()
     {
@@ -430,7 +430,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     /**
      * Sets attended_sessions
      *
-     * @param string $attended_sessions attended_sessions
+     * @param float $attended_sessions attended_sessions
      *
      * @return $this
      */
@@ -444,7 +444,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     /**
      * Gets late_sessions
      *
-     * @return string
+     * @return float
      */
     public function getLateSessions()
     {
@@ -454,7 +454,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     /**
      * Sets late_sessions
      *
-     * @param string $late_sessions late_sessions
+     * @param float $late_sessions late_sessions
      *
      * @return $this
      */
@@ -468,7 +468,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     /**
      * Gets authorised_absence_sessions
      *
-     * @return string
+     * @return float
      */
     public function getAuthorisedAbsenceSessions()
     {
@@ -478,7 +478,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     /**
      * Sets authorised_absence_sessions
      *
-     * @param string $authorised_absence_sessions authorised_absence_sessions
+     * @param float $authorised_absence_sessions authorised_absence_sessions
      *
      * @return $this
      */
@@ -492,7 +492,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     /**
      * Gets unauthorised_absence_sessions
      *
-     * @return string
+     * @return float
      */
     public function getUnauthorisedAbsenceSessions()
     {
@@ -502,7 +502,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     /**
      * Sets unauthorised_absence_sessions
      *
-     * @param string $unauthorised_absence_sessions unauthorised_absence_sessions
+     * @param float $unauthorised_absence_sessions unauthorised_absence_sessions
      *
      * @return $this
      */

@@ -42,7 +42,7 @@ class StaffAllowance implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'additional_payment_type' => 'string',
-        'additional_payment_amount' => 'string',
+        'additional_payment_amount' => 'float',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime'
     ];
@@ -54,7 +54,7 @@ class StaffAllowance implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'additional_payment_type' => null,
-        'additional_payment_amount' => null,
+        'additional_payment_amount' => 'float',
         'start_date' => 'date-time',
         'end_date' => 'date-time'
     ];
@@ -234,7 +234,7 @@ class StaffAllowance implements ModelInterface, ArrayAccess
     /**
      * Gets additional_payment_amount
      *
-     * @return string
+     * @return float
      */
     public function getAdditionalPaymentAmount()
     {
@@ -244,7 +244,7 @@ class StaffAllowance implements ModelInterface, ArrayAccess
     /**
      * Sets additional_payment_amount
      *
-     * @param string $additional_payment_amount additional_payment_amount
+     * @param float $additional_payment_amount additional_payment_amount
      *
      * @return $this
      */

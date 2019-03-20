@@ -45,7 +45,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
         'staff_member_id' => 'int',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
-        'working_days_lost' => 'string',
+        'working_days_lost' => 'float',
         'absence_category' => 'string',
         'illness_category' => 'string',
         'pay_rate' => 'string'
@@ -61,7 +61,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
         'staff_member_id' => 'int32',
         'start_date' => 'date-time',
         'end_date' => 'date-time',
-        'working_days_lost' => null,
+        'working_days_lost' => 'float',
         'absence_category' => null,
         'illness_category' => null,
         'pay_rate' => null
@@ -330,7 +330,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     /**
      * Gets working_days_lost
      *
-     * @return string
+     * @return float
      */
     public function getWorkingDaysLost()
     {
@@ -340,7 +340,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     /**
      * Sets working_days_lost
      *
-     * @param string $working_days_lost working_days_lost
+     * @param float $working_days_lost working_days_lost
      *
      * @return $this
      */

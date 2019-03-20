@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **additional_payment_type** | **string** |  | [optional] 
-**additional_payment_amount** | **string** |  | [optional] 
+**additional_payment_amount** | **float** |  | [optional] 
 **start_date** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **end_date** | [**\DateTime**](\DateTime.md) |  | [optional] 
 

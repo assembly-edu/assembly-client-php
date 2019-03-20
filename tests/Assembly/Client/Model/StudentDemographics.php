@@ -132,6 +132,13 @@ class StudentDemographicsTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "is_fsm6"
+     */
+    public function testPropertyIsFsm6()
+    {
+    }
+
+    /**
      * Test attribute "looked_after"
      */
     public function testPropertyLookedAfter()

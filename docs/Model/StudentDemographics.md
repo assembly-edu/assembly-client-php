@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **nationalities** | **string[]** |  | [optional] 
 **fsm_review_date** | **string** |  | [optional] 
 **is_fsm** | **bool** |  | [optional] 
+**is_fsm6** | **bool** |  | [optional] 
 **looked_after** | **bool** |  | [optional] 
 **in_care** | **bool** |  | [optional] 
 **ever_in_care** | **bool** |  | [optional] 

@@ -41,16 +41,16 @@ class StaffSalary implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'hours_per_week' => 'string',
-        'fte' => 'string',
-        'weeks_per_year' => 'string',
+        'hours_per_week' => 'float',
+        'fte' => 'float',
+        'weeks_per_year' => 'float',
         'pay_range' => 'string',
         'start_date' => '\DateTime',
         'end_date' => '\DateTime',
         'pay_scale_framework' => 'string',
         'regional_spine' => 'string',
-        'base_pay' => 'string',
-        'actual_pay' => 'string',
+        'base_pay' => 'float',
+        'actual_pay' => 'float',
         'safeguarded_salary' => 'bool'
     ];
 
@@ -60,16 +60,16 @@ class StaffSalary implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'hours_per_week' => null,
-        'fte' => null,
-        'weeks_per_year' => null,
+        'hours_per_week' => 'float',
+        'fte' => 'float',
+        'weeks_per_year' => 'float',
         'pay_range' => null,
         'start_date' => 'date-time',
         'end_date' => 'date-time',
         'pay_scale_framework' => null,
         'regional_spine' => null,
-        'base_pay' => null,
-        'actual_pay' => null,
+        'base_pay' => 'float',
+        'actual_pay' => 'float',
         'safeguarded_salary' => null
     ];
 
@@ -252,7 +252,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
     /**
      * Gets hours_per_week
      *
-     * @return string
+     * @return float
      */
     public function getHoursPerWeek()
     {
@@ -262,7 +262,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
     /**
      * Sets hours_per_week
      *
-     * @param string $hours_per_week hours_per_week
+     * @param float $hours_per_week hours_per_week
      *
      * @return $this
      */
@@ -276,7 +276,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
     /**
      * Gets fte
      *
-     * @return string
+     * @return float
      */
     public function getFte()
     {
@@ -286,7 +286,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
     /**
      * Sets fte
      *
-     * @param string $fte fte
+     * @param float $fte fte
      *
      * @return $this
      */
@@ -300,7 +300,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
     /**
      * Gets weeks_per_year
      *
-     * @return string
+     * @return float
      */
     public function getWeeksPerYear()
     {
@@ -310,7 +310,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
     /**
      * Sets weeks_per_year
      *
-     * @param string $weeks_per_year weeks_per_year
+     * @param float $weeks_per_year weeks_per_year
      *
      * @return $this
      */
@@ -444,7 +444,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
     /**
      * Gets base_pay
      *
-     * @return string
+     * @return float
      */
     public function getBasePay()
     {
@@ -454,7 +454,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
     /**
      * Sets base_pay
      *
-     * @param string $base_pay base_pay
+     * @param float $base_pay base_pay
      *
      * @return $this
      */
@@ -468,7 +468,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
     /**
      * Gets actual_pay
      *
-     * @return string
+     * @return float
      */
     public function getActualPay()
     {
@@ -478,7 +478,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
     /**
      * Sets actual_pay
      *
-     * @param string $actual_pay actual_pay
+     * @param float $actual_pay actual_pay
      *
      * @return $this
      */

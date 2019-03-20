@@ -9,11 +9,11 @@ Name | Type | Description | Notes
 **academic_year_id** | **int** |  | [optional] 
 **start_date** | [**\DateTime**](\DateTime.md) |  | [optional] 
 **end_date** | [**\DateTime**](\DateTime.md) |  | [optional] 
-**possible_sessions** | **string** |  | [optional] 
-**attended_sessions** | **string** |  | [optional] 
-**late_sessions** | **string** |  | [optional] 
-**authorised_absence_sessions** | **string** |  | [optional] 
-**unauthorised_absence_sessions** | **string** |  | [optional] 
+**possible_sessions** | **float** |  | [optional] 
+**attended_sessions** | **float** |  | [optional] 
+**late_sessions** | **float** |  | [optional] 
+**authorised_absence_sessions** | **float** |  | [optional] 
+**unauthorised_absence_sessions** | **float** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
