@@ -2,14 +2,16 @@
 
 /**
  * Assembly Developer API
+ * Version 1.1.0
  *
- * The Assembly API is built around the REST and a collection of open standards/protocols in order to comply with as many consumers as possible.
+ * Support
+ * Email: help@assembly.education
+ * URL:   http://developers.assembly.education
  *
- * API version: 1.1.0
- * Contact: help@assembly.education
- *
- * NOTE: This class is auto generated. Do not edit the class manually.
+ * Terms of Service: http://assembly.education/terms/
+ * License:          MIT, https://spdx.org/licenses/MIT.html
  */
+
 
 
 namespace Assembly\Client;
