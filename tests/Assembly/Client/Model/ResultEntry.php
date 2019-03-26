@@ -28,66 +28,66 @@ namespace Assembly\Client;
 class ResultEntryTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "ResultEntry"
-     */
-    public function testResultEntry()
-    {
-    }
+  /**
+   * Test "ResultEntry"
+   */
+  public function testResultEntry()
+  {
+  }
 
-    /**
-     * Test attribute "student_id"
-     */
-    public function testPropertyStudentId()
-    {
-    }
+  /**
+   * Test attribute "student_id"
+   */
+  public function testPropertyStudentId()
+  {
+  }
 
-    /**
-     * Test attribute "result_id"
-     */
-    public function testPropertyResultId()
-    {
-    }
+  /**
+   * Test attribute "result_id"
+   */
+  public function testPropertyResultId()
+  {
+  }
 
-    /**
-     * Test attribute "grade_id"
-     */
-    public function testPropertyGradeId()
-    {
-    }
+  /**
+   * Test attribute "grade_id"
+   */
+  public function testPropertyGradeId()
+  {
+  }
 
-    /**
-     * Test attribute "result_date"
-     */
-    public function testPropertyResultDate()
-    {
-    }
+  /**
+   * Test attribute "result_date"
+   */
+  public function testPropertyResultDate()
+  {
+  }
 }

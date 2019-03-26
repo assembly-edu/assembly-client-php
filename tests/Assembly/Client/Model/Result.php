@@ -28,108 +28,108 @@ namespace Assembly\Client;
 class ResultTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "Result"
-     */
-    public function testResult()
-    {
-    }
+  /**
+   * Test "Result"
+   */
+  public function testResult()
+  {
+  }
 
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
+  {
+  }
 
-    /**
-     * Test attribute "student_id"
-     */
-    public function testPropertyStudentId()
-    {
-    }
+  /**
+   * Test attribute "student_id"
+   */
+  public function testPropertyStudentId()
+  {
+  }
 
-    /**
-     * Test attribute "subject_id"
-     */
-    public function testPropertySubjectId()
-    {
-    }
+  /**
+   * Test attribute "subject_id"
+   */
+  public function testPropertySubjectId()
+  {
+  }
 
-    /**
-     * Test attribute "assessment_id"
-     */
-    public function testPropertyAssessmentId()
-    {
-    }
+  /**
+   * Test attribute "assessment_id"
+   */
+  public function testPropertyAssessmentId()
+  {
+  }
 
-    /**
-     * Test attribute "assessment_point_rank"
-     */
-    public function testPropertyAssessmentPointRank()
-    {
-    }
+  /**
+   * Test attribute "assessment_point_rank"
+   */
+  public function testPropertyAssessmentPointRank()
+  {
+  }
 
-    /**
-     * Test attribute "facet_id"
-     */
-    public function testPropertyFacetId()
-    {
-    }
+  /**
+   * Test attribute "facet_id"
+   */
+  public function testPropertyFacetId()
+  {
+  }
 
-    /**
-     * Test attribute "grade_id"
-     */
-    public function testPropertyGradeId()
-    {
-    }
+  /**
+   * Test attribute "grade_id"
+   */
+  public function testPropertyGradeId()
+  {
+  }
 
-    /**
-     * Test attribute "result_date"
-     */
-    public function testPropertyResultDate()
-    {
-    }
+  /**
+   * Test attribute "result_date"
+   */
+  public function testPropertyResultDate()
+  {
+  }
 
-    /**
-     * Test attribute "created_at"
-     */
-    public function testPropertyCreatedAt()
-    {
-    }
+  /**
+   * Test attribute "created_at"
+   */
+  public function testPropertyCreatedAt()
+  {
+  }
 
-    /**
-     * Test attribute "updated_at"
-     */
-    public function testPropertyUpdatedAt()
-    {
-    }
+  /**
+   * Test attribute "updated_at"
+   */
+  public function testPropertyUpdatedAt()
+  {
+  }
 }

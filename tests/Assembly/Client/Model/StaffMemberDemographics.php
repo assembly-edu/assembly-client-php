@@ -28,66 +28,66 @@ namespace Assembly\Client;
 class StaffMemberDemographicsTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "StaffMemberDemographics"
-     */
-    public function testStaffMemberDemographics()
-    {
-    }
+  /**
+   * Test "StaffMemberDemographics"
+   */
+  public function testStaffMemberDemographics()
+  {
+  }
 
-    /**
-     * Test attribute "ethnicity_code"
-     */
-    public function testPropertyEthnicityCode()
-    {
-    }
+  /**
+   * Test attribute "ethnicity_code"
+   */
+  public function testPropertyEthnicityCode()
+  {
+  }
 
-    /**
-     * Test attribute "ethnicity_group"
-     */
-    public function testPropertyEthnicityGroup()
-    {
-    }
+  /**
+   * Test attribute "ethnicity_group"
+   */
+  public function testPropertyEthnicityGroup()
+  {
+  }
 
-    /**
-     * Test attribute "gender"
-     */
-    public function testPropertyGender()
-    {
-    }
+  /**
+   * Test attribute "gender"
+   */
+  public function testPropertyGender()
+  {
+  }
 
-    /**
-     * Test attribute "disability"
-     */
-    public function testPropertyDisability()
-    {
-    }
+  /**
+   * Test attribute "disability"
+   */
+  public function testPropertyDisability()
+  {
+  }
 }

@@ -28,66 +28,66 @@ namespace Assembly\Client;
 class EmailTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "Email"
-     */
-    public function testEmail()
-    {
-    }
+  /**
+   * Test "Email"
+   */
+  public function testEmail()
+  {
+  }
 
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
+  {
+  }
 
-    /**
-     * Test attribute "email"
-     */
-    public function testPropertyEmail()
-    {
-    }
+  /**
+   * Test attribute "email"
+   */
+  public function testPropertyEmail()
+  {
+  }
 
-    /**
-     * Test attribute "type"
-     */
-    public function testPropertyType()
-    {
-    }
+  /**
+   * Test attribute "type"
+   */
+  public function testPropertyType()
+  {
+  }
 
-    /**
-     * Test attribute "is_primary"
-     */
-    public function testPropertyIsPrimary()
-    {
-    }
+  /**
+   * Test attribute "is_primary"
+   */
+  public function testPropertyIsPrimary()
+  {
+  }
 }

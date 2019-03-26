@@ -30,491 +30,491 @@ use \Assembly\Client\ObjectSerializer;
 class AssemblyApiTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test cases
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test cases
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test case for bulkUpdateResults
-     *
-     * Update Multiple Results.
-     *
-     */
-    public function testBulkUpdateResults()
-    {
-    }
+  /**
+   * Test case for bulkUpdateResults
+   *
+   * Update Multiple Results.
+   *
+   */
+  public function testBulkUpdateResults()
+  {
+  }
 
-    /**
-     * Test case for createResult
-     *
-     * Write Results.
-     *
-     */
-    public function testCreateResult()
-    {
-    }
+  /**
+   * Test case for createResult
+   *
+   * Write Results.
+   *
+   */
+  public function testCreateResult()
+  {
+  }
 
-    /**
-     * Test case for findAcademicYear
-     *
-     * View an Academic Year.
-     *
-     */
-    public function testFindAcademicYear()
-    {
-    }
+  /**
+   * Test case for findAcademicYear
+   *
+   * View an Academic Year.
+   *
+   */
+  public function testFindAcademicYear()
+  {
+  }
 
-    /**
-     * Test case for findAssessment
-     *
-     * View an Assessment.
-     *
-     */
-    public function testFindAssessment()
-    {
-    }
+  /**
+   * Test case for findAssessment
+   *
+   * View an Assessment.
+   *
+   */
+  public function testFindAssessment()
+  {
+  }
 
-    /**
-     * Test case for findAssessmentGradeSet
-     *
-     * View Grade Set for an Assessment.
-     *
-     */
-    public function testFindAssessmentGradeSet()
-    {
-    }
+  /**
+   * Test case for findAssessmentGradeSet
+   *
+   * View Grade Set for an Assessment.
+   *
+   */
+  public function testFindAssessmentGradeSet()
+  {
+  }
 
-    /**
-     * Test case for findAssessmentPoint
-     *
-     * View an Assessment Point.
-     *
-     */
-    public function testFindAssessmentPoint()
-    {
-    }
+  /**
+   * Test case for findAssessmentPoint
+   *
+   * View an Assessment Point.
+   *
+   */
+  public function testFindAssessmentPoint()
+  {
+  }
 
-    /**
-     * Test case for findDietaryNeed
-     *
-     * View an Dietary Need.
-     *
-     */
-    public function testFindDietaryNeed()
-    {
-    }
+  /**
+   * Test case for findDietaryNeed
+   *
+   * View an Dietary Need.
+   *
+   */
+  public function testFindDietaryNeed()
+  {
+  }
 
-    /**
-     * Test case for findFacet
-     *
-     * View a Facet.
-     *
-     */
-    public function testFindFacet()
-    {
-    }
+  /**
+   * Test case for findFacet
+   *
+   * View a Facet.
+   *
+   */
+  public function testFindFacet()
+  {
+  }
 
-    /**
-     * Test case for findGradeSet
-     *
-     * View a Grade Set.
-     *
-     */
-    public function testFindGradeSet()
-    {
-    }
+  /**
+   * Test case for findGradeSet
+   *
+   * View a Grade Set.
+   *
+   */
+  public function testFindGradeSet()
+  {
+  }
 
-    /**
-     * Test case for findMedicalCondition
-     *
-     * View an Medical Condition.
-     *
-     */
-    public function testFindMedicalCondition()
-    {
-    }
+  /**
+   * Test case for findMedicalCondition
+   *
+   * View an Medical Condition.
+   *
+   */
+  public function testFindMedicalCondition()
+  {
+  }
 
-    /**
-     * Test case for findRegistrationGroup
-     *
-     * View a Registration Group.
-     *
-     */
-    public function testFindRegistrationGroup()
-    {
-    }
+  /**
+   * Test case for findRegistrationGroup
+   *
+   * View a Registration Group.
+   *
+   */
+  public function testFindRegistrationGroup()
+  {
+  }
 
-    /**
-     * Test case for findSchool
-     *
-     * Get School Details.
-     *
-     */
-    public function testFindSchool()
-    {
-    }
+  /**
+   * Test case for findSchool
+   *
+   * Get School Details.
+   *
+   */
+  public function testFindSchool()
+  {
+  }
 
-    /**
-     * Test case for findStaffMember
-     *
-     * View a Staff Member.
-     *
-     */
-    public function testFindStaffMember()
-    {
-    }
+  /**
+   * Test case for findStaffMember
+   *
+   * View a Staff Member.
+   *
+   */
+  public function testFindStaffMember()
+  {
+  }
 
-    /**
-     * Test case for findStudent
-     *
-     * View a Student.
-     *
-     */
-    public function testFindStudent()
-    {
-    }
+  /**
+   * Test case for findStudent
+   *
+   * View a Student.
+   *
+   */
+  public function testFindStudent()
+  {
+  }
 
-    /**
-     * Test case for findTeachingGroup
-     *
-     * View a Teaching Group.
-     *
-     */
-    public function testFindTeachingGroup()
-    {
-    }
+  /**
+   * Test case for findTeachingGroup
+   *
+   * View a Teaching Group.
+   *
+   */
+  public function testFindTeachingGroup()
+  {
+  }
 
-    /**
-     * Test case for findYearGroup
-     *
-     * View a Year Group.
-     *
-     */
-    public function testFindYearGroup()
-    {
-    }
+  /**
+   * Test case for findYearGroup
+   *
+   * View a Year Group.
+   *
+   */
+  public function testFindYearGroup()
+  {
+  }
 
-    /**
-     * Test case for getAcademicYears
-     *
-     * List Academic Years.
-     *
-     */
-    public function testGetAcademicYears()
-    {
-    }
+  /**
+   * Test case for getAcademicYears
+   *
+   * List Academic Years.
+   *
+   */
+  public function testGetAcademicYears()
+  {
+  }
 
-    /**
-     * Test case for getAssessmentPointResults
-     *
-     * View Results for an Assessment Point.
-     *
-     */
-    public function testGetAssessmentPointResults()
-    {
-    }
+  /**
+   * Test case for getAssessmentPointResults
+   *
+   * View Results for an Assessment Point.
+   *
+   */
+  public function testGetAssessmentPointResults()
+  {
+  }
 
-    /**
-     * Test case for getAssessmentPoints
-     *
-     * List Assessment Points.
-     *
-     */
-    public function testGetAssessmentPoints()
-    {
-    }
+  /**
+   * Test case for getAssessmentPoints
+   *
+   * List Assessment Points.
+   *
+   */
+  public function testGetAssessmentPoints()
+  {
+  }
 
-    /**
-     * Test case for getAssessmentResults
-     *
-     * View Results for an Assessment.
-     *
-     */
-    public function testGetAssessmentResults()
-    {
-    }
+  /**
+   * Test case for getAssessmentResults
+   *
+   * View Results for an Assessment.
+   *
+   */
+  public function testGetAssessmentResults()
+  {
+  }
 
-    /**
-     * Test case for getAssessmentSummaries
-     *
-     * List Attendance Summaries.
-     *
-     */
-    public function testGetAssessmentSummaries()
-    {
-    }
+  /**
+   * Test case for getAssessmentSummaries
+   *
+   * List Attendance Summaries.
+   *
+   */
+  public function testGetAssessmentSummaries()
+  {
+  }
 
-    /**
-     * Test case for getAssessments
-     *
-     * List Assessments.
-     *
-     */
-    public function testGetAssessments()
-    {
-    }
+  /**
+   * Test case for getAssessments
+   *
+   * List Assessments.
+   *
+   */
+  public function testGetAssessments()
+  {
+  }
 
-    /**
-     * Test case for getAttendances
-     *
-     * List Attendances.
-     *
-     */
-    public function testGetAttendances()
-    {
-    }
+  /**
+   * Test case for getAttendances
+   *
+   * List Attendances.
+   *
+   */
+  public function testGetAttendances()
+  {
+  }
 
-    /**
-     * Test case for getCalendarEvents
-     *
-     * List Calendar Events.
-     *
-     */
-    public function testGetCalendarEvents()
-    {
-    }
+  /**
+   * Test case for getCalendarEvents
+   *
+   * List Calendar Events.
+   *
+   */
+  public function testGetCalendarEvents()
+  {
+  }
 
-    /**
-     * Test case for getContacts
-     *
-     * List Contacts.
-     *
-     */
-    public function testGetContacts()
-    {
-    }
+  /**
+   * Test case for getContacts
+   *
+   * List Contacts.
+   *
+   */
+  public function testGetContacts()
+  {
+  }
 
-    /**
-     * Test case for getDietaryNeeds
-     *
-     * Dietary Needs.
-     *
-     */
-    public function testGetDietaryNeeds()
-    {
-    }
+  /**
+   * Test case for getDietaryNeeds
+   *
+   * Dietary Needs.
+   *
+   */
+  public function testGetDietaryNeeds()
+  {
+  }
 
-    /**
-     * Test case for getExclusions
-     *
-     * List Exclusions.
-     *
-     */
-    public function testGetExclusions()
-    {
-    }
+  /**
+   * Test case for getExclusions
+   *
+   * List Exclusions.
+   *
+   */
+  public function testGetExclusions()
+  {
+  }
 
-    /**
-     * Test case for getFacets
-     *
-     * List Facets.
-     *
-     */
-    public function testGetFacets()
-    {
-    }
+  /**
+   * Test case for getFacets
+   *
+   * List Facets.
+   *
+   */
+  public function testGetFacets()
+  {
+  }
 
-    /**
-     * Test case for getGradeSets
-     *
-     * List Grade Sets.
-     *
-     */
-    public function testGetGradeSets()
-    {
-    }
+  /**
+   * Test case for getGradeSets
+   *
+   * List Grade Sets.
+   *
+   */
+  public function testGetGradeSets()
+  {
+  }
 
-    /**
-     * Test case for getLeftStaffMembers
-     *
-     * List Left Staff Members.
-     *
-     */
-    public function testGetLeftStaffMembers()
-    {
-    }
+  /**
+   * Test case for getLeftStaffMembers
+   *
+   * List Left Staff Members.
+   *
+   */
+  public function testGetLeftStaffMembers()
+  {
+  }
 
-    /**
-     * Test case for getLeftStudents
-     *
-     * List Left Students.
-     *
-     */
-    public function testGetLeftStudents()
-    {
-    }
+  /**
+   * Test case for getLeftStudents
+   *
+   * List Left Students.
+   *
+   */
+  public function testGetLeftStudents()
+  {
+  }
 
-    /**
-     * Test case for getMedicalConditions
-     *
-     * Medical Conditions.
-     *
-     */
-    public function testGetMedicalConditions()
-    {
-    }
+  /**
+   * Test case for getMedicalConditions
+   *
+   * Medical Conditions.
+   *
+   */
+  public function testGetMedicalConditions()
+  {
+  }
 
-    /**
-     * Test case for getRegistrationGroupStudents
-     *
-     * List Students for Registration Group.
-     *
-     */
-    public function testGetRegistrationGroupStudents()
-    {
-    }
+  /**
+   * Test case for getRegistrationGroupStudents
+   *
+   * List Students for Registration Group.
+   *
+   */
+  public function testGetRegistrationGroupStudents()
+  {
+  }
 
-    /**
-     * Test case for getRegistrationGroups
-     *
-     * List Registration Group.
-     *
-     */
-    public function testGetRegistrationGroups()
-    {
-    }
+  /**
+   * Test case for getRegistrationGroups
+   *
+   * List Registration Group.
+   *
+   */
+  public function testGetRegistrationGroups()
+  {
+  }
 
-    /**
-     * Test case for getResults
-     *
-     * List Results.
-     *
-     */
-    public function testGetResults()
-    {
-    }
+  /**
+   * Test case for getResults
+   *
+   * List Results.
+   *
+   */
+  public function testGetResults()
+  {
+  }
 
-    /**
-     * Test case for getStaffAbsences
-     *
-     * List Staff Absences.
-     *
-     */
-    public function testGetStaffAbsences()
-    {
-    }
+  /**
+   * Test case for getStaffAbsences
+   *
+   * List Staff Absences.
+   *
+   */
+  public function testGetStaffAbsences()
+  {
+  }
 
-    /**
-     * Test case for getStaffContracts
-     *
-     * List Staff Contracts.
-     *
-     */
-    public function testGetStaffContracts()
-    {
-    }
+  /**
+   * Test case for getStaffContracts
+   *
+   * List Staff Contracts.
+   *
+   */
+  public function testGetStaffContracts()
+  {
+  }
 
-    /**
-     * Test case for getStaffMembers
-     *
-     * List Staff Members.
-     *
-     */
-    public function testGetStaffMembers()
-    {
-    }
+  /**
+   * Test case for getStaffMembers
+   *
+   * List Staff Members.
+   *
+   */
+  public function testGetStaffMembers()
+  {
+  }
 
-    /**
-     * Test case for getStudents
-     *
-     * List Students.
-     *
-     */
-    public function testGetStudents()
-    {
-    }
+  /**
+   * Test case for getStudents
+   *
+   * List Students.
+   *
+   */
+  public function testGetStudents()
+  {
+  }
 
-    /**
-     * Test case for getSubjects
-     *
-     * List Subjects.
-     *
-     */
-    public function testGetSubjects()
-    {
-    }
+  /**
+   * Test case for getSubjects
+   *
+   * List Subjects.
+   *
+   */
+  public function testGetSubjects()
+  {
+  }
 
-    /**
-     * Test case for getTeachingGroupStudents
-     *
-     * List Students for Teaching Group.
-     *
-     */
-    public function testGetTeachingGroupStudents()
-    {
-    }
+  /**
+   * Test case for getTeachingGroupStudents
+   *
+   * List Students for Teaching Group.
+   *
+   */
+  public function testGetTeachingGroupStudents()
+  {
+  }
 
-    /**
-     * Test case for getTeachingGroups
-     *
-     * List Teaching Groups.
-     *
-     */
-    public function testGetTeachingGroups()
-    {
-    }
+  /**
+   * Test case for getTeachingGroups
+   *
+   * List Teaching Groups.
+   *
+   */
+  public function testGetTeachingGroups()
+  {
+  }
 
-    /**
-     * Test case for getYearGroupStudents
-     *
-     * List Students for Year Group.
-     *
-     */
-    public function testGetYearGroupStudents()
-    {
-    }
+  /**
+   * Test case for getYearGroupStudents
+   *
+   * List Students for Year Group.
+   *
+   */
+  public function testGetYearGroupStudents()
+  {
+  }
 
-    /**
-     * Test case for getYearGroups
-     *
-     * List Year Groups.
-     *
-     */
-    public function testGetYearGroups()
-    {
-    }
+  /**
+   * Test case for getYearGroups
+   *
+   * List Year Groups.
+   *
+   */
+  public function testGetYearGroups()
+  {
+  }
 
-    /**
-     * Test case for status
-     *
-     * Get School Sync Status.
-     *
-     */
-    public function testStatus()
-    {
-    }
+  /**
+   * Test case for status
+   *
+   * Get School Sync Status.
+   *
+   */
+  public function testStatus()
+  {
+  }
 
-    /**
-     * Test case for updateResults
-     *
-     * Update a Single Result.
-     *
-     */
-    public function testUpdateResults()
-    {
-    }
+  /**
+   * Test case for updateResults
+   *
+   * Update a Single Result.
+   *
+   */
+  public function testUpdateResults()
+  {
+  }
 }

@@ -28,471 +28,471 @@ use \Assembly\Client\ObjectSerializer;
  */
 class CalendarEvent implements ModelInterface, ArrayAccess
 {
-    const DISCRIMINATOR = null;
+  const DISCRIMINATOR = null;
 
-    /**
-      * The original name of the model.
-      *
-      * @var string
-      */
-    protected static $swaggerModelName = 'CalendarEvent';
+  /**
+    * The original name of the model.
+    *
+    * @var string
+    */
+  protected static $swaggerModelName = 'CalendarEvent';
 
-    /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
-    protected static $swaggerTypes = [
-        'id' => 'int',
-        'name' => 'string',
-        'description' => 'string',
-        'start_date' => '\DateTime',
-        'end_date' => '\DateTime',
-        'is_active' => 'bool',
-        'is_recurrent' => 'bool',
-        'mis_type' => '\Assembly\Client\Model\CalendarEventMisType'
-    ];
+  /**
+    * Array of property to type mappings. Used for (de)serialization
+    *
+    * @var string[]
+    */
+  protected static $swaggerTypes = [
+    'id' => 'int',
+    'name' => 'string',
+    'description' => 'string',
+    'start_date' => '\DateTime',
+    'end_date' => '\DateTime',
+    'is_active' => 'bool',
+    'is_recurrent' => 'bool',
+    'mis_type' => '\Assembly\Client\Model\CalendarEventMisType'
+  ];
 
-    /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
-    protected static $swaggerFormats = [
-        'id' => 'int32',
-        'name' => null,
-        'description' => null,
-        'start_date' => 'date-time',
-        'end_date' => 'date-time',
-        'is_active' => null,
-        'is_recurrent' => null,
-        'mis_type' => null
-    ];
+  /**
+    * Array of property to format mappings. Used for (de)serialization
+    *
+    * @var string[]
+    */
+  protected static $swaggerFormats = [
+    'id' => 'int32',
+    'name' => null,
+    'description' => null,
+    'start_date' => 'date-time',
+    'end_date' => 'date-time',
+    'is_active' => null,
+    'is_recurrent' => null,
+    'mis_type' => null
+  ];
 
-    /**
-     * Array of property to type mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function swaggerTypes()
-    {
-        return self::$swaggerTypes;
+  /**
+   * Array of property to type mappings. Used for (de)serialization
+   *
+   * @return array
+   */
+  public static function swaggerTypes()
+  {
+    return self::$swaggerTypes;
+  }
+
+  /**
+   * Array of property to format mappings. Used for (de)serialization
+   *
+   * @return array
+   */
+  public static function swaggerFormats()
+  {
+    return self::$swaggerFormats;
+  }
+
+  /**
+   * Array of attributes where the key is the local name,
+   * and the value is the original name
+   *
+   * @var string[]
+   */
+  protected static $attributeMap = [
+    'id' => 'id',
+    'name' => 'name',
+    'description' => 'description',
+    'start_date' => 'start_date',
+    'end_date' => 'end_date',
+    'is_active' => 'is_active',
+    'is_recurrent' => 'is_recurrent',
+    'mis_type' => 'mis_type'
+  ];
+
+  /**
+   * Array of attributes to setter functions (for deserialization of responses)
+   *
+   * @var string[]
+   */
+  protected static $setters = [
+    'id' => 'setId',
+    'name' => 'setName',
+    'description' => 'setDescription',
+    'start_date' => 'setStartDate',
+    'end_date' => 'setEndDate',
+    'is_active' => 'setIsActive',
+    'is_recurrent' => 'setIsRecurrent',
+    'mis_type' => 'setMisType'
+  ];
+
+  /**
+   * Array of attributes to getter functions (for serialization of requests)
+   *
+   * @var string[]
+   */
+  protected static $getters = [
+    'id' => 'getId',
+    'name' => 'getName',
+    'description' => 'getDescription',
+    'start_date' => 'getStartDate',
+    'end_date' => 'getEndDate',
+    'is_active' => 'getIsActive',
+    'is_recurrent' => 'getIsRecurrent',
+    'mis_type' => 'getMisType'
+  ];
+
+  /**
+   * Array of attributes where the key is the local name,
+   * and the value is the original name
+   *
+   * @return array
+   */
+  public static function attributeMap()
+  {
+    return self::$attributeMap;
+  }
+
+  /**
+   * Array of attributes to setter functions (for deserialization of responses)
+   *
+   * @return array
+   */
+  public static function setters()
+  {
+    return self::$setters;
+  }
+
+  /**
+   * Array of attributes to getter functions (for serialization of requests)
+   *
+   * @return array
+   */
+  public static function getters()
+  {
+    return self::$getters;
+  }
+
+  /**
+   * The original name of the model.
+   *
+   * @return string
+   */
+  public function getModelName()
+  {
+    return self::$swaggerModelName;
+  }
+
+  
+
+  
+
+  /**
+   * Associative array for storing property values
+   *
+   * @var mixed[]
+   */
+  protected $container = [];
+
+  /**
+   * Constructor
+   *
+   * @param mixed[] $data Associated array of property values
+   *                      initializing the model
+   */
+  public function __construct(array $data = null)
+  {
+    $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+    $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+    $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+    $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
+    $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
+    $this->container['is_active'] = isset($data['is_active']) ? $data['is_active'] : null;
+    $this->container['is_recurrent'] = isset($data['is_recurrent']) ? $data['is_recurrent'] : null;
+    $this->container['mis_type'] = isset($data['mis_type']) ? $data['mis_type'] : null;
+  }
+
+  /**
+   * Show all the invalid properties with reasons.
+   *
+   * @return array invalid properties with reasons
+   */
+  public function listInvalidProperties()
+  {
+    $invalidProperties = [];
+
+    return $invalidProperties;
+  }
+
+  /**
+   * Validate all the properties in the model
+   * return true if all passed
+   *
+   * @return bool True if all properties are valid
+   */
+  public function valid()
+  {
+
+    return true;
+  }
+
+
+  /**
+   * Gets id
+   *
+   * @return int
+   */
+  public function getId()
+  {
+    return $this->container['id'];
+  }
+
+  /**
+   * Sets id
+   *
+   * @param int $id id
+   *
+   * @return $this
+   */
+  public function setId($id)
+  {
+    $this->container['id'] = $id;
+
+    return $this;
+  }
+
+  /**
+   * Gets name
+   *
+   * @return string
+   */
+  public function getName()
+  {
+    return $this->container['name'];
+  }
+
+  /**
+   * Sets name
+   *
+   * @param string $name name
+   *
+   * @return $this
+   */
+  public function setName($name)
+  {
+    $this->container['name'] = $name;
+
+    return $this;
+  }
+
+  /**
+   * Gets description
+   *
+   * @return string
+   */
+  public function getDescription()
+  {
+    return $this->container['description'];
+  }
+
+  /**
+   * Sets description
+   *
+   * @param string $description description
+   *
+   * @return $this
+   */
+  public function setDescription($description)
+  {
+    $this->container['description'] = $description;
+
+    return $this;
+  }
+
+  /**
+   * Gets start_date
+   *
+   * @return \DateTime
+   */
+  public function getStartDate()
+  {
+    return $this->container['start_date'];
+  }
+
+  /**
+   * Sets start_date
+   *
+   * @param \DateTime $start_date start_date
+   *
+   * @return $this
+   */
+  public function setStartDate($start_date)
+  {
+    $this->container['start_date'] = $start_date;
+
+    return $this;
+  }
+
+  /**
+   * Gets end_date
+   *
+   * @return \DateTime
+   */
+  public function getEndDate()
+  {
+    return $this->container['end_date'];
+  }
+
+  /**
+   * Sets end_date
+   *
+   * @param \DateTime $end_date end_date
+   *
+   * @return $this
+   */
+  public function setEndDate($end_date)
+  {
+    $this->container['end_date'] = $end_date;
+
+    return $this;
+  }
+
+  /**
+   * Gets is_active
+   *
+   * @return bool
+   */
+  public function getIsActive()
+  {
+    return $this->container['is_active'];
+  }
+
+  /**
+   * Sets is_active
+   *
+   * @param bool $is_active is_active
+   *
+   * @return $this
+   */
+  public function setIsActive($is_active)
+  {
+    $this->container['is_active'] = $is_active;
+
+    return $this;
+  }
+
+  /**
+   * Gets is_recurrent
+   *
+   * @return bool
+   */
+  public function getIsRecurrent()
+  {
+    return $this->container['is_recurrent'];
+  }
+
+  /**
+   * Sets is_recurrent
+   *
+   * @param bool $is_recurrent is_recurrent
+   *
+   * @return $this
+   */
+  public function setIsRecurrent($is_recurrent)
+  {
+    $this->container['is_recurrent'] = $is_recurrent;
+
+    return $this;
+  }
+
+  /**
+   * Gets mis_type
+   *
+   * @return \Assembly\Client\Model\CalendarEventMisType
+   */
+  public function getMisType()
+  {
+    return $this->container['mis_type'];
+  }
+
+  /**
+   * Sets mis_type
+   *
+   * @param \Assembly\Client\Model\CalendarEventMisType $mis_type mis_type
+   *
+   * @return $this
+   */
+  public function setMisType($mis_type)
+  {
+    $this->container['mis_type'] = $mis_type;
+
+    return $this;
+  }
+  /**
+   * Returns true if offset exists. False otherwise.
+   *
+   * @param integer $offset Offset
+   *
+   * @return boolean
+   */
+  public function offsetExists($offset)
+  {
+    return isset($this->container[$offset]);
+  }
+
+  /**
+   * Gets offset.
+   *
+   * @param integer $offset Offset
+   *
+   * @return mixed
+   */
+  public function offsetGet($offset)
+  {
+    return isset($this->container[$offset]) ? $this->container[$offset] : null;
+  }
+
+  /**
+   * Sets value based on offset.
+   *
+   * @param integer $offset Offset
+   * @param mixed   $value  Value to be set
+   *
+   * @return void
+   */
+  public function offsetSet($offset, $value)
+  {
+    if (is_null($offset)) {
+      $this->container[] = $value;
+    } else {
+      $this->container[$offset] = $value;
+    }
+  }
+
+  /**
+   * Unsets offset.
+   *
+   * @param integer $offset Offset
+   *
+   * @return void
+   */
+  public function offsetUnset($offset)
+  {
+    unset($this->container[$offset]);
+  }
+
+  /**
+   * Gets the string presentation of the object
+   *
+   * @return string
+   */
+  public function __toString()
+  {
+    if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
+      return json_encode(
+        ObjectSerializer::sanitizeForSerialization($this),
+        JSON_PRETTY_PRINT
+      );
     }
 
-    /**
-     * Array of property to format mappings. Used for (de)serialization
-     *
-     * @return array
-     */
-    public static function swaggerFormats()
-    {
-        return self::$swaggerFormats;
-    }
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @var string[]
-     */
-    protected static $attributeMap = [
-        'id' => 'id',
-        'name' => 'name',
-        'description' => 'description',
-        'start_date' => 'start_date',
-        'end_date' => 'end_date',
-        'is_active' => 'is_active',
-        'is_recurrent' => 'is_recurrent',
-        'mis_type' => 'mis_type'
-    ];
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @var string[]
-     */
-    protected static $setters = [
-        'id' => 'setId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'start_date' => 'setStartDate',
-        'end_date' => 'setEndDate',
-        'is_active' => 'setIsActive',
-        'is_recurrent' => 'setIsRecurrent',
-        'mis_type' => 'setMisType'
-    ];
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @var string[]
-     */
-    protected static $getters = [
-        'id' => 'getId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'start_date' => 'getStartDate',
-        'end_date' => 'getEndDate',
-        'is_active' => 'getIsActive',
-        'is_recurrent' => 'getIsRecurrent',
-        'mis_type' => 'getMisType'
-    ];
-
-    /**
-     * Array of attributes where the key is the local name,
-     * and the value is the original name
-     *
-     * @return array
-     */
-    public static function attributeMap()
-    {
-        return self::$attributeMap;
-    }
-
-    /**
-     * Array of attributes to setter functions (for deserialization of responses)
-     *
-     * @return array
-     */
-    public static function setters()
-    {
-        return self::$setters;
-    }
-
-    /**
-     * Array of attributes to getter functions (for serialization of requests)
-     *
-     * @return array
-     */
-    public static function getters()
-    {
-        return self::$getters;
-    }
-
-    /**
-     * The original name of the model.
-     *
-     * @return string
-     */
-    public function getModelName()
-    {
-        return self::$swaggerModelName;
-    }
-
-    
-
-    
-
-    /**
-     * Associative array for storing property values
-     *
-     * @var mixed[]
-     */
-    protected $container = [];
-
-    /**
-     * Constructor
-     *
-     * @param mixed[] $data Associated array of property values
-     *                      initializing the model
-     */
-    public function __construct(array $data = null)
-    {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
-        $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
-        $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
-        $this->container['is_active'] = isset($data['is_active']) ? $data['is_active'] : null;
-        $this->container['is_recurrent'] = isset($data['is_recurrent']) ? $data['is_recurrent'] : null;
-        $this->container['mis_type'] = isset($data['mis_type']) ? $data['mis_type'] : null;
-    }
-
-    /**
-     * Show all the invalid properties with reasons.
-     *
-     * @return array invalid properties with reasons
-     */
-    public function listInvalidProperties()
-    {
-        $invalidProperties = [];
-
-        return $invalidProperties;
-    }
-
-    /**
-     * Validate all the properties in the model
-     * return true if all passed
-     *
-     * @return bool True if all properties are valid
-     */
-    public function valid()
-    {
-
-        return true;
-    }
-
-
-    /**
-     * Gets id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param int $id id
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name name
-     *
-     * @return $this
-     */
-    public function setName($name)
-    {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string $description description
-     *
-     * @return $this
-     */
-    public function setDescription($description)
-    {
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets start_date
-     *
-     * @return \DateTime
-     */
-    public function getStartDate()
-    {
-        return $this->container['start_date'];
-    }
-
-    /**
-     * Sets start_date
-     *
-     * @param \DateTime $start_date start_date
-     *
-     * @return $this
-     */
-    public function setStartDate($start_date)
-    {
-        $this->container['start_date'] = $start_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets end_date
-     *
-     * @return \DateTime
-     */
-    public function getEndDate()
-    {
-        return $this->container['end_date'];
-    }
-
-    /**
-     * Sets end_date
-     *
-     * @param \DateTime $end_date end_date
-     *
-     * @return $this
-     */
-    public function setEndDate($end_date)
-    {
-        $this->container['end_date'] = $end_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_active
-     *
-     * @return bool
-     */
-    public function getIsActive()
-    {
-        return $this->container['is_active'];
-    }
-
-    /**
-     * Sets is_active
-     *
-     * @param bool $is_active is_active
-     *
-     * @return $this
-     */
-    public function setIsActive($is_active)
-    {
-        $this->container['is_active'] = $is_active;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_recurrent
-     *
-     * @return bool
-     */
-    public function getIsRecurrent()
-    {
-        return $this->container['is_recurrent'];
-    }
-
-    /**
-     * Sets is_recurrent
-     *
-     * @param bool $is_recurrent is_recurrent
-     *
-     * @return $this
-     */
-    public function setIsRecurrent($is_recurrent)
-    {
-        $this->container['is_recurrent'] = $is_recurrent;
-
-        return $this;
-    }
-
-    /**
-     * Gets mis_type
-     *
-     * @return \Assembly\Client\Model\CalendarEventMisType
-     */
-    public function getMisType()
-    {
-        return $this->container['mis_type'];
-    }
-
-    /**
-     * Sets mis_type
-     *
-     * @param \Assembly\Client\Model\CalendarEventMisType $mis_type mis_type
-     *
-     * @return $this
-     */
-    public function setMisType($mis_type)
-    {
-        $this->container['mis_type'] = $mis_type;
-
-        return $this;
-    }
-    /**
-     * Returns true if offset exists. False otherwise.
-     *
-     * @param integer $offset Offset
-     *
-     * @return boolean
-     */
-    public function offsetExists($offset)
-    {
-        return isset($this->container[$offset]);
-    }
-
-    /**
-     * Gets offset.
-     *
-     * @param integer $offset Offset
-     *
-     * @return mixed
-     */
-    public function offsetGet($offset)
-    {
-        return isset($this->container[$offset]) ? $this->container[$offset] : null;
-    }
-
-    /**
-     * Sets value based on offset.
-     *
-     * @param integer $offset Offset
-     * @param mixed   $value  Value to be set
-     *
-     * @return void
-     */
-    public function offsetSet($offset, $value)
-    {
-        if (is_null($offset)) {
-            $this->container[] = $value;
-        } else {
-            $this->container[$offset] = $value;
-        }
-    }
-
-    /**
-     * Unsets offset.
-     *
-     * @param integer $offset Offset
-     *
-     * @return void
-     */
-    public function offsetUnset($offset)
-    {
-        unset($this->container[$offset]);
-    }
-
-    /**
-     * Gets the string presentation of the object
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(
-                ObjectSerializer::sanitizeForSerialization($this),
-                JSON_PRETTY_PRINT
-            );
-        }
-
-        return json_encode(ObjectSerializer::sanitizeForSerialization($this));
-    }
+    return json_encode(ObjectSerializer::sanitizeForSerialization($this));
+  }
 }
 
 

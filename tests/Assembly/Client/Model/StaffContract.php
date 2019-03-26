@@ -28,143 +28,143 @@ namespace Assembly\Client;
 class StaffContractTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "StaffContract"
-     */
-    public function testStaffContract()
-    {
-    }
+  /**
+   * Test "StaffContract"
+   */
+  public function testStaffContract()
+  {
+  }
 
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
+  {
+  }
 
-    /**
-     * Test attribute "staff_member_id"
-     */
-    public function testPropertyStaffMemberId()
-    {
-    }
+  /**
+   * Test attribute "staff_member_id"
+   */
+  public function testPropertyStaffMemberId()
+  {
+  }
 
-    /**
-     * Test attribute "start_date"
-     */
-    public function testPropertyStartDate()
-    {
-    }
+  /**
+   * Test attribute "start_date"
+   */
+  public function testPropertyStartDate()
+  {
+  }
 
-    /**
-     * Test attribute "end_date"
-     */
-    public function testPropertyEndDate()
-    {
-    }
+  /**
+   * Test attribute "end_date"
+   */
+  public function testPropertyEndDate()
+  {
+  }
 
-    /**
-     * Test attribute "national_insurance_number"
-     */
-    public function testPropertyNationalInsuranceNumber()
-    {
-    }
+  /**
+   * Test attribute "national_insurance_number"
+   */
+  public function testPropertyNationalInsuranceNumber()
+  {
+  }
 
-    /**
-     * Test attribute "payroll_number"
-     */
-    public function testPropertyPayrollNumber()
-    {
-    }
+  /**
+   * Test attribute "payroll_number"
+   */
+  public function testPropertyPayrollNumber()
+  {
+  }
 
-    /**
-     * Test attribute "contract_type"
-     */
-    public function testPropertyContractType()
-    {
-    }
+  /**
+   * Test attribute "contract_type"
+   */
+  public function testPropertyContractType()
+  {
+  }
 
-    /**
-     * Test attribute "post"
-     */
-    public function testPropertyPost()
-    {
-    }
+  /**
+   * Test attribute "post"
+   */
+  public function testPropertyPost()
+  {
+  }
 
-    /**
-     * Test attribute "origin"
-     */
-    public function testPropertyOrigin()
-    {
-    }
+  /**
+   * Test attribute "origin"
+   */
+  public function testPropertyOrigin()
+  {
+  }
 
-    /**
-     * Test attribute "destination"
-     */
-    public function testPropertyDestination()
-    {
-    }
+  /**
+   * Test attribute "destination"
+   */
+  public function testPropertyDestination()
+  {
+  }
 
-    /**
-     * Test attribute "daily_rate"
-     */
-    public function testPropertyDailyRate()
-    {
-    }
+  /**
+   * Test attribute "daily_rate"
+   */
+  public function testPropertyDailyRate()
+  {
+  }
 
-    /**
-     * Test attribute "pay_review_date"
-     */
-    public function testPropertyPayReviewDate()
-    {
-    }
+  /**
+   * Test attribute "pay_review_date"
+   */
+  public function testPropertyPayReviewDate()
+  {
+  }
 
-    /**
-     * Test attribute "roles"
-     */
-    public function testPropertyRoles()
-    {
-    }
+  /**
+   * Test attribute "roles"
+   */
+  public function testPropertyRoles()
+  {
+  }
 
-    /**
-     * Test attribute "salaries"
-     */
-    public function testPropertySalaries()
-    {
-    }
+  /**
+   * Test attribute "salaries"
+   */
+  public function testPropertySalaries()
+  {
+  }
 
-    /**
-     * Test attribute "allowances"
-     */
-    public function testPropertyAllowances()
-    {
-    }
+  /**
+   * Test attribute "allowances"
+   */
+  public function testPropertyAllowances()
+  {
+  }
 }

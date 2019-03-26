@@ -28,45 +28,45 @@ namespace Assembly\Client;
 class BulkResultsBodyTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "BulkResultsBody"
-     */
-    public function testBulkResultsBody()
-    {
-    }
+  /**
+   * Test "BulkResultsBody"
+   */
+  public function testBulkResultsBody()
+  {
+  }
 
-    /**
-     * Test attribute "results"
-     */
-    public function testPropertyResults()
-    {
-    }
+  /**
+   * Test attribute "results"
+   */
+  public function testPropertyResults()
+  {
+  }
 }

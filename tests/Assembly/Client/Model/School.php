@@ -28,115 +28,115 @@ namespace Assembly\Client;
 class SchoolTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "School"
-     */
-    public function testSchool()
-    {
-    }
+  /**
+   * Test "School"
+   */
+  public function testSchool()
+  {
+  }
 
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-    }
+  /**
+   * Test attribute "name"
+   */
+  public function testPropertyName()
+  {
+  }
 
-    /**
-     * Test attribute "urn"
-     */
-    public function testPropertyUrn()
-    {
-    }
+  /**
+   * Test attribute "urn"
+   */
+  public function testPropertyUrn()
+  {
+  }
 
-    /**
-     * Test attribute "la_code"
-     */
-    public function testPropertyLaCode()
-    {
-    }
+  /**
+   * Test attribute "la_code"
+   */
+  public function testPropertyLaCode()
+  {
+  }
 
-    /**
-     * Test attribute "la_name"
-     */
-    public function testPropertyLaName()
-    {
-    }
+  /**
+   * Test attribute "la_name"
+   */
+  public function testPropertyLaName()
+  {
+  }
 
-    /**
-     * Test attribute "establishment_number"
-     */
-    public function testPropertyEstablishmentNumber()
-    {
-    }
+  /**
+   * Test attribute "establishment_number"
+   */
+  public function testPropertyEstablishmentNumber()
+  {
+  }
 
-    /**
-     * Test attribute "establishment_type"
-     */
-    public function testPropertyEstablishmentType()
-    {
-    }
+  /**
+   * Test attribute "establishment_type"
+   */
+  public function testPropertyEstablishmentType()
+  {
+  }
 
-    /**
-     * Test attribute "phase"
-     */
-    public function testPropertyPhase()
-    {
-    }
+  /**
+   * Test attribute "phase"
+   */
+  public function testPropertyPhase()
+  {
+  }
 
-    /**
-     * Test attribute "street"
-     */
-    public function testPropertyStreet()
-    {
-    }
+  /**
+   * Test attribute "street"
+   */
+  public function testPropertyStreet()
+  {
+  }
 
-    /**
-     * Test attribute "town"
-     */
-    public function testPropertyTown()
-    {
-    }
+  /**
+   * Test attribute "town"
+   */
+  public function testPropertyTown()
+  {
+  }
 
-    /**
-     * Test attribute "postcode"
-     */
-    public function testPropertyPostcode()
-    {
-    }
+  /**
+   * Test attribute "postcode"
+   */
+  public function testPropertyPostcode()
+  {
+  }
 
-    /**
-     * Test attribute "head_teacher"
-     */
-    public function testPropertyHeadTeacher()
-    {
-    }
+  /**
+   * Test attribute "head_teacher"
+   */
+  public function testPropertyHeadTeacher()
+  {
+  }
 }

@@ -28,59 +28,59 @@ namespace Assembly\Client;
 class ApiResponseTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "ApiResponse"
-     */
-    public function testApiResponse()
-    {
-    }
+  /**
+   * Test "ApiResponse"
+   */
+  public function testApiResponse()
+  {
+  }
 
-    /**
-     * Test attribute "message"
-     */
-    public function testPropertyMessage()
-    {
-    }
+  /**
+   * Test attribute "message"
+   */
+  public function testPropertyMessage()
+  {
+  }
 
-    /**
-     * Test attribute "data"
-     */
-    public function testPropertyData()
-    {
-    }
+  /**
+   * Test attribute "data"
+   */
+  public function testPropertyData()
+  {
+  }
 
-    /**
-     * Test attribute "errors"
-     */
-    public function testPropertyErrors()
-    {
-    }
+  /**
+   * Test attribute "errors"
+   */
+  public function testPropertyErrors()
+  {
+  }
 }

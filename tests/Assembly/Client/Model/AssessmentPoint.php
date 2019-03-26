@@ -28,66 +28,66 @@ namespace Assembly\Client;
 class AssessmentPointTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "AssessmentPoint"
-     */
-    public function testAssessmentPoint()
-    {
-    }
+  /**
+   * Test "AssessmentPoint"
+   */
+  public function testAssessmentPoint()
+  {
+  }
 
-    /**
-     * Test attribute "rank"
-     */
-    public function testPropertyRank()
-    {
-    }
+  /**
+   * Test attribute "rank"
+   */
+  public function testPropertyRank()
+  {
+  }
 
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-    }
+  /**
+   * Test attribute "name"
+   */
+  public function testPropertyName()
+  {
+  }
 
-    /**
-     * Test attribute "type"
-     */
-    public function testPropertyType()
-    {
-    }
+  /**
+   * Test attribute "type"
+   */
+  public function testPropertyType()
+  {
+  }
 
-    /**
-     * Test attribute "year_code"
-     */
-    public function testPropertyYearCode()
-    {
-    }
+  /**
+   * Test attribute "year_code"
+   */
+  public function testPropertyYearCode()
+  {
+  }
 }

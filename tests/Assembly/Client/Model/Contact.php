@@ -28,108 +28,108 @@ namespace Assembly\Client;
 class ContactTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "Contact"
-     */
-    public function testContact()
-    {
-    }
+  /**
+   * Test "Contact"
+   */
+  public function testContact()
+  {
+  }
 
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
+  {
+  }
 
-    /**
-     * Test attribute "first_name"
-     */
-    public function testPropertyFirstName()
-    {
-    }
+  /**
+   * Test attribute "first_name"
+   */
+  public function testPropertyFirstName()
+  {
+  }
 
-    /**
-     * Test attribute "middle_name"
-     */
-    public function testPropertyMiddleName()
-    {
-    }
+  /**
+   * Test attribute "middle_name"
+   */
+  public function testPropertyMiddleName()
+  {
+  }
 
-    /**
-     * Test attribute "last_name"
-     */
-    public function testPropertyLastName()
-    {
-    }
+  /**
+   * Test attribute "last_name"
+   */
+  public function testPropertyLastName()
+  {
+  }
 
-    /**
-     * Test attribute "gender"
-     */
-    public function testPropertyGender()
-    {
-    }
+  /**
+   * Test attribute "gender"
+   */
+  public function testPropertyGender()
+  {
+  }
 
-    /**
-     * Test attribute "title"
-     */
-    public function testPropertyTitle()
-    {
-    }
+  /**
+   * Test attribute "title"
+   */
+  public function testPropertyTitle()
+  {
+  }
 
-    /**
-     * Test attribute "salutation"
-     */
-    public function testPropertySalutation()
-    {
-    }
+  /**
+   * Test attribute "salutation"
+   */
+  public function testPropertySalutation()
+  {
+  }
 
-    /**
-     * Test attribute "emails"
-     */
-    public function testPropertyEmails()
-    {
-    }
+  /**
+   * Test attribute "emails"
+   */
+  public function testPropertyEmails()
+  {
+  }
 
-    /**
-     * Test attribute "telephone_numbers"
-     */
-    public function testPropertyTelephoneNumbers()
-    {
-    }
+  /**
+   * Test attribute "telephone_numbers"
+   */
+  public function testPropertyTelephoneNumbers()
+  {
+  }
 
-    /**
-     * Test attribute "students"
-     */
-    public function testPropertyStudents()
-    {
-    }
+  /**
+   * Test attribute "students"
+   */
+  public function testPropertyStudents()
+  {
+  }
 }

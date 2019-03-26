@@ -68,18 +68,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $bulk_results_body = new \Assembly\Client\Model\BulkResultsBody(); // \Assembly\Client\Model\BulkResultsBody | 
 
 try {
-    $result = $apiInstance->bulkUpdateResults($bulk_results_body);
-    print_r($result);
+  $result = $apiInstance->bulkUpdateResults($bulk_results_body);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->bulkUpdateResults: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->bulkUpdateResults: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -121,18 +121,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $result_body = new \Assembly\Client\Model\ResultBody(); // \Assembly\Client\Model\ResultBody | 
 
 try {
-    $result = $apiInstance->createResult($result_body);
-    print_r($result);
+  $result = $apiInstance->createResult($result_body);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->createResult: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->createResult: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -174,18 +174,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 
 try {
-    $result = $apiInstance->findAcademicYear($id);
-    print_r($result);
+  $result = $apiInstance->findAcademicYear($id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findAcademicYear: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findAcademicYear: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -227,18 +227,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 
 try {
-    $result = $apiInstance->findAssessment($id);
-    print_r($result);
+  $result = $apiInstance->findAssessment($id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findAssessment: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findAssessment: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -280,18 +280,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 
 try {
-    $result = $apiInstance->findAssessmentGradeSet($id);
-    print_r($result);
+  $result = $apiInstance->findAssessmentGradeSet($id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findAssessmentGradeSet: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findAssessmentGradeSet: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -333,18 +333,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 
 try {
-    $result = $apiInstance->findAssessmentPoint($id);
-    print_r($result);
+  $result = $apiInstance->findAssessmentPoint($id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findAssessmentPoint: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findAssessmentPoint: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -386,18 +386,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 
 try {
-    $result = $apiInstance->findDietaryNeed($id);
-    print_r($result);
+  $result = $apiInstance->findDietaryNeed($id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findDietaryNeed: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findDietaryNeed: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -439,18 +439,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 
 try {
-    $result = $apiInstance->findFacet($id);
-    print_r($result);
+  $result = $apiInstance->findFacet($id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findFacet: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findFacet: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -492,18 +492,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 
 try {
-    $result = $apiInstance->findGradeSet($id);
-    print_r($result);
+  $result = $apiInstance->findGradeSet($id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findGradeSet: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findGradeSet: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -545,18 +545,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 
 try {
-    $result = $apiInstance->findMedicalCondition($id);
-    print_r($result);
+  $result = $apiInstance->findMedicalCondition($id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findMedicalCondition: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findMedicalCondition: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -598,20 +598,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | returns results for a specific date
 $academic_year_id = 56; // int | returns all groups and group memberships from the specified academic year
 
 try {
-    $result = $apiInstance->findRegistrationGroup($id, $date, $academic_year_id);
-    print_r($result);
+  $result = $apiInstance->findRegistrationGroup($id, $date, $academic_year_id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findRegistrationGroup: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findRegistrationGroup: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -655,18 +655,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 
 try {
-    $result = $apiInstance->findSchool($id);
-    print_r($result);
+  $result = $apiInstance->findSchool($id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findSchool: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findSchool: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -708,20 +708,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 $demographics = True; // bool | include demographics data
 $qualifications = True; // bool | include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 
 try {
-    $result = $apiInstance->findStaffMember($id, $demographics, $qualifications);
-    print_r($result);
+  $result = $apiInstance->findStaffMember($id, $demographics, $qualifications);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findStaffMember: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findStaffMember: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -765,10 +765,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 $demographics = True; // bool | include demographics data
@@ -781,10 +781,10 @@ $languages = True; // bool | include student language data
 $photo = True; // bool | include student photo data
 
 try {
-    $result = $apiInstance->findStudent($id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
-    print_r($result);
+  $result = $apiInstance->findStudent($id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findStudent: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findStudent: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -834,10 +834,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | returns results for a specific date
@@ -845,10 +845,10 @@ $academic_year_id = 56; // int | returns all groups and group memberships from t
 $group_id = 56; // int | a group_id to filter by
 
 try {
-    $result = $apiInstance->findTeachingGroup($id, $date, $academic_year_id, $group_id);
-    print_r($result);
+  $result = $apiInstance->findTeachingGroup($id, $date, $academic_year_id, $group_id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findTeachingGroup: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findTeachingGroup: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -893,20 +893,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | returns results for a specific date
 $academic_year_id = 56; // int | returns all groups and group memberships from the specified academic year
 
 try {
-    $result = $apiInstance->findYearGroup($id, $date, $academic_year_id);
-    print_r($result);
+  $result = $apiInstance->findYearGroup($id, $date, $academic_year_id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->findYearGroup: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->findYearGroup: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -950,19 +950,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getAcademicYears($per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getAcademicYears($per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getAcademicYears: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getAcademicYears: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1005,20 +1005,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 $students = array(56); // int[] | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
 $assessment_point_rank = 56; // int | the Assessment Point rank
 
 try {
-    $result = $apiInstance->getAssessmentPointResults($id, $students, $assessment_point_rank);
-    print_r($result);
+  $result = $apiInstance->getAssessmentPointResults($id, $students, $assessment_point_rank);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getAssessmentPointResults: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getAssessmentPointResults: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1062,19 +1062,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getAssessmentPoints($per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getAssessmentPoints($per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getAssessmentPoints: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getAssessmentPoints: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1117,19 +1117,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 $students = array(56); // int[] | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
 
 try {
-    $result = $apiInstance->getAssessmentResults($id, $students);
-    print_r($result);
+  $result = $apiInstance->getAssessmentResults($id, $students);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getAssessmentResults: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getAssessmentResults: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1172,19 +1172,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $student_id = 56; // int | a student_id to filter by
 $registration_group_id = 56; // int | id of a registration group
 
 try {
-    $result = $apiInstance->getAssessmentSummaries($student_id, $registration_group_id);
-    print_r($result);
+  $result = $apiInstance->getAssessmentSummaries($student_id, $registration_group_id);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getAssessmentSummaries: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getAssessmentSummaries: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1227,19 +1227,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getAssessments($per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getAssessments($per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getAssessments: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getAssessments: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1282,10 +1282,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $student_id = 56; // int | a student_id to filter by
 $registration_group_id = 56; // int | id of a registration group
@@ -1295,10 +1295,10 @@ $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getAttendances($student_id, $registration_group_id, $start_date, $end_date, $per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getAttendances($student_id, $registration_group_id, $start_date, $end_date, $per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getAttendances: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getAttendances: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1345,20 +1345,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $event_type = 'event_type_example'; // string | a calendar object type from the underlying MIS
 $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getCalendarEvents($event_type, $per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getCalendarEvents($event_type, $per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getCalendarEvents: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getCalendarEvents: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1402,20 +1402,20 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $student_id = 56; // int | a student_id to filter by
 $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getContacts($student_id, $per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getContacts($student_id, $per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getContacts: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getContacts: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1459,19 +1459,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getDietaryNeeds($per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getDietaryNeeds($per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getDietaryNeeds: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getDietaryNeeds: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1514,10 +1514,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $student_id = 56; // int | a student_id to filter by
 $start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | the start date of the period to query
@@ -1526,10 +1526,10 @@ $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getExclusions($student_id, $start_date, $end_date, $per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getExclusions($student_id, $start_date, $end_date, $per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getExclusions: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getExclusions: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1575,19 +1575,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getFacets($per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getFacets($per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getFacets: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getFacets: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1630,19 +1630,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getGradeSets($per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getGradeSets($per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getGradeSets: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getGradeSets: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1685,10 +1685,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
 $teachers_only = True; // bool | return only staff who are teachers
@@ -1696,10 +1696,10 @@ $demographics = True; // bool | include demographics data
 $qualifications = True; // bool | include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 
 try {
-    $result = $apiInstance->getLeftStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications);
-    print_r($result);
+  $result = $apiInstance->getLeftStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getLeftStaffMembers: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getLeftStaffMembers: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1744,18 +1744,18 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
 
 try {
-    $result = $apiInstance->getLeftStudents($if_modified_since);
-    print_r($result);
+  $result = $apiInstance->getLeftStudents($if_modified_since);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getLeftStudents: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getLeftStudents: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1797,19 +1797,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getMedicalConditions($per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getMedicalConditions($per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getMedicalConditions: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getMedicalConditions: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1852,10 +1852,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
@@ -1871,10 +1871,10 @@ $languages = True; // bool | include student language data
 $photo = True; // bool | include student photo data
 
 try {
-    $result = $apiInstance->getRegistrationGroupStudents($id, $if_modified_since, $date, $academic_year_id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
-    print_r($result);
+  $result = $apiInstance->getRegistrationGroupStudents($id, $if_modified_since, $date, $academic_year_id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getRegistrationGroupStudents: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getRegistrationGroupStudents: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1927,10 +1927,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
 $year_code = 56; // int | filter by school year (cannot be supplied at the same time as the students parameter)
@@ -1940,10 +1940,10 @@ $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getRegistrationGroups($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getRegistrationGroups($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getRegistrationGroups: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getRegistrationGroups: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -1990,10 +1990,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $students = array(56); // int[] | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
@@ -2001,10 +2001,10 @@ $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getResults($students, $if_modified_since, $per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getResults($students, $if_modified_since, $per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getResults: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getResults: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -2049,10 +2049,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
 $staff_member_id = 56; // int | show only absences fot the specified staff member
@@ -2062,10 +2062,10 @@ $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getStaffAbsences($if_modified_since, $staff_member_id, $start_date, $qualifications, $per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getStaffAbsences($if_modified_since, $staff_member_id, $start_date, $qualifications, $per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getStaffAbsences: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getStaffAbsences: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -2112,10 +2112,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
 $staff_member_id = 56; // int | show only absences fot the specified staff member
@@ -2127,10 +2127,10 @@ $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getStaffContracts($if_modified_since, $staff_member_id, $date, $roles, $salaries, $allowances, $per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getStaffContracts($if_modified_since, $staff_member_id, $date, $roles, $salaries, $allowances, $per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getStaffContracts: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getStaffContracts: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -2179,10 +2179,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
 $teachers_only = True; // bool | return only staff who are teachers
@@ -2192,10 +2192,10 @@ $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getStaffMembers: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getStaffMembers: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -2242,10 +2242,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
 $students = array(56); // int[] | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded).
@@ -2263,10 +2263,10 @@ $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getStudents($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getStudents($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getStudents: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getStudents: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -2321,19 +2321,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getSubjects($per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getSubjects($per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getSubjects: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getSubjects: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -2376,10 +2376,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
@@ -2393,10 +2393,10 @@ $languages = True; // bool | include student language data
 $photo = True; // bool | include student photo data
 
 try {
-    $result = $apiInstance->getTeachingGroupStudents($id, $if_modified_since, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
-    print_r($result);
+  $result = $apiInstance->getTeachingGroupStudents($id, $if_modified_since, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getTeachingGroupStudents: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getTeachingGroupStudents: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -2447,10 +2447,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
 $subject_code = 'subject_code_example'; // string | filter by subject
@@ -2461,10 +2461,10 @@ $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getTeachingGroups($if_modified_since, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getTeachingGroups($if_modified_since, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getTeachingGroups: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getTeachingGroups: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -2512,10 +2512,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
@@ -2531,10 +2531,10 @@ $languages = True; // bool | include student language data
 $photo = True; // bool | include student photo data
 
 try {
-    $result = $apiInstance->getYearGroupStudents($id, $if_modified_since, $date, $academic_year_id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
-    print_r($result);
+  $result = $apiInstance->getYearGroupStudents($id, $if_modified_since, $date, $academic_year_id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getYearGroupStudents: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getYearGroupStudents: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -2587,10 +2587,10 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | If-Modified-Since is optional (see the page on Conditional Requests for more details).
 $year_code = 56; // int | filter by school year (cannot be supplied at the same time as the students parameter)
@@ -2600,10 +2600,10 @@ $per_page = 100; // int | Number of results to return
 $page = 1; // int | Page number to return
 
 try {
-    $result = $apiInstance->getYearGroups($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page);
-    print_r($result);
+  $result = $apiInstance->getYearGroups($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->getYearGroups: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->getYearGroups: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -2650,17 +2650,17 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 
 try {
-    $result = $apiInstance->status();
-    print_r($result);
+  $result = $apiInstance->status();
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->status: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->status: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -2699,19 +2699,19 @@ require_once(__DIR__ . '/vendor/autoload.php');
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 $id = 56; // int | id of the entity
 $result_entry = new \Assembly\Client\Model\ResultEntry(); // \Assembly\Client\Model\ResultEntry | 
 
 try {
-    $result = $apiInstance->updateResults($id, $result_entry);
-    print_r($result);
+  $result = $apiInstance->updateResults($id, $result_entry);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->updateResults: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->updateResults: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```

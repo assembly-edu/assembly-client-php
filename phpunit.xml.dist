@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="./vendor/autoload.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         stopOnFailure="false">
-    <testsuites>
-        <testsuite>
-            <directory>./tests/Assembly/Client/Api</directory>
-            <directory>./tests/Assembly/Client/Model</directory>
-        </testsuite>
-    </testsuites>
+     colors="true"
+     convertErrorsToExceptions="true"
+     convertNoticesToExceptions="true"
+     convertWarningsToExceptions="true"
+     stopOnFailure="false">
+  <testsuites>
+    <testsuite>
+      <directory>./tests/Assembly/Client/Api</directory>
+      <directory>./tests/Assembly/Client/Model</directory>
+    </testsuite>
+  </testsuites>
 
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src/Assembly/Client/Api</directory>
-            <directory suffix=".php">./src/Assembly/Client/Model</directory>
-        </whitelist>
-    </filter>
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">./src/Assembly/Client/Api</directory>
+      <directory suffix=".php">./src/Assembly/Client/Model</directory>
+    </whitelist>
+  </filter>
 </phpunit>

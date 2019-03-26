@@ -28,87 +28,87 @@ namespace Assembly\Client;
 class StaffQualificationTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "StaffQualification"
-     */
-    public function testStaffQualification()
-    {
-    }
+  /**
+   * Test "StaffQualification"
+   */
+  public function testStaffQualification()
+  {
+  }
 
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
+  {
+  }
 
-    /**
-     * Test attribute "qualification_code"
-     */
-    public function testPropertyQualificationCode()
-    {
-    }
+  /**
+   * Test attribute "qualification_code"
+   */
+  public function testPropertyQualificationCode()
+  {
+  }
 
-    /**
-     * Test attribute "degree_class"
-     */
-    public function testPropertyDegreeClass()
-    {
-    }
+  /**
+   * Test attribute "degree_class"
+   */
+  public function testPropertyDegreeClass()
+  {
+  }
 
-    /**
-     * Test attribute "first_subject_code"
-     */
-    public function testPropertyFirstSubjectCode()
-    {
-    }
+  /**
+   * Test attribute "first_subject_code"
+   */
+  public function testPropertyFirstSubjectCode()
+  {
+  }
 
-    /**
-     * Test attribute "first_subject_name"
-     */
-    public function testPropertyFirstSubjectName()
-    {
-    }
+  /**
+   * Test attribute "first_subject_name"
+   */
+  public function testPropertyFirstSubjectName()
+  {
+  }
 
-    /**
-     * Test attribute "second_subject_code"
-     */
-    public function testPropertySecondSubjectCode()
-    {
-    }
+  /**
+   * Test attribute "second_subject_code"
+   */
+  public function testPropertySecondSubjectCode()
+  {
+  }
 
-    /**
-     * Test attribute "second_subject_name"
-     */
-    public function testPropertySecondSubjectName()
-    {
-    }
+  /**
+   * Test attribute "second_subject_name"
+   */
+  public function testPropertySecondSubjectName()
+  {
+  }
 }

@@ -28,73 +28,73 @@ namespace Assembly\Client;
 class AcademicYearTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "AcademicYear"
-     */
-    public function testAcademicYear()
-    {
-    }
+  /**
+   * Test "AcademicYear"
+   */
+  public function testAcademicYear()
+  {
+  }
 
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
+  {
+  }
 
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-    }
+  /**
+   * Test attribute "name"
+   */
+  public function testPropertyName()
+  {
+  }
 
-    /**
-     * Test attribute "start_date"
-     */
-    public function testPropertyStartDate()
-    {
-    }
+  /**
+   * Test attribute "start_date"
+   */
+  public function testPropertyStartDate()
+  {
+  }
 
-    /**
-     * Test attribute "end_date"
-     */
-    public function testPropertyEndDate()
-    {
-    }
+  /**
+   * Test attribute "end_date"
+   */
+  public function testPropertyEndDate()
+  {
+  }
 
-    /**
-     * Test attribute "terms"
-     */
-    public function testPropertyTerms()
-    {
-    }
+  /**
+   * Test attribute "terms"
+   */
+  public function testPropertyTerms()
+  {
+  }
 }

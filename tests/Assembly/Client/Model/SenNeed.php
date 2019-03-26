@@ -28,87 +28,87 @@ namespace Assembly\Client;
 class SenNeedTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "SenNeed"
-     */
-    public function testSenNeed()
-    {
-    }
+  /**
+   * Test "SenNeed"
+   */
+  public function testSenNeed()
+  {
+  }
 
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
+  {
+  }
 
-    /**
-     * Test attribute "start_date"
-     */
-    public function testPropertyStartDate()
-    {
-    }
+  /**
+   * Test attribute "start_date"
+   */
+  public function testPropertyStartDate()
+  {
+  }
 
-    /**
-     * Test attribute "sen_need_code"
-     */
-    public function testPropertySenNeedCode()
-    {
-    }
+  /**
+   * Test attribute "sen_need_code"
+   */
+  public function testPropertySenNeedCode()
+  {
+  }
 
-    /**
-     * Test attribute "sen_need_name"
-     */
-    public function testPropertySenNeedName()
-    {
-    }
+  /**
+   * Test attribute "sen_need_name"
+   */
+  public function testPropertySenNeedName()
+  {
+  }
 
-    /**
-     * Test attribute "sen_broad_need_type_code"
-     */
-    public function testPropertySenBroadNeedTypeCode()
-    {
-    }
+  /**
+   * Test attribute "sen_broad_need_type_code"
+   */
+  public function testPropertySenBroadNeedTypeCode()
+  {
+  }
 
-    /**
-     * Test attribute "sen_broad_need_type_name"
-     */
-    public function testPropertySenBroadNeedTypeName()
-    {
-    }
+  /**
+   * Test attribute "sen_broad_need_type_name"
+   */
+  public function testPropertySenBroadNeedTypeName()
+  {
+  }
 
-    /**
-     * Test attribute "priority"
-     */
-    public function testPropertyPriority()
-    {
-    }
+  /**
+   * Test attribute "priority"
+   */
+  public function testPropertyPriority()
+  {
+  }
 }

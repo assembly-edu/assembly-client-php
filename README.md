@@ -23,7 +23,7 @@ Run `composer require assembly-edu/assembly-client-php`
 Download the files and include `autoload.php`:
 
 ```php
-    require_once('/path/to//vendor/autoload.php');
+  require_once('/path/to//vendor/autoload.php');
 ```
 
 ## Tests
@@ -57,29 +57,29 @@ $provider = new AssemblyAuth();
 $accessToken = new AccessToken(GetTokenFromDatastore());
 
 if ($accessToken->hasExpired()) {
-    $accessToken = $provider->getAccessToken('refresh_token', ['refresh_token' => $accessToken->getRefreshToken()]);
+  $accessToken = $provider->getAccessToken('refresh_token', ['refresh_token' => $accessToken->getRefreshToken()]);
 
-    //SaveTokenToDatastore is a implementation placeholder which should be replace with your own data storage process.
-    SaveTokenToDatastore($accessToken->jsonSerialize())
+  //SaveTokenToDatastore is a implementation placeholder which should be replace with your own data storage process.
+  SaveTokenToDatastore($accessToken->jsonSerialize())
 }
 
 // Configure OAuth2 access token for authorization: bearerAuth
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken($accessToken->getToken());
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
 );
 
 try {
-    $bulk_results_body = new \Assembly\Client\Model\BulkResultsBody(); // \Assembly\Client\Model\BulkResultsBody | 
+  $bulk_results_body = new \Assembly\Client\Model\BulkResultsBody(); // \Assembly\Client\Model\BulkResultsBody | 
 
-    $result = $apiInstance->bulkUpdateResults($bulk_results_body);
-    print_r($result);
+  $result = $apiInstance->bulkUpdateResults($bulk_results_body);
+  print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling AssemblyApi->bulkUpdateResults: ', $e->getMessage(), PHP_EOL;
+  echo 'Exception when calling AssemblyApi->bulkUpdateResults: ', $e->getMessage(), PHP_EOL;
 }
 
 ?>
@@ -91,18 +91,18 @@ There is more information available on our [developer documentation](https://dev
 
 ```php
 <?php
-    $provider = new \Assembly\Client\Auth\AssemblyAuth([
-                    'redirectUri' => 'http://example.com/your-redirect-url/',
-                    'scopes'      => ['school:required'],
-                ]);
+  $provider = new \Assembly\Client\Auth\AssemblyAuth([
+    'redirectUri' => 'http://example.com/your-redirect-url/',
+    'scopes'      => ['school:required'],
+]);
 
-    $authorizationUrl = $provider->getAuthorizationUrl();
+  $authorizationUrl = $provider->getAuthorizationUrl();
 
-    //SaveSateToDataStore is a implementation placeholder which should be replace with your own data storage process.
-    SaveSateToDataStore($provider->getState());
+  //SaveSateToDataStore is a implementation placeholder which should be replace with your own data storage process.
+  SaveSateToDataStore($provider->getState());
 
-    // Redirect the user to the authorization URL.
-    header('Location: ' . $authorizationUrl);
+  // Redirect the user to the authorization URL.
+  header('Location: ' . $authorizationUrl);
 
 ?>
 ```
@@ -112,32 +112,32 @@ There is more information available on our [developer documentation](https://dev
 ```php
 <?php
 
-    $provider = new \Assembly\Client\Auth\AssemblyAuth([
-                'redirectUri' => 'http://example.com/your-redirect-url/',
-            ]);
+  $provider = new \Assembly\Client\Auth\AssemblyAuth([
+    'redirectUri' => 'http://example.com/your-redirect-url/',
+  ]);
 
-    //GetStateFromDataStore is a implementation placeholder which should be replace with your own data retrieval process.
-    $state = GetStateFromDataStore();
+  //GetStateFromDataStore is a implementation placeholder which should be replace with your own data retrieval process.
+  $state = GetStateFromDataStore();
 
-    if (empty($_GET['state']) || (empty($state) && $_GET['state'] !== $state)) {
+  if (empty($_GET['state']) || (empty($state) && $_GET['state'] !== $state)) {
 
-        exit('Invalid state');
-    }
+    exit('Invalid state');
+  }
 
-    // Try to get an access token using the authorization code grant.
-    $accessToken = $provider->getAccessToken('authorization_code', [
-        'code' => $_GET['code']
-    ]);
+  // Try to get an access token using the authorization code grant.
+  $accessToken = $provider->getAccessToken('authorization_code', [
+    'code' => $_GET['code']
+  ]);
 
-    // We have an access token, which we may use in authenticated
-    // requests against the service provider's API.
-    echo 'Access Token: ' . $accessToken->getToken() . "<br>";
-    echo 'Refresh Token: ' . $accessToken->getRefreshToken() . "<br>";
-    echo 'Expired in: ' . $accessToken->getExpires() . "<br>";
-    echo 'Already expired? ' . ($accessToken->hasExpired() ? 'expired' : 'not expired') . "<br>";
+  // We have an access token, which we may use in authenticated
+  // requests against the service provider's API.
+  echo 'Access Token: ' . $accessToken->getToken() . "<br>";
+  echo 'Refresh Token: ' . $accessToken->getRefreshToken() . "<br>";
+  echo 'Expired in: ' . $accessToken->getExpires() . "<br>";
+  echo 'Already expired? ' . ($accessToken->hasExpired() ? 'expired' : 'not expired') . "<br>";
 
-    //SaveTokenToDatastore is a implementation placeholder which should be replace with your own data storage process.
-    SaveTokenToDatastore($accessToken->jsonSerialize())
+  //SaveTokenToDatastore is a implementation placeholder which should be replace with your own data storage process.
+  SaveTokenToDatastore($accessToken->jsonSerialize())
 ?>
 ```
 

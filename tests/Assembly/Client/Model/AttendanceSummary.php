@@ -28,115 +28,115 @@ namespace Assembly\Client;
 class AttendanceSummaryTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "AttendanceSummary"
-     */
-    public function testAttendanceSummary()
-    {
-    }
+  /**
+   * Test "AttendanceSummary"
+   */
+  public function testAttendanceSummary()
+  {
+  }
 
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
+  {
+  }
 
-    /**
-     * Test attribute "student_id"
-     */
-    public function testPropertyStudentId()
-    {
-    }
+  /**
+   * Test attribute "student_id"
+   */
+  public function testPropertyStudentId()
+  {
+  }
 
-    /**
-     * Test attribute "registration_group_id"
-     */
-    public function testPropertyRegistrationGroupId()
-    {
-    }
+  /**
+   * Test attribute "registration_group_id"
+   */
+  public function testPropertyRegistrationGroupId()
+  {
+  }
 
-    /**
-     * Test attribute "academic_year_id"
-     */
-    public function testPropertyAcademicYearId()
-    {
-    }
+  /**
+   * Test attribute "academic_year_id"
+   */
+  public function testPropertyAcademicYearId()
+  {
+  }
 
-    /**
-     * Test attribute "start_date"
-     */
-    public function testPropertyStartDate()
-    {
-    }
+  /**
+   * Test attribute "start_date"
+   */
+  public function testPropertyStartDate()
+  {
+  }
 
-    /**
-     * Test attribute "end_date"
-     */
-    public function testPropertyEndDate()
-    {
-    }
+  /**
+   * Test attribute "end_date"
+   */
+  public function testPropertyEndDate()
+  {
+  }
 
-    /**
-     * Test attribute "possible_sessions"
-     */
-    public function testPropertyPossibleSessions()
-    {
-    }
+  /**
+   * Test attribute "possible_sessions"
+   */
+  public function testPropertyPossibleSessions()
+  {
+  }
 
-    /**
-     * Test attribute "attended_sessions"
-     */
-    public function testPropertyAttendedSessions()
-    {
-    }
+  /**
+   * Test attribute "attended_sessions"
+   */
+  public function testPropertyAttendedSessions()
+  {
+  }
 
-    /**
-     * Test attribute "late_sessions"
-     */
-    public function testPropertyLateSessions()
-    {
-    }
+  /**
+   * Test attribute "late_sessions"
+   */
+  public function testPropertyLateSessions()
+  {
+  }
 
-    /**
-     * Test attribute "authorised_absence_sessions"
-     */
-    public function testPropertyAuthorisedAbsenceSessions()
-    {
-    }
+  /**
+   * Test attribute "authorised_absence_sessions"
+   */
+  public function testPropertyAuthorisedAbsenceSessions()
+  {
+  }
 
-    /**
-     * Test attribute "unauthorised_absence_sessions"
-     */
-    public function testPropertyUnauthorisedAbsenceSessions()
-    {
-    }
+  /**
+   * Test attribute "unauthorised_absence_sessions"
+   */
+  public function testPropertyUnauthorisedAbsenceSessions()
+  {
+  }
 }

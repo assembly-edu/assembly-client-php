@@ -28,73 +28,73 @@ namespace Assembly\Client;
 class ResultBodyTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "ResultBody"
-     */
-    public function testResultBody()
-    {
-    }
+  /**
+   * Test "ResultBody"
+   */
+  public function testResultBody()
+  {
+  }
 
-    /**
-     * Test attribute "subject_id"
-     */
-    public function testPropertySubjectId()
-    {
-    }
+  /**
+   * Test attribute "subject_id"
+   */
+  public function testPropertySubjectId()
+  {
+  }
 
-    /**
-     * Test attribute "facet_id"
-     */
-    public function testPropertyFacetId()
-    {
-    }
+  /**
+   * Test attribute "facet_id"
+   */
+  public function testPropertyFacetId()
+  {
+  }
 
-    /**
-     * Test attribute "assessment_point_rank"
-     */
-    public function testPropertyAssessmentPointRank()
-    {
-    }
+  /**
+   * Test attribute "assessment_point_rank"
+   */
+  public function testPropertyAssessmentPointRank()
+  {
+  }
 
-    /**
-     * Test attribute "assessment_id"
-     */
-    public function testPropertyAssessmentId()
-    {
-    }
+  /**
+   * Test attribute "assessment_id"
+   */
+  public function testPropertyAssessmentId()
+  {
+  }
 
-    /**
-     * Test attribute "results"
-     */
-    public function testPropertyResults()
-    {
-    }
+  /**
+   * Test attribute "results"
+   */
+  public function testPropertyResults()
+  {
+  }
 }

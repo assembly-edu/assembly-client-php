@@ -28,73 +28,73 @@ namespace Assembly\Client;
 class AssessmentTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "Assessment"
-     */
-    public function testAssessment()
-    {
-    }
+  /**
+   * Test "Assessment"
+   */
+  public function testAssessment()
+  {
+  }
 
-    /**
-     * Test attribute "family_id"
-     */
-    public function testPropertyFamilyId()
-    {
-    }
+  /**
+   * Test attribute "family_id"
+   */
+  public function testPropertyFamilyId()
+  {
+  }
 
-    /**
-     * Test attribute "family_name"
-     */
-    public function testPropertyFamilyName()
-    {
-    }
+  /**
+   * Test attribute "family_name"
+   */
+  public function testPropertyFamilyName()
+  {
+  }
 
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
+  {
+  }
 
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-    }
+  /**
+   * Test attribute "name"
+   */
+  public function testPropertyName()
+  {
+  }
 
-    /**
-     * Test attribute "mis_assessments"
-     */
-    public function testPropertyMisAssessments()
-    {
-    }
+  /**
+   * Test attribute "mis_assessments"
+   */
+  public function testPropertyMisAssessments()
+  {
+  }
 }

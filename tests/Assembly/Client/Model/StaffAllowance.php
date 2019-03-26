@@ -28,66 +28,66 @@ namespace Assembly\Client;
 class StaffAllowanceTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "StaffAllowance"
-     */
-    public function testStaffAllowance()
-    {
-    }
+  /**
+   * Test "StaffAllowance"
+   */
+  public function testStaffAllowance()
+  {
+  }
 
-    /**
-     * Test attribute "additional_payment_type"
-     */
-    public function testPropertyAdditionalPaymentType()
-    {
-    }
+  /**
+   * Test attribute "additional_payment_type"
+   */
+  public function testPropertyAdditionalPaymentType()
+  {
+  }
 
-    /**
-     * Test attribute "additional_payment_amount"
-     */
-    public function testPropertyAdditionalPaymentAmount()
-    {
-    }
+  /**
+   * Test attribute "additional_payment_amount"
+   */
+  public function testPropertyAdditionalPaymentAmount()
+  {
+  }
 
-    /**
-     * Test attribute "start_date"
-     */
-    public function testPropertyStartDate()
-    {
-    }
+  /**
+   * Test attribute "start_date"
+   */
+  public function testPropertyStartDate()
+  {
+  }
 
-    /**
-     * Test attribute "end_date"
-     */
-    public function testPropertyEndDate()
-    {
-    }
+  /**
+   * Test attribute "end_date"
+   */
+  public function testPropertyEndDate()
+  {
+  }
 }

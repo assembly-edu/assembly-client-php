@@ -28,129 +28,129 @@ namespace Assembly\Client;
 class TeachingGroupTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "TeachingGroup"
-     */
-    public function testTeachingGroup()
-    {
-    }
+  /**
+   * Test "TeachingGroup"
+   */
+  public function testTeachingGroup()
+  {
+  }
 
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
+  {
+  }
 
-    /**
-     * Test attribute "school_id"
-     */
-    public function testPropertySchoolId()
-    {
-    }
+  /**
+   * Test attribute "school_id"
+   */
+  public function testPropertySchoolId()
+  {
+  }
 
-    /**
-     * Test attribute "source_id"
-     */
-    public function testPropertySourceId()
-    {
-    }
+  /**
+   * Test attribute "source_id"
+   */
+  public function testPropertySourceId()
+  {
+  }
 
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-    }
+  /**
+   * Test attribute "name"
+   */
+  public function testPropertyName()
+  {
+  }
 
-    /**
-     * Test attribute "created_at"
-     */
-    public function testPropertyCreatedAt()
-    {
-    }
+  /**
+   * Test attribute "created_at"
+   */
+  public function testPropertyCreatedAt()
+  {
+  }
 
-    /**
-     * Test attribute "updated_at"
-     */
-    public function testPropertyUpdatedAt()
-    {
-    }
+  /**
+   * Test attribute "updated_at"
+   */
+  public function testPropertyUpdatedAt()
+  {
+  }
 
-    /**
-     * Test attribute "academic_year_id"
-     */
-    public function testPropertyAcademicYearId()
-    {
-    }
+  /**
+   * Test attribute "academic_year_id"
+   */
+  public function testPropertyAcademicYearId()
+  {
+  }
 
-    /**
-     * Test attribute "subject_id"
-     */
-    public function testPropertySubjectId()
-    {
-    }
+  /**
+   * Test attribute "subject_id"
+   */
+  public function testPropertySubjectId()
+  {
+  }
 
-    /**
-     * Test attribute "start_date"
-     */
-    public function testPropertyStartDate()
-    {
-    }
+  /**
+   * Test attribute "start_date"
+   */
+  public function testPropertyStartDate()
+  {
+  }
 
-    /**
-     * Test attribute "end_date"
-     */
-    public function testPropertyEndDate()
-    {
-    }
+  /**
+   * Test attribute "end_date"
+   */
+  public function testPropertyEndDate()
+  {
+  }
 
-    /**
-     * Test attribute "level"
-     */
-    public function testPropertyLevel()
-    {
-    }
+  /**
+   * Test attribute "level"
+   */
+  public function testPropertyLevel()
+  {
+  }
 
-    /**
-     * Test attribute "assessment_id"
-     */
-    public function testPropertyAssessmentId()
-    {
-    }
+  /**
+   * Test attribute "assessment_id"
+   */
+  public function testPropertyAssessmentId()
+  {
+  }
 
-    /**
-     * Test attribute "effective_at"
-     */
-    public function testPropertyEffectiveAt()
-    {
-    }
+  /**
+   * Test attribute "effective_at"
+   */
+  public function testPropertyEffectiveAt()
+  {
+  }
 }

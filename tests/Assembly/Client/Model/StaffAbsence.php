@@ -28,94 +28,94 @@ namespace Assembly\Client;
 class StaffAbsenceTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "StaffAbsence"
-     */
-    public function testStaffAbsence()
-    {
-    }
+  /**
+   * Test "StaffAbsence"
+   */
+  public function testStaffAbsence()
+  {
+  }
 
-    /**
-     * Test attribute "id"
-     */
-    public function testPropertyId()
-    {
-    }
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
+  {
+  }
 
-    /**
-     * Test attribute "staff_member_id"
-     */
-    public function testPropertyStaffMemberId()
-    {
-    }
+  /**
+   * Test attribute "staff_member_id"
+   */
+  public function testPropertyStaffMemberId()
+  {
+  }
 
-    /**
-     * Test attribute "start_date"
-     */
-    public function testPropertyStartDate()
-    {
-    }
+  /**
+   * Test attribute "start_date"
+   */
+  public function testPropertyStartDate()
+  {
+  }
 
-    /**
-     * Test attribute "end_date"
-     */
-    public function testPropertyEndDate()
-    {
-    }
+  /**
+   * Test attribute "end_date"
+   */
+  public function testPropertyEndDate()
+  {
+  }
 
-    /**
-     * Test attribute "working_days_lost"
-     */
-    public function testPropertyWorkingDaysLost()
-    {
-    }
+  /**
+   * Test attribute "working_days_lost"
+   */
+  public function testPropertyWorkingDaysLost()
+  {
+  }
 
-    /**
-     * Test attribute "absence_category"
-     */
-    public function testPropertyAbsenceCategory()
-    {
-    }
+  /**
+   * Test attribute "absence_category"
+   */
+  public function testPropertyAbsenceCategory()
+  {
+  }
 
-    /**
-     * Test attribute "illness_category"
-     */
-    public function testPropertyIllnessCategory()
-    {
-    }
+  /**
+   * Test attribute "illness_category"
+   */
+  public function testPropertyIllnessCategory()
+  {
+  }
 
-    /**
-     * Test attribute "pay_rate"
-     */
-    public function testPropertyPayRate()
-    {
-    }
+  /**
+   * Test attribute "pay_rate"
+   */
+  public function testPropertyPayRate()
+  {
+  }
 }

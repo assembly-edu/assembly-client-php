@@ -28,45 +28,45 @@ namespace Assembly\Client;
 class StudentMedicalTest extends \PHPUnit_Framework_TestCase
 {
 
-    /**
-     * Setup before running any test case
-     */
-    public static function setUpBeforeClass()
-    {
-    }
+  /**
+   * Setup before running any test case
+   */
+  public static function setUpBeforeClass()
+  {
+  }
 
-    /**
-     * Setup before running each test case
-     */
-    public function setUp()
-    {
-    }
+  /**
+   * Setup before running each test case
+   */
+  public function setUp()
+  {
+  }
 
-    /**
-     * Clean up after running each test case
-     */
-    public function tearDown()
-    {
-    }
+  /**
+   * Clean up after running each test case
+   */
+  public function tearDown()
+  {
+  }
 
-    /**
-     * Clean up after running all test cases
-     */
-    public static function tearDownAfterClass()
-    {
-    }
+  /**
+   * Clean up after running all test cases
+   */
+  public static function tearDownAfterClass()
+  {
+  }
 
-    /**
-     * Test "StudentMedical"
-     */
-    public function testStudentMedical()
-    {
-    }
+  /**
+   * Test "StudentMedical"
+   */
+  public function testStudentMedical()
+  {
+  }
 
-    /**
-     * Test attribute "dietary_needs"
-     */
-    public function testPropertyDietaryNeeds()
-    {
-    }
+  /**
+   * Test attribute "dietary_needs"
+   */
+  public function testPropertyDietaryNeeds()
+  {
+  }
 }
