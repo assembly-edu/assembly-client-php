@@ -16,16 +16,16 @@
 namespace Assembly\Client;
 
 /**
- * TelephoneNumberTest Class Doc Comment
+ * SupervisorTest Class Doc Comment
  *
  * @category    Class */
-// * @description TelephoneNumber
+// * @description The ID of a staff member who supervises a group, and their role.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
  * @link        https://github.com/assembly-edu/assembly-client-php
  */
-class TelephoneNumberTest extends \PHPUnit_Framework_TestCase
+class SupervisorTest extends \PHPUnit_Framework_TestCase
 {
 
   /**
@@ -57,37 +57,30 @@ class TelephoneNumberTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test "TelephoneNumber"
+   * Test "Supervisor"
    */
-  public function testTelephoneNumber()
+  public function testSupervisor()
   {
   }
 
   /**
-   * Test attribute "id"
+   * Test attribute "object"
    */
-  public function testPropertyId()
+  public function testPropertyObject()
   {
   }
 
   /**
-   * Test attribute "type"
+   * Test attribute "staff_member_id"
    */
-  public function testPropertyType()
+  public function testPropertyStaffMemberId()
   {
   }
 
   /**
-   * Test attribute "telephone_number"
+   * Test attribute "role"
    */
-  public function testPropertyTelephoneNumber()
-  {
-  }
-
-  /**
-   * Test attribute "is_primary"
-   */
-  public function testPropertyIsPrimary()
+  public function testPropertyRole()
   {
   }
 }

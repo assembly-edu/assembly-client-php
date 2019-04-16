@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * DietaryNeedTest Class Doc Comment
  *
  * @category    Class */
-// * @description DietaryNeed
+// * @description A dietary need defined in the MIS.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class DietaryNeedTest extends \PHPUnit_Framework_TestCase
    * Test "DietaryNeed"
    */
   public function testDietaryNeed()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

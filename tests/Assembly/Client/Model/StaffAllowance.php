@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StaffAllowanceTest Class Doc Comment
  *
  * @category    Class */
-// * @description StaffAllowance
+// * @description An allowance associated with a staff member.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,20 @@ class StaffAllowanceTest extends \PHPUnit_Framework_TestCase
    * Test "StaffAllowance"
    */
   public function testStaffAllowance()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
+  {
+  }
+
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
   {
   }
 

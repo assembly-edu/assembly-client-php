@@ -16,16 +16,16 @@
 namespace Assembly\Client;
 
 /**
- * AssessmentMisAssessmentsTest Class Doc Comment
+ * StudentContactRelationshipTest Class Doc Comment
  *
  * @category    Class */
-// * @description AssessmentMisAssessments
+// * @description The relationship between a student and a contact person.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
  * @link        https://github.com/assembly-edu/assembly-client-php
  */
-class AssessmentMisAssessmentsTest extends \PHPUnit_Framework_TestCase
+class StudentContactRelationshipTest extends \PHPUnit_Framework_TestCase
 {
 
   /**
@@ -57,16 +57,37 @@ class AssessmentMisAssessmentsTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test "AssessmentMisAssessments"
+   * Test "StudentContactRelationship"
    */
-  public function testAssessmentMisAssessments()
+  public function testStudentContactRelationship()
   {
   }
 
   /**
-   * Test attribute "type"
+   * Test attribute "object"
    */
-  public function testPropertyType()
+  public function testPropertyObject()
+  {
+  }
+
+  /**
+   * Test attribute "relationship_type"
+   */
+  public function testPropertyRelationshipType()
+  {
+  }
+
+  /**
+   * Test attribute "priority"
+   */
+  public function testPropertyPriority()
+  {
+  }
+
+  /**
+   * Test attribute "parental_responsibility"
+   */
+  public function testPropertyParentalResponsibility()
   {
   }
 }

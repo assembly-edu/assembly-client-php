@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * CalendarEvent Class Doc Comment
  *
  * @category Class
+ * @description Detail of a school event.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'name' => 'string',
     'description' => 'string',
@@ -59,6 +61,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'name' => null,
     'description' => null,
@@ -96,6 +99,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'name' => 'name',
     'description' => 'description',
@@ -112,6 +116,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'name' => 'setName',
     'description' => 'setDescription',
@@ -128,6 +133,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'name' => 'getName',
     'description' => 'getDescription',
@@ -198,6 +204,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'calendar_event';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['description'] = isset($data['description']) ? $data['description'] : null;
@@ -234,6 +241,30 @@ class CalendarEvent implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -246,7 +277,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -270,7 +301,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name This details the user-defined \"category\" that the event is assigned to on SIMS.
    *
    * @return $this
    */
@@ -294,7 +325,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   /**
    * Sets description
    *
-   * @param string $description description
+   * @param string $description The name of the instance of the event, usually more detailed and specific than the \"name\"
    *
    * @return $this
    */
@@ -318,7 +349,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   /**
    * Sets start_date
    *
-   * @param \DateTime $start_date start_date
+   * @param \DateTime $start_date Date and time of when the event starts
    *
    * @return $this
    */
@@ -342,7 +373,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   /**
    * Sets end_date
    *
-   * @param \DateTime $end_date end_date
+   * @param \DateTime $end_date Date and time of when the event ends
    *
    * @return $this
    */
@@ -366,7 +397,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   /**
    * Sets is_active
    *
-   * @param bool $is_active is_active
+   * @param bool $is_active Whether the event is active or not
    *
    * @return $this
    */
@@ -390,7 +421,7 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   /**
    * Sets is_recurrent
    *
-   * @param bool $is_recurrent is_recurrent
+   * @param bool $is_recurrent Whether the event recurs and (soon) details of recurrences
    *
    * @return $this
    */

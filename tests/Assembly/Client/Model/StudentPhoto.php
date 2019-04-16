@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StudentPhotoTest Class Doc Comment
  *
  * @category    Class */
-// * @description StudentPhoto
+// * @description The student&#39;s photo
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team

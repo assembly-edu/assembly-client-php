@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * AssessmentPointTest Class Doc Comment
  *
  * @category    Class */
-// * @description AssessmentPoint
+// * @description A point in time (the school key stage, year, term or half-term) that results can be attached to.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class AssessmentPointTest extends \PHPUnit_Framework_TestCase
    * Test "AssessmentPoint"
    */
   public function testAssessmentPoint()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

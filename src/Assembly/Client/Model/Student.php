@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * Student Class Doc Comment
  *
  * @category Class
+ * @description A single student within a school.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class Student implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'year_code' => 'string',
     'upn' => 'string',
@@ -61,7 +63,7 @@ class Student implements ModelInterface, ArrayAccess
     'enrolment_status' => 'string',
     'demographics' => '\Assembly\Client\Model\StudentDemographics',
     'medical' => '\Assembly\Client\Model\StudentMedical',
-    'contacts' => '\Assembly\Client\Model\Contact[]',
+    'contacts' => '\Assembly\Client\Model\StudentContacts[]',
     'address' => '\Assembly\Client\Model\StudentAddress',
     'languages' => '\Assembly\Client\Model\StudentLanguages',
     'photo' => '\Assembly\Client\Model\StudentPhoto'
@@ -73,6 +75,7 @@ class Student implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'year_code' => null,
     'upn' => null,
@@ -124,6 +127,7 @@ class Student implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'year_code' => 'year_code',
     'upn' => 'upn',
@@ -154,6 +158,7 @@ class Student implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'year_code' => 'setYearCode',
     'upn' => 'setUpn',
@@ -184,6 +189,7 @@ class Student implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'year_code' => 'getYearCode',
     'upn' => 'getUpn',
@@ -268,6 +274,7 @@ class Student implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'student';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['year_code'] = isset($data['year_code']) ? $data['year_code'] : null;
     $this->container['upn'] = isset($data['upn']) ? $data['upn'] : null;
@@ -318,6 +325,30 @@ class Student implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -330,7 +361,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -354,7 +385,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets year_code
    *
-   * @param string $year_code year_code
+   * @param string $year_code The year group the student currently belongs to
    *
    * @return $this
    */
@@ -378,7 +409,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets upn
    *
-   * @param string $upn upn
+   * @param string $upn Unique Pupil Number (UPN) - a DfE-mandated 13-character code that identifies each pupil
    *
    * @return $this
    */
@@ -402,7 +433,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets former_upn
    *
-   * @param string $former_upn former_upn
+   * @param string $former_upn The previous UPN where a pupil has held another UPN whilst at a school
    *
    * @return $this
    */
@@ -426,7 +457,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets mis_id
    *
-   * @param string $mis_id mis_id
+   * @param string $mis_id The ID of a student from the MIS
    *
    * @return $this
    */
@@ -450,7 +481,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets pan
    *
-   * @param string $pan pan
+   * @param string $pan A student's \"pupil admission number\". This field is often exposed in the front end of the MIS, and may be the same as `mis_id`
    *
    * @return $this
    */
@@ -474,7 +505,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets first_name
    *
-   * @param string $first_name first_name
+   * @param string $first_name The first name the student wishes to go by, may be the same as `legal_first_name`
    *
    * @return $this
    */
@@ -498,7 +529,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets legal_first_name
    *
-   * @param string $legal_first_name legal_first_name
+   * @param string $legal_first_name The legal first name of the student
    *
    * @return $this
    */
@@ -522,7 +553,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets middle_name
    *
-   * @param string $middle_name middle_name
+   * @param string $middle_name The middle name of the student
    *
    * @return $this
    */
@@ -546,7 +577,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets last_name
    *
-   * @param string $last_name last_name
+   * @param string $last_name The last name the student wishes to go by, may be the same as `legal_last_name`
    *
    * @return $this
    */
@@ -570,7 +601,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets legal_last_name
    *
-   * @param string $legal_last_name legal_last_name
+   * @param string $legal_last_name The legal first name of the student, may be the same as `legal_last_name`
    *
    * @return $this
    */
@@ -594,7 +625,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets former_last_name
    *
-   * @param string $former_last_name former_last_name
+   * @param string $former_last_name The former last name of the student, may be `null`
    *
    * @return $this
    */
@@ -618,7 +649,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets dob
    *
-   * @param \DateTime $dob dob
+   * @param \DateTime $dob The date of birth of the student
    *
    * @return $this
    */
@@ -642,7 +673,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets start_date
    *
-   * @param \DateTime $start_date start_date
+   * @param \DateTime $start_date The date that the student first joined the school
    *
    * @return $this
    */
@@ -666,7 +697,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets end_date
    *
-   * @param \DateTime $end_date end_date
+   * @param \DateTime $end_date The date that the student left the school, or `null` if still a current student
    *
    * @return $this
    */
@@ -690,7 +721,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets enrolment_status
    *
-   * @param string $enrolment_status enrolment_status
+   * @param string $enrolment_status The enrolment status of the student
    *
    * @return $this
    */
@@ -752,7 +783,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Gets contacts
    *
-   * @return \Assembly\Client\Model\Contact[]
+   * @return \Assembly\Client\Model\StudentContacts[]
    */
   public function getContacts()
   {
@@ -762,7 +793,7 @@ class Student implements ModelInterface, ArrayAccess
   /**
    * Sets contacts
    *
-   * @param \Assembly\Client\Model\Contact[] $contacts contacts
+   * @param \Assembly\Client\Model\StudentContacts[] $contacts A list of contact IDs which are associated with this student, and their relationship
    *
    * @return $this
    */

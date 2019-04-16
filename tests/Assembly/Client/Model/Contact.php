@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * ContactTest Class Doc Comment
  *
  * @category    Class */
-// * @description Contact
+// * @description A parent, guardian, or other point of contact for a student.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class ContactTest extends \PHPUnit_Framework_TestCase
    * Test "Contact"
    */
   public function testContact()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

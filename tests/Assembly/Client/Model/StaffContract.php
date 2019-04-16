@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StaffContractTest Class Doc Comment
  *
  * @category    Class */
-// * @description StaffContract
+// * @description A contract held by a staff member.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class StaffContractTest extends \PHPUnit_Framework_TestCase
    * Test "StaffContract"
    */
   public function testStaffContract()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

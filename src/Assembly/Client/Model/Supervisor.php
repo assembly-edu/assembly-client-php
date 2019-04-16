@@ -19,14 +19,15 @@ use \ArrayAccess;
 use \Assembly\Client\ObjectSerializer;
 
 /**
- * AssessmentMisAssessments Class Doc Comment
+ * Supervisor Class Doc Comment
  *
  * @category Class
+ * @description The ID of a staff member who supervises a group, and their role.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
  */
-class AssessmentMisAssessments implements ModelInterface, ArrayAccess
+class Supervisor implements ModelInterface, ArrayAccess
 {
   const DISCRIMINATOR = null;
 
@@ -35,7 +36,7 @@ class AssessmentMisAssessments implements ModelInterface, ArrayAccess
     *
     * @var string
     */
-  protected static $swaggerModelName = 'AssessmentMisAssessments';
+  protected static $swaggerModelName = 'Supervisor';
 
   /**
     * Array of property to type mappings. Used for (de)serialization
@@ -43,7 +44,9 @@ class AssessmentMisAssessments implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
-    'type' => 'string'
+    'object' => 'string',
+    'staff_member_id' => 'int',
+    'role' => 'string'
   ];
 
   /**
@@ -52,7 +55,9 @@ class AssessmentMisAssessments implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
-    'type' => null
+    'object' => null,
+    'staff_member_id' => 'int32',
+    'role' => null
   ];
 
   /**
@@ -82,7 +87,9 @@ class AssessmentMisAssessments implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
-    'type' => 'type'
+    'object' => 'object',
+    'staff_member_id' => 'staff_member_id',
+    'role' => 'role'
   ];
 
   /**
@@ -91,7 +98,9 @@ class AssessmentMisAssessments implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
-    'type' => 'setType'
+    'object' => 'setObject',
+    'staff_member_id' => 'setStaffMemberId',
+    'role' => 'setRole'
   ];
 
   /**
@@ -100,7 +109,9 @@ class AssessmentMisAssessments implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
-    'type' => 'getType'
+    'object' => 'getObject',
+    'staff_member_id' => 'getStaffMemberId',
+    'role' => 'getRole'
   ];
 
   /**
@@ -163,7 +174,9 @@ class AssessmentMisAssessments implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
-    $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'supervisor';
+    $this->container['staff_member_id'] = isset($data['staff_member_id']) ? $data['staff_member_id'] : null;
+    $this->container['role'] = isset($data['role']) ? $data['role'] : null;
   }
 
   /**
@@ -192,25 +205,73 @@ class AssessmentMisAssessments implements ModelInterface, ArrayAccess
 
 
   /**
-   * Gets type
+   * Gets object
    *
    * @return string
    */
-  public function getType()
+  public function getObject()
   {
-    return $this->container['type'];
+    return $this->container['object'];
   }
 
   /**
-   * Sets type
+   * Sets object
    *
-   * @param string $type type
+   * @param string $object Descriminator
    *
    * @return $this
    */
-  public function setType($type)
+  public function setObject($object)
   {
-    $this->container['type'] = $type;
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
+   * Gets staff_member_id
+   *
+   * @return int
+   */
+  public function getStaffMemberId()
+  {
+    return $this->container['staff_member_id'];
+  }
+
+  /**
+   * Sets staff_member_id
+   *
+   * @param int $staff_member_id Internal stable ID of the staff member
+   *
+   * @return $this
+   */
+  public function setStaffMemberId($staff_member_id)
+  {
+    $this->container['staff_member_id'] = $staff_member_id;
+
+    return $this;
+  }
+
+  /**
+   * Gets role
+   *
+   * @return string
+   */
+  public function getRole()
+  {
+    return $this->container['role'];
+  }
+
+  /**
+   * Sets role
+   *
+   * @param string $role The role of the staff member within the group
+   *
+   * @return $this
+   */
+  public function setRole($role)
+  {
+    $this->container['role'] = $role;
 
     return $this;
   }

@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StudentAddressTest Class Doc Comment
  *
  * @category    Class */
-// * @description StudentAddress
+// * @description The address of the student
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class StudentAddressTest extends \PHPUnit_Framework_TestCase
    * Test "StudentAddress"
    */
   public function testStudentAddress()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

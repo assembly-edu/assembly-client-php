@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * AttendanceTest Class Doc Comment
  *
  * @category    Class */
-// * @description Attendance
+// * @description An AM or PM roll call attendance mark for a student.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class AttendanceTest extends \PHPUnit_Framework_TestCase
    * Test "Attendance"
    */
   public function testAttendance()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

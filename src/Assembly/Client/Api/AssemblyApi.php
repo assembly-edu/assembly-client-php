@@ -96,7 +96,7 @@ class AssemblyApi
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
-   * @return \Assembly\Client\Model\ApiResponse
+   * @return \Assembly\Client\Model\BulkResultResponse
    */
   public function bulkUpdateResults($bulk_results_body = null)
   {
@@ -113,11 +113,11 @@ class AssemblyApi
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
-   * @return array of \Assembly\Client\Model\ApiResponse, HTTP status code, HTTP response headers (array of strings)
+   * @return array of \Assembly\Client\Model\BulkResultResponse, HTTP status code, HTTP response headers (array of strings)
    */
   public function bulkUpdateResultsWithHttpInfo($bulk_results_body = null)
   {
-    $returnType = '\Assembly\Client\Model\ApiResponse';
+    $returnType = '\Assembly\Client\Model\BulkResultResponse';
     $request = $this->bulkUpdateResultsRequest($bulk_results_body);
 
     try {
@@ -169,7 +169,39 @@ class AssemblyApi
         case 200:
           $data = ObjectSerializer::deserialize(
             $e->getResponseBody(),
-            '\Assembly\Client\Model\ApiResponse',
+            '\Assembly\Client\Model\BulkResultResponse',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
             $e->getResponseHeaders()
           );
           $e->setResponseObject($data);
@@ -211,7 +243,7 @@ class AssemblyApi
    */
   public function bulkUpdateResultsAsyncWithHttpInfo($bulk_results_body = null)
   {
-    $returnType = '\Assembly\Client\Model\ApiResponse';
+    $returnType = '\Assembly\Client\Model\BulkResultResponse';
     $request = $this->bulkUpdateResultsRequest($bulk_results_body);
 
     return $this->client
@@ -429,6 +461,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -602,7 +666,7 @@ class AssemblyApi
    *
    * View an Academic Year
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -619,7 +683,7 @@ class AssemblyApi
    *
    * View an Academic Year
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -684,6 +748,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -694,7 +798,7 @@ class AssemblyApi
    *
    * View an Academic Year
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -714,7 +818,7 @@ class AssemblyApi
    *
    * View an Academic Year
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -764,7 +868,7 @@ class AssemblyApi
   /**
    * Create request for operation 'findAcademicYear'
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -868,7 +972,7 @@ class AssemblyApi
    *
    * View an Assessment
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -885,7 +989,7 @@ class AssemblyApi
    *
    * View an Assessment
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -950,6 +1054,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -960,7 +1104,7 @@ class AssemblyApi
    *
    * View an Assessment
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -980,7 +1124,7 @@ class AssemblyApi
    *
    * View an Assessment
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1030,7 +1174,7 @@ class AssemblyApi
   /**
    * Create request for operation 'findAssessment'
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -1134,7 +1278,7 @@ class AssemblyApi
    *
    * View Grade Set for an Assessment
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -1151,7 +1295,7 @@ class AssemblyApi
    *
    * View Grade Set for an Assessment
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -1216,6 +1360,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -1226,7 +1402,7 @@ class AssemblyApi
    *
    * View Grade Set for an Assessment
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1246,7 +1422,7 @@ class AssemblyApi
    *
    * View Grade Set for an Assessment
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1296,7 +1472,7 @@ class AssemblyApi
   /**
    * Create request for operation 'findAssessmentGradeSet'
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -1400,15 +1576,15 @@ class AssemblyApi
    *
    * View an Assessment Point
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\AssessmentPoint
    */
-  public function findAssessmentPoint($id)
+  public function findAssessmentPoint($assessment_point_rank)
   {
-    list($response) = $this->findAssessmentPointWithHttpInfo($id);
+    list($response) = $this->findAssessmentPointWithHttpInfo($assessment_point_rank);
     return $response;
   }
 
@@ -1417,16 +1593,16 @@ class AssemblyApi
    *
    * View an Assessment Point
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\AssessmentPoint, HTTP status code, HTTP response headers (array of strings)
    */
-  public function findAssessmentPointWithHttpInfo($id)
+  public function findAssessmentPointWithHttpInfo($assessment_point_rank)
   {
     $returnType = '\Assembly\Client\Model\AssessmentPoint';
-    $request = $this->findAssessmentPointRequest($id);
+    $request = $this->findAssessmentPointRequest($assessment_point_rank);
 
     try {
       $options = $this->createHttpClientOption();
@@ -1482,6 +1658,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -1492,14 +1708,14 @@ class AssemblyApi
    *
    * View an Assessment Point
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findAssessmentPointAsync($id)
+  public function findAssessmentPointAsync($assessment_point_rank)
   {
-    return $this->findAssessmentPointAsyncWithHttpInfo($id)
+    return $this->findAssessmentPointAsyncWithHttpInfo($assessment_point_rank)
       ->then(
         function ($response) {
           return $response[0];
@@ -1512,15 +1728,15 @@ class AssemblyApi
    *
    * View an Assessment Point
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findAssessmentPointAsyncWithHttpInfo($id)
+  public function findAssessmentPointAsyncWithHttpInfo($assessment_point_rank)
   {
     $returnType = '\Assembly\Client\Model\AssessmentPoint';
-    $request = $this->findAssessmentPointRequest($id);
+    $request = $this->findAssessmentPointRequest($assessment_point_rank);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -1562,21 +1778,21 @@ class AssemblyApi
   /**
    * Create request for operation 'findAssessmentPoint'
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function findAssessmentPointRequest($id)
+  protected function findAssessmentPointRequest($assessment_point_rank)
   {
-    // verify the required parameter 'id' is set
-    if ($id === null || (is_array($id) && count($id) === 0)) {
+    // verify the required parameter 'assessment_point_rank' is set
+    if ($assessment_point_rank === null || (is_array($assessment_point_rank) && count($assessment_point_rank) === 0)) {
       throw new \InvalidArgumentException(
-        'Missing the required parameter $id when calling findAssessmentPoint'
+        'Missing the required parameter $assessment_point_rank when calling findAssessmentPoint'
       );
     }
 
-    $resourcePath = '/assessment_points/{id}';
+    $resourcePath = '/assessment_points/{assessment_point_rank}';
     $formParams = [];
     $queryParams = [];
     $headerParams = [];
@@ -1585,10 +1801,10 @@ class AssemblyApi
 
 
     // path params
-    if ($id !== null) {
+    if ($assessment_point_rank !== null) {
       $resourcePath = str_replace(
-        '{' . 'id' . '}',
-        ObjectSerializer::toPathValue($id),
+        '{' . 'assessment_point_rank' . '}',
+        ObjectSerializer::toPathValue($assessment_point_rank),
         $resourcePath
       );
     }
@@ -1664,9 +1880,9 @@ class AssemblyApi
   /**
    * Operation findDietaryNeed
    *
-   * View an Dietary Need
+   * View a Dietary Need
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -1681,9 +1897,9 @@ class AssemblyApi
   /**
    * Operation findDietaryNeedWithHttpInfo
    *
-   * View an Dietary Need
+   * View a Dietary Need
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -1748,6 +1964,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -1756,9 +2012,9 @@ class AssemblyApi
   /**
    * Operation findDietaryNeedAsync
    *
-   * View an Dietary Need
+   * View a Dietary Need
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1776,9 +2032,9 @@ class AssemblyApi
   /**
    * Operation findDietaryNeedAsyncWithHttpInfo
    *
-   * View an Dietary Need
+   * View a Dietary Need
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1828,7 +2084,7 @@ class AssemblyApi
   /**
    * Create request for operation 'findDietaryNeed'
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -1932,7 +2188,7 @@ class AssemblyApi
    *
    * View a Facet
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -1949,7 +2205,7 @@ class AssemblyApi
    *
    * View a Facet
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -2014,6 +2270,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -2024,7 +2320,7 @@ class AssemblyApi
    *
    * View a Facet
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2044,7 +2340,7 @@ class AssemblyApi
    *
    * View a Facet
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2094,7 +2390,7 @@ class AssemblyApi
   /**
    * Create request for operation 'findFacet'
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -2198,7 +2494,7 @@ class AssemblyApi
    *
    * View a Grade Set
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -2215,7 +2511,7 @@ class AssemblyApi
    *
    * View a Grade Set
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -2280,6 +2576,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -2290,7 +2626,7 @@ class AssemblyApi
    *
    * View a Grade Set
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2310,7 +2646,7 @@ class AssemblyApi
    *
    * View a Grade Set
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2360,7 +2696,7 @@ class AssemblyApi
   /**
    * Create request for operation 'findGradeSet'
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -2460,11 +2796,317 @@ class AssemblyApi
   }
 
   /**
+   * Operation findGroup
+   *
+   * View a Group
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return \Assembly\Client\Model\Group
+   */
+  public function findGroup($id)
+  {
+    list($response) = $this->findGroupWithHttpInfo($id);
+    return $response;
+  }
+
+  /**
+   * Operation findGroupWithHttpInfo
+   *
+   * View a Group
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return array of \Assembly\Client\Model\Group, HTTP status code, HTTP response headers (array of strings)
+   */
+  public function findGroupWithHttpInfo($id)
+  {
+    $returnType = '\Assembly\Client\Model\Group';
+    $request = $this->findGroupRequest($id);
+
+    try {
+      $options = $this->createHttpClientOption();
+      try {
+        $response = $this->client->send($request, $options);
+      } catch (RequestException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+        );
+      }
+
+      $statusCode = $response->getStatusCode();
+
+      if ($statusCode < 200 || $statusCode > 299) {
+        throw new ApiException(
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          $response->getBody()
+        );
+      }
+
+      $responseBody = $response->getBody();
+      if ($returnType === '\SplFileObject') {
+        $content = $responseBody; //stream goes to serializer
+      } else {
+        $content = $responseBody->getContents();
+        if ($returnType !== 'string') {
+          $content = json_decode($content);
+        }
+      }
+
+      return [
+        ObjectSerializer::deserialize($content, $returnType, []),
+        $response->getStatusCode(),
+        $response->getHeaders()
+      ];
+
+    } catch (ApiException $e) {
+      switch ($e->getCode()) {
+        case 200:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\Group',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+      }
+      throw $e;
+    }
+  }
+
+  /**
+   * Operation findGroupAsync
+   *
+   * View a Group
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function findGroupAsync($id)
+  {
+    return $this->findGroupAsyncWithHttpInfo($id)
+      ->then(
+        function ($response) {
+          return $response[0];
+        }
+      );
+  }
+
+  /**
+   * Operation findGroupAsyncWithHttpInfo
+   *
+   * View a Group
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function findGroupAsyncWithHttpInfo($id)
+  {
+    $returnType = '\Assembly\Client\Model\Group';
+    $request = $this->findGroupRequest($id);
+
+    return $this->client
+      ->sendAsync($request, $this->createHttpClientOption())
+      ->then(
+        function ($response) use ($returnType) {
+          $responseBody = $response->getBody();
+          if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+          } else {
+            $content = $responseBody->getContents();
+            if ($returnType !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        },
+        function ($exception) {
+          $response = $exception->getResponse();
+          $statusCode = $response->getStatusCode();
+          throw new ApiException(
+            sprintf(
+              '[%d] Error connecting to the API (%s)',
+              $statusCode,
+              $exception->getRequest()->getUri()
+            ),
+            $statusCode,
+            $response->getHeaders(),
+            $response->getBody()
+          );
+        }
+      );
+  }
+
+  /**
+   * Create request for operation 'findGroup'
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Psr7\Request
+   */
+  protected function findGroupRequest($id)
+  {
+    // verify the required parameter 'id' is set
+    if ($id === null || (is_array($id) && count($id) === 0)) {
+      throw new \InvalidArgumentException(
+        'Missing the required parameter $id when calling findGroup'
+      );
+    }
+
+    $resourcePath = '/groups/{id}';
+    $formParams = [];
+    $queryParams = [];
+    $headerParams = [];
+    $httpBody = '';
+    $multipart = false;
+
+
+    // path params
+    if ($id !== null) {
+      $resourcePath = str_replace(
+        '{' . 'id' . '}',
+        ObjectSerializer::toPathValue($id),
+        $resourcePath
+      );
+    }
+
+    // body params
+    $_tempBody = null;
+
+    if ($multipart) {
+      $headers = $this->headerSelector->selectHeadersForMultipart(
+        ['application/vnd.assembly+json; version=1.1']
+      );
+    } else {
+      $headers = $this->headerSelector->selectHeaders(
+        ['application/vnd.assembly+json; version=1.1'],
+        []
+      );
+    }
+
+    // for model (json/xml)
+    if (isset($_tempBody)) {
+      // $_tempBody is the method argument, if present
+      $httpBody = $_tempBody;
+      // \stdClass has no __toString(), so we should encode it manually
+      if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($httpBody);
+      }
+    } elseif (count($formParams) > 0) {
+      if ($multipart) {
+        $multipartContents = [];
+        foreach ($formParams as $formParamName => $formParamValue) {
+          $multipartContents[] = [
+            'name' => $formParamName,
+            'contents' => $formParamValue
+          ];
+        }
+        // for HTTP post (form)
+        $httpBody = new MultipartStream($multipartContents);
+
+      } elseif ($headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($formParams);
+
+      } else {
+        // for HTTP post (form)
+        $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+      }
+    }
+
+    // this endpoint requires OAuth (access token)
+    if ($this->config->getAccessToken() !== null) {
+      $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+    }
+
+    $defaultHeaders = [];
+    if ($this->config->getUserAgent()) {
+      $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+    }
+
+    $headers = array_merge(
+      $defaultHeaders,
+      $headerParams,
+      $headers
+    );
+
+    $query = \GuzzleHttp\Psr7\build_query($queryParams);
+    return new Request(
+      'GET',
+      $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+      $headers,
+      $httpBody
+    );
+  }
+
+  /**
    * Operation findMedicalCondition
    *
-   * View an Medical Condition
+   * View a Medical Condition
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -2479,9 +3121,9 @@ class AssemblyApi
   /**
    * Operation findMedicalConditionWithHttpInfo
    *
-   * View an Medical Condition
+   * View a Medical Condition
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -2546,6 +3188,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -2554,9 +3236,9 @@ class AssemblyApi
   /**
    * Operation findMedicalConditionAsync
    *
-   * View an Medical Condition
+   * View a Medical Condition
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2574,9 +3256,9 @@ class AssemblyApi
   /**
    * Operation findMedicalConditionAsyncWithHttpInfo
    *
-   * View an Medical Condition
+   * View a Medical Condition
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2626,7 +3308,7 @@ class AssemblyApi
   /**
    * Create request for operation 'findMedicalCondition'
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -2730,17 +3412,16 @@ class AssemblyApi
    *
    * View a Registration Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\RegistrationGroup
    */
-  public function findRegistrationGroup($id, $date = null, $academic_year_id = null)
+  public function findRegistrationGroup($id, $date = null)
   {
-    list($response) = $this->findRegistrationGroupWithHttpInfo($id, $date, $academic_year_id);
+    list($response) = $this->findRegistrationGroupWithHttpInfo($id, $date);
     return $response;
   }
 
@@ -2749,18 +3430,17 @@ class AssemblyApi
    *
    * View a Registration Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\RegistrationGroup, HTTP status code, HTTP response headers (array of strings)
    */
-  public function findRegistrationGroupWithHttpInfo($id, $date = null, $academic_year_id = null)
+  public function findRegistrationGroupWithHttpInfo($id, $date = null)
   {
     $returnType = '\Assembly\Client\Model\RegistrationGroup';
-    $request = $this->findRegistrationGroupRequest($id, $date, $academic_year_id);
+    $request = $this->findRegistrationGroupRequest($id, $date);
 
     try {
       $options = $this->createHttpClientOption();
@@ -2816,6 +3496,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -2826,16 +3546,15 @@ class AssemblyApi
    *
    * View a Registration Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findRegistrationGroupAsync($id, $date = null, $academic_year_id = null)
+  public function findRegistrationGroupAsync($id, $date = null)
   {
-    return $this->findRegistrationGroupAsyncWithHttpInfo($id, $date, $academic_year_id)
+    return $this->findRegistrationGroupAsyncWithHttpInfo($id, $date)
       ->then(
         function ($response) {
           return $response[0];
@@ -2848,17 +3567,16 @@ class AssemblyApi
    *
    * View a Registration Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findRegistrationGroupAsyncWithHttpInfo($id, $date = null, $academic_year_id = null)
+  public function findRegistrationGroupAsyncWithHttpInfo($id, $date = null)
   {
     $returnType = '\Assembly\Client\Model\RegistrationGroup';
-    $request = $this->findRegistrationGroupRequest($id, $date, $academic_year_id);
+    $request = $this->findRegistrationGroupRequest($id, $date);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -2900,14 +3618,13 @@ class AssemblyApi
   /**
    * Create request for operation 'findRegistrationGroup'
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function findRegistrationGroupRequest($id, $date = null, $academic_year_id = null)
+  protected function findRegistrationGroupRequest($id, $date = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -2926,10 +3643,6 @@ class AssemblyApi
     // query params
     if ($date !== null) {
       $queryParams['date'] = ObjectSerializer::toQueryValue($date);
-    }
-    // query params
-    if ($academic_year_id !== null) {
-      $queryParams['academic_year_id'] = ObjectSerializer::toQueryValue($academic_year_id);
     }
 
     // path params
@@ -3012,35 +3725,33 @@ class AssemblyApi
   /**
    * Operation findSchool
    *
-   * Get School Details
+   * View School Details
    *
-   * @param  int $id id of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\School
    */
-  public function findSchool($id)
+  public function findSchool()
   {
-    list($response) = $this->findSchoolWithHttpInfo($id);
+    list($response) = $this->findSchoolWithHttpInfo();
     return $response;
   }
 
   /**
    * Operation findSchoolWithHttpInfo
    *
-   * Get School Details
+   * View School Details
    *
-   * @param  int $id id of the entity (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\School, HTTP status code, HTTP response headers (array of strings)
    */
-  public function findSchoolWithHttpInfo($id)
+  public function findSchoolWithHttpInfo()
   {
     $returnType = '\Assembly\Client\Model\School';
-    $request = $this->findSchoolRequest($id);
+    $request = $this->findSchoolRequest();
 
     try {
       $options = $this->createHttpClientOption();
@@ -3096,6 +3807,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -3104,16 +3855,15 @@ class AssemblyApi
   /**
    * Operation findSchoolAsync
    *
-   * Get School Details
+   * View School Details
    *
-   * @param  int $id id of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findSchoolAsync($id)
+  public function findSchoolAsync()
   {
-    return $this->findSchoolAsyncWithHttpInfo($id)
+    return $this->findSchoolAsyncWithHttpInfo()
       ->then(
         function ($response) {
           return $response[0];
@@ -3124,17 +3874,16 @@ class AssemblyApi
   /**
    * Operation findSchoolAsyncWithHttpInfo
    *
-   * Get School Details
+   * View School Details
    *
-   * @param  int $id id of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findSchoolAsyncWithHttpInfo($id)
+  public function findSchoolAsyncWithHttpInfo()
   {
     $returnType = '\Assembly\Client\Model\School';
-    $request = $this->findSchoolRequest($id);
+    $request = $this->findSchoolRequest();
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -3176,19 +3925,12 @@ class AssemblyApi
   /**
    * Create request for operation 'findSchool'
    *
-   * @param  int $id id of the entity (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function findSchoolRequest($id)
+  protected function findSchoolRequest()
   {
-    // verify the required parameter 'id' is set
-    if ($id === null || (is_array($id) && count($id) === 0)) {
-      throw new \InvalidArgumentException(
-        'Missing the required parameter $id when calling findSchool'
-      );
-    }
 
     $resourcePath = '/school';
     $formParams = [];
@@ -3198,14 +3940,6 @@ class AssemblyApi
     $multipart = false;
 
 
-    // path params
-    if ($id !== null) {
-      $resourcePath = str_replace(
-        '{' . 'id' . '}',
-        ObjectSerializer::toPathValue($id),
-        $resourcePath
-      );
-    }
 
     // body params
     $_tempBody = null;
@@ -3280,9 +4014,9 @@ class AssemblyApi
    *
    * View a Staff Member
    *
-   * @param  int $id id of the entity (required)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -3299,9 +4033,9 @@ class AssemblyApi
    *
    * View a Staff Member
    *
-   * @param  int $id id of the entity (required)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -3366,6 +4100,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -3376,9 +4150,9 @@ class AssemblyApi
    *
    * View a Staff Member
    *
-   * @param  int $id id of the entity (required)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3398,9 +4172,9 @@ class AssemblyApi
    *
    * View a Staff Member
    *
-   * @param  int $id id of the entity (required)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3450,9 +4224,9 @@ class AssemblyApi
   /**
    * Create request for operation 'findStaffMember'
    *
-   * @param  int $id id of the entity (required)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -3564,15 +4338,15 @@ class AssemblyApi
    *
    * View a Student
    *
-   * @param  int $id id of the entity (required)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -3589,15 +4363,15 @@ class AssemblyApi
    *
    * View a Student
    *
-   * @param  int $id id of the entity (required)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -3662,6 +4436,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -3672,15 +4486,15 @@ class AssemblyApi
    *
    * View a Student
    *
-   * @param  int $id id of the entity (required)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3700,15 +4514,15 @@ class AssemblyApi
    *
    * View a Student
    *
-   * @param  int $id id of the entity (required)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3758,15 +4572,15 @@ class AssemblyApi
   /**
    * Create request for operation 'findStudent'
    *
-   * @param  int $id id of the entity (required)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -3902,18 +4716,16 @@ class AssemblyApi
    *
    * View a Teaching Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  int $group_id a group_id to filter by (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\TeachingGroup
    */
-  public function findTeachingGroup($id, $date = null, $academic_year_id = null, $group_id = null)
+  public function findTeachingGroup($id, $date = null)
   {
-    list($response) = $this->findTeachingGroupWithHttpInfo($id, $date, $academic_year_id, $group_id);
+    list($response) = $this->findTeachingGroupWithHttpInfo($id, $date);
     return $response;
   }
 
@@ -3922,19 +4734,17 @@ class AssemblyApi
    *
    * View a Teaching Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  int $group_id a group_id to filter by (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\TeachingGroup, HTTP status code, HTTP response headers (array of strings)
    */
-  public function findTeachingGroupWithHttpInfo($id, $date = null, $academic_year_id = null, $group_id = null)
+  public function findTeachingGroupWithHttpInfo($id, $date = null)
   {
     $returnType = '\Assembly\Client\Model\TeachingGroup';
-    $request = $this->findTeachingGroupRequest($id, $date, $academic_year_id, $group_id);
+    $request = $this->findTeachingGroupRequest($id, $date);
 
     try {
       $options = $this->createHttpClientOption();
@@ -3990,6 +4800,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -4000,17 +4850,15 @@ class AssemblyApi
    *
    * View a Teaching Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  int $group_id a group_id to filter by (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findTeachingGroupAsync($id, $date = null, $academic_year_id = null, $group_id = null)
+  public function findTeachingGroupAsync($id, $date = null)
   {
-    return $this->findTeachingGroupAsyncWithHttpInfo($id, $date, $academic_year_id, $group_id)
+    return $this->findTeachingGroupAsyncWithHttpInfo($id, $date)
       ->then(
         function ($response) {
           return $response[0];
@@ -4023,18 +4871,16 @@ class AssemblyApi
    *
    * View a Teaching Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  int $group_id a group_id to filter by (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findTeachingGroupAsyncWithHttpInfo($id, $date = null, $academic_year_id = null, $group_id = null)
+  public function findTeachingGroupAsyncWithHttpInfo($id, $date = null)
   {
     $returnType = '\Assembly\Client\Model\TeachingGroup';
-    $request = $this->findTeachingGroupRequest($id, $date, $academic_year_id, $group_id);
+    $request = $this->findTeachingGroupRequest($id, $date);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -4076,15 +4922,13 @@ class AssemblyApi
   /**
    * Create request for operation 'findTeachingGroup'
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  int $group_id a group_id to filter by (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function findTeachingGroupRequest($id, $date = null, $academic_year_id = null, $group_id = null)
+  protected function findTeachingGroupRequest($id, $date = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -4103,14 +4947,6 @@ class AssemblyApi
     // query params
     if ($date !== null) {
       $queryParams['date'] = ObjectSerializer::toQueryValue($date);
-    }
-    // query params
-    if ($academic_year_id !== null) {
-      $queryParams['academic_year_id'] = ObjectSerializer::toQueryValue($academic_year_id);
-    }
-    // query params
-    if ($group_id !== null) {
-      $queryParams['group_id'] = ObjectSerializer::toQueryValue($group_id);
     }
 
     // path params
@@ -4195,17 +5031,16 @@ class AssemblyApi
    *
    * View a Year Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\YearGroup
    */
-  public function findYearGroup($id, $date = null, $academic_year_id = null)
+  public function findYearGroup($id, $date = null)
   {
-    list($response) = $this->findYearGroupWithHttpInfo($id, $date, $academic_year_id);
+    list($response) = $this->findYearGroupWithHttpInfo($id, $date);
     return $response;
   }
 
@@ -4214,18 +5049,17 @@ class AssemblyApi
    *
    * View a Year Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\YearGroup, HTTP status code, HTTP response headers (array of strings)
    */
-  public function findYearGroupWithHttpInfo($id, $date = null, $academic_year_id = null)
+  public function findYearGroupWithHttpInfo($id, $date = null)
   {
     $returnType = '\Assembly\Client\Model\YearGroup';
-    $request = $this->findYearGroupRequest($id, $date, $academic_year_id);
+    $request = $this->findYearGroupRequest($id, $date);
 
     try {
       $options = $this->createHttpClientOption();
@@ -4281,6 +5115,46 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -4291,16 +5165,15 @@ class AssemblyApi
    *
    * View a Year Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findYearGroupAsync($id, $date = null, $academic_year_id = null)
+  public function findYearGroupAsync($id, $date = null)
   {
-    return $this->findYearGroupAsyncWithHttpInfo($id, $date, $academic_year_id)
+    return $this->findYearGroupAsyncWithHttpInfo($id, $date)
       ->then(
         function ($response) {
           return $response[0];
@@ -4313,17 +5186,16 @@ class AssemblyApi
    *
    * View a Year Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findYearGroupAsyncWithHttpInfo($id, $date = null, $academic_year_id = null)
+  public function findYearGroupAsyncWithHttpInfo($id, $date = null)
   {
     $returnType = '\Assembly\Client\Model\YearGroup';
-    $request = $this->findYearGroupRequest($id, $date, $academic_year_id);
+    $request = $this->findYearGroupRequest($id, $date);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -4365,14 +5237,13 @@ class AssemblyApi
   /**
    * Create request for operation 'findYearGroup'
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function findYearGroupRequest($id, $date = null, $academic_year_id = null)
+  protected function findYearGroupRequest($id, $date = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -4391,10 +5262,6 @@ class AssemblyApi
     // query params
     if ($date !== null) {
       $queryParams['date'] = ObjectSerializer::toQueryValue($date);
-    }
-    // query params
-    if ($academic_year_id !== null) {
-      $queryParams['academic_year_id'] = ObjectSerializer::toQueryValue($academic_year_id);
     }
 
     // path params
@@ -4563,6 +5430,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -4653,6 +5552,17 @@ class AssemblyApi
    */
   protected function getAcademicYearsRequest($per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAcademicYears, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAcademicYears, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getAcademicYears, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/academic_years';
     $formParams = [];
@@ -4744,17 +5654,16 @@ class AssemblyApi
    *
    * View Results for an Assessment Point
    *
-   * @param  int $id id of the entity (required)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
-   * @param  int $assessment_point_rank the Assessment Point rank (optional)
+   * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Result[]
    */
-  public function getAssessmentPointResults($id, $students, $assessment_point_rank = null)
+  public function getAssessmentPointResults($assessment_point_rank, $students)
   {
-    list($response) = $this->getAssessmentPointResultsWithHttpInfo($id, $students, $assessment_point_rank);
+    list($response) = $this->getAssessmentPointResultsWithHttpInfo($assessment_point_rank, $students);
     return $response;
   }
 
@@ -4763,18 +5672,17 @@ class AssemblyApi
    *
    * View Results for an Assessment Point
    *
-   * @param  int $id id of the entity (required)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
-   * @param  int $assessment_point_rank the Assessment Point rank (optional)
+   * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Result[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getAssessmentPointResultsWithHttpInfo($id, $students, $assessment_point_rank = null)
+  public function getAssessmentPointResultsWithHttpInfo($assessment_point_rank, $students)
   {
     $returnType = '\Assembly\Client\Model\Result[]';
-    $request = $this->getAssessmentPointResultsRequest($id, $students, $assessment_point_rank);
+    $request = $this->getAssessmentPointResultsRequest($assessment_point_rank, $students);
 
     try {
       $options = $this->createHttpClientOption();
@@ -4830,6 +5738,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -4840,16 +5780,15 @@ class AssemblyApi
    *
    * View Results for an Assessment Point
    *
-   * @param  int $id id of the entity (required)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
-   * @param  int $assessment_point_rank the Assessment Point rank (optional)
+   * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAssessmentPointResultsAsync($id, $students, $assessment_point_rank = null)
+  public function getAssessmentPointResultsAsync($assessment_point_rank, $students)
   {
-    return $this->getAssessmentPointResultsAsyncWithHttpInfo($id, $students, $assessment_point_rank)
+    return $this->getAssessmentPointResultsAsyncWithHttpInfo($assessment_point_rank, $students)
       ->then(
         function ($response) {
           return $response[0];
@@ -4862,17 +5801,16 @@ class AssemblyApi
    *
    * View Results for an Assessment Point
    *
-   * @param  int $id id of the entity (required)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
-   * @param  int $assessment_point_rank the Assessment Point rank (optional)
+   * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAssessmentPointResultsAsyncWithHttpInfo($id, $students, $assessment_point_rank = null)
+  public function getAssessmentPointResultsAsyncWithHttpInfo($assessment_point_rank, $students)
   {
     $returnType = '\Assembly\Client\Model\Result[]';
-    $request = $this->getAssessmentPointResultsRequest($id, $students, $assessment_point_rank);
+    $request = $this->getAssessmentPointResultsRequest($assessment_point_rank, $students);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -4914,19 +5852,18 @@ class AssemblyApi
   /**
    * Create request for operation 'getAssessmentPointResults'
    *
-   * @param  int $id id of the entity (required)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
-   * @param  int $assessment_point_rank the Assessment Point rank (optional)
+   * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getAssessmentPointResultsRequest($id, $students, $assessment_point_rank = null)
+  protected function getAssessmentPointResultsRequest($assessment_point_rank, $students)
   {
-    // verify the required parameter 'id' is set
-    if ($id === null || (is_array($id) && count($id) === 0)) {
+    // verify the required parameter 'assessment_point_rank' is set
+    if ($assessment_point_rank === null || (is_array($assessment_point_rank) && count($assessment_point_rank) === 0)) {
       throw new \InvalidArgumentException(
-        'Missing the required parameter $id when calling getAssessmentPointResults'
+        'Missing the required parameter $assessment_point_rank when calling getAssessmentPointResults'
       );
     }
     // verify the required parameter 'students' is set
@@ -4936,17 +5873,13 @@ class AssemblyApi
       );
     }
 
-    $resourcePath = '/assessment_points/{id}/results';
+    $resourcePath = '/assessment_points/{assessment_point_rank}/results';
     $formParams = [];
     $queryParams = [];
     $headerParams = [];
     $httpBody = '';
     $multipart = false;
 
-    // query params
-    if ($assessment_point_rank !== null) {
-      $queryParams['assessment_point_rank'] = ObjectSerializer::toQueryValue($assessment_point_rank);
-    }
     // query params
     if (is_array($students)) {
       $students = ObjectSerializer::serializeCollection($students, 'multi', true);
@@ -4956,10 +5889,10 @@ class AssemblyApi
     }
 
     // path params
-    if ($id !== null) {
+    if ($assessment_point_rank !== null) {
       $resourcePath = str_replace(
-        '{' . 'id' . '}',
-        ObjectSerializer::toPathValue($id),
+        '{' . 'assessment_point_rank' . '}',
+        ObjectSerializer::toPathValue($assessment_point_rank),
         $resourcePath
       );
     }
@@ -5037,6 +5970,8 @@ class AssemblyApi
    *
    * List Assessment Points
    *
+   * @param  int $year_code Filter by school year (optional)
+   * @param  string $type Filter by assessment point type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -5044,9 +5979,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\AssessmentPoint[]
    */
-  public function getAssessmentPoints($per_page = '100', $page = '1')
+  public function getAssessmentPoints($year_code = null, $type = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getAssessmentPointsWithHttpInfo($per_page, $page);
+    list($response) = $this->getAssessmentPointsWithHttpInfo($year_code, $type, $per_page, $page);
     return $response;
   }
 
@@ -5055,6 +5990,8 @@ class AssemblyApi
    *
    * List Assessment Points
    *
+   * @param  int $year_code Filter by school year (optional)
+   * @param  string $type Filter by assessment point type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -5062,10 +5999,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\AssessmentPoint[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getAssessmentPointsWithHttpInfo($per_page = '100', $page = '1')
+  public function getAssessmentPointsWithHttpInfo($year_code = null, $type = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\AssessmentPoint[]';
-    $request = $this->getAssessmentPointsRequest($per_page, $page);
+    $request = $this->getAssessmentPointsRequest($year_code, $type, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -5121,6 +6058,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -5131,15 +6100,17 @@ class AssemblyApi
    *
    * List Assessment Points
    *
+   * @param  int $year_code Filter by school year (optional)
+   * @param  string $type Filter by assessment point type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAssessmentPointsAsync($per_page = '100', $page = '1')
+  public function getAssessmentPointsAsync($year_code = null, $type = null, $per_page = '100', $page = '1')
   {
-    return $this->getAssessmentPointsAsyncWithHttpInfo($per_page, $page)
+    return $this->getAssessmentPointsAsyncWithHttpInfo($year_code, $type, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -5152,16 +6123,18 @@ class AssemblyApi
    *
    * List Assessment Points
    *
+   * @param  int $year_code Filter by school year (optional)
+   * @param  string $type Filter by assessment point type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAssessmentPointsAsyncWithHttpInfo($per_page = '100', $page = '1')
+  public function getAssessmentPointsAsyncWithHttpInfo($year_code = null, $type = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\AssessmentPoint[]';
-    $request = $this->getAssessmentPointsRequest($per_page, $page);
+    $request = $this->getAssessmentPointsRequest($year_code, $type, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -5203,14 +6176,27 @@ class AssemblyApi
   /**
    * Create request for operation 'getAssessmentPoints'
    *
+   * @param  int $year_code Filter by school year (optional)
+   * @param  string $type Filter by assessment point type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getAssessmentPointsRequest($per_page = '100', $page = '1')
+  protected function getAssessmentPointsRequest($year_code = null, $type = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAssessmentPoints, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAssessmentPoints, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getAssessmentPoints, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/assessment_points';
     $formParams = [];
@@ -5219,6 +6205,14 @@ class AssemblyApi
     $httpBody = '';
     $multipart = false;
 
+    // query params
+    if ($year_code !== null) {
+      $queryParams['year_code'] = ObjectSerializer::toQueryValue($year_code);
+    }
+    // query params
+    if ($type !== null) {
+      $queryParams['type'] = ObjectSerializer::toQueryValue($type);
+    }
     // query params
     if ($per_page !== null) {
       $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
@@ -5302,8 +6296,8 @@ class AssemblyApi
    *
    * View Results for an Assessment
    *
-   * @param  int $id id of the entity (required)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -5320,8 +6314,8 @@ class AssemblyApi
    *
    * View Results for an Assessment
    *
-   * @param  int $id id of the entity (required)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -5386,6 +6380,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -5396,8 +6422,8 @@ class AssemblyApi
    *
    * View Results for an Assessment
    *
-   * @param  int $id id of the entity (required)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5417,8 +6443,8 @@ class AssemblyApi
    *
    * View Results for an Assessment
    *
-   * @param  int $id id of the entity (required)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5468,8 +6494,8 @@ class AssemblyApi
   /**
    * Create request for operation 'getAssessmentResults'
    *
-   * @param  int $id id of the entity (required)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -5512,271 +6538,6 @@ class AssemblyApi
         $resourcePath
       );
     }
-
-    // body params
-    $_tempBody = null;
-
-    if ($multipart) {
-      $headers = $this->headerSelector->selectHeadersForMultipart(
-        ['application/vnd.assembly+json; version=1.1']
-      );
-    } else {
-      $headers = $this->headerSelector->selectHeaders(
-        ['application/vnd.assembly+json; version=1.1'],
-        []
-      );
-    }
-
-    // for model (json/xml)
-    if (isset($_tempBody)) {
-      // $_tempBody is the method argument, if present
-      $httpBody = $_tempBody;
-      // \stdClass has no __toString(), so we should encode it manually
-      if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-        $httpBody = \GuzzleHttp\json_encode($httpBody);
-      }
-    } elseif (count($formParams) > 0) {
-      if ($multipart) {
-        $multipartContents = [];
-        foreach ($formParams as $formParamName => $formParamValue) {
-          $multipartContents[] = [
-            'name' => $formParamName,
-            'contents' => $formParamValue
-          ];
-        }
-        // for HTTP post (form)
-        $httpBody = new MultipartStream($multipartContents);
-
-      } elseif ($headers['Content-Type'] === 'application/json') {
-        $httpBody = \GuzzleHttp\json_encode($formParams);
-
-      } else {
-        // for HTTP post (form)
-        $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-      }
-    }
-
-    // this endpoint requires OAuth (access token)
-    if ($this->config->getAccessToken() !== null) {
-      $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
-    }
-
-    $defaultHeaders = [];
-    if ($this->config->getUserAgent()) {
-      $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-    }
-
-    $headers = array_merge(
-      $defaultHeaders,
-      $headerParams,
-      $headers
-    );
-
-    $query = \GuzzleHttp\Psr7\build_query($queryParams);
-    return new Request(
-      'GET',
-      $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-      $headers,
-      $httpBody
-    );
-  }
-
-  /**
-   * Operation getAssessmentSummaries
-   *
-   * List Attendance Summaries
-   *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  int $registration_group_id id of a registration group (optional)
-   *
-   * @throws \Assembly\Client\ApiException on non-2xx response
-   * @throws \InvalidArgumentException
-   * @return \Assembly\Client\Model\AttendanceSummary[]
-   */
-  public function getAssessmentSummaries($student_id = null, $registration_group_id = null)
-  {
-    list($response) = $this->getAssessmentSummariesWithHttpInfo($student_id, $registration_group_id);
-    return $response;
-  }
-
-  /**
-   * Operation getAssessmentSummariesWithHttpInfo
-   *
-   * List Attendance Summaries
-   *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  int $registration_group_id id of a registration group (optional)
-   *
-   * @throws \Assembly\Client\ApiException on non-2xx response
-   * @throws \InvalidArgumentException
-   * @return array of \Assembly\Client\Model\AttendanceSummary[], HTTP status code, HTTP response headers (array of strings)
-   */
-  public function getAssessmentSummariesWithHttpInfo($student_id = null, $registration_group_id = null)
-  {
-    $returnType = '\Assembly\Client\Model\AttendanceSummary[]';
-    $request = $this->getAssessmentSummariesRequest($student_id, $registration_group_id);
-
-    try {
-      $options = $this->createHttpClientOption();
-      try {
-        $response = $this->client->send($request, $options);
-      } catch (RequestException $e) {
-        throw new ApiException(
-          "[{$e->getCode()}] {$e->getMessage()}",
-          $e->getCode(),
-          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-          $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-        );
-      }
-
-      $statusCode = $response->getStatusCode();
-
-      if ($statusCode < 200 || $statusCode > 299) {
-        throw new ApiException(
-          sprintf(
-            '[%d] Error connecting to the API (%s)',
-            $statusCode,
-            $request->getUri()
-          ),
-          $statusCode,
-          $response->getHeaders(),
-          $response->getBody()
-        );
-      }
-
-      $responseBody = $response->getBody();
-      if ($returnType === '\SplFileObject') {
-        $content = $responseBody; //stream goes to serializer
-      } else {
-        $content = $responseBody->getContents();
-        if ($returnType !== 'string') {
-          $content = json_decode($content);
-        }
-      }
-
-      return [
-        ObjectSerializer::deserialize($content, $returnType, []),
-        $response->getStatusCode(),
-        $response->getHeaders()
-      ];
-
-    } catch (ApiException $e) {
-      switch ($e->getCode()) {
-        case 200:
-          $data = ObjectSerializer::deserialize(
-            $e->getResponseBody(),
-            '\Assembly\Client\Model\AttendanceSummary[]',
-            $e->getResponseHeaders()
-          );
-          $e->setResponseObject($data);
-          break;
-      }
-      throw $e;
-    }
-  }
-
-  /**
-   * Operation getAssessmentSummariesAsync
-   *
-   * List Attendance Summaries
-   *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  int $registration_group_id id of a registration group (optional)
-   *
-   * @throws \InvalidArgumentException
-   * @return \GuzzleHttp\Promise\PromiseInterface
-   */
-  public function getAssessmentSummariesAsync($student_id = null, $registration_group_id = null)
-  {
-    return $this->getAssessmentSummariesAsyncWithHttpInfo($student_id, $registration_group_id)
-      ->then(
-        function ($response) {
-          return $response[0];
-        }
-      );
-  }
-
-  /**
-   * Operation getAssessmentSummariesAsyncWithHttpInfo
-   *
-   * List Attendance Summaries
-   *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  int $registration_group_id id of a registration group (optional)
-   *
-   * @throws \InvalidArgumentException
-   * @return \GuzzleHttp\Promise\PromiseInterface
-   */
-  public function getAssessmentSummariesAsyncWithHttpInfo($student_id = null, $registration_group_id = null)
-  {
-    $returnType = '\Assembly\Client\Model\AttendanceSummary[]';
-    $request = $this->getAssessmentSummariesRequest($student_id, $registration_group_id);
-
-    return $this->client
-      ->sendAsync($request, $this->createHttpClientOption())
-      ->then(
-        function ($response) use ($returnType) {
-          $responseBody = $response->getBody();
-          if ($returnType === '\SplFileObject') {
-            $content = $responseBody; //stream goes to serializer
-          } else {
-            $content = $responseBody->getContents();
-            if ($returnType !== 'string') {
-              $content = json_decode($content);
-            }
-          }
-
-          return [
-            ObjectSerializer::deserialize($content, $returnType, []),
-            $response->getStatusCode(),
-            $response->getHeaders()
-          ];
-        },
-        function ($exception) {
-          $response = $exception->getResponse();
-          $statusCode = $response->getStatusCode();
-          throw new ApiException(
-            sprintf(
-              '[%d] Error connecting to the API (%s)',
-              $statusCode,
-              $exception->getRequest()->getUri()
-            ),
-            $statusCode,
-            $response->getHeaders(),
-            $response->getBody()
-          );
-        }
-      );
-  }
-
-  /**
-   * Create request for operation 'getAssessmentSummaries'
-   *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  int $registration_group_id id of a registration group (optional)
-   *
-   * @throws \InvalidArgumentException
-   * @return \GuzzleHttp\Psr7\Request
-   */
-  protected function getAssessmentSummariesRequest($student_id = null, $registration_group_id = null)
-  {
-
-    $resourcePath = '/attendances/summaries';
-    $formParams = [];
-    $queryParams = [];
-    $headerParams = [];
-    $httpBody = '';
-    $multipart = false;
-
-    // query params
-    if ($student_id !== null) {
-      $queryParams['student_id'] = ObjectSerializer::toQueryValue($student_id);
-    }
-    // query params
-    if ($registration_group_id !== null) {
-      $queryParams['registration_group_id'] = ObjectSerializer::toQueryValue($registration_group_id);
-    }
-
 
     // body params
     $_tempBody = null;
@@ -5935,6 +6696,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -6025,6 +6818,17 @@ class AssemblyApi
    */
   protected function getAssessmentsRequest($per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAssessments, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAssessments, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getAssessments, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/assessments';
     $formParams = [];
@@ -6112,14 +6916,330 @@ class AssemblyApi
   }
 
   /**
+   * Operation getAttendanceSummaries
+   *
+   * List Attendance Summaries
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return \Assembly\Client\Model\AttendanceSummary[]
+   */
+  public function getAttendanceSummaries($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null)
+  {
+    list($response) = $this->getAttendanceSummariesWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $academic_year_id);
+    return $response;
+  }
+
+  /**
+   * Operation getAttendanceSummariesWithHttpInfo
+   *
+   * List Attendance Summaries
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return array of \Assembly\Client\Model\AttendanceSummary[], HTTP status code, HTTP response headers (array of strings)
+   */
+  public function getAttendanceSummariesWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null)
+  {
+    $returnType = '\Assembly\Client\Model\AttendanceSummary[]';
+    $request = $this->getAttendanceSummariesRequest($if_modified_since, $student_id, $registration_group_id, $academic_year_id);
+
+    try {
+      $options = $this->createHttpClientOption();
+      try {
+        $response = $this->client->send($request, $options);
+      } catch (RequestException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+        );
+      }
+
+      $statusCode = $response->getStatusCode();
+
+      if ($statusCode < 200 || $statusCode > 299) {
+        throw new ApiException(
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          $response->getBody()
+        );
+      }
+
+      $responseBody = $response->getBody();
+      if ($returnType === '\SplFileObject') {
+        $content = $responseBody; //stream goes to serializer
+      } else {
+        $content = $responseBody->getContents();
+        if ($returnType !== 'string') {
+          $content = json_decode($content);
+        }
+      }
+
+      return [
+        ObjectSerializer::deserialize($content, $returnType, []),
+        $response->getStatusCode(),
+        $response->getHeaders()
+      ];
+
+    } catch (ApiException $e) {
+      switch ($e->getCode()) {
+        case 200:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\AttendanceSummary[]',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+      }
+      throw $e;
+    }
+  }
+
+  /**
+   * Operation getAttendanceSummariesAsync
+   *
+   * List Attendance Summaries
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function getAttendanceSummariesAsync($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null)
+  {
+    return $this->getAttendanceSummariesAsyncWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $academic_year_id)
+      ->then(
+        function ($response) {
+          return $response[0];
+        }
+      );
+  }
+
+  /**
+   * Operation getAttendanceSummariesAsyncWithHttpInfo
+   *
+   * List Attendance Summaries
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function getAttendanceSummariesAsyncWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null)
+  {
+    $returnType = '\Assembly\Client\Model\AttendanceSummary[]';
+    $request = $this->getAttendanceSummariesRequest($if_modified_since, $student_id, $registration_group_id, $academic_year_id);
+
+    return $this->client
+      ->sendAsync($request, $this->createHttpClientOption())
+      ->then(
+        function ($response) use ($returnType) {
+          $responseBody = $response->getBody();
+          if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+          } else {
+            $content = $responseBody->getContents();
+            if ($returnType !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        },
+        function ($exception) {
+          $response = $exception->getResponse();
+          $statusCode = $response->getStatusCode();
+          throw new ApiException(
+            sprintf(
+              '[%d] Error connecting to the API (%s)',
+              $statusCode,
+              $exception->getRequest()->getUri()
+            ),
+            $statusCode,
+            $response->getHeaders(),
+            $response->getBody()
+          );
+        }
+      );
+  }
+
+  /**
+   * Create request for operation 'getAttendanceSummaries'
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Psr7\Request
+   */
+  protected function getAttendanceSummariesRequest($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null)
+  {
+
+    $resourcePath = '/attendances/summaries';
+    $formParams = [];
+    $queryParams = [];
+    $headerParams = [];
+    $httpBody = '';
+    $multipart = false;
+
+    // query params
+    if ($student_id !== null) {
+      $queryParams['student_id'] = ObjectSerializer::toQueryValue($student_id);
+    }
+    // query params
+    if ($registration_group_id !== null) {
+      $queryParams['registration_group_id'] = ObjectSerializer::toQueryValue($registration_group_id);
+    }
+    // query params
+    if ($academic_year_id !== null) {
+      $queryParams['academic_year_id'] = ObjectSerializer::toQueryValue($academic_year_id);
+    }
+    // header params
+    if ($if_modified_since !== null) {
+      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+
+
+    // body params
+    $_tempBody = null;
+
+    if ($multipart) {
+      $headers = $this->headerSelector->selectHeadersForMultipart(
+        ['application/vnd.assembly+json; version=1.1']
+      );
+    } else {
+      $headers = $this->headerSelector->selectHeaders(
+        ['application/vnd.assembly+json; version=1.1'],
+        []
+      );
+    }
+
+    // for model (json/xml)
+    if (isset($_tempBody)) {
+      // $_tempBody is the method argument, if present
+      $httpBody = $_tempBody;
+      // \stdClass has no __toString(), so we should encode it manually
+      if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($httpBody);
+      }
+    } elseif (count($formParams) > 0) {
+      if ($multipart) {
+        $multipartContents = [];
+        foreach ($formParams as $formParamName => $formParamValue) {
+          $multipartContents[] = [
+            'name' => $formParamName,
+            'contents' => $formParamValue
+          ];
+        }
+        // for HTTP post (form)
+        $httpBody = new MultipartStream($multipartContents);
+
+      } elseif ($headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($formParams);
+
+      } else {
+        // for HTTP post (form)
+        $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+      }
+    }
+
+    // this endpoint requires OAuth (access token)
+    if ($this->config->getAccessToken() !== null) {
+      $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+    }
+
+    $defaultHeaders = [];
+    if ($this->config->getUserAgent()) {
+      $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+    }
+
+    $headers = array_merge(
+      $defaultHeaders,
+      $headerParams,
+      $headers
+    );
+
+    $query = \GuzzleHttp\Psr7\build_query($queryParams);
+    return new Request(
+      'GET',
+      $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+      $headers,
+      $httpBody
+    );
+  }
+
+  /**
    * Operation getAttendances
    *
    * List Attendances
    *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  int $registration_group_id id of a registration group (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  \DateTime $end_date the end date of the period to query (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -6127,9 +7247,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Attendance[]
    */
-  public function getAttendances($student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getAttendances($if_modified_since = null, $student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getAttendancesWithHttpInfo($student_id, $registration_group_id, $start_date, $end_date, $per_page, $page);
+    list($response) = $this->getAttendancesWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $start_date, $end_date, $per_page, $page);
     return $response;
   }
 
@@ -6138,10 +7258,11 @@ class AssemblyApi
    *
    * List Attendances
    *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  int $registration_group_id id of a registration group (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  \DateTime $end_date the end date of the period to query (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -6149,10 +7270,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Attendance[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getAttendancesWithHttpInfo($student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getAttendancesWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Attendance[]';
-    $request = $this->getAttendancesRequest($student_id, $registration_group_id, $start_date, $end_date, $per_page, $page);
+    $request = $this->getAttendancesRequest($if_modified_since, $student_id, $registration_group_id, $start_date, $end_date, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -6208,6 +7329,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -6218,19 +7371,20 @@ class AssemblyApi
    *
    * List Attendances
    *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  int $registration_group_id id of a registration group (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  \DateTime $end_date the end date of the period to query (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAttendancesAsync($student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getAttendancesAsync($if_modified_since = null, $student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
-    return $this->getAttendancesAsyncWithHttpInfo($student_id, $registration_group_id, $start_date, $end_date, $per_page, $page)
+    return $this->getAttendancesAsyncWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $start_date, $end_date, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -6243,20 +7397,21 @@ class AssemblyApi
    *
    * List Attendances
    *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  int $registration_group_id id of a registration group (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  \DateTime $end_date the end date of the period to query (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAttendancesAsyncWithHttpInfo($student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getAttendancesAsyncWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Attendance[]';
-    $request = $this->getAttendancesRequest($student_id, $registration_group_id, $start_date, $end_date, $per_page, $page);
+    $request = $this->getAttendancesRequest($if_modified_since, $student_id, $registration_group_id, $start_date, $end_date, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -6298,18 +7453,30 @@ class AssemblyApi
   /**
    * Create request for operation 'getAttendances'
    *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  int $registration_group_id id of a registration group (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  \DateTime $end_date the end date of the period to query (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getAttendancesRequest($student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  protected function getAttendancesRequest($if_modified_since = null, $student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAttendances, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAttendances, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getAttendances, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/attendances';
     $formParams = [];
@@ -6341,6 +7508,10 @@ class AssemblyApi
     // query params
     if ($page !== null) {
       $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+    }
+    // header params
+    if ($if_modified_since !== null) {
+      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
     }
 
 
@@ -6417,7 +7588,8 @@ class AssemblyApi
    *
    * List Calendar Events
    *
-   * @param  string $event_type a calendar object type from the underlying MIS (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -6425,9 +7597,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\CalendarEvent[]
    */
-  public function getCalendarEvents($event_type = null, $per_page = '100', $page = '1')
+  public function getCalendarEvents($if_modified_since = null, $event_type = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getCalendarEventsWithHttpInfo($event_type, $per_page, $page);
+    list($response) = $this->getCalendarEventsWithHttpInfo($if_modified_since, $event_type, $per_page, $page);
     return $response;
   }
 
@@ -6436,7 +7608,8 @@ class AssemblyApi
    *
    * List Calendar Events
    *
-   * @param  string $event_type a calendar object type from the underlying MIS (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -6444,10 +7617,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\CalendarEvent[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getCalendarEventsWithHttpInfo($event_type = null, $per_page = '100', $page = '1')
+  public function getCalendarEventsWithHttpInfo($if_modified_since = null, $event_type = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\CalendarEvent[]';
-    $request = $this->getCalendarEventsRequest($event_type, $per_page, $page);
+    $request = $this->getCalendarEventsRequest($if_modified_since, $event_type, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -6503,6 +7676,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -6513,16 +7718,17 @@ class AssemblyApi
    *
    * List Calendar Events
    *
-   * @param  string $event_type a calendar object type from the underlying MIS (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getCalendarEventsAsync($event_type = null, $per_page = '100', $page = '1')
+  public function getCalendarEventsAsync($if_modified_since = null, $event_type = null, $per_page = '100', $page = '1')
   {
-    return $this->getCalendarEventsAsyncWithHttpInfo($event_type, $per_page, $page)
+    return $this->getCalendarEventsAsyncWithHttpInfo($if_modified_since, $event_type, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -6535,17 +7741,18 @@ class AssemblyApi
    *
    * List Calendar Events
    *
-   * @param  string $event_type a calendar object type from the underlying MIS (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getCalendarEventsAsyncWithHttpInfo($event_type = null, $per_page = '100', $page = '1')
+  public function getCalendarEventsAsyncWithHttpInfo($if_modified_since = null, $event_type = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\CalendarEvent[]';
-    $request = $this->getCalendarEventsRequest($event_type, $per_page, $page);
+    $request = $this->getCalendarEventsRequest($if_modified_since, $event_type, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -6587,15 +7794,27 @@ class AssemblyApi
   /**
    * Create request for operation 'getCalendarEvents'
    *
-   * @param  string $event_type a calendar object type from the underlying MIS (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getCalendarEventsRequest($event_type = null, $per_page = '100', $page = '1')
+  protected function getCalendarEventsRequest($if_modified_since = null, $event_type = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getCalendarEvents, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getCalendarEvents, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getCalendarEvents, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/calendar_events';
     $formParams = [];
@@ -6615,6 +7834,10 @@ class AssemblyApi
     // query params
     if ($page !== null) {
       $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+    }
+    // header params
+    if ($if_modified_since !== null) {
+      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
     }
 
 
@@ -6691,7 +7914,7 @@ class AssemblyApi
    *
    * List Contacts
    *
-   * @param  int $student_id a student_id to filter by (optional)
+   * @param  int $student_id Filter to the specified student (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -6710,7 +7933,7 @@ class AssemblyApi
    *
    * List Contacts
    *
-   * @param  int $student_id a student_id to filter by (optional)
+   * @param  int $student_id Filter to the specified student (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -6777,6 +8000,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -6787,7 +8042,7 @@ class AssemblyApi
    *
    * List Contacts
    *
-   * @param  int $student_id a student_id to filter by (optional)
+   * @param  int $student_id Filter to the specified student (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -6809,7 +8064,7 @@ class AssemblyApi
    *
    * List Contacts
    *
-   * @param  int $student_id a student_id to filter by (optional)
+   * @param  int $student_id Filter to the specified student (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -6861,7 +8116,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getContacts'
    *
-   * @param  int $student_id a student_id to filter by (optional)
+   * @param  int $student_id Filter to the specified student (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -6870,6 +8125,17 @@ class AssemblyApi
    */
   protected function getContactsRequest($student_id = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getContacts, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getContacts, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getContacts, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/contacts';
     $formParams = [];
@@ -6963,7 +8229,7 @@ class AssemblyApi
   /**
    * Operation getDietaryNeeds
    *
-   * Dietary Needs
+   * List Dietary Needs
    *
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -6981,7 +8247,7 @@ class AssemblyApi
   /**
    * Operation getDietaryNeedsWithHttpInfo
    *
-   * Dietary Needs
+   * List Dietary Needs
    *
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -7049,6 +8315,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -7057,7 +8355,7 @@ class AssemblyApi
   /**
    * Operation getDietaryNeedsAsync
    *
-   * Dietary Needs
+   * List Dietary Needs
    *
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -7078,7 +8376,7 @@ class AssemblyApi
   /**
    * Operation getDietaryNeedsAsyncWithHttpInfo
    *
-   * Dietary Needs
+   * List Dietary Needs
    *
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -7139,6 +8437,17 @@ class AssemblyApi
    */
   protected function getDietaryNeedsRequest($per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getDietaryNeeds, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getDietaryNeeds, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getDietaryNeeds, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/school/dietary_needs';
     $formParams = [];
@@ -7230,9 +8539,9 @@ class AssemblyApi
    *
    * List Exclusions
    *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  \DateTime $end_date the end date of the period to query (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -7251,9 +8560,9 @@ class AssemblyApi
    *
    * List Exclusions
    *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  \DateTime $end_date the end date of the period to query (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -7320,6 +8629,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -7330,9 +8671,9 @@ class AssemblyApi
    *
    * List Exclusions
    *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  \DateTime $end_date the end date of the period to query (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -7354,9 +8695,9 @@ class AssemblyApi
    *
    * List Exclusions
    *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  \DateTime $end_date the end date of the period to query (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -7408,9 +8749,9 @@ class AssemblyApi
   /**
    * Create request for operation 'getExclusions'
    *
-   * @param  int $student_id a student_id to filter by (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  \DateTime $end_date the end date of the period to query (optional)
+   * @param  int $student_id Filter to the specified student (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -7419,6 +8760,17 @@ class AssemblyApi
    */
   protected function getExclusionsRequest($student_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getExclusions, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getExclusions, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getExclusions, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/exclusions';
     $formParams = [];
@@ -7606,6 +8958,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -7696,6 +9080,17 @@ class AssemblyApi
    */
   protected function getFacetsRequest($per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getFacets, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getFacets, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getFacets, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/facets';
     $formParams = [];
@@ -7871,6 +9266,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -7961,6 +9388,17 @@ class AssemblyApi
    */
   protected function getGradeSetsRequest($per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getGradeSets, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getGradeSets, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getGradeSets, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/grade_sets';
     $formParams = [];
@@ -8048,14 +9486,340 @@ class AssemblyApi
   }
 
   /**
+   * Operation getGroups
+   *
+   * List Groups
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return \Assembly\Client\Model\Group[]
+   */
+  public function getGroups($if_modified_since = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  {
+    list($response) = $this->getGroupsWithHttpInfo($if_modified_since, $academic_year_id, $per_page, $page);
+    return $response;
+  }
+
+  /**
+   * Operation getGroupsWithHttpInfo
+   *
+   * List Groups
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return array of \Assembly\Client\Model\Group[], HTTP status code, HTTP response headers (array of strings)
+   */
+  public function getGroupsWithHttpInfo($if_modified_since = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  {
+    $returnType = '\Assembly\Client\Model\Group[]';
+    $request = $this->getGroupsRequest($if_modified_since, $academic_year_id, $per_page, $page);
+
+    try {
+      $options = $this->createHttpClientOption();
+      try {
+        $response = $this->client->send($request, $options);
+      } catch (RequestException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+        );
+      }
+
+      $statusCode = $response->getStatusCode();
+
+      if ($statusCode < 200 || $statusCode > 299) {
+        throw new ApiException(
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          $response->getBody()
+        );
+      }
+
+      $responseBody = $response->getBody();
+      if ($returnType === '\SplFileObject') {
+        $content = $responseBody; //stream goes to serializer
+      } else {
+        $content = $responseBody->getContents();
+        if ($returnType !== 'string') {
+          $content = json_decode($content);
+        }
+      }
+
+      return [
+        ObjectSerializer::deserialize($content, $returnType, []),
+        $response->getStatusCode(),
+        $response->getHeaders()
+      ];
+
+    } catch (ApiException $e) {
+      switch ($e->getCode()) {
+        case 200:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\Group[]',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+      }
+      throw $e;
+    }
+  }
+
+  /**
+   * Operation getGroupsAsync
+   *
+   * List Groups
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function getGroupsAsync($if_modified_since = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  {
+    return $this->getGroupsAsyncWithHttpInfo($if_modified_since, $academic_year_id, $per_page, $page)
+      ->then(
+        function ($response) {
+          return $response[0];
+        }
+      );
+  }
+
+  /**
+   * Operation getGroupsAsyncWithHttpInfo
+   *
+   * List Groups
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function getGroupsAsyncWithHttpInfo($if_modified_since = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  {
+    $returnType = '\Assembly\Client\Model\Group[]';
+    $request = $this->getGroupsRequest($if_modified_since, $academic_year_id, $per_page, $page);
+
+    return $this->client
+      ->sendAsync($request, $this->createHttpClientOption())
+      ->then(
+        function ($response) use ($returnType) {
+          $responseBody = $response->getBody();
+          if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+          } else {
+            $content = $responseBody->getContents();
+            if ($returnType !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        },
+        function ($exception) {
+          $response = $exception->getResponse();
+          $statusCode = $response->getStatusCode();
+          throw new ApiException(
+            sprintf(
+              '[%d] Error connecting to the API (%s)',
+              $statusCode,
+              $exception->getRequest()->getUri()
+            ),
+            $statusCode,
+            $response->getHeaders(),
+            $response->getBody()
+          );
+        }
+      );
+  }
+
+  /**
+   * Create request for operation 'getGroups'
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Psr7\Request
+   */
+  protected function getGroupsRequest($if_modified_since = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getGroups, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getGroups, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getGroups, must be bigger than or equal to 1.');
+    }
+
+
+    $resourcePath = '/groups';
+    $formParams = [];
+    $queryParams = [];
+    $headerParams = [];
+    $httpBody = '';
+    $multipart = false;
+
+    // query params
+    if ($academic_year_id !== null) {
+      $queryParams['academic_year_id'] = ObjectSerializer::toQueryValue($academic_year_id);
+    }
+    // query params
+    if ($per_page !== null) {
+      $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+    }
+    // query params
+    if ($page !== null) {
+      $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+    }
+    // header params
+    if ($if_modified_since !== null) {
+      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+
+
+    // body params
+    $_tempBody = null;
+
+    if ($multipart) {
+      $headers = $this->headerSelector->selectHeadersForMultipart(
+        ['application/vnd.assembly+json; version=1.1']
+      );
+    } else {
+      $headers = $this->headerSelector->selectHeaders(
+        ['application/vnd.assembly+json; version=1.1'],
+        []
+      );
+    }
+
+    // for model (json/xml)
+    if (isset($_tempBody)) {
+      // $_tempBody is the method argument, if present
+      $httpBody = $_tempBody;
+      // \stdClass has no __toString(), so we should encode it manually
+      if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($httpBody);
+      }
+    } elseif (count($formParams) > 0) {
+      if ($multipart) {
+        $multipartContents = [];
+        foreach ($formParams as $formParamName => $formParamValue) {
+          $multipartContents[] = [
+            'name' => $formParamName,
+            'contents' => $formParamValue
+          ];
+        }
+        // for HTTP post (form)
+        $httpBody = new MultipartStream($multipartContents);
+
+      } elseif ($headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($formParams);
+
+      } else {
+        // for HTTP post (form)
+        $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+      }
+    }
+
+    // this endpoint requires OAuth (access token)
+    if ($this->config->getAccessToken() !== null) {
+      $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+    }
+
+    $defaultHeaders = [];
+    if ($this->config->getUserAgent()) {
+      $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+    }
+
+    $headers = array_merge(
+      $defaultHeaders,
+      $headerParams,
+      $headers
+    );
+
+    $query = \GuzzleHttp\Psr7\build_query($queryParams);
+    return new Request(
+      'GET',
+      $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+      $headers,
+      $httpBody
+    );
+  }
+
+  /**
    * Operation getLeftStaffMembers
    *
    * List Left Staff Members
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $teachers_only return only staff who are teachers (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -8072,10 +9836,10 @@ class AssemblyApi
    *
    * List Left Staff Members
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $teachers_only return only staff who are teachers (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -8140,6 +9904,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -8150,10 +9946,10 @@ class AssemblyApi
    *
    * List Left Staff Members
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $teachers_only return only staff who are teachers (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8173,10 +9969,10 @@ class AssemblyApi
    *
    * List Left Staff Members
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $teachers_only return only staff who are teachers (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8226,10 +10022,10 @@ class AssemblyApi
   /**
    * Create request for operation 'getLeftStaffMembers'
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $teachers_only return only staff who are teachers (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -8335,7 +10131,7 @@ class AssemblyApi
    *
    * List Left Students
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -8352,7 +10148,7 @@ class AssemblyApi
    *
    * List Left Students
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -8417,6 +10213,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -8427,7 +10255,7 @@ class AssemblyApi
    *
    * List Left Students
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8447,7 +10275,7 @@ class AssemblyApi
    *
    * List Left Students
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -8497,7 +10325,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getLeftStudents'
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -8589,7 +10417,7 @@ class AssemblyApi
   /**
    * Operation getMedicalConditions
    *
-   * Medical Conditions
+   * List Medical Conditions
    *
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -8607,7 +10435,7 @@ class AssemblyApi
   /**
    * Operation getMedicalConditionsWithHttpInfo
    *
-   * Medical Conditions
+   * List Medical Conditions
    *
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -8675,6 +10503,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -8683,7 +10543,7 @@ class AssemblyApi
   /**
    * Operation getMedicalConditionsAsync
    *
-   * Medical Conditions
+   * List Medical Conditions
    *
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -8704,7 +10564,7 @@ class AssemblyApi
   /**
    * Operation getMedicalConditionsAsyncWithHttpInfo
    *
-   * Medical Conditions
+   * List Medical Conditions
    *
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -8765,6 +10625,17 @@ class AssemblyApi
    */
   protected function getMedicalConditionsRequest($per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getMedicalConditions, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getMedicalConditions, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getMedicalConditions, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/school/medical_conditions';
     $formParams = [];
@@ -8856,26 +10727,26 @@ class AssemblyApi
    *
    * List Students for Registration Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getRegistrationGroupStudents($id, $if_modified_since = null, $date = null, $academic_year_id = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getRegistrationGroupStudents($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    list($response) = $this->getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $academic_year_id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    list($response) = $this->getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
     return $response;
   }
 
@@ -8884,27 +10755,27 @@ class AssemblyApi
    *
    * List Students for Registration Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $academic_year_id = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $academic_year_id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
 
     try {
       $options = $this->createHttpClientOption();
@@ -8960,6 +10831,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -8970,25 +10873,25 @@ class AssemblyApi
    *
    * List Students for Registration Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getRegistrationGroupStudentsAsync($id, $if_modified_since = null, $date = null, $academic_year_id = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getRegistrationGroupStudentsAsync($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    return $this->getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $academic_year_id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
+    return $this->getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
       ->then(
         function ($response) {
           return $response[0];
@@ -9001,26 +10904,26 @@ class AssemblyApi
    *
    * List Students for Registration Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $academic_year_id = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $academic_year_id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -9062,23 +10965,23 @@ class AssemblyApi
   /**
    * Create request for operation 'getRegistrationGroupStudents'
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getRegistrationGroupStudentsRequest($id, $if_modified_since = null, $date = null, $academic_year_id = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  protected function getRegistrationGroupStudentsRequest($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -9099,8 +11002,8 @@ class AssemblyApi
       $queryParams['date'] = ObjectSerializer::toQueryValue($date);
     }
     // query params
-    if ($academic_year_id !== null) {
-      $queryParams['academic_year_id'] = ObjectSerializer::toQueryValue($academic_year_id);
+    if ($year_code !== null) {
+      $queryParams['year_code'] = ObjectSerializer::toQueryValue($year_code);
     }
     // query params
     if ($demographics !== null) {
@@ -9219,12 +11122,12 @@ class AssemblyApi
   /**
    * Operation getRegistrationGroups
    *
-   * List Registration Group
+   * List Registration Groups
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9241,12 +11144,12 @@ class AssemblyApi
   /**
    * Operation getRegistrationGroupsWithHttpInfo
    *
-   * List Registration Group
+   * List Registration Groups
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9313,6 +11216,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -9321,12 +11256,12 @@ class AssemblyApi
   /**
    * Operation getRegistrationGroupsAsync
    *
-   * List Registration Group
+   * List Registration Groups
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9346,12 +11281,12 @@ class AssemblyApi
   /**
    * Operation getRegistrationGroupsAsyncWithHttpInfo
    *
-   * List Registration Group
+   * List Registration Groups
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9403,10 +11338,10 @@ class AssemblyApi
   /**
    * Create request for operation 'getRegistrationGroups'
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9415,6 +11350,17 @@ class AssemblyApi
    */
   protected function getRegistrationGroupsRequest($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getRegistrationGroups, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getRegistrationGroups, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getRegistrationGroups, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/registration_groups';
     $formParams = [];
@@ -9522,8 +11468,8 @@ class AssemblyApi
    *
    * List Results
    *
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9542,8 +11488,8 @@ class AssemblyApi
    *
    * List Results
    *
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9610,6 +11556,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -9620,8 +11598,8 @@ class AssemblyApi
    *
    * List Results
    *
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9643,8 +11621,8 @@ class AssemblyApi
    *
    * List Results
    *
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9696,8 +11674,8 @@ class AssemblyApi
   /**
    * Create request for operation 'getResults'
    *
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9712,6 +11690,17 @@ class AssemblyApi
         'Missing the required parameter $students when calling getResults'
       );
     }
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getResults, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getResults, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getResults, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/results';
     $formParams = [];
@@ -9814,10 +11803,9 @@ class AssemblyApi
    *
    * List Staff Absences
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $staff_member_id show only absences fot the specified staff member (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  int $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $staff_member_id Filter to the specified staff member (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9825,9 +11813,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\StaffAbsence[]
    */
-  public function getStaffAbsences($if_modified_since = null, $staff_member_id = null, $start_date = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getStaffAbsences($staff_member_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getStaffAbsencesWithHttpInfo($if_modified_since, $staff_member_id, $start_date, $qualifications, $per_page, $page);
+    list($response) = $this->getStaffAbsencesWithHttpInfo($staff_member_id, $start_date, $end_date, $per_page, $page);
     return $response;
   }
 
@@ -9836,10 +11824,9 @@ class AssemblyApi
    *
    * List Staff Absences
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $staff_member_id show only absences fot the specified staff member (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  int $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $staff_member_id Filter to the specified staff member (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9847,10 +11834,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\StaffAbsence[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getStaffAbsencesWithHttpInfo($if_modified_since = null, $staff_member_id = null, $start_date = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getStaffAbsencesWithHttpInfo($staff_member_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffAbsence[]';
-    $request = $this->getStaffAbsencesRequest($if_modified_since, $staff_member_id, $start_date, $qualifications, $per_page, $page);
+    $request = $this->getStaffAbsencesRequest($staff_member_id, $start_date, $end_date, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -9906,6 +11893,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -9916,19 +11935,18 @@ class AssemblyApi
    *
    * List Staff Absences
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $staff_member_id show only absences fot the specified staff member (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  int $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $staff_member_id Filter to the specified staff member (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getStaffAbsencesAsync($if_modified_since = null, $staff_member_id = null, $start_date = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getStaffAbsencesAsync($staff_member_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
-    return $this->getStaffAbsencesAsyncWithHttpInfo($if_modified_since, $staff_member_id, $start_date, $qualifications, $per_page, $page)
+    return $this->getStaffAbsencesAsyncWithHttpInfo($staff_member_id, $start_date, $end_date, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -9941,20 +11959,19 @@ class AssemblyApi
    *
    * List Staff Absences
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $staff_member_id show only absences fot the specified staff member (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  int $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $staff_member_id Filter to the specified staff member (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getStaffAbsencesAsyncWithHttpInfo($if_modified_since = null, $staff_member_id = null, $start_date = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getStaffAbsencesAsyncWithHttpInfo($staff_member_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffAbsence[]';
-    $request = $this->getStaffAbsencesRequest($if_modified_since, $staff_member_id, $start_date, $qualifications, $per_page, $page);
+    $request = $this->getStaffAbsencesRequest($staff_member_id, $start_date, $end_date, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -9996,18 +12013,28 @@ class AssemblyApi
   /**
    * Create request for operation 'getStaffAbsences'
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $staff_member_id show only absences fot the specified staff member (optional)
-   * @param  \DateTime $start_date the start date of the period to query (optional)
-   * @param  int $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $staff_member_id Filter to the specified staff member (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getStaffAbsencesRequest($if_modified_since = null, $staff_member_id = null, $start_date = null, $qualifications = null, $per_page = '100', $page = '1')
+  protected function getStaffAbsencesRequest($staff_member_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getStaffAbsences, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getStaffAbsences, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getStaffAbsences, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/staff_absences';
     $formParams = [];
@@ -10025,8 +12052,8 @@ class AssemblyApi
       $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
     }
     // query params
-    if ($qualifications !== null) {
-      $queryParams['qualifications'] = ObjectSerializer::toQueryValue($qualifications);
+    if ($end_date !== null) {
+      $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
     }
     // query params
     if ($per_page !== null) {
@@ -10035,10 +12062,6 @@ class AssemblyApi
     // query params
     if ($page !== null) {
       $queryParams['page'] = ObjectSerializer::toQueryValue($page);
-    }
-    // header params
-    if ($if_modified_since !== null) {
-      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
     }
 
 
@@ -10115,12 +12138,11 @@ class AssemblyApi
    *
    * List Staff Contracts
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $staff_member_id show only absences fot the specified staff member (optional)
-   * @param  bool $date returns results for a specific date (optional)
-   * @param  bool $roles return roles information along with a staff contract (optional)
-   * @param  bool $salaries return salaries information along with a staff contract (requires staff_members.salaries scope for full information - only the hours_per_week, fte and weeks_per_year fields are shown without it) (optional)
-   * @param  bool $allowances return allowances information along with a staff contract (requires staff_members.salaries scope) (optional)
+   * @param  int $staff_member_id Filter to the specified staff member (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $roles Include role information along with a staff contract (optional)
+   * @param  bool $salaries Include salaries information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope for full information - only the &#x60;hours_per_week&#x60;, &#x60;fte&#x60; and &#x60;weeks_per_year&#x60; fields are shown without it) (optional)
+   * @param  bool $allowances Include allowances information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -10128,9 +12150,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\StaffContract[]
    */
-  public function getStaffContracts($if_modified_since = null, $staff_member_id = null, $date = null, $roles = null, $salaries = null, $allowances = null, $per_page = '100', $page = '1')
+  public function getStaffContracts($staff_member_id = null, $date = null, $roles = null, $salaries = null, $allowances = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getStaffContractsWithHttpInfo($if_modified_since, $staff_member_id, $date, $roles, $salaries, $allowances, $per_page, $page);
+    list($response) = $this->getStaffContractsWithHttpInfo($staff_member_id, $date, $roles, $salaries, $allowances, $per_page, $page);
     return $response;
   }
 
@@ -10139,12 +12161,11 @@ class AssemblyApi
    *
    * List Staff Contracts
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $staff_member_id show only absences fot the specified staff member (optional)
-   * @param  bool $date returns results for a specific date (optional)
-   * @param  bool $roles return roles information along with a staff contract (optional)
-   * @param  bool $salaries return salaries information along with a staff contract (requires staff_members.salaries scope for full information - only the hours_per_week, fte and weeks_per_year fields are shown without it) (optional)
-   * @param  bool $allowances return allowances information along with a staff contract (requires staff_members.salaries scope) (optional)
+   * @param  int $staff_member_id Filter to the specified staff member (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $roles Include role information along with a staff contract (optional)
+   * @param  bool $salaries Include salaries information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope for full information - only the &#x60;hours_per_week&#x60;, &#x60;fte&#x60; and &#x60;weeks_per_year&#x60; fields are shown without it) (optional)
+   * @param  bool $allowances Include allowances information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -10152,10 +12173,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\StaffContract[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getStaffContractsWithHttpInfo($if_modified_since = null, $staff_member_id = null, $date = null, $roles = null, $salaries = null, $allowances = null, $per_page = '100', $page = '1')
+  public function getStaffContractsWithHttpInfo($staff_member_id = null, $date = null, $roles = null, $salaries = null, $allowances = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffContract[]';
-    $request = $this->getStaffContractsRequest($if_modified_since, $staff_member_id, $date, $roles, $salaries, $allowances, $per_page, $page);
+    $request = $this->getStaffContractsRequest($staff_member_id, $date, $roles, $salaries, $allowances, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -10211,6 +12232,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -10221,21 +12274,20 @@ class AssemblyApi
    *
    * List Staff Contracts
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $staff_member_id show only absences fot the specified staff member (optional)
-   * @param  bool $date returns results for a specific date (optional)
-   * @param  bool $roles return roles information along with a staff contract (optional)
-   * @param  bool $salaries return salaries information along with a staff contract (requires staff_members.salaries scope for full information - only the hours_per_week, fte and weeks_per_year fields are shown without it) (optional)
-   * @param  bool $allowances return allowances information along with a staff contract (requires staff_members.salaries scope) (optional)
+   * @param  int $staff_member_id Filter to the specified staff member (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $roles Include role information along with a staff contract (optional)
+   * @param  bool $salaries Include salaries information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope for full information - only the &#x60;hours_per_week&#x60;, &#x60;fte&#x60; and &#x60;weeks_per_year&#x60; fields are shown without it) (optional)
+   * @param  bool $allowances Include allowances information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getStaffContractsAsync($if_modified_since = null, $staff_member_id = null, $date = null, $roles = null, $salaries = null, $allowances = null, $per_page = '100', $page = '1')
+  public function getStaffContractsAsync($staff_member_id = null, $date = null, $roles = null, $salaries = null, $allowances = null, $per_page = '100', $page = '1')
   {
-    return $this->getStaffContractsAsyncWithHttpInfo($if_modified_since, $staff_member_id, $date, $roles, $salaries, $allowances, $per_page, $page)
+    return $this->getStaffContractsAsyncWithHttpInfo($staff_member_id, $date, $roles, $salaries, $allowances, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -10248,22 +12300,21 @@ class AssemblyApi
    *
    * List Staff Contracts
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $staff_member_id show only absences fot the specified staff member (optional)
-   * @param  bool $date returns results for a specific date (optional)
-   * @param  bool $roles return roles information along with a staff contract (optional)
-   * @param  bool $salaries return salaries information along with a staff contract (requires staff_members.salaries scope for full information - only the hours_per_week, fte and weeks_per_year fields are shown without it) (optional)
-   * @param  bool $allowances return allowances information along with a staff contract (requires staff_members.salaries scope) (optional)
+   * @param  int $staff_member_id Filter to the specified staff member (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $roles Include role information along with a staff contract (optional)
+   * @param  bool $salaries Include salaries information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope for full information - only the &#x60;hours_per_week&#x60;, &#x60;fte&#x60; and &#x60;weeks_per_year&#x60; fields are shown without it) (optional)
+   * @param  bool $allowances Include allowances information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getStaffContractsAsyncWithHttpInfo($if_modified_since = null, $staff_member_id = null, $date = null, $roles = null, $salaries = null, $allowances = null, $per_page = '100', $page = '1')
+  public function getStaffContractsAsyncWithHttpInfo($staff_member_id = null, $date = null, $roles = null, $salaries = null, $allowances = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffContract[]';
-    $request = $this->getStaffContractsRequest($if_modified_since, $staff_member_id, $date, $roles, $salaries, $allowances, $per_page, $page);
+    $request = $this->getStaffContractsRequest($staff_member_id, $date, $roles, $salaries, $allowances, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -10305,20 +12356,30 @@ class AssemblyApi
   /**
    * Create request for operation 'getStaffContracts'
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $staff_member_id show only absences fot the specified staff member (optional)
-   * @param  bool $date returns results for a specific date (optional)
-   * @param  bool $roles return roles information along with a staff contract (optional)
-   * @param  bool $salaries return salaries information along with a staff contract (requires staff_members.salaries scope for full information - only the hours_per_week, fte and weeks_per_year fields are shown without it) (optional)
-   * @param  bool $allowances return allowances information along with a staff contract (requires staff_members.salaries scope) (optional)
+   * @param  int $staff_member_id Filter to the specified staff member (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $roles Include role information along with a staff contract (optional)
+   * @param  bool $salaries Include salaries information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope for full information - only the &#x60;hours_per_week&#x60;, &#x60;fte&#x60; and &#x60;weeks_per_year&#x60; fields are shown without it) (optional)
+   * @param  bool $allowances Include allowances information along with a staff contract (requires &#x60;staff_members.salaries&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getStaffContractsRequest($if_modified_since = null, $staff_member_id = null, $date = null, $roles = null, $salaries = null, $allowances = null, $per_page = '100', $page = '1')
+  protected function getStaffContractsRequest($staff_member_id = null, $date = null, $roles = null, $salaries = null, $allowances = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getStaffContracts, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getStaffContracts, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getStaffContracts, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/staff_contracts';
     $formParams = [];
@@ -10354,10 +12415,6 @@ class AssemblyApi
     // query params
     if ($page !== null) {
       $queryParams['page'] = ObjectSerializer::toQueryValue($page);
-    }
-    // header params
-    if ($if_modified_since !== null) {
-      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
     }
 
 
@@ -10434,10 +12491,10 @@ class AssemblyApi
    *
    * List Staff Members
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $teachers_only return only staff who are teachers (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -10456,10 +12513,10 @@ class AssemblyApi
    *
    * List Staff Members
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $teachers_only return only staff who are teachers (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -10526,6 +12583,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -10536,10 +12625,10 @@ class AssemblyApi
    *
    * List Staff Members
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $teachers_only return only staff who are teachers (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -10561,10 +12650,10 @@ class AssemblyApi
    *
    * List Staff Members
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $teachers_only return only staff who are teachers (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -10616,10 +12705,10 @@ class AssemblyApi
   /**
    * Create request for operation 'getStaffMembers'
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $teachers_only return only staff who are teachers (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $qualifications include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -10628,6 +12717,17 @@ class AssemblyApi
    */
   protected function getStaffMembersRequest($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getStaffMembers, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getStaffMembers, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getStaffMembers, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/staff_members';
     $formParams = [];
@@ -10735,18 +12835,18 @@ class AssemblyApi
    *
    * List Students
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -10765,18 +12865,18 @@ class AssemblyApi
    *
    * List Students
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -10843,6 +12943,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -10853,18 +12985,18 @@ class AssemblyApi
    *
    * List Students
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -10886,18 +13018,18 @@ class AssemblyApi
    *
    * List Students
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -10949,18 +13081,18 @@ class AssemblyApi
   /**
    * Create request for operation 'getStudents'
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -10969,6 +13101,17 @@ class AssemblyApi
    */
   protected function getStudentsRequest($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getStudents, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getStudents, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getStudents, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/students';
     $formParams = [];
@@ -11195,6 +13338,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -11285,6 +13460,17 @@ class AssemblyApi
    */
   protected function getSubjectsRequest($per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getSubjects, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getSubjects, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getSubjects, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/subjects';
     $formParams = [];
@@ -11376,24 +13562,27 @@ class AssemblyApi
    *
    * List Students for Teaching Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getTeachingGroupStudents($id, $if_modified_since = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getTeachingGroupStudents($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    list($response) = $this->getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    list($response) = $this->getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
     return $response;
   }
 
@@ -11402,25 +13591,28 @@ class AssemblyApi
    *
    * List Students for Teaching Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
 
     try {
       $options = $this->createHttpClientOption();
@@ -11476,6 +13668,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -11486,23 +13710,26 @@ class AssemblyApi
    *
    * List Students for Teaching Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getTeachingGroupStudentsAsync($id, $if_modified_since = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getTeachingGroupStudentsAsync($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    return $this->getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
+    return $this->getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
       ->then(
         function ($response) {
           return $response[0];
@@ -11515,24 +13742,27 @@ class AssemblyApi
    *
    * List Students for Teaching Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -11574,21 +13804,24 @@ class AssemblyApi
   /**
    * Create request for operation 'getTeachingGroupStudents'
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getTeachingGroupStudentsRequest($id, $if_modified_since = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  protected function getTeachingGroupStudentsRequest($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -11604,6 +13837,18 @@ class AssemblyApi
     $httpBody = '';
     $multipart = false;
 
+    // query params
+    if ($academic_year_id !== null) {
+      $queryParams['academic_year_id'] = ObjectSerializer::toQueryValue($academic_year_id);
+    }
+    // query params
+    if ($date !== null) {
+      $queryParams['date'] = ObjectSerializer::toQueryValue($date);
+    }
+    // query params
+    if ($year_code !== null) {
+      $queryParams['year_code'] = ObjectSerializer::toQueryValue($year_code);
+    }
     // query params
     if ($demographics !== null) {
       $queryParams['demographics'] = ObjectSerializer::toQueryValue($demographics);
@@ -11723,11 +13968,11 @@ class AssemblyApi
    *
    * List Teaching Groups
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  string $subject_code filter by subject (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  string $subject_code Filter by subject (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11746,11 +13991,11 @@ class AssemblyApi
    *
    * List Teaching Groups
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  string $subject_code filter by subject (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  string $subject_code Filter by subject (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11817,6 +14062,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -11827,11 +14104,11 @@ class AssemblyApi
    *
    * List Teaching Groups
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  string $subject_code filter by subject (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  string $subject_code Filter by subject (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11853,11 +14130,11 @@ class AssemblyApi
    *
    * List Teaching Groups
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  string $subject_code filter by subject (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  string $subject_code Filter by subject (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11909,11 +14186,11 @@ class AssemblyApi
   /**
    * Create request for operation 'getTeachingGroups'
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  string $subject_code filter by subject (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  string $subject_code Filter by subject (optional)
+   * @param  int $year_code Filter by school year (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11922,6 +14199,17 @@ class AssemblyApi
    */
   protected function getTeachingGroupsRequest($if_modified_since = null, $subject_code = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getTeachingGroups, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getTeachingGroups, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getTeachingGroups, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/teaching_groups';
     $formParams = [];
@@ -12033,26 +14321,25 @@ class AssemblyApi
    *
    * List Students for Year Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getYearGroupStudents($id, $if_modified_since = null, $date = null, $academic_year_id = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getYearGroupStudents($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    list($response) = $this->getYearGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $academic_year_id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    list($response) = $this->getYearGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
     return $response;
   }
 
@@ -12061,27 +14348,26 @@ class AssemblyApi
    *
    * List Students for Year Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getYearGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $academic_year_id = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getYearGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $academic_year_id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
 
     try {
       $options = $this->createHttpClientOption();
@@ -12137,6 +14423,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -12147,25 +14465,24 @@ class AssemblyApi
    *
    * List Students for Year Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getYearGroupStudentsAsync($id, $if_modified_since = null, $date = null, $academic_year_id = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getYearGroupStudentsAsync($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    return $this->getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $academic_year_id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
+    return $this->getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
       ->then(
         function ($response) {
           return $response[0];
@@ -12178,26 +14495,25 @@ class AssemblyApi
    *
    * List Students for Year Group
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $academic_year_id = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $academic_year_id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -12239,23 +14555,22 @@ class AssemblyApi
   /**
    * Create request for operation 'getYearGroupStudents'
    *
-   * @param  int $id id of the entity (required)
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
-   * @param  bool $demographics include demographics data (optional)
-   * @param  bool $contacts include contacts data (optional)
-   * @param  bool $sen_needs include SEN needs data (optional)
-   * @param  bool $addresses include student address data (optional)
-   * @param  bool $care include student care data (you must also supply the demographics parameter) (optional)
-   * @param  bool $ever_in_care include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
-   * @param  bool $languages include student language data (optional)
-   * @param  bool $photo include student photo data (optional)
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getYearGroupStudentsRequest($id, $if_modified_since = null, $date = null, $academic_year_id = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  protected function getYearGroupStudentsRequest($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -12274,10 +14589,6 @@ class AssemblyApi
     // query params
     if ($date !== null) {
       $queryParams['date'] = ObjectSerializer::toQueryValue($date);
-    }
-    // query params
-    if ($academic_year_id !== null) {
-      $queryParams['academic_year_id'] = ObjectSerializer::toQueryValue($academic_year_id);
     }
     // query params
     if ($demographics !== null) {
@@ -12398,10 +14709,10 @@ class AssemblyApi
    *
    * List Year Groups
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $year_code Filter by school year (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -12409,9 +14720,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\YearGroup[]
    */
-  public function getYearGroups($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getYearGroups($if_modified_since = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getYearGroupsWithHttpInfo($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page);
+    list($response) = $this->getYearGroupsWithHttpInfo($if_modified_since, $date, $year_code, $academic_year_id, $per_page, $page);
     return $response;
   }
 
@@ -12420,10 +14731,10 @@ class AssemblyApi
    *
    * List Year Groups
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $year_code Filter by school year (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -12431,10 +14742,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\YearGroup[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getYearGroupsWithHttpInfo($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getYearGroupsWithHttpInfo($if_modified_since = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\YearGroup[]';
-    $request = $this->getYearGroupsRequest($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page);
+    $request = $this->getYearGroupsRequest($if_modified_since, $date, $year_code, $academic_year_id, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -12490,6 +14801,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -12500,19 +14843,19 @@ class AssemblyApi
    *
    * List Year Groups
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $year_code Filter by school year (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getYearGroupsAsync($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getYearGroupsAsync($if_modified_since = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    return $this->getYearGroupsAsyncWithHttpInfo($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page)
+    return $this->getYearGroupsAsyncWithHttpInfo($if_modified_since, $date, $year_code, $academic_year_id, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -12525,20 +14868,20 @@ class AssemblyApi
    *
    * List Year Groups
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $year_code Filter by school year (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getYearGroupsAsyncWithHttpInfo($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getYearGroupsAsyncWithHttpInfo($if_modified_since = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\YearGroup[]';
-    $request = $this->getYearGroupsRequest($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page);
+    $request = $this->getYearGroupsRequest($if_modified_since, $date, $year_code, $academic_year_id, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -12580,18 +14923,29 @@ class AssemblyApi
   /**
    * Create request for operation 'getYearGroups'
    *
-   * @param  \DateTime $if_modified_since If-Modified-Since is optional (see the page on Conditional Requests for more details). (optional)
-   * @param  int $year_code filter by school year (cannot be supplied at the same time as the students parameter) (optional)
-   * @param  \DateTime $date returns results for a specific date (optional)
-   * @param  int $academic_year_id returns all groups and group memberships from the specified academic year (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $year_code Filter by school year (optional)
+   * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getYearGroupsRequest($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  protected function getYearGroupsRequest($if_modified_since = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getYearGroups, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getYearGroups, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getYearGroups, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/year_groups';
     $formParams = [];
@@ -12601,12 +14955,12 @@ class AssemblyApi
     $multipart = false;
 
     // query params
-    if ($year_code !== null) {
-      $queryParams['year_code'] = ObjectSerializer::toQueryValue($year_code);
-    }
-    // query params
     if ($date !== null) {
       $queryParams['date'] = ObjectSerializer::toQueryValue($date);
+    }
+    // query params
+    if ($year_code !== null) {
+      $queryParams['year_code'] = ObjectSerializer::toQueryValue($year_code);
     }
     // query params
     if ($academic_year_id !== null) {
@@ -12697,7 +15051,7 @@ class AssemblyApi
   /**
    * Operation status
    *
-   * Get School Sync Status
+   * View School Sync Status
    *
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
@@ -12713,7 +15067,7 @@ class AssemblyApi
   /**
    * Operation statusWithHttpInfo
    *
-   * Get School Sync Status
+   * View School Sync Status
    *
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
@@ -12779,6 +15133,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -12787,7 +15173,7 @@ class AssemblyApi
   /**
    * Operation statusAsync
    *
-   * Get School Sync Status
+   * View School Sync Status
    *
    *
    * @throws \InvalidArgumentException
@@ -12806,7 +15192,7 @@ class AssemblyApi
   /**
    * Operation statusAsyncWithHttpInfo
    *
-   * Get School Sync Status
+   * View School Sync Status
    *
    *
    * @throws \InvalidArgumentException
@@ -12946,7 +15332,7 @@ class AssemblyApi
    *
    * Update a Single Result
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    * @param  \Assembly\Client\Model\ResultEntry $result_entry result_entry (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
@@ -12964,7 +15350,7 @@ class AssemblyApi
    *
    * Update a Single Result
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    * @param  \Assembly\Client\Model\ResultEntry $result_entry (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
@@ -13030,6 +15416,38 @@ class AssemblyApi
           );
           $e->setResponseObject($data);
           break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
       }
       throw $e;
     }
@@ -13040,7 +15458,7 @@ class AssemblyApi
    *
    * Update a Single Result
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    * @param  \Assembly\Client\Model\ResultEntry $result_entry (optional)
    *
    * @throws \InvalidArgumentException
@@ -13061,7 +15479,7 @@ class AssemblyApi
    *
    * Update a Single Result
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    * @param  \Assembly\Client\Model\ResultEntry $result_entry (optional)
    *
    * @throws \InvalidArgumentException
@@ -13112,7 +15530,7 @@ class AssemblyApi
   /**
    * Create request for operation 'updateResults'
    *
-   * @param  int $id id of the entity (required)
+   * @param  int $id Internal identifier of the entity (required)
    * @param  \Assembly\Client\Model\ResultEntry $result_entry (optional)
    *
    * @throws \InvalidArgumentException

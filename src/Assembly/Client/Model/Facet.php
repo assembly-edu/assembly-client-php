@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * Facet Class Doc Comment
  *
  * @category Class
+ * @description A category of grades - there are four facets (&#x60;achieved&#x60;, &#x60;target&#x60;, &#x60;prediction&#x60;, &#x60;baseline&#x60;). Facets can be used to compare 2 grades of the same assessment.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class Facet implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'name' => 'string'
   ];
@@ -53,6 +55,7 @@ class Facet implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'name' => null
   ];
@@ -84,6 +87,7 @@ class Facet implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'name' => 'name'
   ];
@@ -94,6 +98,7 @@ class Facet implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'name' => 'setName'
   ];
@@ -104,6 +109,7 @@ class Facet implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'name' => 'getName'
   ];
@@ -149,8 +155,27 @@ class Facet implements ModelInterface, ArrayAccess
     return self::$swaggerModelName;
   }
 
+  const NAME_ACHIEVED = 'achieved';
+  const NAME_TARGET = 'target';
+  const NAME_PREDICTION = 'prediction';
+  const NAME_BASELINE = 'baseline';
   
 
+  
+  /**
+   * Gets allowable values of the enum
+   *
+   * @return string[]
+   */
+  public function getNameAllowableValues()
+  {
+    return [
+      self::NAME_ACHIEVED,
+      self::NAME_TARGET,
+      self::NAME_PREDICTION,
+      self::NAME_BASELINE,
+    ];
+  }
   
 
   /**
@@ -168,6 +193,7 @@ class Facet implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'facet';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
   }
@@ -181,6 +207,14 @@ class Facet implements ModelInterface, ArrayAccess
   {
     $invalidProperties = [];
 
+    $allowedValues = $this->getNameAllowableValues();
+    if (!in_array($this->container['name'], $allowedValues)) {
+      $invalidProperties[] = sprintf(
+        "invalid value for 'name', must be one of '%s'",
+        implode("', '", $allowedValues)
+      );
+    }
+
     return $invalidProperties;
   }
 
@@ -193,9 +227,37 @@ class Facet implements ModelInterface, ArrayAccess
   public function valid()
   {
 
+    $allowedValues = $this->getNameAllowableValues();
+    if (!in_array($this->container['name'], $allowedValues)) {
+      return false;
+    }
     return true;
   }
 
+
+  /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
 
   /**
    * Gets id
@@ -210,7 +272,7 @@ class Facet implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -234,12 +296,21 @@ class Facet implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name The name of the facet
    *
    * @return $this
    */
   public function setName($name)
   {
+    $allowedValues = $this->getNameAllowableValues();
+    if (!is_null($name) && !in_array($name, $allowedValues)) {
+      throw new \InvalidArgumentException(
+        sprintf(
+          "Invalid value for 'name', must be one of '%s'",
+          implode("', '", $allowedValues)
+        )
+      );
+    }
     $this->container['name'] = $name;
 
     return $this;

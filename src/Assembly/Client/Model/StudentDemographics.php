@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * StudentDemographics Class Doc Comment
  *
  * @category Class
+ * @description Demographic information about the student.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'ethnicity_code' => 'string',
     'ethnicity_group' => 'string',
     'gender' => 'string',
@@ -54,7 +56,6 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'fsm_review_date' => 'string',
     'is_fsm' => 'bool',
     'is_fsm6' => 'bool',
-    'looked_after' => 'bool',
     'in_care' => 'bool',
     'ever_in_care' => 'bool',
     'service_child' => 'bool',
@@ -67,6 +68,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'ethnicity_code' => null,
     'ethnicity_group' => null,
     'gender' => null,
@@ -78,7 +80,6 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'fsm_review_date' => null,
     'is_fsm' => null,
     'is_fsm6' => null,
-    'looked_after' => null,
     'in_care' => null,
     'ever_in_care' => null,
     'service_child' => null,
@@ -112,6 +113,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'ethnicity_code' => 'ethnicity_code',
     'ethnicity_group' => 'ethnicity_group',
     'gender' => 'gender',
@@ -123,7 +125,6 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'fsm_review_date' => 'fsm_review_date',
     'is_fsm' => 'is_fsm',
     'is_fsm6' => 'is_fsm6',
-    'looked_after' => 'looked_after',
     'in_care' => 'in_care',
     'ever_in_care' => 'ever_in_care',
     'service_child' => 'service_child',
@@ -136,6 +137,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'ethnicity_code' => 'setEthnicityCode',
     'ethnicity_group' => 'setEthnicityGroup',
     'gender' => 'setGender',
@@ -147,7 +149,6 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'fsm_review_date' => 'setFsmReviewDate',
     'is_fsm' => 'setIsFsm',
     'is_fsm6' => 'setIsFsm6',
-    'looked_after' => 'setLookedAfter',
     'in_care' => 'setInCare',
     'ever_in_care' => 'setEverInCare',
     'service_child' => 'setServiceChild',
@@ -160,6 +161,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'ethnicity_code' => 'getEthnicityCode',
     'ethnicity_group' => 'getEthnicityGroup',
     'gender' => 'getGender',
@@ -171,7 +173,6 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'fsm_review_date' => 'getFsmReviewDate',
     'is_fsm' => 'getIsFsm',
     'is_fsm6' => 'getIsFsm6',
-    'looked_after' => 'getLookedAfter',
     'in_care' => 'getInCare',
     'ever_in_care' => 'getEverInCare',
     'service_child' => 'getServiceChild',
@@ -238,6 +239,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'student_demographics';
     $this->container['ethnicity_code'] = isset($data['ethnicity_code']) ? $data['ethnicity_code'] : null;
     $this->container['ethnicity_group'] = isset($data['ethnicity_group']) ? $data['ethnicity_group'] : null;
     $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
@@ -249,7 +251,6 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     $this->container['fsm_review_date'] = isset($data['fsm_review_date']) ? $data['fsm_review_date'] : null;
     $this->container['is_fsm'] = isset($data['is_fsm']) ? $data['is_fsm'] : null;
     $this->container['is_fsm6'] = isset($data['is_fsm6']) ? $data['is_fsm6'] : null;
-    $this->container['looked_after'] = isset($data['looked_after']) ? $data['looked_after'] : null;
     $this->container['in_care'] = isset($data['in_care']) ? $data['in_care'] : null;
     $this->container['ever_in_care'] = isset($data['ever_in_care']) ? $data['ever_in_care'] : null;
     $this->container['service_child'] = isset($data['service_child']) ? $data['service_child'] : null;
@@ -282,6 +283,30 @@ class StudentDemographics implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets ethnicity_code
    *
    * @return string
@@ -294,7 +319,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets ethnicity_code
    *
-   * @param string $ethnicity_code ethnicity_code
+   * @param string $ethnicity_code A detailed, Dfe standardised way of categorising the ethnicity of a student
    *
    * @return $this
    */
@@ -318,7 +343,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets ethnicity_group
    *
-   * @param string $ethnicity_group ethnicity_group
+   * @param string $ethnicity_group A broader categorisation of ethnicity that is standardised across the country, with all ethnicity codes grouped in to 8 sections
    *
    * @return $this
    */
@@ -342,7 +367,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets gender
    *
-   * @param string $gender gender
+   * @param string $gender The gender of the student
    *
    * @return $this
    */
@@ -366,7 +391,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets is_pp
    *
-   * @param bool $is_pp is_pp
+   * @param bool $is_pp Pupil Premium (PP) - schools receive extra funding for students who qualify as Pupil Premium. The includes any student who has qualified for Free School Meals (FSM) in the last 6 years, and any student in local-authority care
    *
    * @return $this
    */
@@ -390,7 +415,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets is_eal
    *
-   * @param bool $is_eal is_eal
+   * @param bool $is_eal English as an Additional Language (EAL) - this field will be true for a student whose first language is not English
    *
    * @return $this
    */
@@ -414,7 +439,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets sen_category
    *
-   * @param string $sen_category sen_category
+   * @param string $sen_category Special Education Need (SEN) - indicates a student has learning difficulties and requires special education provision. Can be null for those not eligible
    *
    * @return $this
    */
@@ -438,7 +463,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets country_of_birth
    *
-   * @param string $country_of_birth country_of_birth
+   * @param string $country_of_birth The country of birth of the student
    *
    * @return $this
    */
@@ -462,7 +487,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets nationalities
    *
-   * @param string[] $nationalities nationalities
+   * @param string[] $nationalities The nationality or nationalities of the student
    *
    * @return $this
    */
@@ -486,7 +511,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets fsm_review_date
    *
-   * @param string $fsm_review_date fsm_review_date
+   * @param string $fsm_review_date Free school meal review date -Review date for pupil's free school meal eligibility
    *
    * @return $this
    */
@@ -510,7 +535,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets is_fsm
    *
-   * @param bool $is_fsm is_fsm
+   * @param bool $is_fsm Free School Meals (FSM) - indicates if the student is eligible for free school meals
    *
    * @return $this
    */
@@ -534,37 +559,13 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets is_fsm6
    *
-   * @param bool $is_fsm6 is_fsm6
+   * @param bool $is_fsm6 Free School Meals 6 (FSM6) - indicates if the student has been eligible for free school meals within the last 6 years
    *
    * @return $this
    */
   public function setIsFsm6($is_fsm6)
   {
     $this->container['is_fsm6'] = $is_fsm6;
-
-    return $this;
-  }
-
-  /**
-   * Gets looked_after
-   *
-   * @return bool
-   */
-  public function getLookedAfter()
-  {
-    return $this->container['looked_after'];
-  }
-
-  /**
-   * Sets looked_after
-   *
-   * @param bool $looked_after looked_after
-   *
-   * @return $this
-   */
-  public function setLookedAfter($looked_after)
-  {
-    $this->container['looked_after'] = $looked_after;
 
     return $this;
   }
@@ -582,7 +583,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets in_care
    *
-   * @param bool $in_care in_care
+   * @param bool $in_care Looked after status - indicates whether the student is 'looked after' by the local authority
    *
    * @return $this
    */
@@ -606,7 +607,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets ever_in_care
    *
-   * @param bool $ever_in_care ever_in_care
+   * @param bool $ever_in_care Ever in care status - indicates whether the student is either currently 'looked after', or has been at any point in the past
    *
    * @return $this
    */
@@ -630,7 +631,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets service_child
    *
-   * @param bool $service_child service_child
+   * @param bool $service_child Service Child - indicates whether the student has parent(s) who are Service personnel serving in regular military units of all forces and exercising parental care and responsibility
    *
    * @return $this
    */
@@ -654,7 +655,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets sen_needs
    *
-   * @param \Assembly\Client\Model\SenNeed[] $sen_needs sen_needs
+   * @param \Assembly\Client\Model\SenNeed[] $sen_needs Information about a student's SEN Needs. This will only be returned if `&sen_needs=true` is included in your request
    *
    * @return $this
    */

@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * AttendanceSummaryTest Class Doc Comment
  *
  * @category    Class */
-// * @description AttendanceSummary
+// * @description A statiscital summary of a student&#39;s attendance for an academic year.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class AttendanceSummaryTest extends \PHPUnit_Framework_TestCase
    * Test "AttendanceSummary"
    */
   public function testAttendanceSummary()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

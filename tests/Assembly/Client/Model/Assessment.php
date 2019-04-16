@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * AssessmentTest Class Doc Comment
  *
  * @category    Class */
-// * @description Assessment
+// * @description Knits together a range of assessment concepts. The name of the assessment also refers to the source of the result (for example, a Key Stage national assessment, or a standardised assessment provider).
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -64,16 +64,9 @@ class AssessmentTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test attribute "family_id"
+   * Test attribute "object"
    */
-  public function testPropertyFamilyId()
-  {
-  }
-
-  /**
-   * Test attribute "family_name"
-   */
-  public function testPropertyFamilyName()
+  public function testPropertyObject()
   {
   }
 
@@ -88,6 +81,20 @@ class AssessmentTest extends \PHPUnit_Framework_TestCase
    * Test attribute "name"
    */
   public function testPropertyName()
+  {
+  }
+
+  /**
+   * Test attribute "family_id"
+   */
+  public function testPropertyFamilyId()
+  {
+  }
+
+  /**
+   * Test attribute "family_name"
+   */
+  public function testPropertyFamilyName()
   {
   }
 

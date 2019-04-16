@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StaffMemberQualificationInfoTest Class Doc Comment
  *
  * @category    Class */
-// * @description StaffMemberQualificationInfo
+// * @description Qualification information about the staff member.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class StaffMemberQualificationInfoTest extends \PHPUnit_Framework_TestCase
    * Test "StaffMemberQualificationInfo"
    */
   public function testStaffMemberQualificationInfo()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

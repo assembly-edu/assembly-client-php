@@ -19,14 +19,15 @@ use \ArrayAccess;
 use \Assembly\Client\ObjectSerializer;
 
 /**
- * Email Class Doc Comment
+ * Group Class Doc Comment
  *
  * @category Class
+ * @description A grouping of students. A teaching or registration group for example.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
  */
-class Email implements ModelInterface, ArrayAccess
+class Group implements ModelInterface, ArrayAccess
 {
   const DISCRIMINATOR = null;
 
@@ -35,7 +36,7 @@ class Email implements ModelInterface, ArrayAccess
     *
     * @var string
     */
-  protected static $swaggerModelName = 'Email';
+  protected static $swaggerModelName = 'Group';
 
   /**
     * Array of property to type mappings. Used for (de)serialization
@@ -43,10 +44,15 @@ class Email implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
-    'email' => 'string',
+    'name' => 'string',
+    'code' => 'string',
     'type' => 'string',
-    'is_primary' => 'bool'
+    'start_date' => '\DateTime',
+    'end_date' => '\DateTime',
+    'supervisors' => '\Assembly\Client\Model\Supervisor[]',
+    'student_ids' => 'int[]'
   ];
 
   /**
@@ -55,10 +61,15 @@ class Email implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
-    'email' => null,
+    'name' => null,
+    'code' => null,
     'type' => null,
-    'is_primary' => null
+    'start_date' => 'date-time',
+    'end_date' => 'date-time',
+    'supervisors' => null,
+    'student_ids' => 'int32'
   ];
 
   /**
@@ -88,10 +99,15 @@ class Email implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
-    'email' => 'email',
+    'name' => 'name',
+    'code' => 'code',
     'type' => 'type',
-    'is_primary' => 'is_primary'
+    'start_date' => 'start_date',
+    'end_date' => 'end_date',
+    'supervisors' => 'supervisors',
+    'student_ids' => 'student_ids'
   ];
 
   /**
@@ -100,10 +116,15 @@ class Email implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
-    'email' => 'setEmail',
+    'name' => 'setName',
+    'code' => 'setCode',
     'type' => 'setType',
-    'is_primary' => 'setIsPrimary'
+    'start_date' => 'setStartDate',
+    'end_date' => 'setEndDate',
+    'supervisors' => 'setSupervisors',
+    'student_ids' => 'setStudentIds'
   ];
 
   /**
@@ -112,10 +133,15 @@ class Email implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
-    'email' => 'getEmail',
+    'name' => 'getName',
+    'code' => 'getCode',
     'type' => 'getType',
-    'is_primary' => 'getIsPrimary'
+    'start_date' => 'getStartDate',
+    'end_date' => 'getEndDate',
+    'supervisors' => 'getSupervisors',
+    'student_ids' => 'getStudentIds'
   ];
 
   /**
@@ -159,8 +185,25 @@ class Email implements ModelInterface, ArrayAccess
     return self::$swaggerModelName;
   }
 
+  const TYPE_YEAR_GROUP = 'YearGroup';
+  const TYPE_TEACHING_GROUP = 'TeachingGroup';
+  const TYPE_REGISTRATION_GROUP = 'RegistrationGroup';
   
 
+  
+  /**
+   * Gets allowable values of the enum
+   *
+   * @return string[]
+   */
+  public function getTypeAllowableValues()
+  {
+    return [
+      self::TYPE_YEAR_GROUP,
+      self::TYPE_TEACHING_GROUP,
+      self::TYPE_REGISTRATION_GROUP,
+    ];
+  }
   
 
   /**
@@ -178,10 +221,15 @@ class Email implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'group';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-    $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+    $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+    $this->container['code'] = isset($data['code']) ? $data['code'] : null;
     $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-    $this->container['is_primary'] = isset($data['is_primary']) ? $data['is_primary'] : null;
+    $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
+    $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
+    $this->container['supervisors'] = isset($data['supervisors']) ? $data['supervisors'] : null;
+    $this->container['student_ids'] = isset($data['student_ids']) ? $data['student_ids'] : null;
   }
 
   /**
@@ -192,6 +240,14 @@ class Email implements ModelInterface, ArrayAccess
   public function listInvalidProperties()
   {
     $invalidProperties = [];
+
+    $allowedValues = $this->getTypeAllowableValues();
+    if (!in_array($this->container['type'], $allowedValues)) {
+      $invalidProperties[] = sprintf(
+        "invalid value for 'type', must be one of '%s'",
+        implode("', '", $allowedValues)
+      );
+    }
 
     return $invalidProperties;
   }
@@ -205,9 +261,37 @@ class Email implements ModelInterface, ArrayAccess
   public function valid()
   {
 
+    $allowedValues = $this->getTypeAllowableValues();
+    if (!in_array($this->container['type'], $allowedValues)) {
+      return false;
+    }
     return true;
   }
 
+
+  /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
 
   /**
    * Gets id
@@ -222,7 +306,7 @@ class Email implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -234,25 +318,49 @@ class Email implements ModelInterface, ArrayAccess
   }
 
   /**
-   * Gets email
+   * Gets name
    *
    * @return string
    */
-  public function getEmail()
+  public function getName()
   {
-    return $this->container['email'];
+    return $this->container['name'];
   }
 
   /**
-   * Sets email
+   * Sets name
    *
-   * @param string $email email
+   * @param string $name Name of the group
    *
    * @return $this
    */
-  public function setEmail($email)
+  public function setName($name)
   {
-    $this->container['email'] = $email;
+    $this->container['name'] = $name;
+
+    return $this;
+  }
+
+  /**
+   * Gets code
+   *
+   * @return string
+   */
+  public function getCode()
+  {
+    return $this->container['code'];
+  }
+
+  /**
+   * Sets code
+   *
+   * @param string $code The code of the year that the group belongs to
+   *
+   * @return $this
+   */
+  public function setCode($code)
+  {
+    $this->container['code'] = $code;
 
     return $this;
   }
@@ -270,37 +378,118 @@ class Email implements ModelInterface, ArrayAccess
   /**
    * Sets type
    *
-   * @param string $type type
+   * @param string $type The type of group
    *
    * @return $this
    */
   public function setType($type)
   {
+    $allowedValues = $this->getTypeAllowableValues();
+    if (!is_null($type) && !in_array($type, $allowedValues)) {
+      throw new \InvalidArgumentException(
+        sprintf(
+          "Invalid value for 'type', must be one of '%s'",
+          implode("', '", $allowedValues)
+        )
+      );
+    }
     $this->container['type'] = $type;
 
     return $this;
   }
 
   /**
-   * Gets is_primary
+   * Gets start_date
    *
-   * @return bool
+   * @return \DateTime
    */
-  public function getIsPrimary()
+  public function getStartDate()
   {
-    return $this->container['is_primary'];
+    return $this->container['start_date'];
   }
 
   /**
-   * Sets is_primary
+   * Sets start_date
    *
-   * @param bool $is_primary is_primary
+   * @param \DateTime $start_date The start date of the group
    *
    * @return $this
    */
-  public function setIsPrimary($is_primary)
+  public function setStartDate($start_date)
   {
-    $this->container['is_primary'] = $is_primary;
+    $this->container['start_date'] = $start_date;
+
+    return $this;
+  }
+
+  /**
+   * Gets end_date
+   *
+   * @return \DateTime
+   */
+  public function getEndDate()
+  {
+    return $this->container['end_date'];
+  }
+
+  /**
+   * Sets end_date
+   *
+   * @param \DateTime $end_date The end date of the group
+   *
+   * @return $this
+   */
+  public function setEndDate($end_date)
+  {
+    $this->container['end_date'] = $end_date;
+
+    return $this;
+  }
+
+  /**
+   * Gets supervisors
+   *
+   * @return \Assembly\Client\Model\Supervisor[]
+   */
+  public function getSupervisors()
+  {
+    return $this->container['supervisors'];
+  }
+
+  /**
+   * Sets supervisors
+   *
+   * @param \Assembly\Client\Model\Supervisor[] $supervisors The IDs of supervisors (staff members) associated with the group and their role
+   *
+   * @return $this
+   */
+  public function setSupervisors($supervisors)
+  {
+    $this->container['supervisors'] = $supervisors;
+
+    return $this;
+  }
+
+  /**
+   * Gets student_ids
+   *
+   * @return int[]
+   */
+  public function getStudentIds()
+  {
+    return $this->container['student_ids'];
+  }
+
+  /**
+   * Sets student_ids
+   *
+   * @param int[] $student_ids The IDs of members (students) associated with the group
+   *
+   * @return $this
+   */
+  public function setStudentIds($student_ids)
+  {
+    $this->container['student_ids'] = $student_ids;
 
     return $this;
   }

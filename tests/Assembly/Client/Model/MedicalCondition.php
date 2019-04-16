@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * MedicalConditionTest Class Doc Comment
  *
  * @category    Class */
-// * @description MedicalCondition
+// * @description A medical condition defined in the MIS.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class MedicalConditionTest extends \PHPUnit_Framework_TestCase
    * Test "MedicalCondition"
    */
   public function testMedicalCondition()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

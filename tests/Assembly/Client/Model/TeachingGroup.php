@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * TeachingGroupTest Class Doc Comment
  *
  * @category    Class */
-// * @description TeachingGroup
+// * @description A grouping in which students are taught a subject.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -64,6 +64,13 @@ class TeachingGroupTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
+  {
+  }
+
+  /**
    * Test attribute "id"
    */
   public function testPropertyId()
@@ -71,51 +78,9 @@ class TeachingGroupTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test attribute "school_id"
-   */
-  public function testPropertySchoolId()
-  {
-  }
-
-  /**
-   * Test attribute "source_id"
-   */
-  public function testPropertySourceId()
-  {
-  }
-
-  /**
    * Test attribute "name"
    */
   public function testPropertyName()
-  {
-  }
-
-  /**
-   * Test attribute "created_at"
-   */
-  public function testPropertyCreatedAt()
-  {
-  }
-
-  /**
-   * Test attribute "updated_at"
-   */
-  public function testPropertyUpdatedAt()
-  {
-  }
-
-  /**
-   * Test attribute "academic_year_id"
-   */
-  public function testPropertyAcademicYearId()
-  {
-  }
-
-  /**
-   * Test attribute "subject_id"
-   */
-  public function testPropertySubjectId()
   {
   }
 
@@ -134,23 +99,44 @@ class TeachingGroupTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test attribute "level"
+   * Test attribute "academic_year_id"
    */
-  public function testPropertyLevel()
+  public function testPropertyAcademicYearId()
   {
   }
 
   /**
-   * Test attribute "assessment_id"
+   * Test attribute "supervisor_ids"
    */
-  public function testPropertyAssessmentId()
+  public function testPropertySupervisorIds()
   {
   }
 
   /**
-   * Test attribute "effective_at"
+   * Test attribute "student_ids"
    */
-  public function testPropertyEffectiveAt()
+  public function testPropertyStudentIds()
+  {
+  }
+
+  /**
+   * Test attribute "subject"
+   */
+  public function testPropertySubject()
+  {
+  }
+
+  /**
+   * Test attribute "mis_level"
+   */
+  public function testPropertyMisLevel()
+  {
+  }
+
+  /**
+   * Test attribute "assessment"
+   */
+  public function testPropertyAssessment()
   {
   }
 }

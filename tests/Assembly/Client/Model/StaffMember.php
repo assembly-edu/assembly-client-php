@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StaffMemberTest Class Doc Comment
  *
  * @category    Class */
-// * @description StaffMember
+// * @description A single staff member within a school.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class StaffMemberTest extends \PHPUnit_Framework_TestCase
    * Test "StaffMember"
    */
   public function testStaffMember()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 
@@ -144,6 +151,13 @@ class StaffMemberTest extends \PHPUnit_Framework_TestCase
    * Test attribute "email"
    */
   public function testPropertyEmail()
+  {
+  }
+
+  /**
+   * Test attribute "emails"
+   */
+  public function testPropertyEmails()
   {
   }
 

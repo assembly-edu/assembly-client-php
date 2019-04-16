@@ -43,6 +43,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'name' => 'string',
     'start_date' => '\DateTime',
@@ -55,6 +56,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'name' => null,
     'start_date' => 'date-time',
@@ -88,6 +90,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'name' => 'name',
     'start_date' => 'start_date',
@@ -100,6 +103,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'name' => 'setName',
     'start_date' => 'setStartDate',
@@ -112,6 +116,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'name' => 'getName',
     'start_date' => 'getStartDate',
@@ -178,6 +183,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'term';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
@@ -210,6 +216,30 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -222,7 +252,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -246,7 +276,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name Name of the term
    *
    * @return $this
    */
@@ -270,7 +300,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
   /**
    * Sets start_date
    *
-   * @param \DateTime $start_date start_date
+   * @param \DateTime $start_date Date on which term begins
    *
    * @return $this
    */
@@ -294,7 +324,7 @@ class AcademicYearTerms implements ModelInterface, ArrayAccess
   /**
    * Sets end_date
    *
-   * @param \DateTime $end_date end_date
+   * @param \DateTime $end_date Date on which term ends
    *
    * @return $this
    */

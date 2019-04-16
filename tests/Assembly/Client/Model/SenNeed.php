@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * SenNeedTest Class Doc Comment
  *
  * @category    Class */
-// * @description SenNeed
+// * @description A student&#39;s SEN Need information.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class SenNeedTest extends \PHPUnit_Framework_TestCase
    * Test "SenNeed"
    */
   public function testSenNeed()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

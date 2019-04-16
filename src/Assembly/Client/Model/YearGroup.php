@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * YearGroup Class Doc Comment
  *
  * @category Class
+ * @description A pastoral year group that a student belongs to.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,7 +44,9 @@ class YearGroup implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
+    'code' => 'string',
     'name' => 'string',
     'start_date' => '\DateTime',
     'end_date' => '\DateTime',
@@ -57,7 +60,9 @@ class YearGroup implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
+    'code' => null,
     'name' => null,
     'start_date' => 'date-time',
     'end_date' => 'date-time',
@@ -92,7 +97,9 @@ class YearGroup implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
+    'code' => 'code',
     'name' => 'name',
     'start_date' => 'start_date',
     'end_date' => 'end_date',
@@ -106,7 +113,9 @@ class YearGroup implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
+    'code' => 'setCode',
     'name' => 'setName',
     'start_date' => 'setStartDate',
     'end_date' => 'setEndDate',
@@ -120,7 +129,9 @@ class YearGroup implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
+    'code' => 'getCode',
     'name' => 'getName',
     'start_date' => 'getStartDate',
     'end_date' => 'getEndDate',
@@ -188,7 +199,9 @@ class YearGroup implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'year_group';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+    $this->container['code'] = isset($data['code']) ? $data['code'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
     $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
@@ -222,6 +235,30 @@ class YearGroup implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -234,13 +271,37 @@ class YearGroup implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
   public function setId($id)
   {
     $this->container['id'] = $id;
+
+    return $this;
+  }
+
+  /**
+   * Gets code
+   *
+   * @return string
+   */
+  public function getCode()
+  {
+    return $this->container['code'];
+  }
+
+  /**
+   * Sets code
+   *
+   * @param string $code The code of the year group
+   *
+   * @return $this
+   */
+  public function setCode($code)
+  {
+    $this->container['code'] = $code;
 
     return $this;
   }
@@ -258,7 +319,7 @@ class YearGroup implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name The name of the year group
    *
    * @return $this
    */
@@ -282,7 +343,7 @@ class YearGroup implements ModelInterface, ArrayAccess
   /**
    * Sets start_date
    *
-   * @param \DateTime $start_date start_date
+   * @param \DateTime $start_date The start date of the year group
    *
    * @return $this
    */
@@ -306,7 +367,7 @@ class YearGroup implements ModelInterface, ArrayAccess
   /**
    * Sets end_date
    *
-   * @param \DateTime $end_date end_date
+   * @param \DateTime $end_date The end date of the year group
    *
    * @return $this
    */
@@ -330,7 +391,7 @@ class YearGroup implements ModelInterface, ArrayAccess
   /**
    * Sets supervisor_ids
    *
-   * @param int[] $supervisor_ids supervisor_ids
+   * @param int[] $supervisor_ids The IDs of supervisors (staff members) associated with the year group
    *
    * @return $this
    */
@@ -354,7 +415,7 @@ class YearGroup implements ModelInterface, ArrayAccess
   /**
    * Sets student_ids
    *
-   * @param int[] $student_ids student_ids
+   * @param int[] $student_ids The IDs of members (students) associated with the year group
    *
    * @return $this
    */

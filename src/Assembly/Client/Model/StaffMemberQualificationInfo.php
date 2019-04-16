@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * StaffMemberQualificationInfo Class Doc Comment
  *
  * @category Class
+ * @description Qualification information about the staff member.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class StaffMemberQualificationInfo implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'teacher_number' => 'string',
     'qt_status' => 'bool',
     'hlta_status' => 'bool',
@@ -56,6 +58,7 @@ class StaffMemberQualificationInfo implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'teacher_number' => null,
     'qt_status' => null,
     'hlta_status' => null,
@@ -90,6 +93,7 @@ class StaffMemberQualificationInfo implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'teacher_number' => 'teacher_number',
     'qt_status' => 'qt_status',
     'hlta_status' => 'hlta_status',
@@ -103,6 +107,7 @@ class StaffMemberQualificationInfo implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'teacher_number' => 'setTeacherNumber',
     'qt_status' => 'setQtStatus',
     'hlta_status' => 'setHltaStatus',
@@ -116,6 +121,7 @@ class StaffMemberQualificationInfo implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'teacher_number' => 'getTeacherNumber',
     'qt_status' => 'getQtStatus',
     'hlta_status' => 'getHltaStatus',
@@ -183,6 +189,7 @@ class StaffMemberQualificationInfo implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'staff_qualification_info';
     $this->container['teacher_number'] = isset($data['teacher_number']) ? $data['teacher_number'] : null;
     $this->container['qt_status'] = isset($data['qt_status']) ? $data['qt_status'] : null;
     $this->container['hlta_status'] = isset($data['hlta_status']) ? $data['hlta_status'] : null;
@@ -216,6 +223,30 @@ class StaffMemberQualificationInfo implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets teacher_number
    *
    * @return string
@@ -228,7 +259,7 @@ class StaffMemberQualificationInfo implements ModelInterface, ArrayAccess
   /**
    * Sets teacher_number
    *
-   * @param string $teacher_number teacher_number
+   * @param string $teacher_number The DfE Teacher Reference number (also known as GTC number). For members of staff who have one this is a unique identifier
    *
    * @return $this
    */
@@ -252,7 +283,7 @@ class StaffMemberQualificationInfo implements ModelInterface, ArrayAccess
   /**
    * Sets qt_status
    *
-   * @param bool $qt_status qt_status
+   * @param bool $qt_status Whether or not the staff member holds Qualified Teacher Status
    *
    * @return $this
    */
@@ -276,7 +307,7 @@ class StaffMemberQualificationInfo implements ModelInterface, ArrayAccess
   /**
    * Sets hlta_status
    *
-   * @param bool $hlta_status hlta_status
+   * @param bool $hlta_status Whether or not the staff member holds Higher Level Teaching Assistant Status
    *
    * @return $this
    */
@@ -300,7 +331,7 @@ class StaffMemberQualificationInfo implements ModelInterface, ArrayAccess
   /**
    * Sets qts_route
    *
-   * @param string $qts_route qts_route
+   * @param string $qts_route The route by which a teacher obtains Qualified Teacher Status (e.g. the Graduate Teacher programme).
    *
    * @return $this
    */
@@ -324,7 +355,7 @@ class StaffMemberQualificationInfo implements ModelInterface, ArrayAccess
   /**
    * Sets qualifications
    *
-   * @param \Assembly\Client\Model\StaffQualification[] $qualifications qualifications
+   * @param \Assembly\Client\Model\StaffQualification[] $qualifications A list of all qualifications/degrees completed by a staff member
    *
    * @return $this
    */

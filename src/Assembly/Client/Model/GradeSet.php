@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * GradeSet Class Doc Comment
  *
  * @category Class
+ * @description A named grouping of grades that make an acceptable range of values for any given assessment.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class GradeSet implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'name' => 'string',
     'grades' => '\Assembly\Client\Model\Grade[]'
@@ -54,6 +56,7 @@ class GradeSet implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'name' => null,
     'grades' => null
@@ -86,6 +89,7 @@ class GradeSet implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'name' => 'name',
     'grades' => 'grades'
@@ -97,6 +101,7 @@ class GradeSet implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'name' => 'setName',
     'grades' => 'setGrades'
@@ -108,6 +113,7 @@ class GradeSet implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'name' => 'getName',
     'grades' => 'getGrades'
@@ -173,6 +179,7 @@ class GradeSet implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'grade_set';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['grades'] = isset($data['grades']) ? $data['grades'] : null;
@@ -204,6 +211,30 @@ class GradeSet implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -216,7 +247,7 @@ class GradeSet implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -240,7 +271,7 @@ class GradeSet implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name The name of the assessment family
    *
    * @return $this
    */
@@ -264,7 +295,7 @@ class GradeSet implements ModelInterface, ArrayAccess
   /**
    * Sets grades
    *
-   * @param \Assembly\Client\Model\Grade[] $grades grades
+   * @param \Assembly\Client\Model\Grade[] $grades The grades that this gradeset contains
    *
    * @return $this
    */

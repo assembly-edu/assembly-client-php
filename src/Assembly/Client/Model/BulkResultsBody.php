@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * BulkResultsBody Class Doc Comment
  *
  * @category Class
+ * @description A collection of results to bulk update ont he Platform
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php

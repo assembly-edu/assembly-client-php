@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * MisSubject Class Doc Comment
  *
  * @category Class
+ * @description A subject defined within the MIS.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class MisSubject implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'name' => 'string',
     'code' => 'string'
@@ -54,6 +56,7 @@ class MisSubject implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'name' => null,
     'code' => null
@@ -86,6 +89,7 @@ class MisSubject implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'name' => 'name',
     'code' => 'code'
@@ -97,6 +101,7 @@ class MisSubject implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'name' => 'setName',
     'code' => 'setCode'
@@ -108,6 +113,7 @@ class MisSubject implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'name' => 'getName',
     'code' => 'getCode'
@@ -173,6 +179,7 @@ class MisSubject implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'mis_subject';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['code'] = isset($data['code']) ? $data['code'] : null;
@@ -204,6 +211,30 @@ class MisSubject implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -216,7 +247,7 @@ class MisSubject implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -240,7 +271,7 @@ class MisSubject implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name The name of the subject in the MIS
    *
    * @return $this
    */
@@ -264,7 +295,7 @@ class MisSubject implements ModelInterface, ArrayAccess
   /**
    * Sets code
    *
-   * @param string $code code
+   * @param string $code The code of the subject in the MIS
    *
    * @return $this
    */

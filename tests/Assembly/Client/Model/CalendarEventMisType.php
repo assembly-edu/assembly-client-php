@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * CalendarEventMisTypeTest Class Doc Comment
  *
  * @category    Class */
-// * @description CalendarEventMisType
+// * @description Details the type of event - whether it is a regular calendar event, a staff meeting or inset day
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team

@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * Result Class Doc Comment
  *
  * @category Class
+ * @description A result combines the other assessment principles and attaches them to a student.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class Result implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'student_id' => 'int',
     'subject_id' => 'int',
@@ -61,6 +63,7 @@ class Result implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'student_id' => 'int32',
     'subject_id' => 'int32',
@@ -100,6 +103,7 @@ class Result implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'student_id' => 'student_id',
     'subject_id' => 'subject_id',
@@ -118,6 +122,7 @@ class Result implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'student_id' => 'setStudentId',
     'subject_id' => 'setSubjectId',
@@ -136,6 +141,7 @@ class Result implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'student_id' => 'getStudentId',
     'subject_id' => 'getSubjectId',
@@ -208,6 +214,7 @@ class Result implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'result_date';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['student_id'] = isset($data['student_id']) ? $data['student_id'] : null;
     $this->container['subject_id'] = isset($data['subject_id']) ? $data['subject_id'] : null;
@@ -246,6 +253,30 @@ class Result implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -258,7 +289,7 @@ class Result implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -282,7 +313,7 @@ class Result implements ModelInterface, ArrayAccess
   /**
    * Sets student_id
    *
-   * @param int $student_id student_id
+   * @param int $student_id The ID of the student that the result is attached to
    *
    * @return $this
    */
@@ -306,7 +337,7 @@ class Result implements ModelInterface, ArrayAccess
   /**
    * Sets subject_id
    *
-   * @param int $subject_id subject_id
+   * @param int $subject_id The ID of the subject that the result is attached to
    *
    * @return $this
    */
@@ -330,7 +361,7 @@ class Result implements ModelInterface, ArrayAccess
   /**
    * Sets assessment_id
    *
-   * @param int $assessment_id assessment_id
+   * @param int $assessment_id The ID of the assessment that the result is attached to
    *
    * @return $this
    */
@@ -354,7 +385,7 @@ class Result implements ModelInterface, ArrayAccess
   /**
    * Sets assessment_point_rank
    *
-   * @param int $assessment_point_rank assessment_point_rank
+   * @param int $assessment_point_rank The rank of the assessment point
    *
    * @return $this
    */
@@ -378,7 +409,7 @@ class Result implements ModelInterface, ArrayAccess
   /**
    * Sets facet_id
    *
-   * @param int $facet_id facet_id
+   * @param int $facet_id The ID of the facet that the result is attached to
    *
    * @return $this
    */
@@ -402,7 +433,7 @@ class Result implements ModelInterface, ArrayAccess
   /**
    * Sets grade_id
    *
-   * @param int $grade_id grade_id
+   * @param int $grade_id The ID of the grade that this result is attached to
    *
    * @return $this
    */
@@ -426,7 +457,7 @@ class Result implements ModelInterface, ArrayAccess
   /**
    * Sets result_date
    *
-   * @param \DateTime $result_date result_date
+   * @param \DateTime $result_date The date on which the result was recorded in the MIS or standardised assessment system
    *
    * @return $this
    */
@@ -450,7 +481,7 @@ class Result implements ModelInterface, ArrayAccess
   /**
    * Sets created_at
    *
-   * @param \DateTime $created_at created_at
+   * @param \DateTime $created_at The date and time that the result was first created on Assembly
    *
    * @return $this
    */
@@ -474,7 +505,7 @@ class Result implements ModelInterface, ArrayAccess
   /**
    * Sets updated_at
    *
-   * @param \DateTime $updated_at updated_at
+   * @param \DateTime $updated_at The date and time that the result was last updated on Assembly
    *
    * @return $this
    */

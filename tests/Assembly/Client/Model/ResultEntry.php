@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * ResultEntryTest Class Doc Comment
  *
  * @category    Class */
-// * @description ResultEntry
+// * @description A result for a student to be created on the Platform
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team

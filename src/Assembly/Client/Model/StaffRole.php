@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * StaffRole Class Doc Comment
  *
  * @category Class
+ * @description A role performed by a staff member.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,8 @@ class StaffRole implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
+    'id' => 'int',
     'role_type' => 'string',
     'start_date' => '\DateTime',
     'end_date' => '\DateTime'
@@ -54,6 +57,8 @@ class StaffRole implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
+    'id' => 'int32',
     'role_type' => null,
     'start_date' => 'date-time',
     'end_date' => 'date-time'
@@ -86,6 +91,8 @@ class StaffRole implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
+    'id' => 'id',
     'role_type' => 'role_type',
     'start_date' => 'start_date',
     'end_date' => 'end_date'
@@ -97,6 +104,8 @@ class StaffRole implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
+    'id' => 'setId',
     'role_type' => 'setRoleType',
     'start_date' => 'setStartDate',
     'end_date' => 'setEndDate'
@@ -108,6 +117,8 @@ class StaffRole implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
+    'id' => 'getId',
     'role_type' => 'getRoleType',
     'start_date' => 'getStartDate',
     'end_date' => 'getEndDate'
@@ -173,6 +184,8 @@ class StaffRole implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'staff_role';
+    $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['role_type'] = isset($data['role_type']) ? $data['role_type'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
     $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
@@ -204,6 +217,54 @@ class StaffRole implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
+   * Gets id
+   *
+   * @return int
+   */
+  public function getId()
+  {
+    return $this->container['id'];
+  }
+
+  /**
+   * Sets id
+   *
+   * @param int $id Internal stable ID
+   *
+   * @return $this
+   */
+  public function setId($id)
+  {
+    $this->container['id'] = $id;
+
+    return $this;
+  }
+
+  /**
    * Gets role_type
    *
    * @return string
@@ -216,7 +277,7 @@ class StaffRole implements ModelInterface, ArrayAccess
   /**
    * Sets role_type
    *
-   * @param string $role_type role_type
+   * @param string $role_type The staff member's role
    *
    * @return $this
    */
@@ -240,7 +301,7 @@ class StaffRole implements ModelInterface, ArrayAccess
   /**
    * Sets start_date
    *
-   * @param \DateTime $start_date start_date
+   * @param \DateTime $start_date The date the role started
    *
    * @return $this
    */
@@ -264,7 +325,7 @@ class StaffRole implements ModelInterface, ArrayAccess
   /**
    * Sets end_date
    *
-   * @param \DateTime $end_date end_date
+   * @param \DateTime $end_date The date the role ended, or `null` if still active
    *
    * @return $this
    */

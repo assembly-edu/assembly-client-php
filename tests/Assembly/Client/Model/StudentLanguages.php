@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StudentLanguagesTest Class Doc Comment
  *
  * @category    Class */
-// * @description StudentLanguages
+// * @description Information about a student&#39;s languages (this will only be returned if &#x60;&amp;languages&#x3D;true&#x60; is included in your request)
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team

@@ -64,6 +64,13 @@ class AcademicYearTermsTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
+  {
+  }
+
+  /**
    * Test attribute "id"
    */
   public function testPropertyId()

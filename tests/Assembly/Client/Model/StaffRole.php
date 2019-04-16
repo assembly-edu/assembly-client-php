@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StaffRoleTest Class Doc Comment
  *
  * @category    Class */
-// * @description StaffRole
+// * @description A role performed by a staff member.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,20 @@ class StaffRoleTest extends \PHPUnit_Framework_TestCase
    * Test "StaffRole"
    */
   public function testStaffRole()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
+  {
+  }
+
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
   {
   }
 

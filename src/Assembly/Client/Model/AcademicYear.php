@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * AcademicYear Class Doc Comment
  *
  * @category Class
+ * @description A school year within a particular school.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'name' => 'string',
     'start_date' => '\DateTime',
@@ -56,6 +58,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'name' => null,
     'start_date' => 'date-time',
@@ -90,6 +93,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'name' => 'name',
     'start_date' => 'start_date',
@@ -103,6 +107,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'name' => 'setName',
     'start_date' => 'setStartDate',
@@ -116,6 +121,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'name' => 'getName',
     'start_date' => 'getStartDate',
@@ -183,6 +189,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'academic_year';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
@@ -216,6 +223,30 @@ class AcademicYear implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -228,7 +259,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -252,7 +283,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name Name of academic year
    *
    * @return $this
    */
@@ -276,7 +307,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
   /**
    * Sets start_date
    *
-   * @param \DateTime $start_date start_date
+   * @param \DateTime $start_date Date on which academic year starts
    *
    * @return $this
    */
@@ -300,7 +331,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
   /**
    * Sets end_date
    *
-   * @param \DateTime $end_date end_date
+   * @param \DateTime $end_date Date on which academic year ends
    *
    * @return $this
    */
@@ -324,7 +355,7 @@ class AcademicYear implements ModelInterface, ArrayAccess
   /**
    * Sets terms
    *
-   * @param \Assembly\Client\Model\AcademicYearTerms[] $terms terms
+   * @param \Assembly\Client\Model\AcademicYearTerms[] $terms Provides details of the individual terms that make up the academic year
    *
    * @return $this
    */

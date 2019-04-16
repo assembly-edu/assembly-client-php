@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * ResultTest Class Doc Comment
  *
  * @category    Class */
-// * @description Result
+// * @description A result combines the other assessment principles and attaches them to a student.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class ResultTest extends \PHPUnit_Framework_TestCase
    * Test "Result"
    */
   public function testResult()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

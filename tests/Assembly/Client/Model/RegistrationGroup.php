@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * RegistrationGroupTest Class Doc Comment
  *
  * @category    Class */
-// * @description RegistrationGroup
+// * @description The grouping in which students take AM/PM roll call (morning and afternoon registers).
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class RegistrationGroupTest extends \PHPUnit_Framework_TestCase
    * Test "RegistrationGroup"
    */
   public function testRegistrationGroup()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

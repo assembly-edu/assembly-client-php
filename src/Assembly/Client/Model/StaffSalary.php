@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * StaffSalary Class Doc Comment
  *
  * @category Class
+ * @description The salary detail of a staff member.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,8 @@ class StaffSalary implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
+    'id' => 'int',
     'hours_per_week' => 'float',
     'fte' => 'float',
     'weeks_per_year' => 'float',
@@ -62,6 +65,8 @@ class StaffSalary implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
+    'id' => 'int32',
     'hours_per_week' => 'float',
     'fte' => 'float',
     'weeks_per_year' => 'float',
@@ -102,6 +107,8 @@ class StaffSalary implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
+    'id' => 'id',
     'hours_per_week' => 'hours_per_week',
     'fte' => 'fte',
     'weeks_per_year' => 'weeks_per_year',
@@ -121,6 +128,8 @@ class StaffSalary implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
+    'id' => 'setId',
     'hours_per_week' => 'setHoursPerWeek',
     'fte' => 'setFte',
     'weeks_per_year' => 'setWeeksPerYear',
@@ -140,6 +149,8 @@ class StaffSalary implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
+    'id' => 'getId',
     'hours_per_week' => 'getHoursPerWeek',
     'fte' => 'getFte',
     'weeks_per_year' => 'getWeeksPerYear',
@@ -213,6 +224,8 @@ class StaffSalary implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'staff_salary';
+    $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['hours_per_week'] = isset($data['hours_per_week']) ? $data['hours_per_week'] : null;
     $this->container['fte'] = isset($data['fte']) ? $data['fte'] : null;
     $this->container['weeks_per_year'] = isset($data['weeks_per_year']) ? $data['weeks_per_year'] : null;
@@ -252,6 +265,54 @@ class StaffSalary implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
+   * Gets id
+   *
+   * @return int
+   */
+  public function getId()
+  {
+    return $this->container['id'];
+  }
+
+  /**
+   * Sets id
+   *
+   * @param int $id Internal stable ID
+   *
+   * @return $this
+   */
+  public function setId($id)
+  {
+    $this->container['id'] = $id;
+
+    return $this;
+  }
+
+  /**
    * Gets hours_per_week
    *
    * @return float
@@ -264,7 +325,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
   /**
    * Sets hours_per_week
    *
-   * @param float $hours_per_week hours_per_week
+   * @param float $hours_per_week Number of hours on which the contract is based
    *
    * @return $this
    */
@@ -288,7 +349,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
   /**
    * Sets fte
    *
-   * @param float $fte fte
+   * @param float $fte Total contracted time expressed as a proportion of \"full-time\"
    *
    * @return $this
    */
@@ -312,7 +373,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
   /**
    * Sets weeks_per_year
    *
-   * @param float $weeks_per_year weeks_per_year
+   * @param float $weeks_per_year Number of weeks per year that the contract operates
    *
    * @return $this
    */
@@ -336,7 +397,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
   /**
    * Sets pay_range
    *
-   * @param string $pay_range pay_range
+   * @param string $pay_range The pay range under which the member of staff is paid
    *
    * @return $this
    */
@@ -360,7 +421,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
   /**
    * Sets start_date
    *
-   * @param \DateTime $start_date start_date
+   * @param \DateTime $start_date Start date for this salary
    *
    * @return $this
    */
@@ -384,7 +445,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
   /**
    * Sets end_date
    *
-   * @param \DateTime $end_date end_date
+   * @param \DateTime $end_date End date of this salary
    *
    * @return $this
    */
@@ -408,7 +469,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
   /**
    * Sets pay_scale_framework
    *
-   * @param string $pay_scale_framework pay_scale_framework
+   * @param string $pay_scale_framework Shows the pay framework under which a member of staff is paid
    *
    * @return $this
    */
@@ -432,7 +493,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
   /**
    * Sets regional_spine
    *
-   * @param string $regional_spine regional_spine
+   * @param string $regional_spine The location of the pay scale framework
    *
    * @return $this
    */
@@ -456,7 +517,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
   /**
    * Sets base_pay
    *
-   * @param float $base_pay base_pay
+   * @param float $base_pay Annual salary, excluding additional payments
    *
    * @return $this
    */
@@ -480,7 +541,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
   /**
    * Sets actual_pay
    *
-   * @param float $actual_pay actual_pay
+   * @param float $actual_pay Actual pay
    *
    * @return $this
    */
@@ -504,7 +565,7 @@ class StaffSalary implements ModelInterface, ArrayAccess
   /**
    * Sets safeguarded_salary
    *
-   * @param bool $safeguarded_salary safeguarded_salary
+   * @param bool $safeguarded_salary Indicates the staff member's salary has been safeguarded
    *
    * @return $this
    */

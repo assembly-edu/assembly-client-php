@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * Exclusion Class Doc Comment
  *
  * @category Class
+ * @description An official exclusion of a student from a school.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class Exclusion implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'student_id' => 'int',
     'exclusion_type' => 'string',
@@ -60,6 +62,7 @@ class Exclusion implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'student_id' => 'int32',
     'exclusion_type' => null,
@@ -98,6 +101,7 @@ class Exclusion implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'student_id' => 'student_id',
     'exclusion_type' => 'exclusion_type',
@@ -115,6 +119,7 @@ class Exclusion implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'student_id' => 'setStudentId',
     'exclusion_type' => 'setExclusionType',
@@ -132,6 +137,7 @@ class Exclusion implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'student_id' => 'getStudentId',
     'exclusion_type' => 'getExclusionType',
@@ -184,8 +190,27 @@ class Exclusion implements ModelInterface, ArrayAccess
     return self::$swaggerModelName;
   }
 
+  const EXCLUSION_TYPE_FIXED_TERM = 'Fixed Term';
+  const EXCLUSION_TYPE_LUNCHTIME = 'Lunchtime';
+  const EXCLUSION_TYPE_PERMANENT = 'Permanent';
+  const EXCLUSION_TYPE_REINSTATED = 'Reinstated';
   
 
+  
+  /**
+   * Gets allowable values of the enum
+   *
+   * @return string[]
+   */
+  public function getExclusionTypeAllowableValues()
+  {
+    return [
+      self::EXCLUSION_TYPE_FIXED_TERM,
+      self::EXCLUSION_TYPE_LUNCHTIME,
+      self::EXCLUSION_TYPE_PERMANENT,
+      self::EXCLUSION_TYPE_REINSTATED,
+    ];
+  }
   
 
   /**
@@ -203,6 +228,7 @@ class Exclusion implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'exclusion';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['student_id'] = isset($data['student_id']) ? $data['student_id'] : null;
     $this->container['exclusion_type'] = isset($data['exclusion_type']) ? $data['exclusion_type'] : null;
@@ -223,6 +249,14 @@ class Exclusion implements ModelInterface, ArrayAccess
   {
     $invalidProperties = [];
 
+    $allowedValues = $this->getExclusionTypeAllowableValues();
+    if (!in_array($this->container['exclusion_type'], $allowedValues)) {
+      $invalidProperties[] = sprintf(
+        "invalid value for 'exclusion_type', must be one of '%s'",
+        implode("', '", $allowedValues)
+      );
+    }
+
     return $invalidProperties;
   }
 
@@ -235,9 +269,37 @@ class Exclusion implements ModelInterface, ArrayAccess
   public function valid()
   {
 
+    $allowedValues = $this->getExclusionTypeAllowableValues();
+    if (!in_array($this->container['exclusion_type'], $allowedValues)) {
+      return false;
+    }
     return true;
   }
 
+
+  /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
 
   /**
    * Gets id
@@ -252,7 +314,7 @@ class Exclusion implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -276,7 +338,7 @@ class Exclusion implements ModelInterface, ArrayAccess
   /**
    * Sets student_id
    *
-   * @param int $student_id student_id
+   * @param int $student_id The ID of the student that the exclusion is attached to
    *
    * @return $this
    */
@@ -300,12 +362,21 @@ class Exclusion implements ModelInterface, ArrayAccess
   /**
    * Sets exclusion_type
    *
-   * @param string $exclusion_type exclusion_type
+   * @param string $exclusion_type The exclusions type, where `Reinstated` may be from a fixed term or permanent exclusion
    *
    * @return $this
    */
   public function setExclusionType($exclusion_type)
   {
+    $allowedValues = $this->getExclusionTypeAllowableValues();
+    if (!is_null($exclusion_type) && !in_array($exclusion_type, $allowedValues)) {
+      throw new \InvalidArgumentException(
+        sprintf(
+          "Invalid value for 'exclusion_type', must be one of '%s'",
+          implode("', '", $allowedValues)
+        )
+      );
+    }
     $this->container['exclusion_type'] = $exclusion_type;
 
     return $this;
@@ -324,7 +395,7 @@ class Exclusion implements ModelInterface, ArrayAccess
   /**
    * Sets exclusion_reason
    *
-   * @param string $exclusion_reason exclusion_reason
+   * @param string $exclusion_reason The exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS
    *
    * @return $this
    */
@@ -348,7 +419,7 @@ class Exclusion implements ModelInterface, ArrayAccess
   /**
    * Sets start_date
    *
-   * @param \DateTime $start_date start_date
+   * @param \DateTime $start_date The date on which the exclusions starts
    *
    * @return $this
    */
@@ -372,7 +443,7 @@ class Exclusion implements ModelInterface, ArrayAccess
   /**
    * Sets start_session
    *
-   * @param string $start_session start_session
+   * @param string $start_session The session (AM/PM) in which the exclusion starts
    *
    * @return $this
    */
@@ -396,7 +467,7 @@ class Exclusion implements ModelInterface, ArrayAccess
   /**
    * Sets end_date
    *
-   * @param \DateTime $end_date end_date
+   * @param \DateTime $end_date The date on which the exclusion ends
    *
    * @return $this
    */
@@ -420,7 +491,7 @@ class Exclusion implements ModelInterface, ArrayAccess
   /**
    * Sets end_session
    *
-   * @param string $end_session end_session
+   * @param string $end_session The session (AM/PM) in which the exclusion ends
    *
    * @return $this
    */
@@ -444,7 +515,7 @@ class Exclusion implements ModelInterface, ArrayAccess
   /**
    * Sets exclusion_length
    *
-   * @param int $exclusion_length exclusion_length
+   * @param int $exclusion_length The total length, in sessions, of the exclusion
    *
    * @return $this
    */

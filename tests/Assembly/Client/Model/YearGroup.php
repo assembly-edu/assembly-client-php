@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * YearGroupTest Class Doc Comment
  *
  * @category    Class */
-// * @description YearGroup
+// * @description A pastoral year group that a student belongs to.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -64,9 +64,23 @@ class YearGroupTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
+  {
+  }
+
+  /**
    * Test attribute "id"
    */
   public function testPropertyId()
+  {
+  }
+
+  /**
+   * Test attribute "code"
+   */
+  public function testPropertyCode()
   {
   }
 

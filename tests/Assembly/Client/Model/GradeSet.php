@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * GradeSetTest Class Doc Comment
  *
  * @category    Class */
-// * @description GradeSet
+// * @description A named grouping of grades that make an acceptable range of values for any given assessment.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class GradeSetTest extends \PHPUnit_Framework_TestCase
    * Test "GradeSet"
    */
   public function testGradeSet()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

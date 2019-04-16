@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * CalendarEventMisType Class Doc Comment
  *
  * @category Class
+ * @description Details the type of event - whether it is a regular calendar event, a staff meeting or inset day
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -210,7 +211,7 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name The type of the event
    *
    * @return $this
    */
@@ -234,7 +235,7 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
   /**
    * Sets description
    *
-   * @param string $description description
+   * @param string $description Any additional description of this event type
    *
    * @return $this
    */

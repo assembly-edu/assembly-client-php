@@ -121,7 +121,7 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
   /**
    * Test case for findDietaryNeed
    *
-   * View an Dietary Need.
+   * View a Dietary Need.
    *
    */
   public function testFindDietaryNeed()
@@ -149,9 +149,19 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
+   * Test case for findGroup
+   *
+   * View a Group.
+   *
+   */
+  public function testFindGroup()
+  {
+  }
+
+  /**
    * Test case for findMedicalCondition
    *
-   * View an Medical Condition.
+   * View a Medical Condition.
    *
    */
   public function testFindMedicalCondition()
@@ -171,7 +181,7 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
   /**
    * Test case for findSchool
    *
-   * Get School Details.
+   * View School Details.
    *
    */
   public function testFindSchool()
@@ -259,22 +269,22 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test case for getAssessmentSummaries
-   *
-   * List Attendance Summaries.
-   *
-   */
-  public function testGetAssessmentSummaries()
-  {
-  }
-
-  /**
    * Test case for getAssessments
    *
    * List Assessments.
    *
    */
   public function testGetAssessments()
+  {
+  }
+
+  /**
+   * Test case for getAttendanceSummaries
+   *
+   * List Attendance Summaries.
+   *
+   */
+  public function testGetAttendanceSummaries()
   {
   }
 
@@ -311,7 +321,7 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
   /**
    * Test case for getDietaryNeeds
    *
-   * Dietary Needs.
+   * List Dietary Needs.
    *
    */
   public function testGetDietaryNeeds()
@@ -349,6 +359,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
+   * Test case for getGroups
+   *
+   * List Groups.
+   *
+   */
+  public function testGetGroups()
+  {
+  }
+
+  /**
    * Test case for getLeftStaffMembers
    *
    * List Left Staff Members.
@@ -371,7 +391,7 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
   /**
    * Test case for getMedicalConditions
    *
-   * Medical Conditions.
+   * List Medical Conditions.
    *
    */
   public function testGetMedicalConditions()
@@ -391,7 +411,7 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
   /**
    * Test case for getRegistrationGroups
    *
-   * List Registration Group.
+   * List Registration Groups.
    *
    */
   public function testGetRegistrationGroups()
@@ -501,7 +521,7 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
   /**
    * Test case for status
    *
-   * Get School Sync Status.
+   * View School Sync Status.
    *
    */
   public function testStatus()

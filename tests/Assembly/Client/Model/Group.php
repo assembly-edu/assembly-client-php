@@ -16,16 +16,16 @@
 namespace Assembly\Client;
 
 /**
- * EmailTest Class Doc Comment
+ * GroupTest Class Doc Comment
  *
  * @category    Class */
-// * @description Email
+// * @description A grouping of students. A teaching or registration group for example.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
  * @link        https://github.com/assembly-edu/assembly-client-php
  */
-class EmailTest extends \PHPUnit_Framework_TestCase
+class GroupTest extends \PHPUnit_Framework_TestCase
 {
 
   /**
@@ -57,9 +57,16 @@ class EmailTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test "Email"
+   * Test "Group"
    */
-  public function testEmail()
+  public function testGroup()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 
@@ -71,9 +78,16 @@ class EmailTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test attribute "email"
+   * Test attribute "name"
    */
-  public function testPropertyEmail()
+  public function testPropertyName()
+  {
+  }
+
+  /**
+   * Test attribute "code"
+   */
+  public function testPropertyCode()
   {
   }
 
@@ -85,9 +99,30 @@ class EmailTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test attribute "is_primary"
+   * Test attribute "start_date"
    */
-  public function testPropertyIsPrimary()
+  public function testPropertyStartDate()
+  {
+  }
+
+  /**
+   * Test attribute "end_date"
+   */
+  public function testPropertyEndDate()
+  {
+  }
+
+  /**
+   * Test attribute "supervisors"
+   */
+  public function testPropertySupervisors()
+  {
+  }
+
+  /**
+   * Test attribute "student_ids"
+   */
+  public function testPropertyStudentIds()
   {
   }
 }

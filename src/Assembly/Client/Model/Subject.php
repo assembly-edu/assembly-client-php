@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * Subject Class Doc Comment
  *
  * @category Class
+ * @description An Assembly Platform subject. These subjects are mapped to one or multiple subjects within a school&#39;s MIS and are used to normalise school to school variance in subject naming to a known and fixed set within the Assembly Platform.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class Subject implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'code' => 'string',
     'name' => 'string',
@@ -55,6 +57,7 @@ class Subject implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'code' => null,
     'name' => null,
@@ -88,6 +91,7 @@ class Subject implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'code' => 'code',
     'name' => 'name',
@@ -100,6 +104,7 @@ class Subject implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'code' => 'setCode',
     'name' => 'setName',
@@ -112,6 +117,7 @@ class Subject implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'code' => 'getCode',
     'name' => 'getName',
@@ -178,6 +184,7 @@ class Subject implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'subject';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['code'] = isset($data['code']) ? $data['code'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
@@ -210,6 +217,30 @@ class Subject implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -222,7 +253,7 @@ class Subject implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -246,7 +277,7 @@ class Subject implements ModelInterface, ArrayAccess
   /**
    * Sets code
    *
-   * @param string $code code
+   * @param string $code Shortened code of subject
    *
    * @return $this
    */
@@ -270,7 +301,7 @@ class Subject implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name Full name of subject
    *
    * @return $this
    */
@@ -294,7 +325,7 @@ class Subject implements ModelInterface, ArrayAccess
   /**
    * Sets mis_subjects
    *
-   * @param \Assembly\Client\Model\MisSubject[] $mis_subjects mis_subjects
+   * @param \Assembly\Client\Model\MisSubject[] $mis_subjects The MIS subjects that have been mapped to this Assembly Subject.
    *
    * @return $this
    */

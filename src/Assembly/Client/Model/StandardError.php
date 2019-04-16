@@ -19,14 +19,15 @@ use \ArrayAccess;
 use \Assembly\Client\ObjectSerializer;
 
 /**
- * TelephoneNumber Class Doc Comment
+ * StandardError Class Doc Comment
  *
  * @category Class
+ * @description Error object. All propertires are optional, though typically an instance of this will have a concise &#x60;error&#x60; message and a &#x60;message&#x60; string with more detail
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
  */
-class TelephoneNumber implements ModelInterface, ArrayAccess
+class StandardError implements ModelInterface, ArrayAccess
 {
   const DISCRIMINATOR = null;
 
@@ -35,7 +36,7 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
     *
     * @var string
     */
-  protected static $swaggerModelName = 'TelephoneNumber';
+  protected static $swaggerModelName = 'StandardError';
 
   /**
     * Array of property to type mappings. Used for (de)serialization
@@ -43,10 +44,9 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
-    'id' => 'int',
-    'type' => 'string',
-    'telephone_number' => 'string',
-    'is_primary' => 'bool'
+    'error' => 'string',
+    'message' => 'string',
+    'data' => '\Assembly\Client\Model\StandardErrorData'
   ];
 
   /**
@@ -55,10 +55,9 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
-    'id' => 'int32',
-    'type' => null,
-    'telephone_number' => null,
-    'is_primary' => null
+    'error' => null,
+    'message' => null,
+    'data' => null
   ];
 
   /**
@@ -88,10 +87,9 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
-    'id' => 'id',
-    'type' => 'type',
-    'telephone_number' => 'telephone_number',
-    'is_primary' => 'is_primary'
+    'error' => 'error',
+    'message' => 'message',
+    'data' => 'data'
   ];
 
   /**
@@ -100,10 +98,9 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
-    'id' => 'setId',
-    'type' => 'setType',
-    'telephone_number' => 'setTelephoneNumber',
-    'is_primary' => 'setIsPrimary'
+    'error' => 'setError',
+    'message' => 'setMessage',
+    'data' => 'setData'
   ];
 
   /**
@@ -112,10 +109,9 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
-    'id' => 'getId',
-    'type' => 'getType',
-    'telephone_number' => 'getTelephoneNumber',
-    'is_primary' => 'getIsPrimary'
+    'error' => 'getError',
+    'message' => 'getMessage',
+    'data' => 'getData'
   ];
 
   /**
@@ -178,10 +174,9 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
-    $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-    $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-    $this->container['telephone_number'] = isset($data['telephone_number']) ? $data['telephone_number'] : null;
-    $this->container['is_primary'] = isset($data['is_primary']) ? $data['is_primary'] : null;
+    $this->container['error'] = isset($data['error']) ? $data['error'] : null;
+    $this->container['message'] = isset($data['message']) ? $data['message'] : null;
+    $this->container['data'] = isset($data['data']) ? $data['data'] : null;
   }
 
   /**
@@ -210,97 +205,73 @@ class TelephoneNumber implements ModelInterface, ArrayAccess
 
 
   /**
-   * Gets id
-   *
-   * @return int
-   */
-  public function getId()
-  {
-    return $this->container['id'];
-  }
-
-  /**
-   * Sets id
-   *
-   * @param int $id id
-   *
-   * @return $this
-   */
-  public function setId($id)
-  {
-    $this->container['id'] = $id;
-
-    return $this;
-  }
-
-  /**
-   * Gets type
+   * Gets error
    *
    * @return string
    */
-  public function getType()
+  public function getError()
   {
-    return $this->container['type'];
+    return $this->container['error'];
   }
 
   /**
-   * Sets type
+   * Sets error
    *
-   * @param string $type type
+   * @param string $error An indication of error, such as:  - `invalid_request` (401, no API token presented in header) - `invalid_token` (401, bad token presented in header) - `insufficient_scope` (401, asked for more data than authorized) - `unsupported_version` (406, bad API version in accept header)
    *
    * @return $this
    */
-  public function setType($type)
+  public function setError($error)
   {
-    $this->container['type'] = $type;
+    $this->container['error'] = $error;
 
     return $this;
   }
 
   /**
-   * Gets telephone_number
+   * Gets message
    *
    * @return string
    */
-  public function getTelephoneNumber()
+  public function getMessage()
   {
-    return $this->container['telephone_number'];
+    return $this->container['message'];
   }
 
   /**
-   * Sets telephone_number
+   * Sets message
    *
-   * @param string $telephone_number telephone_number
+   * @param string $message Explanation of the error, such as:  - `malformed date parameter: '32-13-2019'` (400) - `an access_token is required.` (401) - `not found` (404)
    *
    * @return $this
    */
-  public function setTelephoneNumber($telephone_number)
+  public function setMessage($message)
   {
-    $this->container['telephone_number'] = $telephone_number;
+    $this->container['message'] = $message;
 
     return $this;
   }
 
   /**
-   * Gets is_primary
+   * Gets data
    *
-   * @return bool
+   * @return \Assembly\Client\Model\StandardErrorData
    */
-  public function getIsPrimary()
+  public function getData()
   {
-    return $this->container['is_primary'];
+    return $this->container['data'];
   }
 
   /**
-   * Sets is_primary
+   * Sets data
    *
-   * @param bool $is_primary is_primary
+   * @param \Assembly\Client\Model\StandardErrorData $data data
    *
    * @return $this
    */
-  public function setIsPrimary($is_primary)
+  public function setData($data)
   {
-    $this->container['is_primary'] = $is_primary;
+    $this->container['data'] = $data;
 
     return $this;
   }

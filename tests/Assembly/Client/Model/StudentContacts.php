@@ -16,16 +16,16 @@
 namespace Assembly\Client;
 
 /**
- * ApiResponseTest Class Doc Comment
+ * StudentContactsTest Class Doc Comment
  *
  * @category    Class */
-// * @description ApiResponse
+// * @description StudentContacts
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
  * @link        https://github.com/assembly-edu/assembly-client-php
  */
-class ApiResponseTest extends \PHPUnit_Framework_TestCase
+class StudentContactsTest extends \PHPUnit_Framework_TestCase
 {
 
   /**
@@ -57,30 +57,30 @@ class ApiResponseTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test "ApiResponse"
+   * Test "StudentContacts"
    */
-  public function testApiResponse()
+  public function testStudentContacts()
   {
   }
 
   /**
-   * Test attribute "message"
+   * Test attribute "object"
    */
-  public function testPropertyMessage()
+  public function testPropertyObject()
   {
   }
 
   /**
-   * Test attribute "data"
+   * Test attribute "contact_id"
    */
-  public function testPropertyData()
+  public function testPropertyContactId()
   {
   }
 
   /**
-   * Test attribute "errors"
+   * Test attribute "relationship"
    */
-  public function testPropertyErrors()
+  public function testPropertyRelationship()
   {
   }
 }

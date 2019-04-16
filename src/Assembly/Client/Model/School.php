@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * School Class Doc Comment
  *
  * @category Class
+ * @description Details for the school associated with the provided &#x60;access_token&#x60;.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,8 +44,10 @@ class School implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'name' => 'string',
     'urn' => 'string',
+    'mis_provider' => 'string',
     'la_code' => 'int',
     'la_name' => 'string',
     'establishment_number' => 'int',
@@ -62,8 +65,10 @@ class School implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'name' => null,
     'urn' => null,
+    'mis_provider' => null,
     'la_code' => 'int32',
     'la_name' => null,
     'establishment_number' => 'int32',
@@ -102,8 +107,10 @@ class School implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'name' => 'name',
     'urn' => 'urn',
+    'mis_provider' => 'mis_provider',
     'la_code' => 'la_code',
     'la_name' => 'la_name',
     'establishment_number' => 'establishment_number',
@@ -121,8 +128,10 @@ class School implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'name' => 'setName',
     'urn' => 'setUrn',
+    'mis_provider' => 'setMisProvider',
     'la_code' => 'setLaCode',
     'la_name' => 'setLaName',
     'establishment_number' => 'setEstablishmentNumber',
@@ -140,8 +149,10 @@ class School implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'name' => 'getName',
     'urn' => 'getUrn',
+    'mis_provider' => 'getMisProvider',
     'la_code' => 'getLaCode',
     'la_name' => 'getLaName',
     'establishment_number' => 'getEstablishmentNumber',
@@ -213,8 +224,10 @@ class School implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'school';
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['urn'] = isset($data['urn']) ? $data['urn'] : null;
+    $this->container['mis_provider'] = isset($data['mis_provider']) ? $data['mis_provider'] : null;
     $this->container['la_code'] = isset($data['la_code']) ? $data['la_code'] : null;
     $this->container['la_name'] = isset($data['la_name']) ? $data['la_name'] : null;
     $this->container['establishment_number'] = isset($data['establishment_number']) ? $data['establishment_number'] : null;
@@ -252,6 +265,30 @@ class School implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets name
    *
    * @return string
@@ -264,7 +301,7 @@ class School implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name Name of the school
    *
    * @return $this
    */
@@ -288,13 +325,37 @@ class School implements ModelInterface, ArrayAccess
   /**
    * Sets urn
    *
-   * @param string $urn urn
+   * @param string $urn Unique Reference Number (URN) of the school
    *
    * @return $this
    */
   public function setUrn($urn)
   {
     $this->container['urn'] = $urn;
+
+    return $this;
+  }
+
+  /**
+   * Gets mis_provider
+   *
+   * @return string
+   */
+  public function getMisProvider()
+  {
+    return $this->container['mis_provider'];
+  }
+
+  /**
+   * Sets mis_provider
+   *
+   * @param string $mis_provider Name of school's MIS provider
+   *
+   * @return $this
+   */
+  public function setMisProvider($mis_provider)
+  {
+    $this->container['mis_provider'] = $mis_provider;
 
     return $this;
   }
@@ -312,7 +373,7 @@ class School implements ModelInterface, ArrayAccess
   /**
    * Sets la_code
    *
-   * @param int $la_code la_code
+   * @param int $la_code The code of the local authority that the school belongs to
    *
    * @return $this
    */
@@ -336,7 +397,7 @@ class School implements ModelInterface, ArrayAccess
   /**
    * Sets la_name
    *
-   * @param string $la_name la_name
+   * @param string $la_name The name of the local authority that the school belongs to
    *
    * @return $this
    */
@@ -360,7 +421,7 @@ class School implements ModelInterface, ArrayAccess
   /**
    * Sets establishment_number
    *
-   * @param int $establishment_number establishment_number
+   * @param int $establishment_number The school's establishment number
    *
    * @return $this
    */
@@ -384,7 +445,7 @@ class School implements ModelInterface, ArrayAccess
   /**
    * Sets establishment_type
    *
-   * @param string $establishment_type establishment_type
+   * @param string $establishment_type The type of establishment
    *
    * @return $this
    */
@@ -408,7 +469,7 @@ class School implements ModelInterface, ArrayAccess
   /**
    * Sets phase
    *
-   * @param string $phase phase
+   * @param string $phase The phase of the school (i.e. \"Secondary, \"Primary\" or \"All through\")
    *
    * @return $this
    */
@@ -432,7 +493,7 @@ class School implements ModelInterface, ArrayAccess
   /**
    * Sets street
    *
-   * @param string $street street
+   * @param string $street The street that the school is on
    *
    * @return $this
    */
@@ -456,7 +517,7 @@ class School implements ModelInterface, ArrayAccess
   /**
    * Sets town
    *
-   * @param string $town town
+   * @param string $town The town that the school is in
    *
    * @return $this
    */
@@ -480,7 +541,7 @@ class School implements ModelInterface, ArrayAccess
   /**
    * Sets postcode
    *
-   * @param string $postcode postcode
+   * @param string $postcode The postcode of the school
    *
    * @return $this
    */
@@ -504,7 +565,7 @@ class School implements ModelInterface, ArrayAccess
   /**
    * Sets head_teacher
    *
-   * @param string $head_teacher head_teacher
+   * @param string $head_teacher The school's head teacher name
    *
    * @return $this
    */

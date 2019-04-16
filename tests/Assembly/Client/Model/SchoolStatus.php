@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * SchoolStatusTest Class Doc Comment
  *
  * @category    Class */
-// * @description SchoolStatus
+// * @description Details the last time a school&#39;s data was synced, and when it last changed.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class SchoolStatusTest extends \PHPUnit_Framework_TestCase
    * Test "SchoolStatus"
    */
   public function testSchoolStatus()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

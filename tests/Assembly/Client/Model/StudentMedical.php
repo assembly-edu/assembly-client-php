@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StudentMedicalTest Class Doc Comment
  *
  * @category    Class */
-// * @description StudentMedical
+// * @description Student medical information (this will only be returned if &#x60;&amp;medical&#x3D;true&#x60; is included in your request)
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -64,9 +64,51 @@ class StudentMedicalTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
+  {
+  }
+
+  /**
+   * Test attribute "nhs_number"
+   */
+  public function testPropertyNhsNumber()
+  {
+  }
+
+  /**
+   * Test attribute "is_pregnant"
+   */
+  public function testPropertyIsPregnant()
+  {
+  }
+
+  /**
+   * Test attribute "has_emergency_consent"
+   */
+  public function testPropertyHasEmergencyConsent()
+  {
+  }
+
+  /**
+   * Test attribute "conditions"
+   */
+  public function testPropertyConditions()
+  {
+  }
+
+  /**
    * Test attribute "dietary_needs"
    */
   public function testPropertyDietaryNeeds()
+  {
+  }
+
+  /**
+   * Test attribute "notes"
+   */
+  public function testPropertyNotes()
   {
   }
 }

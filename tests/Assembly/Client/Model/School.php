@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * SchoolTest Class Doc Comment
  *
  * @category    Class */
-// * @description School
+// * @description Details for the school associated with the provided &#x60;access_token&#x60;.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -64,6 +64,13 @@ class SchoolTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
+  {
+  }
+
+  /**
    * Test attribute "name"
    */
   public function testPropertyName()
@@ -74,6 +81,13 @@ class SchoolTest extends \PHPUnit_Framework_TestCase
    * Test attribute "urn"
    */
   public function testPropertyUrn()
+  {
+  }
+
+  /**
+   * Test attribute "mis_provider"
+   */
+  public function testPropertyMisProvider()
   {
   }
 

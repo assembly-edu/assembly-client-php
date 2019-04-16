@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * StudentPhoto Class Doc Comment
  *
  * @category Class
+ * @description The student&#39;s photo
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -210,7 +211,7 @@ class StudentPhoto implements ModelInterface, ArrayAccess
   /**
    * Sets url
    *
-   * @param string $url url
+   * @param string $url A URL for downloading the photo, expires after one hour
    *
    * @return $this
    */
@@ -234,7 +235,7 @@ class StudentPhoto implements ModelInterface, ArrayAccess
   /**
    * Sets hash
    *
-   * @param string $hash hash
+   * @param string $hash An indication of photo change between syncs, it is not necessarily a checksum of the photo
    *
    * @return $this
    */

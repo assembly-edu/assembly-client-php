@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * StudentMedical Class Doc Comment
  *
  * @category Class
+ * @description Student medical information (this will only be returned if &#x60;&amp;medical&#x3D;true&#x60; is included in your request)
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,7 +44,13 @@ class StudentMedical implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
-    'dietary_needs' => 'string[]'
+    'object' => 'string',
+    'nhs_number' => 'string',
+    'is_pregnant' => 'bool',
+    'has_emergency_consent' => 'bool',
+    'conditions' => '\Assembly\Client\Model\StudentMedicalCondition[]',
+    'dietary_needs' => 'string[]',
+    'notes' => '\Assembly\Client\Model\StudentMedicalNote[]'
   ];
 
   /**
@@ -52,7 +59,13 @@ class StudentMedical implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
-    'dietary_needs' => null
+    'object' => null,
+    'nhs_number' => null,
+    'is_pregnant' => null,
+    'has_emergency_consent' => null,
+    'conditions' => null,
+    'dietary_needs' => null,
+    'notes' => null
   ];
 
   /**
@@ -82,7 +95,13 @@ class StudentMedical implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
-    'dietary_needs' => 'dietary_needs'
+    'object' => 'object',
+    'nhs_number' => 'nhs_number',
+    'is_pregnant' => 'is_pregnant',
+    'has_emergency_consent' => 'has_emergency_consent',
+    'conditions' => 'conditions',
+    'dietary_needs' => 'dietary_needs',
+    'notes' => 'notes'
   ];
 
   /**
@@ -91,7 +110,13 @@ class StudentMedical implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
-    'dietary_needs' => 'setDietaryNeeds'
+    'object' => 'setObject',
+    'nhs_number' => 'setNhsNumber',
+    'is_pregnant' => 'setIsPregnant',
+    'has_emergency_consent' => 'setHasEmergencyConsent',
+    'conditions' => 'setConditions',
+    'dietary_needs' => 'setDietaryNeeds',
+    'notes' => 'setNotes'
   ];
 
   /**
@@ -100,7 +125,13 @@ class StudentMedical implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
-    'dietary_needs' => 'getDietaryNeeds'
+    'object' => 'getObject',
+    'nhs_number' => 'getNhsNumber',
+    'is_pregnant' => 'getIsPregnant',
+    'has_emergency_consent' => 'getHasEmergencyConsent',
+    'conditions' => 'getConditions',
+    'dietary_needs' => 'getDietaryNeeds',
+    'notes' => 'getNotes'
   ];
 
   /**
@@ -163,7 +194,13 @@ class StudentMedical implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'student_medical';
+    $this->container['nhs_number'] = isset($data['nhs_number']) ? $data['nhs_number'] : null;
+    $this->container['is_pregnant'] = isset($data['is_pregnant']) ? $data['is_pregnant'] : null;
+    $this->container['has_emergency_consent'] = isset($data['has_emergency_consent']) ? $data['has_emergency_consent'] : null;
+    $this->container['conditions'] = isset($data['conditions']) ? $data['conditions'] : null;
     $this->container['dietary_needs'] = isset($data['dietary_needs']) ? $data['dietary_needs'] : null;
+    $this->container['notes'] = isset($data['notes']) ? $data['notes'] : null;
   }
 
   /**
@@ -192,6 +229,126 @@ class StudentMedical implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
+   * Gets nhs_number
+   *
+   * @return string
+   */
+  public function getNhsNumber()
+  {
+    return $this->container['nhs_number'];
+  }
+
+  /**
+   * Sets nhs_number
+   *
+   * @param string $nhs_number Student's NHS number
+   *
+   * @return $this
+   */
+  public function setNhsNumber($nhs_number)
+  {
+    $this->container['nhs_number'] = $nhs_number;
+
+    return $this;
+  }
+
+  /**
+   * Gets is_pregnant
+   *
+   * @return bool
+   */
+  public function getIsPregnant()
+  {
+    return $this->container['is_pregnant'];
+  }
+
+  /**
+   * Sets is_pregnant
+   *
+   * @param bool $is_pregnant If the student has been marked as pregnant
+   *
+   * @return $this
+   */
+  public function setIsPregnant($is_pregnant)
+  {
+    $this->container['is_pregnant'] = $is_pregnant;
+
+    return $this;
+  }
+
+  /**
+   * Gets has_emergency_consent
+   *
+   * @return bool
+   */
+  public function getHasEmergencyConsent()
+  {
+    return $this->container['has_emergency_consent'];
+  }
+
+  /**
+   * Sets has_emergency_consent
+   *
+   * @param bool $has_emergency_consent Whether or not medical consent has been given
+   *
+   * @return $this
+   */
+  public function setHasEmergencyConsent($has_emergency_consent)
+  {
+    $this->container['has_emergency_consent'] = $has_emergency_consent;
+
+    return $this;
+  }
+
+  /**
+   * Gets conditions
+   *
+   * @return \Assembly\Client\Model\StudentMedicalCondition[]
+   */
+  public function getConditions()
+  {
+    return $this->container['conditions'];
+  }
+
+  /**
+   * Sets conditions
+   *
+   * @param \Assembly\Client\Model\StudentMedicalCondition[] $conditions The medical conditions associated with the student
+   *
+   * @return $this
+   */
+  public function setConditions($conditions)
+  {
+    $this->container['conditions'] = $conditions;
+
+    return $this;
+  }
+
+  /**
    * Gets dietary_needs
    *
    * @return string[]
@@ -204,13 +361,37 @@ class StudentMedical implements ModelInterface, ArrayAccess
   /**
    * Sets dietary_needs
    *
-   * @param string[] $dietary_needs dietary_needs
+   * @param string[] $dietary_needs The dietary need codes associated with the student
    *
    * @return $this
    */
   public function setDietaryNeeds($dietary_needs)
   {
     $this->container['dietary_needs'] = $dietary_needs;
+
+    return $this;
+  }
+
+  /**
+   * Gets notes
+   *
+   * @return \Assembly\Client\Model\StudentMedicalNote[]
+   */
+  public function getNotes()
+  {
+    return $this->container['notes'];
+  }
+
+  /**
+   * Sets notes
+   *
+   * @param \Assembly\Client\Model\StudentMedicalNote[] $notes Additional information attached to the medical condition
+   *
+   * @return $this
+   */
+  public function setNotes($notes)
+  {
+    $this->container['notes'] = $notes;
 
     return $this;
   }

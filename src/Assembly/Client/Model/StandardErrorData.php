@@ -19,14 +19,15 @@ use \ArrayAccess;
 use \Assembly\Client\ObjectSerializer;
 
 /**
- * ApiResponse Class Doc Comment
+ * StandardErrorData Class Doc Comment
  *
  * @category Class
+ * @description Present in the case of a 429 error, giving detail of how much the rate limit has been exceeded by and how long the client should wait before retrying
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
  */
-class ApiResponse implements ModelInterface, ArrayAccess
+class StandardErrorData implements ModelInterface, ArrayAccess
 {
   const DISCRIMINATOR = null;
 
@@ -35,7 +36,7 @@ class ApiResponse implements ModelInterface, ArrayAccess
     *
     * @var string
     */
-  protected static $swaggerModelName = 'ApiResponse';
+  protected static $swaggerModelName = 'StandardErrorData';
 
   /**
     * Array of property to type mappings. Used for (de)serialization
@@ -43,9 +44,9 @@ class ApiResponse implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
-    'message' => 'string',
-    'data' => '\Assembly\Client\Model\Result[]',
-    'errors' => 'string[]'
+    'count' => 'int',
+    'period' => 'int',
+    'limit' => 'int'
   ];
 
   /**
@@ -54,9 +55,9 @@ class ApiResponse implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
-    'message' => null,
-    'data' => null,
-    'errors' => null
+    'count' => 'int32',
+    'period' => 'int32',
+    'limit' => 'int32'
   ];
 
   /**
@@ -86,9 +87,9 @@ class ApiResponse implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
-    'message' => 'message',
-    'data' => 'data',
-    'errors' => 'errors'
+    'count' => 'count',
+    'period' => 'period',
+    'limit' => 'limit'
   ];
 
   /**
@@ -97,9 +98,9 @@ class ApiResponse implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
-    'message' => 'setMessage',
-    'data' => 'setData',
-    'errors' => 'setErrors'
+    'count' => 'setCount',
+    'period' => 'setPeriod',
+    'limit' => 'setLimit'
   ];
 
   /**
@@ -108,9 +109,9 @@ class ApiResponse implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
-    'message' => 'getMessage',
-    'data' => 'getData',
-    'errors' => 'getErrors'
+    'count' => 'getCount',
+    'period' => 'getPeriod',
+    'limit' => 'getLimit'
   ];
 
   /**
@@ -173,9 +174,9 @@ class ApiResponse implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
-    $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-    $this->container['data'] = isset($data['data']) ? $data['data'] : null;
-    $this->container['errors'] = isset($data['errors']) ? $data['errors'] : null;
+    $this->container['count'] = isset($data['count']) ? $data['count'] : null;
+    $this->container['period'] = isset($data['period']) ? $data['period'] : null;
+    $this->container['limit'] = isset($data['limit']) ? $data['limit'] : null;
   }
 
   /**
@@ -204,73 +205,73 @@ class ApiResponse implements ModelInterface, ArrayAccess
 
 
   /**
-   * Gets message
+   * Gets count
    *
-   * @return string
+   * @return int
    */
-  public function getMessage()
+  public function getCount()
   {
-    return $this->container['message'];
+    return $this->container['count'];
   }
 
   /**
-   * Sets message
+   * Sets count
    *
-   * @param string $message message
+   * @param int $count The number of requests you have made with the current token
    *
    * @return $this
    */
-  public function setMessage($message)
+  public function setCount($count)
   {
-    $this->container['message'] = $message;
+    $this->container['count'] = $count;
 
     return $this;
   }
 
   /**
-   * Gets data
+   * Gets period
    *
-   * @return \Assembly\Client\Model\Result[]
+   * @return int
    */
-  public function getData()
+  public function getPeriod()
   {
-    return $this->container['data'];
+    return $this->container['period'];
   }
 
   /**
-   * Sets data
+   * Sets period
    *
-   * @param \Assembly\Client\Model\Result[] $data data
+   * @param int $period The number of seconds until the current token may make another request
    *
    * @return $this
    */
-  public function setData($data)
+  public function setPeriod($period)
   {
-    $this->container['data'] = $data;
+    $this->container['period'] = $period;
 
     return $this;
   }
 
   /**
-   * Gets errors
+   * Gets limit
    *
-   * @return string[]
+   * @return int
    */
-  public function getErrors()
+  public function getLimit()
   {
-    return $this->container['errors'];
+    return $this->container['limit'];
   }
 
   /**
-   * Sets errors
+   * Sets limit
    *
-   * @param string[] $errors errors
+   * @param int $limit The total number of requests the current token may make within a 5 minute window
    *
    * @return $this
    */
-  public function setErrors($errors)
+  public function setLimit($limit)
   {
-    $this->container['errors'] = $errors;
+    $this->container['limit'] = $limit;
 
     return $this;
   }

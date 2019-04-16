@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * CalendarEventTest Class Doc Comment
  *
  * @category    Class */
-// * @description CalendarEvent
+// * @description Detail of a school event.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class CalendarEventTest extends \PHPUnit_Framework_TestCase
    * Test "CalendarEvent"
    */
   public function testCalendarEvent()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

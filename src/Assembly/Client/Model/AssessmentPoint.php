@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * AssessmentPoint Class Doc Comment
  *
  * @category Class
+ * @description A point in time (the school key stage, year, term or half-term) that results can be attached to.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class AssessmentPoint implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'rank' => 'int',
     'name' => 'string',
     'type' => 'string',
@@ -55,6 +57,7 @@ class AssessmentPoint implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'rank' => 'int32',
     'name' => null,
     'type' => null,
@@ -88,6 +91,7 @@ class AssessmentPoint implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'rank' => 'rank',
     'name' => 'name',
     'type' => 'type',
@@ -100,6 +104,7 @@ class AssessmentPoint implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'rank' => 'setRank',
     'name' => 'setName',
     'type' => 'setType',
@@ -112,6 +117,7 @@ class AssessmentPoint implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'rank' => 'getRank',
     'name' => 'getName',
     'type' => 'getType',
@@ -178,6 +184,7 @@ class AssessmentPoint implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'assessment_point';
     $this->container['rank'] = isset($data['rank']) ? $data['rank'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['type'] = isset($data['type']) ? $data['type'] : null;
@@ -210,6 +217,30 @@ class AssessmentPoint implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets rank
    *
    * @return int
@@ -222,7 +253,7 @@ class AssessmentPoint implements ModelInterface, ArrayAccess
   /**
    * Sets rank
    *
-   * @param int $rank rank
+   * @param int $rank A stable number consistently assigned to assessment points across all environments that should be used to send results back to the Platform
    *
    * @return $this
    */
@@ -246,7 +277,7 @@ class AssessmentPoint implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name The name of the assessment point
    *
    * @return $this
    */
@@ -270,7 +301,7 @@ class AssessmentPoint implements ModelInterface, ArrayAccess
   /**
    * Sets type
    *
-   * @param string $type type
+   * @param string $type The time period that the assessment point relates to, which may be an entire key stage, year, or a single (half) term
    *
    * @return $this
    */
@@ -294,7 +325,7 @@ class AssessmentPoint implements ModelInterface, ArrayAccess
   /**
    * Sets year_code
    *
-   * @param string $year_code year_code
+   * @param string $year_code This field ties an assessment point to a year group.
    *
    * @return $this
    */

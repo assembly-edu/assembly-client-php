@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * AttendanceSummary Class Doc Comment
  *
  * @category Class
+ * @description A statiscital summary of a student&#39;s attendance for an academic year.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'student_id' => 'int',
     'registration_group_id' => 'int',
@@ -62,6 +64,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'student_id' => 'int32',
     'registration_group_id' => 'int32',
@@ -102,6 +105,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'student_id' => 'student_id',
     'registration_group_id' => 'registration_group_id',
@@ -121,6 +125,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'student_id' => 'setStudentId',
     'registration_group_id' => 'setRegistrationGroupId',
@@ -140,6 +145,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'student_id' => 'getStudentId',
     'registration_group_id' => 'getRegistrationGroupId',
@@ -213,6 +219,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'attendance_summary';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['student_id'] = isset($data['student_id']) ? $data['student_id'] : null;
     $this->container['registration_group_id'] = isset($data['registration_group_id']) ? $data['registration_group_id'] : null;
@@ -252,6 +259,30 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -264,7 +295,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -288,7 +319,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
   /**
    * Sets student_id
    *
-   * @param int $student_id student_id
+   * @param int $student_id The ID of the student
    *
    * @return $this
    */
@@ -312,7 +343,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
   /**
    * Sets registration_group_id
    *
-   * @param int $registration_group_id registration_group_id
+   * @param int $registration_group_id The ID of the student's registration group
    *
    * @return $this
    */
@@ -336,7 +367,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
   /**
    * Sets academic_year_id
    *
-   * @param int $academic_year_id academic_year_id
+   * @param int $academic_year_id The ID of the academic year
    *
    * @return $this
    */
@@ -360,7 +391,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
   /**
    * Sets start_date
    *
-   * @param \DateTime $start_date start_date
+   * @param \DateTime $start_date Start date for the attendance summary
    *
    * @return $this
    */
@@ -384,7 +415,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
   /**
    * Sets end_date
    *
-   * @param \DateTime $end_date end_date
+   * @param \DateTime $end_date End date for the attendance summary
    *
    * @return $this
    */
@@ -408,7 +439,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
   /**
    * Sets possible_sessions
    *
-   * @param float $possible_sessions possible_sessions
+   * @param float $possible_sessions Number of possible sessions that could have been attended
    *
    * @return $this
    */
@@ -432,7 +463,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
   /**
    * Sets attended_sessions
    *
-   * @param float $attended_sessions attended_sessions
+   * @param float $attended_sessions Number of sessions with present mark recorded
    *
    * @return $this
    */
@@ -456,7 +487,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
   /**
    * Sets late_sessions
    *
-   * @param float $late_sessions late_sessions
+   * @param float $late_sessions Number of sessions with late mark recorded
    *
    * @return $this
    */
@@ -480,7 +511,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
   /**
    * Sets authorised_absence_sessions
    *
-   * @param float $authorised_absence_sessions authorised_absence_sessions
+   * @param float $authorised_absence_sessions Number of sessions with authorised absence recorded
    *
    * @return $this
    */
@@ -504,7 +535,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
   /**
    * Sets unauthorised_absence_sessions
    *
-   * @param float $unauthorised_absence_sessions unauthorised_absence_sessions
+   * @param float $unauthorised_absence_sessions Number of sessions with unauthorised absence recorded
    *
    * @return $this
    */

@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * BulkResultsBodyTest Class Doc Comment
  *
  * @category    Class */
-// * @description BulkResultsBody
+// * @description A collection of results to bulk update ont he Platform
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team

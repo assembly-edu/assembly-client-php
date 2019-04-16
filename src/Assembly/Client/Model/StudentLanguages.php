@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * StudentLanguages Class Doc Comment
  *
  * @category Class
+ * @description Information about a student&#39;s languages (this will only be returned if &#x60;&amp;languages&#x3D;true&#x60; is included in your request)
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -234,7 +235,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
   /**
    * Sets home_language_code
    *
-   * @param string $home_language_code home_language_code
+   * @param string $home_language_code The code of a student's home language
    *
    * @return $this
    */
@@ -258,7 +259,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
   /**
    * Sets home_language_name
    *
-   * @param string $home_language_name home_language_name
+   * @param string $home_language_name The name of a student's home language
    *
    * @return $this
    */
@@ -282,7 +283,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
   /**
    * Sets first_language_code
    *
-   * @param string $first_language_code first_language_code
+   * @param string $first_language_code The code of a student's first language
    *
    * @return $this
    */
@@ -306,7 +307,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
   /**
    * Sets first_language_name
    *
-   * @param string $first_language_name first_language_name
+   * @param string $first_language_name The name of a student's first language
    *
    * @return $this
    */
@@ -330,7 +331,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
   /**
    * Sets proficiency_in_english_code
    *
-   * @param string $proficiency_in_english_code proficiency_in_english_code
+   * @param string $proficiency_in_english_code A student's proficiency in English code
    *
    * @return $this
    */
@@ -354,7 +355,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
   /**
    * Sets proficiency_in_english_name
    *
-   * @param string $proficiency_in_english_name proficiency_in_english_name
+   * @param string $proficiency_in_english_name A student's proficiency in English name
    *
    * @return $this
    */

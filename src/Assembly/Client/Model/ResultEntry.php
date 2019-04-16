@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * ResultEntry Class Doc Comment
  *
  * @category Class
+ * @description A result for a student to be created on the Platform
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -222,7 +223,7 @@ class ResultEntry implements ModelInterface, ArrayAccess
   /**
    * Sets student_id
    *
-   * @param int $student_id student_id
+   * @param int $student_id The ID of the student
    *
    * @return $this
    */
@@ -246,7 +247,7 @@ class ResultEntry implements ModelInterface, ArrayAccess
   /**
    * Sets result_id
    *
-   * @param int $result_id result_id
+   * @param int $result_id The ID of the result
    *
    * @return $this
    */
@@ -270,7 +271,7 @@ class ResultEntry implements ModelInterface, ArrayAccess
   /**
    * Sets grade_id
    *
-   * @param int $grade_id grade_id
+   * @param int $grade_id The ID of the grade
    *
    * @return $this
    */
@@ -294,7 +295,7 @@ class ResultEntry implements ModelInterface, ArrayAccess
   /**
    * Sets result_date
    *
-   * @param \DateTime $result_date result_date
+   * @param \DateTime $result_date The date/time that this result was recorded
    *
    * @return $this
    */

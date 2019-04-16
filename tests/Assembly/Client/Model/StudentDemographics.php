@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StudentDemographicsTest Class Doc Comment
  *
  * @category    Class */
-// * @description StudentDemographics
+// * @description Demographic information about the student.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class StudentDemographicsTest extends \PHPUnit_Framework_TestCase
    * Test "StudentDemographics"
    */
   public function testStudentDemographics()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 
@@ -137,13 +144,6 @@ class StudentDemographicsTest extends \PHPUnit_Framework_TestCase
    * Test attribute "is_fsm6"
    */
   public function testPropertyIsFsm6()
-  {
-  }
-
-  /**
-   * Test attribute "looked_after"
-   */
-  public function testPropertyLookedAfter()
   {
   }
 

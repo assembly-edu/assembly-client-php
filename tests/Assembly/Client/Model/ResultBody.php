@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * ResultBodyTest Class Doc Comment
  *
  * @category    Class */
-// * @description ResultBody
+// * @description A result to updated on the Platform
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team

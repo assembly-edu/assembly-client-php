@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * Assessment Class Doc Comment
  *
  * @category Class
+ * @description Knits together a range of assessment concepts. The name of the assessment also refers to the source of the result (for example, a Key Stage national assessment, or a standardised assessment provider).
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,11 +44,12 @@ class Assessment implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
-    'family_id' => 'int',
-    'family_name' => 'string',
+    'object' => 'string',
     'id' => 'int',
     'name' => 'string',
-    'mis_assessments' => '\Assembly\Client\Model\AssessmentMisAssessments[]'
+    'family_id' => 'int',
+    'family_name' => 'string',
+    'mis_assessments' => 'string[]'
   ];
 
   /**
@@ -56,10 +58,11 @@ class Assessment implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
-    'family_id' => 'int32',
-    'family_name' => null,
+    'object' => null,
     'id' => 'int32',
     'name' => null,
+    'family_id' => 'int32',
+    'family_name' => null,
     'mis_assessments' => null
   ];
 
@@ -90,10 +93,11 @@ class Assessment implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
-    'family_id' => 'family_id',
-    'family_name' => 'family_name',
+    'object' => 'object',
     'id' => 'id',
     'name' => 'name',
+    'family_id' => 'family_id',
+    'family_name' => 'family_name',
     'mis_assessments' => 'mis_assessments'
   ];
 
@@ -103,10 +107,11 @@ class Assessment implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
-    'family_id' => 'setFamilyId',
-    'family_name' => 'setFamilyName',
+    'object' => 'setObject',
     'id' => 'setId',
     'name' => 'setName',
+    'family_id' => 'setFamilyId',
+    'family_name' => 'setFamilyName',
     'mis_assessments' => 'setMisAssessments'
   ];
 
@@ -116,10 +121,11 @@ class Assessment implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
-    'family_id' => 'getFamilyId',
-    'family_name' => 'getFamilyName',
+    'object' => 'getObject',
     'id' => 'getId',
     'name' => 'getName',
+    'family_id' => 'getFamilyId',
+    'family_name' => 'getFamilyName',
     'mis_assessments' => 'getMisAssessments'
   ];
 
@@ -183,10 +189,11 @@ class Assessment implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
-    $this->container['family_id'] = isset($data['family_id']) ? $data['family_id'] : null;
-    $this->container['family_name'] = isset($data['family_name']) ? $data['family_name'] : null;
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'assessment';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+    $this->container['family_id'] = isset($data['family_id']) ? $data['family_id'] : null;
+    $this->container['family_name'] = isset($data['family_name']) ? $data['family_name'] : null;
     $this->container['mis_assessments'] = isset($data['mis_assessments']) ? $data['mis_assessments'] : null;
   }
 
@@ -216,49 +223,25 @@ class Assessment implements ModelInterface, ArrayAccess
 
 
   /**
-   * Gets family_id
-   *
-   * @return int
-   */
-  public function getFamilyId()
-  {
-    return $this->container['family_id'];
-  }
-
-  /**
-   * Sets family_id
-   *
-   * @param int $family_id family_id
-   *
-   * @return $this
-   */
-  public function setFamilyId($family_id)
-  {
-    $this->container['family_id'] = $family_id;
-
-    return $this;
-  }
-
-  /**
-   * Gets family_name
+   * Gets object
    *
    * @return string
    */
-  public function getFamilyName()
+  public function getObject()
   {
-    return $this->container['family_name'];
+    return $this->container['object'];
   }
 
   /**
-   * Sets family_name
+   * Sets object
    *
-   * @param string $family_name family_name
+   * @param string $object Descriminator
    *
    * @return $this
    */
-  public function setFamilyName($family_name)
+  public function setObject($object)
   {
-    $this->container['family_name'] = $family_name;
+    $this->container['object'] = $object;
 
     return $this;
   }
@@ -276,7 +259,7 @@ class Assessment implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -300,7 +283,7 @@ class Assessment implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name The name of the assessment as standardised int he Assembly Platform
    *
    * @return $this
    */
@@ -312,9 +295,57 @@ class Assessment implements ModelInterface, ArrayAccess
   }
 
   /**
+   * Gets family_id
+   *
+   * @return int
+   */
+  public function getFamilyId()
+  {
+    return $this->container['family_id'];
+  }
+
+  /**
+   * Sets family_id
+   *
+   * @param int $family_id Internal stable ID
+   *
+   * @return $this
+   */
+  public function setFamilyId($family_id)
+  {
+    $this->container['family_id'] = $family_id;
+
+    return $this;
+  }
+
+  /**
+   * Gets family_name
+   *
+   * @return string
+   */
+  public function getFamilyName()
+  {
+    return $this->container['family_name'];
+  }
+
+  /**
+   * Sets family_name
+   *
+   * @param string $family_name The name of the assessment family
+   *
+   * @return $this
+   */
+  public function setFamilyName($family_name)
+  {
+    $this->container['family_name'] = $family_name;
+
+    return $this;
+  }
+
+  /**
    * Gets mis_assessments
    *
-   * @return \Assembly\Client\Model\AssessmentMisAssessments[]
+   * @return string[]
    */
   public function getMisAssessments()
   {
@@ -324,7 +355,7 @@ class Assessment implements ModelInterface, ArrayAccess
   /**
    * Sets mis_assessments
    *
-   * @param \Assembly\Client\Model\AssessmentMisAssessments[] $mis_assessments mis_assessments
+   * @param string[] $mis_assessments The assessments as defined in the origin MIS
    *
    * @return $this
    */

@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * ResultBody Class Doc Comment
  *
  * @category Class
+ * @description A result to updated on the Platform
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -228,7 +229,7 @@ class ResultBody implements ModelInterface, ArrayAccess
   /**
    * Sets subject_id
    *
-   * @param int $subject_id subject_id
+   * @param int $subject_id The ID of the associated subject
    *
    * @return $this
    */
@@ -252,7 +253,7 @@ class ResultBody implements ModelInterface, ArrayAccess
   /**
    * Sets facet_id
    *
-   * @param int $facet_id facet_id
+   * @param int $facet_id The ID of the associated facet
    *
    * @return $this
    */
@@ -276,7 +277,7 @@ class ResultBody implements ModelInterface, ArrayAccess
   /**
    * Sets assessment_point_rank
    *
-   * @param int $assessment_point_rank assessment_point_rank
+   * @param int $assessment_point_rank The rank of the associated assessment point
    *
    * @return $this
    */
@@ -300,7 +301,7 @@ class ResultBody implements ModelInterface, ArrayAccess
   /**
    * Sets assessment_id
    *
-   * @param int $assessment_id assessment_id
+   * @param int $assessment_id The ID of the associated assessment
    *
    * @return $this
    */
@@ -324,7 +325,7 @@ class ResultBody implements ModelInterface, ArrayAccess
   /**
    * Sets results
    *
-   * @param \Assembly\Client\Model\ResultEntry[] $results results
+   * @param \Assembly\Client\Model\ResultEntry[] $results The results to record
    *
    * @return $this
    */

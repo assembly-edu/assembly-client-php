@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * SubjectTest Class Doc Comment
  *
  * @category    Class */
-// * @description Subject
+// * @description An Assembly Platform subject. These subjects are mapped to one or multiple subjects within a school&#39;s MIS and are used to normalise school to school variance in subject naming to a known and fixed set within the Assembly Platform.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class SubjectTest extends \PHPUnit_Framework_TestCase
    * Test "Subject"
    */
   public function testSubject()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

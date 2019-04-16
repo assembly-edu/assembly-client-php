@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StaffAbsenceTest Class Doc Comment
  *
  * @category    Class */
-// * @description StaffAbsence
+// * @description Detail of a staff&#39;s absence recorded on the MIS.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class StaffAbsenceTest extends \PHPUnit_Framework_TestCase
    * Test "StaffAbsence"
    */
   public function testStaffAbsence()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

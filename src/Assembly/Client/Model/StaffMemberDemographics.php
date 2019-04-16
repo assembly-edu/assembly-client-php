@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * StaffMemberDemographics Class Doc Comment
  *
  * @category Class
+ * @description Demographic information about the staff member.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'ethnicity_code' => 'string',
     'ethnicity_group' => 'string',
     'gender' => 'string',
@@ -55,6 +57,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'ethnicity_code' => null,
     'ethnicity_group' => null,
     'gender' => null,
@@ -88,6 +91,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'ethnicity_code' => 'ethnicity_code',
     'ethnicity_group' => 'ethnicity_group',
     'gender' => 'gender',
@@ -100,6 +104,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'ethnicity_code' => 'setEthnicityCode',
     'ethnicity_group' => 'setEthnicityGroup',
     'gender' => 'setGender',
@@ -112,6 +117,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'ethnicity_code' => 'getEthnicityCode',
     'ethnicity_group' => 'getEthnicityGroup',
     'gender' => 'getGender',
@@ -178,6 +184,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'staff_demographics';
     $this->container['ethnicity_code'] = isset($data['ethnicity_code']) ? $data['ethnicity_code'] : null;
     $this->container['ethnicity_group'] = isset($data['ethnicity_group']) ? $data['ethnicity_group'] : null;
     $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
@@ -210,6 +217,30 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets ethnicity_code
    *
    * @return string
@@ -222,7 +253,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets ethnicity_code
    *
-   * @param string $ethnicity_code ethnicity_code
+   * @param string $ethnicity_code A detailed, Dfe standardised way of categorising the ethnicity of a staff member
    *
    * @return $this
    */
@@ -246,7 +277,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets ethnicity_group
    *
-   * @param string $ethnicity_group ethnicity_group
+   * @param string $ethnicity_group A broader categorisation of ethnicity that is standardised across the country, with all ethnicity codes grouped in to 8 sections
    *
    * @return $this
    */
@@ -270,7 +301,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets gender
    *
-   * @param string $gender gender
+   * @param string $gender The gender of a staff member
    *
    * @return $this
    */
@@ -294,7 +325,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
   /**
    * Sets disability
    *
-   * @param string $disability disability
+   * @param string $disability The disability status of a staff member
    *
    * @return $this
    */

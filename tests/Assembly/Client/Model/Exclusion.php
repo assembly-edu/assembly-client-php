@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * ExclusionTest Class Doc Comment
  *
  * @category    Class */
-// * @description Exclusion
+// * @description An official exclusion of a student from a school.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class ExclusionTest extends \PHPUnit_Framework_TestCase
    * Test "Exclusion"
    */
   public function testExclusion()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

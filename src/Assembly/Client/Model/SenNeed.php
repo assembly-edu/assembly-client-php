@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * SenNeed Class Doc Comment
  *
  * @category Class
+ * @description A student&#39;s SEN Need information.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class SenNeed implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'start_date' => 'string',
     'sen_need_code' => 'string',
@@ -58,6 +60,7 @@ class SenNeed implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'start_date' => null,
     'sen_need_code' => null,
@@ -94,6 +97,7 @@ class SenNeed implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'start_date' => 'start_date',
     'sen_need_code' => 'sen_need_code',
@@ -109,6 +113,7 @@ class SenNeed implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'start_date' => 'setStartDate',
     'sen_need_code' => 'setSenNeedCode',
@@ -124,6 +129,7 @@ class SenNeed implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'start_date' => 'getStartDate',
     'sen_need_code' => 'getSenNeedCode',
@@ -193,6 +199,7 @@ class SenNeed implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'sen_need';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
     $this->container['sen_need_code'] = isset($data['sen_need_code']) ? $data['sen_need_code'] : null;
@@ -228,6 +235,30 @@ class SenNeed implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -240,7 +271,7 @@ class SenNeed implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -264,7 +295,7 @@ class SenNeed implements ModelInterface, ArrayAccess
   /**
    * Sets start_date
    *
-   * @param string $start_date start_date
+   * @param string $start_date The start date for the need
    *
    * @return $this
    */
@@ -288,7 +319,7 @@ class SenNeed implements ModelInterface, ArrayAccess
   /**
    * Sets sen_need_code
    *
-   * @param string $sen_need_code sen_need_code
+   * @param string $sen_need_code The code of the sen need
    *
    * @return $this
    */
@@ -312,7 +343,7 @@ class SenNeed implements ModelInterface, ArrayAccess
   /**
    * Sets sen_need_name
    *
-   * @param string $sen_need_name sen_need_name
+   * @param string $sen_need_name The name of the sen need
    *
    * @return $this
    */
@@ -336,7 +367,7 @@ class SenNeed implements ModelInterface, ArrayAccess
   /**
    * Sets sen_broad_need_type_code
    *
-   * @param string $sen_broad_need_type_code sen_broad_need_type_code
+   * @param string $sen_broad_need_type_code The code for the broad need
    *
    * @return $this
    */
@@ -360,7 +391,7 @@ class SenNeed implements ModelInterface, ArrayAccess
   /**
    * Sets sen_broad_need_type_name
    *
-   * @param string $sen_broad_need_type_name sen_broad_need_type_name
+   * @param string $sen_broad_need_type_name The name of the broad need
    *
    * @return $this
    */
@@ -384,7 +415,7 @@ class SenNeed implements ModelInterface, ArrayAccess
   /**
    * Sets priority
    *
-   * @param int $priority priority
+   * @param int $priority The priority of the sen need
    *
    * @return $this
    */

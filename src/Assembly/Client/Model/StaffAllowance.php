@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * StaffAllowance Class Doc Comment
  *
  * @category Class
+ * @description An allowance associated with a staff member.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,8 @@ class StaffAllowance implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
+    'id' => 'int',
     'additional_payment_type' => 'string',
     'additional_payment_amount' => 'float',
     'start_date' => '\DateTime',
@@ -55,6 +58,8 @@ class StaffAllowance implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
+    'id' => 'int32',
     'additional_payment_type' => null,
     'additional_payment_amount' => 'float',
     'start_date' => 'date-time',
@@ -88,6 +93,8 @@ class StaffAllowance implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
+    'id' => 'id',
     'additional_payment_type' => 'additional_payment_type',
     'additional_payment_amount' => 'additional_payment_amount',
     'start_date' => 'start_date',
@@ -100,6 +107,8 @@ class StaffAllowance implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
+    'id' => 'setId',
     'additional_payment_type' => 'setAdditionalPaymentType',
     'additional_payment_amount' => 'setAdditionalPaymentAmount',
     'start_date' => 'setStartDate',
@@ -112,6 +121,8 @@ class StaffAllowance implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
+    'id' => 'getId',
     'additional_payment_type' => 'getAdditionalPaymentType',
     'additional_payment_amount' => 'getAdditionalPaymentAmount',
     'start_date' => 'getStartDate',
@@ -178,6 +189,8 @@ class StaffAllowance implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'staff_allowance';
+    $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['additional_payment_type'] = isset($data['additional_payment_type']) ? $data['additional_payment_type'] : null;
     $this->container['additional_payment_amount'] = isset($data['additional_payment_amount']) ? $data['additional_payment_amount'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
@@ -210,6 +223,54 @@ class StaffAllowance implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
+   * Gets id
+   *
+   * @return int
+   */
+  public function getId()
+  {
+    return $this->container['id'];
+  }
+
+  /**
+   * Sets id
+   *
+   * @param int $id Internal stable ID
+   *
+   * @return $this
+   */
+  public function setId($id)
+  {
+    $this->container['id'] = $id;
+
+    return $this;
+  }
+
+  /**
    * Gets additional_payment_type
    *
    * @return string
@@ -222,7 +283,7 @@ class StaffAllowance implements ModelInterface, ArrayAccess
   /**
    * Sets additional_payment_type
    *
-   * @param string $additional_payment_type additional_payment_type
+   * @param string $additional_payment_type Type of additional payment
    *
    * @return $this
    */
@@ -246,7 +307,7 @@ class StaffAllowance implements ModelInterface, ArrayAccess
   /**
    * Sets additional_payment_amount
    *
-   * @param float $additional_payment_amount additional_payment_amount
+   * @param float $additional_payment_amount Amount of additional payment
    *
    * @return $this
    */
@@ -270,7 +331,7 @@ class StaffAllowance implements ModelInterface, ArrayAccess
   /**
    * Sets start_date
    *
-   * @param \DateTime $start_date start_date
+   * @param \DateTime $start_date Start date of additional payment
    *
    * @return $this
    */
@@ -294,7 +355,7 @@ class StaffAllowance implements ModelInterface, ArrayAccess
   /**
    * Sets end_date
    *
-   * @param \DateTime $end_date end_date
+   * @param \DateTime $end_date End date of additional payment
    *
    * @return $this
    */

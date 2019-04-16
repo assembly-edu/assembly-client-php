@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * MisSubjectTest Class Doc Comment
  *
  * @category    Class */
-// * @description MisSubject
+// * @description A subject defined within the MIS.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class MisSubjectTest extends \PHPUnit_Framework_TestCase
    * Test "MisSubject"
    */
   public function testMisSubject()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StaffSalaryTest Class Doc Comment
  *
  * @category    Class */
-// * @description StaffSalary
+// * @description The salary detail of a staff member.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,20 @@ class StaffSalaryTest extends \PHPUnit_Framework_TestCase
    * Test "StaffSalary"
    */
   public function testStaffSalary()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
+  {
+  }
+
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
   {
   }
 

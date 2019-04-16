@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * RegistrationGroup Class Doc Comment
  *
  * @category Class
+ * @description The grouping in which students take AM/PM roll call (morning and afternoon registers).
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'name' => 'string',
     'start_date' => '\DateTime',
@@ -57,6 +59,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'name' => null,
     'start_date' => 'date-time',
@@ -92,6 +95,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'name' => 'name',
     'start_date' => 'start_date',
@@ -106,6 +110,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'name' => 'setName',
     'start_date' => 'setStartDate',
@@ -120,6 +125,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'name' => 'getName',
     'start_date' => 'getStartDate',
@@ -188,6 +194,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'registration_group';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
@@ -222,6 +229,30 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -234,7 +265,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -258,7 +289,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name name
+   * @param string $name Name of the registration group
    *
    * @return $this
    */
@@ -282,7 +313,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
   /**
    * Sets start_date
    *
-   * @param \DateTime $start_date start_date
+   * @param \DateTime $start_date The start date of the registration group
    *
    * @return $this
    */
@@ -306,7 +337,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
   /**
    * Sets end_date
    *
-   * @param \DateTime $end_date end_date
+   * @param \DateTime $end_date The end date of the registration group
    *
    * @return $this
    */
@@ -330,7 +361,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
   /**
    * Sets supervisor_ids
    *
-   * @param int[] $supervisor_ids supervisor_ids
+   * @param int[] $supervisor_ids The IDs of supervisors (staff members) associated with the registration group
    *
    * @return $this
    */
@@ -354,7 +385,7 @@ class RegistrationGroup implements ModelInterface, ArrayAccess
   /**
    * Sets student_ids
    *
-   * @param int[] $student_ids student_ids
+   * @param int[] $student_ids The IDs of members (students) associated with the registration group
    *
    * @return $this
    */

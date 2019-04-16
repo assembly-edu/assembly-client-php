@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * StaffQualification Class Doc Comment
  *
  * @category Class
+ * @description A degree completed by a staff member.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'id' => 'int',
     'qualification_code' => 'string',
     'degree_class' => 'string',
@@ -58,6 +60,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'id' => 'int32',
     'qualification_code' => null,
     'degree_class' => null,
@@ -94,6 +97,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'id' => 'id',
     'qualification_code' => 'qualification_code',
     'degree_class' => 'degree_class',
@@ -109,6 +113,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'id' => 'setId',
     'qualification_code' => 'setQualificationCode',
     'degree_class' => 'setDegreeClass',
@@ -124,6 +129,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'id' => 'getId',
     'qualification_code' => 'getQualificationCode',
     'degree_class' => 'getDegreeClass',
@@ -193,6 +199,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'staff_qualification';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['qualification_code'] = isset($data['qualification_code']) ? $data['qualification_code'] : null;
     $this->container['degree_class'] = isset($data['degree_class']) ? $data['degree_class'] : null;
@@ -228,6 +235,30 @@ class StaffQualification implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets id
    *
    * @return int
@@ -240,7 +271,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
   /**
    * Sets id
    *
-   * @param int $id id
+   * @param int $id Internal stable ID
    *
    * @return $this
    */
@@ -264,7 +295,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
   /**
    * Sets qualification_code
    *
-   * @param string $qualification_code qualification_code
+   * @param string $qualification_code A code describing the type of qualification
    *
    * @return $this
    */
@@ -288,7 +319,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
   /**
    * Sets degree_class
    *
-   * @param string $degree_class degree_class
+   * @param string $degree_class Identifies the result of the qualification
    *
    * @return $this
    */
@@ -312,7 +343,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
   /**
    * Sets first_subject_code
    *
-   * @param string $first_subject_code first_subject_code
+   * @param string $first_subject_code A code identifying the primary or joint main subject of the qualification
    *
    * @return $this
    */
@@ -336,7 +367,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
   /**
    * Sets first_subject_name
    *
-   * @param string $first_subject_name first_subject_name
+   * @param string $first_subject_name The name of the main/joint subject
    *
    * @return $this
    */
@@ -360,7 +391,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
   /**
    * Sets second_subject_code
    *
-   * @param string $second_subject_code second_subject_code
+   * @param string $second_subject_code A code identifying the secondary or joint main subject of the qualification
    *
    * @return $this
    */
@@ -384,7 +415,7 @@ class StaffQualification implements ModelInterface, ArrayAccess
   /**
    * Sets second_subject_name
    *
-   * @param string $second_subject_name second_subject_name
+   * @param string $second_subject_name The name of the secondary/joint subject
    *
    * @return $this
    */

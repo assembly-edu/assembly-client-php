@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * AcademicYearTest Class Doc Comment
  *
  * @category    Class */
-// * @description AcademicYear
+// * @description A school year within a particular school.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class AcademicYearTest extends \PHPUnit_Framework_TestCase
    * Test "AcademicYear"
    */
   public function testAcademicYear()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

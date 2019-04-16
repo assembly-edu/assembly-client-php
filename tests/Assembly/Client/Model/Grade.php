@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * GradeTest Class Doc Comment
  *
  * @category    Class */
-// * @description Grade
+// * @description An acceptable name and value for an assessment grade.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class GradeTest extends \PHPUnit_Framework_TestCase
    * Test "Grade"
    */
   public function testGrade()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

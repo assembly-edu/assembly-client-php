@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * FacetTest Class Doc Comment
  *
  * @category    Class */
-// * @description Facet
+// * @description A category of grades - there are four facets (&#x60;achieved&#x60;, &#x60;target&#x60;, &#x60;prediction&#x60;, &#x60;baseline&#x60;). Facets can be used to compare 2 grades of the same assessment.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class FacetTest extends \PHPUnit_Framework_TestCase
    * Test "Facet"
    */
   public function testFacet()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

@@ -19,7 +19,7 @@ namespace Assembly\Client;
  * StaffMemberDemographicsTest Class Doc Comment
  *
  * @category    Class */
-// * @description StaffMemberDemographics
+// * @description Demographic information about the staff member.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
@@ -60,6 +60,13 @@ class StaffMemberDemographicsTest extends \PHPUnit_Framework_TestCase
    * Test "StaffMemberDemographics"
    */
   public function testStaffMemberDemographics()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
   {
   }
 

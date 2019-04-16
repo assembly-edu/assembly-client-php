@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * StudentAddress Class Doc Comment
  *
  * @category Class
+ * @description The address of the student
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,6 +44,7 @@ class StudentAddress implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'address_line_1' => 'string',
     'address_line_2' => 'string',
     'town_city' => 'string',
@@ -57,6 +59,7 @@ class StudentAddress implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'address_line_1' => null,
     'address_line_2' => null,
     'town_city' => null,
@@ -92,6 +95,7 @@ class StudentAddress implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'address_line_1' => 'address_line_1',
     'address_line_2' => 'address_line_2',
     'town_city' => 'town_city',
@@ -106,6 +110,7 @@ class StudentAddress implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'address_line_1' => 'setAddressLine1',
     'address_line_2' => 'setAddressLine2',
     'town_city' => 'setTownCity',
@@ -120,6 +125,7 @@ class StudentAddress implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'address_line_1' => 'getAddressLine1',
     'address_line_2' => 'getAddressLine2',
     'town_city' => 'getTownCity',
@@ -188,6 +194,7 @@ class StudentAddress implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'address';
     $this->container['address_line_1'] = isset($data['address_line_1']) ? $data['address_line_1'] : null;
     $this->container['address_line_2'] = isset($data['address_line_2']) ? $data['address_line_2'] : null;
     $this->container['town_city'] = isset($data['town_city']) ? $data['town_city'] : null;
@@ -222,6 +229,30 @@ class StudentAddress implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
    * Gets address_line_1
    *
    * @return string
@@ -234,7 +265,7 @@ class StudentAddress implements ModelInterface, ArrayAccess
   /**
    * Sets address_line_1
    *
-   * @param string $address_line_1 address_line_1
+   * @param string $address_line_1 The first line of the address (PAON and street)
    *
    * @return $this
    */
@@ -258,7 +289,7 @@ class StudentAddress implements ModelInterface, ArrayAccess
   /**
    * Sets address_line_2
    *
-   * @param string $address_line_2 address_line_2
+   * @param string $address_line_2 The second line of the address (SAON)
    *
    * @return $this
    */
@@ -282,7 +313,7 @@ class StudentAddress implements ModelInterface, ArrayAccess
   /**
    * Sets town_city
    *
-   * @param string $town_city town_city
+   * @param string $town_city The town or city
    *
    * @return $this
    */
@@ -306,7 +337,7 @@ class StudentAddress implements ModelInterface, ArrayAccess
   /**
    * Sets county
    *
-   * @param string $county county
+   * @param string $county The county
    *
    * @return $this
    */
@@ -330,7 +361,7 @@ class StudentAddress implements ModelInterface, ArrayAccess
   /**
    * Sets country
    *
-   * @param string $country country
+   * @param string $country The country
    *
    * @return $this
    */
@@ -354,7 +385,7 @@ class StudentAddress implements ModelInterface, ArrayAccess
   /**
    * Sets postcode
    *
-   * @param string $postcode postcode
+   * @param string $postcode The postcode
    *
    * @return $this
    */

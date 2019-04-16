@@ -22,6 +22,7 @@ use \Assembly\Client\ObjectSerializer;
  * SchoolStatus Class Doc Comment
  *
  * @category Class
+ * @description Details the last time a school&#39;s data was synced, and when it last changed.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
@@ -43,8 +44,9 @@ class SchoolStatus implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
-    'last_changes_at' => 'string',
-    'last_sync_at' => 'string',
+    'object' => 'string',
+    'last_changes_at' => '\DateTime',
+    'last_sync_at' => '\DateTime',
     'last_sync_status' => 'string'
   ];
 
@@ -54,8 +56,9 @@ class SchoolStatus implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
-    'last_changes_at' => null,
-    'last_sync_at' => null,
+    'object' => null,
+    'last_changes_at' => 'date-time',
+    'last_sync_at' => 'date-time',
     'last_sync_status' => null
   ];
 
@@ -86,6 +89,7 @@ class SchoolStatus implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'last_changes_at' => 'last_changes_at',
     'last_sync_at' => 'last_sync_at',
     'last_sync_status' => 'last_sync_status'
@@ -97,6 +101,7 @@ class SchoolStatus implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'last_changes_at' => 'setLastChangesAt',
     'last_sync_at' => 'setLastSyncAt',
     'last_sync_status' => 'setLastSyncStatus'
@@ -108,6 +113,7 @@ class SchoolStatus implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'last_changes_at' => 'getLastChangesAt',
     'last_sync_at' => 'getLastSyncAt',
     'last_sync_status' => 'getLastSyncStatus'
@@ -173,6 +179,7 @@ class SchoolStatus implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'school_status';
     $this->container['last_changes_at'] = isset($data['last_changes_at']) ? $data['last_changes_at'] : null;
     $this->container['last_sync_at'] = isset($data['last_sync_at']) ? $data['last_sync_at'] : null;
     $this->container['last_sync_status'] = isset($data['last_sync_status']) ? $data['last_sync_status'] : null;
@@ -204,9 +211,33 @@ class SchoolStatus implements ModelInterface, ArrayAccess
 
 
   /**
-   * Gets last_changes_at
+   * Gets object
    *
    * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
+   * Gets last_changes_at
+   *
+   * @return \DateTime
    */
   public function getLastChangesAt()
   {
@@ -216,7 +247,7 @@ class SchoolStatus implements ModelInterface, ArrayAccess
   /**
    * Sets last_changes_at
    *
-   * @param string $last_changes_at last_changes_at
+   * @param \DateTime $last_changes_at When the data in the Platform was last changed, this may be recent or several days in the past as it depends  on how regularly the school update their MIS records
    *
    * @return $this
    */
@@ -230,7 +261,7 @@ class SchoolStatus implements ModelInterface, ArrayAccess
   /**
    * Gets last_sync_at
    *
-   * @return string
+   * @return \DateTime
    */
   public function getLastSyncAt()
   {
@@ -240,7 +271,7 @@ class SchoolStatus implements ModelInterface, ArrayAccess
   /**
    * Sets last_sync_at
    *
-   * @param string $last_sync_at last_sync_at
+   * @param \DateTime $last_sync_at The last time data has been collected (synced) from the source MIS, typically within the last 24 hours.
    *
    * @return $this
    */
@@ -264,7 +295,7 @@ class SchoolStatus implements ModelInterface, ArrayAccess
   /**
    * Sets last_sync_status
    *
-   * @param string $last_sync_status last_sync_status
+   * @param string $last_sync_status Whether the last sync was a `success`, `failure`, or that there were `no_changes`
    *
    * @return $this
    */
