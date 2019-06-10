@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.360
+ * SDK Version 1.2.363
  * API Version 1.1.0
  *
  * Support
@@ -83,7 +83,7 @@ class Configuration
    *
    * @var string
    */
-  protected $userAgent = '1.2.360/php';
+  protected $userAgent = '1.2.363/php';
 
   /**
    * Debug switch (default set to false)
@@ -281,7 +281,7 @@ class Configuration
     $report .= '    OS: ' . php_uname() . PHP_EOL;
     $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
     $report .= '    OpenAPI Spec Version: 1.1.0' . PHP_EOL;
-    $report .= '    SDK Package Version: 1.2.360' . PHP_EOL;
+    $report .= '    SDK Package Version: 1.2.363' . PHP_EOL;
     $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
     return $report;

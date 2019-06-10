@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.360
+ * SDK Version 1.2.363
  * API Version 1.1.0
  *
  * Support
@@ -50,6 +50,7 @@ class Student implements ModelInterface, ArrayAccess
     'year_code' => 'string',
     'upn' => 'string',
     'former_upn' => 'string',
+    'uln' => 'string',
     'mis_id' => 'string',
     'pan' => 'string',
     'first_name' => 'string',
@@ -81,6 +82,7 @@ class Student implements ModelInterface, ArrayAccess
     'year_code' => null,
     'upn' => null,
     'former_upn' => null,
+    'uln' => null,
     'mis_id' => null,
     'pan' => null,
     'first_name' => null,
@@ -133,6 +135,7 @@ class Student implements ModelInterface, ArrayAccess
     'year_code' => 'year_code',
     'upn' => 'upn',
     'former_upn' => 'former_upn',
+    'uln' => 'uln',
     'mis_id' => 'mis_id',
     'pan' => 'pan',
     'first_name' => 'first_name',
@@ -164,6 +167,7 @@ class Student implements ModelInterface, ArrayAccess
     'year_code' => 'setYearCode',
     'upn' => 'setUpn',
     'former_upn' => 'setFormerUpn',
+    'uln' => 'setUln',
     'mis_id' => 'setMisId',
     'pan' => 'setPan',
     'first_name' => 'setFirstName',
@@ -195,6 +199,7 @@ class Student implements ModelInterface, ArrayAccess
     'year_code' => 'getYearCode',
     'upn' => 'getUpn',
     'former_upn' => 'getFormerUpn',
+    'uln' => 'getUln',
     'mis_id' => 'getMisId',
     'pan' => 'getPan',
     'first_name' => 'getFirstName',
@@ -280,6 +285,7 @@ class Student implements ModelInterface, ArrayAccess
     $this->container['year_code'] = isset($data['year_code']) ? $data['year_code'] : null;
     $this->container['upn'] = isset($data['upn']) ? $data['upn'] : null;
     $this->container['former_upn'] = isset($data['former_upn']) ? $data['former_upn'] : null;
+    $this->container['uln'] = isset($data['uln']) ? $data['uln'] : null;
     $this->container['mis_id'] = isset($data['mis_id']) ? $data['mis_id'] : null;
     $this->container['pan'] = isset($data['pan']) ? $data['pan'] : null;
     $this->container['first_name'] = isset($data['first_name']) ? $data['first_name'] : null;
@@ -441,6 +447,30 @@ class Student implements ModelInterface, ArrayAccess
   public function setFormerUpn($former_upn)
   {
     $this->container['former_upn'] = $former_upn;
+
+    return $this;
+  }
+
+  /**
+   * Gets uln
+   *
+   * @return string
+   */
+  public function getUln()
+  {
+    return $this->container['uln'];
+  }
+
+  /**
+   * Sets uln
+   *
+   * @param string $uln Unique Learner Number (ULN) - a LRS-mandated 10-character code that identifies each pupil
+   *
+   * @return $this
+   */
+  public function setUln($uln)
+  {
+    $this->container['uln'] = $uln;
 
     return $this;
   }

@@ -1277,7 +1277,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   new GuzzleHttp\Client(),
   $config
 );
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $student_id = 56; // int | Filter to the specified student
 $registration_group_id = 56; // int | ID of a registration group
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
@@ -1295,7 +1295,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **student_id** | **int**| Filter to the specified student | [optional]
  **registration_group_id** | **int**| ID of a registration group | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
@@ -1336,7 +1336,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   new GuzzleHttp\Client(),
   $config
 );
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $student_id = 56; // int | Filter to the specified student
 $registration_group_id = 56; // int | ID of a registration group
 $start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The start date of the period to filter by
@@ -1357,7 +1357,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **student_id** | **int**| Filter to the specified student | [optional]
  **registration_group_id** | **int**| ID of a registration group | [optional]
  **start_date** | **\DateTime**| The start date of the period to filter by | [optional]
@@ -1401,7 +1401,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   new GuzzleHttp\Client(),
   $config
 );
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $event_type = 'event_type_example'; // string | Filter by a calendar object type from the underlying MIS
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
@@ -1419,7 +1419,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **event_type** | **string**| Filter by a calendar object type from the underlying MIS | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
@@ -1743,7 +1743,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   new GuzzleHttp\Client(),
   $config
 );
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
@@ -1761,7 +1761,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
@@ -1802,7 +1802,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   new GuzzleHttp\Client(),
   $config
 );
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $teachers_only = True; // bool | Filter to staff who are teachers
 $demographics = True; // bool | Include demographics data
 $qualifications = True; // bool | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
@@ -1820,7 +1820,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **teachers_only** | **bool**| Filter to staff who are teachers | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
  **qualifications** | **bool**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
@@ -1861,7 +1861,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   new GuzzleHttp\Client(),
   $config
 );
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 
 try {
   $result = $apiInstance->getLeftStudents($if_modified_since);
@@ -1876,7 +1876,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
 
 ### Return type
 
@@ -1970,7 +1970,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $id = 56; // int | Internal identifier of the entity
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $year_code = 56; // int | Filter by school year
 $demographics = True; // bool | Include demographics data
@@ -1996,7 +1996,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **year_code** | **int**| Filter by school year | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
@@ -2044,7 +2044,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   new GuzzleHttp\Client(),
   $config
 );
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $year_code = 56; // int | Filter by school year
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
@@ -2064,7 +2064,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **year_code** | **int**| Filter by school year | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
@@ -2108,7 +2108,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $students = array(56); // int[] | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
@@ -2126,7 +2126,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **students** | [**int[]**](../Model/int.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) |
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
 
@@ -2292,7 +2292,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   new GuzzleHttp\Client(),
   $config
 );
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $teachers_only = True; // bool | Filter to staff who are teachers
 $demographics = True; // bool | Include demographics data
 $qualifications = True; // bool | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
@@ -2312,7 +2312,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **teachers_only** | **bool**| Filter to staff who are teachers | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
  **qualifications** | **bool**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
@@ -2355,7 +2355,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   new GuzzleHttp\Client(),
   $config
 );
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $students = array(56); // int[] | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $year_code = 56; // int | Filter by school year
@@ -2383,7 +2383,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **students** | [**int[]**](../Model/int.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **year_code** | **int**| Filter by school year | [optional]
@@ -2490,7 +2490,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $id = 56; // int | Internal identifier of the entity
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
 $date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $year_code = 56; // int | Filter by school year
@@ -2517,7 +2517,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
  **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **year_code** | **int**| Filter by school year | [optional]
@@ -2566,7 +2566,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   new GuzzleHttp\Client(),
   $config
 );
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $subject_code = 'subject_code_example'; // string | Filter by subject
 $year_code = 56; // int | Filter by school year
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
@@ -2587,7 +2587,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **subject_code** | **string**| Filter by subject | [optional]
  **year_code** | **int**| Filter by school year | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
@@ -2632,7 +2632,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $id = 56; // int | Internal identifier of the entity
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
@@ -2657,7 +2657,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
@@ -2704,7 +2704,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   new GuzzleHttp\Client(),
   $config
 );
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests))
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $year_code = 'year_code_example'; // string | Filter by school year
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
@@ -2724,7 +2724,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) | [optional]
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **year_code** | **string**| Filter by school year | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]

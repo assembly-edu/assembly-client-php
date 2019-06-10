@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.360
+ * SDK Version 1.2.363
  * API Version 1.1.0
  *
  * Support
@@ -96,6 +96,13 @@ class StudentTest extends \PHPUnit_Framework_TestCase
    * Test attribute "former_upn"
    */
   public function testPropertyFormerUpn()
+  {
+  }
+
+  /**
+   * Test attribute "uln"
+   */
+  public function testPropertyUln()
   {
   }
 

@@ -11,7 +11,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.360
+ * SDK Version 1.2.363
  * API Version 1.1.0
  *
  * Support
@@ -6921,7 +6921,7 @@ class AssemblyApi
    *
    * List Attendance Summaries
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -6941,7 +6941,7 @@ class AssemblyApi
    *
    * List Attendance Summaries
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -7051,7 +7051,7 @@ class AssemblyApi
    *
    * List Attendance Summaries
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -7074,7 +7074,7 @@ class AssemblyApi
    *
    * List Attendance Summaries
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -7127,7 +7127,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getAttendanceSummaries'
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -7236,7 +7236,7 @@ class AssemblyApi
    *
    * List Attendances
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
@@ -7259,7 +7259,7 @@ class AssemblyApi
    *
    * List Attendances
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
@@ -7372,7 +7372,7 @@ class AssemblyApi
    *
    * List Attendances
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
@@ -7398,7 +7398,7 @@ class AssemblyApi
    *
    * List Attendances
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
@@ -7454,7 +7454,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getAttendances'
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
@@ -7589,7 +7589,7 @@ class AssemblyApi
    *
    * List Calendar Events
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -7609,7 +7609,7 @@ class AssemblyApi
    *
    * List Calendar Events
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -7719,7 +7719,7 @@ class AssemblyApi
    *
    * List Calendar Events
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -7742,7 +7742,7 @@ class AssemblyApi
    *
    * List Calendar Events
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -7795,7 +7795,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getCalendarEvents'
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -9491,7 +9491,7 @@ class AssemblyApi
    *
    * List Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -9511,7 +9511,7 @@ class AssemblyApi
    *
    * List Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -9621,7 +9621,7 @@ class AssemblyApi
    *
    * List Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -9644,7 +9644,7 @@ class AssemblyApi
    *
    * List Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -9697,7 +9697,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getGroups'
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -9817,7 +9817,7 @@ class AssemblyApi
    *
    * List Left Staff Members
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
@@ -9837,7 +9837,7 @@ class AssemblyApi
    *
    * List Left Staff Members
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
@@ -9947,7 +9947,7 @@ class AssemblyApi
    *
    * List Left Staff Members
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
@@ -9970,7 +9970,7 @@ class AssemblyApi
    *
    * List Left Staff Members
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
@@ -10023,7 +10023,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getLeftStaffMembers'
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
@@ -10132,7 +10132,7 @@ class AssemblyApi
    *
    * List Left Students
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -10149,7 +10149,7 @@ class AssemblyApi
    *
    * List Left Students
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -10256,7 +10256,7 @@ class AssemblyApi
    *
    * List Left Students
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -10276,7 +10276,7 @@ class AssemblyApi
    *
    * List Left Students
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -10326,7 +10326,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getLeftStudents'
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -10729,7 +10729,7 @@ class AssemblyApi
    * List Students for Registration Group
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -10757,7 +10757,7 @@ class AssemblyApi
    * List Students for Registration Group
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -10875,7 +10875,7 @@ class AssemblyApi
    * List Students for Registration Group
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -10906,7 +10906,7 @@ class AssemblyApi
    * List Students for Registration Group
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -10967,7 +10967,7 @@ class AssemblyApi
    * Create request for operation 'getRegistrationGroupStudents'
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -11125,7 +11125,7 @@ class AssemblyApi
    *
    * List Registration Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -11147,7 +11147,7 @@ class AssemblyApi
    *
    * List Registration Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -11259,7 +11259,7 @@ class AssemblyApi
    *
    * List Registration Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -11284,7 +11284,7 @@ class AssemblyApi
    *
    * List Registration Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -11339,7 +11339,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getRegistrationGroups'
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -11470,7 +11470,7 @@ class AssemblyApi
    * List Results
    *
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11490,7 +11490,7 @@ class AssemblyApi
    * List Results
    *
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11600,7 +11600,7 @@ class AssemblyApi
    * List Results
    *
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11623,7 +11623,7 @@ class AssemblyApi
    * List Results
    *
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11676,7 +11676,7 @@ class AssemblyApi
    * Create request for operation 'getResults'
    *
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -12492,7 +12492,7 @@ class AssemblyApi
    *
    * List Staff Members
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
@@ -12514,7 +12514,7 @@ class AssemblyApi
    *
    * List Staff Members
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
@@ -12626,7 +12626,7 @@ class AssemblyApi
    *
    * List Staff Members
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
@@ -12651,7 +12651,7 @@ class AssemblyApi
    *
    * List Staff Members
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
@@ -12706,7 +12706,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getStaffMembers'
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
@@ -12836,7 +12836,7 @@ class AssemblyApi
    *
    * List Students
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -12866,7 +12866,7 @@ class AssemblyApi
    *
    * List Students
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -12986,7 +12986,7 @@ class AssemblyApi
    *
    * List Students
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -13019,7 +13019,7 @@ class AssemblyApi
    *
    * List Students
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -13082,7 +13082,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getStudents'
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -13564,7 +13564,7 @@ class AssemblyApi
    * List Students for Teaching Group
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -13593,7 +13593,7 @@ class AssemblyApi
    * List Students for Teaching Group
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -13712,7 +13712,7 @@ class AssemblyApi
    * List Students for Teaching Group
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -13744,7 +13744,7 @@ class AssemblyApi
    * List Students for Teaching Group
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -13806,7 +13806,7 @@ class AssemblyApi
    * Create request for operation 'getTeachingGroupStudents'
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -13969,7 +13969,7 @@ class AssemblyApi
    *
    * List Teaching Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $subject_code Filter by subject (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
@@ -13992,7 +13992,7 @@ class AssemblyApi
    *
    * List Teaching Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $subject_code Filter by subject (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
@@ -14105,7 +14105,7 @@ class AssemblyApi
    *
    * List Teaching Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $subject_code Filter by subject (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
@@ -14131,7 +14131,7 @@ class AssemblyApi
    *
    * List Teaching Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $subject_code Filter by subject (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
@@ -14187,7 +14187,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getTeachingGroups'
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $subject_code Filter by subject (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
@@ -14323,7 +14323,7 @@ class AssemblyApi
    * List Students for Year Group
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
@@ -14350,7 +14350,7 @@ class AssemblyApi
    * List Students for Year Group
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
@@ -14467,7 +14467,7 @@ class AssemblyApi
    * List Students for Year Group
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
@@ -14497,7 +14497,7 @@ class AssemblyApi
    * List Students for Year Group
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
@@ -14557,7 +14557,7 @@ class AssemblyApi
    * Create request for operation 'getYearGroupStudents'
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
@@ -14710,7 +14710,7 @@ class AssemblyApi
    *
    * List Year Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -14732,7 +14732,7 @@ class AssemblyApi
    *
    * List Year Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -14844,7 +14844,7 @@ class AssemblyApi
    *
    * List Year Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -14869,7 +14869,7 @@ class AssemblyApi
    *
    * List Year Groups
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -14924,7 +14924,7 @@ class AssemblyApi
   /**
    * Create request for operation 'getYearGroups'
    *
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Conditional-Requests)) (optional)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
