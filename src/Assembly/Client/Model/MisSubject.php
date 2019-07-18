@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -48,7 +48,8 @@ class MisSubject implements ModelInterface, ArrayAccess
     'object' => 'string',
     'id' => 'int',
     'name' => 'string',
-    'code' => 'string'
+    'code' => 'string',
+    'subject' => '\Assembly\Client\Model\GroupMisSubjectSubject'
   ];
 
   /**
@@ -60,7 +61,8 @@ class MisSubject implements ModelInterface, ArrayAccess
     'object' => null,
     'id' => 'int32',
     'name' => null,
-    'code' => null
+    'code' => null,
+    'subject' => null
   ];
 
   /**
@@ -93,7 +95,8 @@ class MisSubject implements ModelInterface, ArrayAccess
     'object' => 'object',
     'id' => 'id',
     'name' => 'name',
-    'code' => 'code'
+    'code' => 'code',
+    'subject' => 'subject'
   ];
 
   /**
@@ -105,7 +108,8 @@ class MisSubject implements ModelInterface, ArrayAccess
     'object' => 'setObject',
     'id' => 'setId',
     'name' => 'setName',
-    'code' => 'setCode'
+    'code' => 'setCode',
+    'subject' => 'setSubject'
   ];
 
   /**
@@ -117,7 +121,8 @@ class MisSubject implements ModelInterface, ArrayAccess
     'object' => 'getObject',
     'id' => 'getId',
     'name' => 'getName',
-    'code' => 'getCode'
+    'code' => 'getCode',
+    'subject' => 'getSubject'
   ];
 
   /**
@@ -184,6 +189,7 @@ class MisSubject implements ModelInterface, ArrayAccess
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+    $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
   }
 
   /**
@@ -303,6 +309,30 @@ class MisSubject implements ModelInterface, ArrayAccess
   public function setCode($code)
   {
     $this->container['code'] = $code;
+
+    return $this;
+  }
+
+  /**
+   * Gets subject
+   *
+   * @return \Assembly\Client\Model\GroupMisSubjectSubject
+   */
+  public function getSubject()
+  {
+    return $this->container['subject'];
+  }
+
+  /**
+   * Sets subject
+   *
+   * @param \Assembly\Client\Model\GroupMisSubjectSubject $subject subject
+   *
+   * @return $this
+   */
+  public function setSubject($subject)
+  {
+    $this->container['subject'] = $subject;
 
     return $this;
   }

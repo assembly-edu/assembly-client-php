@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -23,7 +23,7 @@ use \Assembly\Client\ObjectSerializer;
  * BulkResultsBody Class Doc Comment
  *
  * @category Class
- * @description A collection of results to bulk update ont he Platform
+ * @description A collection of results to bulk update on the Platform
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php

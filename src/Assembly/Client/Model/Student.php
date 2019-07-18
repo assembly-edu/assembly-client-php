@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -66,6 +66,7 @@ class Student implements ModelInterface, ArrayAccess
     'demographics' => '\Assembly\Client\Model\StudentDemographics',
     'medical' => '\Assembly\Client\Model\StudentMedical',
     'contacts' => '\Assembly\Client\Model\StudentContacts[]',
+    'emails' => '\Assembly\Client\Model\EmailInfo[]',
     'address' => '\Assembly\Client\Model\StudentAddress',
     'languages' => '\Assembly\Client\Model\StudentLanguages',
     'photo' => '\Assembly\Client\Model\StudentPhoto'
@@ -98,6 +99,7 @@ class Student implements ModelInterface, ArrayAccess
     'demographics' => null,
     'medical' => null,
     'contacts' => null,
+    'emails' => null,
     'address' => null,
     'languages' => null,
     'photo' => null
@@ -151,6 +153,7 @@ class Student implements ModelInterface, ArrayAccess
     'demographics' => 'demographics',
     'medical' => 'medical',
     'contacts' => 'contacts',
+    'emails' => 'emails',
     'address' => 'address',
     'languages' => 'languages',
     'photo' => 'photo'
@@ -183,6 +186,7 @@ class Student implements ModelInterface, ArrayAccess
     'demographics' => 'setDemographics',
     'medical' => 'setMedical',
     'contacts' => 'setContacts',
+    'emails' => 'setEmails',
     'address' => 'setAddress',
     'languages' => 'setLanguages',
     'photo' => 'setPhoto'
@@ -215,6 +219,7 @@ class Student implements ModelInterface, ArrayAccess
     'demographics' => 'getDemographics',
     'medical' => 'getMedical',
     'contacts' => 'getContacts',
+    'emails' => 'getEmails',
     'address' => 'getAddress',
     'languages' => 'getLanguages',
     'photo' => 'getPhoto'
@@ -301,6 +306,7 @@ class Student implements ModelInterface, ArrayAccess
     $this->container['demographics'] = isset($data['demographics']) ? $data['demographics'] : null;
     $this->container['medical'] = isset($data['medical']) ? $data['medical'] : null;
     $this->container['contacts'] = isset($data['contacts']) ? $data['contacts'] : null;
+    $this->container['emails'] = isset($data['emails']) ? $data['emails'] : null;
     $this->container['address'] = isset($data['address']) ? $data['address'] : null;
     $this->container['languages'] = isset($data['languages']) ? $data['languages'] : null;
     $this->container['photo'] = isset($data['photo']) ? $data['photo'] : null;
@@ -831,6 +837,30 @@ class Student implements ModelInterface, ArrayAccess
   public function setContacts($contacts)
   {
     $this->container['contacts'] = $contacts;
+
+    return $this;
+  }
+
+  /**
+   * Gets emails
+   *
+   * @return \Assembly\Client\Model\EmailInfo[]
+   */
+  public function getEmails()
+  {
+    return $this->container['emails'];
+  }
+
+  /**
+   * Sets emails
+   *
+   * @param \Assembly\Client\Model\EmailInfo[] $emails A list of emails for the student
+   *
+   * @return $this
+   */
+  public function setEmails($emails)
+  {
+    $this->container['emails'] = $emails;
 
     return $this;
   }

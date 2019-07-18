@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -79,6 +79,13 @@ class CalendarEventTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
+   * Test attribute "type"
+   */
+  public function testPropertyType()
+  {
+  }
+
+  /**
    * Test attribute "name"
    */
   public function testPropertyName()
@@ -103,27 +110,6 @@ class CalendarEventTest extends \PHPUnit_Framework_TestCase
    * Test attribute "end_date"
    */
   public function testPropertyEndDate()
-  {
-  }
-
-  /**
-   * Test attribute "is_active"
-   */
-  public function testPropertyIsActive()
-  {
-  }
-
-  /**
-   * Test attribute "is_recurrent"
-   */
-  public function testPropertyIsRecurrent()
-  {
-  }
-
-  /**
-   * Test attribute "mis_type"
-   */
-  public function testPropertyMisType()
   {
   }
 }

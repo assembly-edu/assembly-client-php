@@ -11,7 +11,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -3724,6 +3724,348 @@ class AssemblyApi
   }
 
   /**
+   * Operation findRoom
+   *
+   * View a Room
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return \Assembly\Client\Model\Room
+   */
+  public function findRoom($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    list($response) = $this->findRoomWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date);
+    return $response;
+  }
+
+  /**
+   * Operation findRoomWithHttpInfo
+   *
+   * View a Room
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return array of \Assembly\Client\Model\Room, HTTP status code, HTTP response headers (array of strings)
+   */
+  public function findRoomWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    $returnType = '\Assembly\Client\Model\Room';
+    $request = $this->findRoomRequest($id, $if_modified_since, $date, $start_date, $end_date);
+
+    try {
+      $options = $this->createHttpClientOption();
+      try {
+        $response = $this->client->send($request, $options);
+      } catch (RequestException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+        );
+      }
+
+      $statusCode = $response->getStatusCode();
+
+      if ($statusCode < 200 || $statusCode > 299) {
+        throw new ApiException(
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          $response->getBody()
+        );
+      }
+
+      $responseBody = $response->getBody();
+      if ($returnType === '\SplFileObject') {
+        $content = $responseBody; //stream goes to serializer
+      } else {
+        $content = $responseBody->getContents();
+        if ($returnType !== 'string') {
+          $content = json_decode($content);
+        }
+      }
+
+      return [
+        ObjectSerializer::deserialize($content, $returnType, []),
+        $response->getStatusCode(),
+        $response->getHeaders()
+      ];
+
+    } catch (ApiException $e) {
+      switch ($e->getCode()) {
+        case 200:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\Room',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+      }
+      throw $e;
+    }
+  }
+
+  /**
+   * Operation findRoomAsync
+   *
+   * View a Room
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function findRoomAsync($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    return $this->findRoomAsyncWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date)
+      ->then(
+        function ($response) {
+          return $response[0];
+        }
+      );
+  }
+
+  /**
+   * Operation findRoomAsyncWithHttpInfo
+   *
+   * View a Room
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function findRoomAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    $returnType = '\Assembly\Client\Model\Room';
+    $request = $this->findRoomRequest($id, $if_modified_since, $date, $start_date, $end_date);
+
+    return $this->client
+      ->sendAsync($request, $this->createHttpClientOption())
+      ->then(
+        function ($response) use ($returnType) {
+          $responseBody = $response->getBody();
+          if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+          } else {
+            $content = $responseBody->getContents();
+            if ($returnType !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        },
+        function ($exception) {
+          $response = $exception->getResponse();
+          $statusCode = $response->getStatusCode();
+          throw new ApiException(
+            sprintf(
+              '[%d] Error connecting to the API (%s)',
+              $statusCode,
+              $exception->getRequest()->getUri()
+            ),
+            $statusCode,
+            $response->getHeaders(),
+            $response->getBody()
+          );
+        }
+      );
+  }
+
+  /**
+   * Create request for operation 'findRoom'
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Psr7\Request
+   */
+  protected function findRoomRequest($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    // verify the required parameter 'id' is set
+    if ($id === null || (is_array($id) && count($id) === 0)) {
+      throw new \InvalidArgumentException(
+        'Missing the required parameter $id when calling findRoom'
+      );
+    }
+
+    $resourcePath = '/rooms/{id}';
+    $formParams = [];
+    $queryParams = [];
+    $headerParams = [];
+    $httpBody = '';
+    $multipart = false;
+
+    // query params
+    if ($date !== null) {
+      $queryParams['date'] = ObjectSerializer::toQueryValue($date);
+    }
+    // query params
+    if ($start_date !== null) {
+      $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
+    }
+    // query params
+    if ($end_date !== null) {
+      $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+    }
+    // header params
+    if ($if_modified_since !== null) {
+      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+
+    // path params
+    if ($id !== null) {
+      $resourcePath = str_replace(
+        '{' . 'id' . '}',
+        ObjectSerializer::toPathValue($id),
+        $resourcePath
+      );
+    }
+
+    // body params
+    $_tempBody = null;
+
+    if ($multipart) {
+      $headers = $this->headerSelector->selectHeadersForMultipart(
+        ['application/vnd.assembly+json; version=1.1']
+      );
+    } else {
+      $headers = $this->headerSelector->selectHeaders(
+        ['application/vnd.assembly+json; version=1.1'],
+        []
+      );
+    }
+
+    // for model (json/xml)
+    if (isset($_tempBody)) {
+      // $_tempBody is the method argument, if present
+      $httpBody = $_tempBody;
+      // \stdClass has no __toString(), so we should encode it manually
+      if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($httpBody);
+      }
+    } elseif (count($formParams) > 0) {
+      if ($multipart) {
+        $multipartContents = [];
+        foreach ($formParams as $formParamName => $formParamValue) {
+          $multipartContents[] = [
+            'name' => $formParamName,
+            'contents' => $formParamValue
+          ];
+        }
+        // for HTTP post (form)
+        $httpBody = new MultipartStream($multipartContents);
+
+      } elseif ($headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($formParams);
+
+      } else {
+        // for HTTP post (form)
+        $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+      }
+    }
+
+    // this endpoint requires OAuth (access token)
+    if ($this->config->getAccessToken() !== null) {
+      $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+    }
+
+    $defaultHeaders = [];
+    if ($this->config->getUserAgent()) {
+      $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+    }
+
+    $headers = array_merge(
+      $defaultHeaders,
+      $headerParams,
+      $headers
+    );
+
+    $query = \GuzzleHttp\Psr7\build_query($queryParams);
+    return new Request(
+      'GET',
+      $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+      $headers,
+      $httpBody
+    );
+  }
+
+  /**
    * Operation findSchool
    *
    * View School Details
@@ -4343,6 +4685,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -4353,9 +4696,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student
    */
-  public function findStudent($id, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function findStudent($id, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    list($response) = $this->findStudentWithHttpInfo($id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    list($response) = $this->findStudentWithHttpInfo($id, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
     return $response;
   }
 
@@ -4368,6 +4711,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -4378,10 +4722,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student, HTTP status code, HTTP response headers (array of strings)
    */
-  public function findStudentWithHttpInfo($id, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function findStudentWithHttpInfo($id, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student';
-    $request = $this->findStudentRequest($id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->findStudentRequest($id, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
 
     try {
       $options = $this->createHttpClientOption();
@@ -4491,6 +4835,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -4500,9 +4845,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findStudentAsync($id, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function findStudentAsync($id, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    return $this->findStudentAsyncWithHttpInfo($id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
+    return $this->findStudentAsyncWithHttpInfo($id, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
       ->then(
         function ($response) {
           return $response[0];
@@ -4519,6 +4864,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -4528,10 +4874,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findStudentAsyncWithHttpInfo($id, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function findStudentAsyncWithHttpInfo($id, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student';
-    $request = $this->findStudentRequest($id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->findStudentRequest($id, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -4577,6 +4923,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -4586,7 +4933,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function findStudentRequest($id, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  protected function findStudentRequest($id, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -4613,6 +4960,10 @@ class AssemblyApi
     // query params
     if ($sen_needs !== null) {
       $queryParams['sen_needs'] = ObjectSerializer::toQueryValue($sen_needs);
+    }
+    // query params
+    if ($emails !== null) {
+      $queryParams['emails'] = ObjectSerializer::toQueryValue($emails);
     }
     // query params
     if ($addresses !== null) {
@@ -4948,6 +5299,348 @@ class AssemblyApi
     // query params
     if ($date !== null) {
       $queryParams['date'] = ObjectSerializer::toQueryValue($date);
+    }
+
+    // path params
+    if ($id !== null) {
+      $resourcePath = str_replace(
+        '{' . 'id' . '}',
+        ObjectSerializer::toPathValue($id),
+        $resourcePath
+      );
+    }
+
+    // body params
+    $_tempBody = null;
+
+    if ($multipart) {
+      $headers = $this->headerSelector->selectHeadersForMultipart(
+        ['application/vnd.assembly+json; version=1.1']
+      );
+    } else {
+      $headers = $this->headerSelector->selectHeaders(
+        ['application/vnd.assembly+json; version=1.1'],
+        []
+      );
+    }
+
+    // for model (json/xml)
+    if (isset($_tempBody)) {
+      // $_tempBody is the method argument, if present
+      $httpBody = $_tempBody;
+      // \stdClass has no __toString(), so we should encode it manually
+      if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($httpBody);
+      }
+    } elseif (count($formParams) > 0) {
+      if ($multipart) {
+        $multipartContents = [];
+        foreach ($formParams as $formParamName => $formParamValue) {
+          $multipartContents[] = [
+            'name' => $formParamName,
+            'contents' => $formParamValue
+          ];
+        }
+        // for HTTP post (form)
+        $httpBody = new MultipartStream($multipartContents);
+
+      } elseif ($headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($formParams);
+
+      } else {
+        // for HTTP post (form)
+        $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+      }
+    }
+
+    // this endpoint requires OAuth (access token)
+    if ($this->config->getAccessToken() !== null) {
+      $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+    }
+
+    $defaultHeaders = [];
+    if ($this->config->getUserAgent()) {
+      $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+    }
+
+    $headers = array_merge(
+      $defaultHeaders,
+      $headerParams,
+      $headers
+    );
+
+    $query = \GuzzleHttp\Psr7\build_query($queryParams);
+    return new Request(
+      'GET',
+      $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+      $headers,
+      $httpBody
+    );
+  }
+
+  /**
+   * Operation findTimetable
+   *
+   * View a Timetable
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return \Assembly\Client\Model\Timetable[]
+   */
+  public function findTimetable($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    list($response) = $this->findTimetableWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date);
+    return $response;
+  }
+
+  /**
+   * Operation findTimetableWithHttpInfo
+   *
+   * View a Timetable
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return array of \Assembly\Client\Model\Timetable[], HTTP status code, HTTP response headers (array of strings)
+   */
+  public function findTimetableWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    $returnType = '\Assembly\Client\Model\Timetable[]';
+    $request = $this->findTimetableRequest($id, $if_modified_since, $date, $start_date, $end_date);
+
+    try {
+      $options = $this->createHttpClientOption();
+      try {
+        $response = $this->client->send($request, $options);
+      } catch (RequestException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+        );
+      }
+
+      $statusCode = $response->getStatusCode();
+
+      if ($statusCode < 200 || $statusCode > 299) {
+        throw new ApiException(
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          $response->getBody()
+        );
+      }
+
+      $responseBody = $response->getBody();
+      if ($returnType === '\SplFileObject') {
+        $content = $responseBody; //stream goes to serializer
+      } else {
+        $content = $responseBody->getContents();
+        if ($returnType !== 'string') {
+          $content = json_decode($content);
+        }
+      }
+
+      return [
+        ObjectSerializer::deserialize($content, $returnType, []),
+        $response->getStatusCode(),
+        $response->getHeaders()
+      ];
+
+    } catch (ApiException $e) {
+      switch ($e->getCode()) {
+        case 200:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\Timetable[]',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 404:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+      }
+      throw $e;
+    }
+  }
+
+  /**
+   * Operation findTimetableAsync
+   *
+   * View a Timetable
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function findTimetableAsync($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    return $this->findTimetableAsyncWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date)
+      ->then(
+        function ($response) {
+          return $response[0];
+        }
+      );
+  }
+
+  /**
+   * Operation findTimetableAsyncWithHttpInfo
+   *
+   * View a Timetable
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function findTimetableAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    $returnType = '\Assembly\Client\Model\Timetable[]';
+    $request = $this->findTimetableRequest($id, $if_modified_since, $date, $start_date, $end_date);
+
+    return $this->client
+      ->sendAsync($request, $this->createHttpClientOption())
+      ->then(
+        function ($response) use ($returnType) {
+          $responseBody = $response->getBody();
+          if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+          } else {
+            $content = $responseBody->getContents();
+            if ($returnType !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        },
+        function ($exception) {
+          $response = $exception->getResponse();
+          $statusCode = $response->getStatusCode();
+          throw new ApiException(
+            sprintf(
+              '[%d] Error connecting to the API (%s)',
+              $statusCode,
+              $exception->getRequest()->getUri()
+            ),
+            $statusCode,
+            $response->getHeaders(),
+            $response->getBody()
+          );
+        }
+      );
+  }
+
+  /**
+   * Create request for operation 'findTimetable'
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Psr7\Request
+   */
+  protected function findTimetableRequest($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    // verify the required parameter 'id' is set
+    if ($id === null || (is_array($id) && count($id) === 0)) {
+      throw new \InvalidArgumentException(
+        'Missing the required parameter $id when calling findTimetable'
+      );
+    }
+
+    $resourcePath = '/timetables/{id}';
+    $formParams = [];
+    $queryParams = [];
+    $headerParams = [];
+    $httpBody = '';
+    $multipart = false;
+
+    // query params
+    if ($date !== null) {
+      $queryParams['date'] = ObjectSerializer::toQueryValue($date);
+    }
+    // query params
+    if ($start_date !== null) {
+      $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
+    }
+    // query params
+    if ($end_date !== null) {
+      $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+    }
+    // header params
+    if ($if_modified_since !== null) {
+      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
     }
 
     // path params
@@ -7590,7 +8283,7 @@ class AssemblyApi
    * List Calendar Events
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
+   * @param  string $type Filter by assessment point type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -7598,9 +8291,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\CalendarEvent[]
    */
-  public function getCalendarEvents($if_modified_since = null, $event_type = null, $per_page = '100', $page = '1')
+  public function getCalendarEvents($if_modified_since = null, $type = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getCalendarEventsWithHttpInfo($if_modified_since, $event_type, $per_page, $page);
+    list($response) = $this->getCalendarEventsWithHttpInfo($if_modified_since, $type, $per_page, $page);
     return $response;
   }
 
@@ -7610,7 +8303,7 @@ class AssemblyApi
    * List Calendar Events
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
+   * @param  string $type Filter by assessment point type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -7618,10 +8311,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\CalendarEvent[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getCalendarEventsWithHttpInfo($if_modified_since = null, $event_type = null, $per_page = '100', $page = '1')
+  public function getCalendarEventsWithHttpInfo($if_modified_since = null, $type = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\CalendarEvent[]';
-    $request = $this->getCalendarEventsRequest($if_modified_since, $event_type, $per_page, $page);
+    $request = $this->getCalendarEventsRequest($if_modified_since, $type, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -7720,16 +8413,16 @@ class AssemblyApi
    * List Calendar Events
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
+   * @param  string $type Filter by assessment point type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getCalendarEventsAsync($if_modified_since = null, $event_type = null, $per_page = '100', $page = '1')
+  public function getCalendarEventsAsync($if_modified_since = null, $type = null, $per_page = '100', $page = '1')
   {
-    return $this->getCalendarEventsAsyncWithHttpInfo($if_modified_since, $event_type, $per_page, $page)
+    return $this->getCalendarEventsAsyncWithHttpInfo($if_modified_since, $type, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -7743,17 +8436,17 @@ class AssemblyApi
    * List Calendar Events
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
+   * @param  string $type Filter by assessment point type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getCalendarEventsAsyncWithHttpInfo($if_modified_since = null, $event_type = null, $per_page = '100', $page = '1')
+  public function getCalendarEventsAsyncWithHttpInfo($if_modified_since = null, $type = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\CalendarEvent[]';
-    $request = $this->getCalendarEventsRequest($if_modified_since, $event_type, $per_page, $page);
+    $request = $this->getCalendarEventsRequest($if_modified_since, $type, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -7796,14 +8489,14 @@ class AssemblyApi
    * Create request for operation 'getCalendarEvents'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $event_type Filter by a calendar object type from the underlying MIS (optional)
+   * @param  string $type Filter by assessment point type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getCalendarEventsRequest($if_modified_since = null, $event_type = null, $per_page = '100', $page = '1')
+  protected function getCalendarEventsRequest($if_modified_since = null, $type = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getCalendarEvents, must be smaller than or equal to 1500.');
@@ -7825,8 +8518,8 @@ class AssemblyApi
     $multipart = false;
 
     // query params
-    if ($event_type !== null) {
-      $queryParams['event_type'] = ObjectSerializer::toQueryValue($event_type);
+    if ($type !== null) {
+      $queryParams['type'] = ObjectSerializer::toQueryValue($type);
     }
     // query params
     if ($per_page !== null) {
@@ -7841,6 +8534,340 @@ class AssemblyApi
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
     }
 
+
+    // body params
+    $_tempBody = null;
+
+    if ($multipart) {
+      $headers = $this->headerSelector->selectHeadersForMultipart(
+        ['application/vnd.assembly+json; version=1.1']
+      );
+    } else {
+      $headers = $this->headerSelector->selectHeaders(
+        ['application/vnd.assembly+json; version=1.1'],
+        []
+      );
+    }
+
+    // for model (json/xml)
+    if (isset($_tempBody)) {
+      // $_tempBody is the method argument, if present
+      $httpBody = $_tempBody;
+      // \stdClass has no __toString(), so we should encode it manually
+      if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($httpBody);
+      }
+    } elseif (count($formParams) > 0) {
+      if ($multipart) {
+        $multipartContents = [];
+        foreach ($formParams as $formParamName => $formParamValue) {
+          $multipartContents[] = [
+            'name' => $formParamName,
+            'contents' => $formParamValue
+          ];
+        }
+        // for HTTP post (form)
+        $httpBody = new MultipartStream($multipartContents);
+
+      } elseif ($headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($formParams);
+
+      } else {
+        // for HTTP post (form)
+        $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+      }
+    }
+
+    // this endpoint requires OAuth (access token)
+    if ($this->config->getAccessToken() !== null) {
+      $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+    }
+
+    $defaultHeaders = [];
+    if ($this->config->getUserAgent()) {
+      $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+    }
+
+    $headers = array_merge(
+      $defaultHeaders,
+      $headerParams,
+      $headers
+    );
+
+    $query = \GuzzleHttp\Psr7\build_query($queryParams);
+    return new Request(
+      'GET',
+      $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+      $headers,
+      $httpBody
+    );
+  }
+
+  /**
+   * Operation getClosures
+   *
+   * List Closures For a Room
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return \Assembly\Client\Model\Closure[]
+   */
+  public function getClosures($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    list($response) = $this->getClosuresWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date);
+    return $response;
+  }
+
+  /**
+   * Operation getClosuresWithHttpInfo
+   *
+   * List Closures For a Room
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return array of \Assembly\Client\Model\Closure[], HTTP status code, HTTP response headers (array of strings)
+   */
+  public function getClosuresWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    $returnType = '\Assembly\Client\Model\Closure[]';
+    $request = $this->getClosuresRequest($id, $if_modified_since, $date, $start_date, $end_date);
+
+    try {
+      $options = $this->createHttpClientOption();
+      try {
+        $response = $this->client->send($request, $options);
+      } catch (RequestException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+        );
+      }
+
+      $statusCode = $response->getStatusCode();
+
+      if ($statusCode < 200 || $statusCode > 299) {
+        throw new ApiException(
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          $response->getBody()
+        );
+      }
+
+      $responseBody = $response->getBody();
+      if ($returnType === '\SplFileObject') {
+        $content = $responseBody; //stream goes to serializer
+      } else {
+        $content = $responseBody->getContents();
+        if ($returnType !== 'string') {
+          $content = json_decode($content);
+        }
+      }
+
+      return [
+        ObjectSerializer::deserialize($content, $returnType, []),
+        $response->getStatusCode(),
+        $response->getHeaders()
+      ];
+
+    } catch (ApiException $e) {
+      switch ($e->getCode()) {
+        case 200:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\Closure[]',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+      }
+      throw $e;
+    }
+  }
+
+  /**
+   * Operation getClosuresAsync
+   *
+   * List Closures For a Room
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function getClosuresAsync($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    return $this->getClosuresAsyncWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date)
+      ->then(
+        function ($response) {
+          return $response[0];
+        }
+      );
+  }
+
+  /**
+   * Operation getClosuresAsyncWithHttpInfo
+   *
+   * List Closures For a Room
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function getClosuresAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    $returnType = '\Assembly\Client\Model\Closure[]';
+    $request = $this->getClosuresRequest($id, $if_modified_since, $date, $start_date, $end_date);
+
+    return $this->client
+      ->sendAsync($request, $this->createHttpClientOption())
+      ->then(
+        function ($response) use ($returnType) {
+          $responseBody = $response->getBody();
+          if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+          } else {
+            $content = $responseBody->getContents();
+            if ($returnType !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        },
+        function ($exception) {
+          $response = $exception->getResponse();
+          $statusCode = $response->getStatusCode();
+          throw new ApiException(
+            sprintf(
+              '[%d] Error connecting to the API (%s)',
+              $statusCode,
+              $exception->getRequest()->getUri()
+            ),
+            $statusCode,
+            $response->getHeaders(),
+            $response->getBody()
+          );
+        }
+      );
+  }
+
+  /**
+   * Create request for operation 'getClosures'
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Psr7\Request
+   */
+  protected function getClosuresRequest($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    // verify the required parameter 'id' is set
+    if ($id === null || (is_array($id) && count($id) === 0)) {
+      throw new \InvalidArgumentException(
+        'Missing the required parameter $id when calling getClosures'
+      );
+    }
+
+    $resourcePath = '/rooms/{id}/closures';
+    $formParams = [];
+    $queryParams = [];
+    $headerParams = [];
+    $httpBody = '';
+    $multipart = false;
+
+    // query params
+    if ($date !== null) {
+      $queryParams['date'] = ObjectSerializer::toQueryValue($date);
+    }
+    // query params
+    if ($start_date !== null) {
+      $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
+    }
+    // query params
+    if ($end_date !== null) {
+      $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+    }
+    // header params
+    if ($if_modified_since !== null) {
+      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+
+    // path params
+    if ($id !== null) {
+      $resourcePath = str_replace(
+        '{' . 'id' . '}',
+        ObjectSerializer::toPathValue($id),
+        $resourcePath
+      );
+    }
 
     // body params
     $_tempBody = null;
@@ -10416,6 +11443,340 @@ class AssemblyApi
   }
 
   /**
+   * Operation getLessons
+   *
+   * List Lessons For a Room
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return \Assembly\Client\Model\Lesson[]
+   */
+  public function getLessons($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    list($response) = $this->getLessonsWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date);
+    return $response;
+  }
+
+  /**
+   * Operation getLessonsWithHttpInfo
+   *
+   * List Lessons For a Room
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return array of \Assembly\Client\Model\Lesson[], HTTP status code, HTTP response headers (array of strings)
+   */
+  public function getLessonsWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    $returnType = '\Assembly\Client\Model\Lesson[]';
+    $request = $this->getLessonsRequest($id, $if_modified_since, $date, $start_date, $end_date);
+
+    try {
+      $options = $this->createHttpClientOption();
+      try {
+        $response = $this->client->send($request, $options);
+      } catch (RequestException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+        );
+      }
+
+      $statusCode = $response->getStatusCode();
+
+      if ($statusCode < 200 || $statusCode > 299) {
+        throw new ApiException(
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          $response->getBody()
+        );
+      }
+
+      $responseBody = $response->getBody();
+      if ($returnType === '\SplFileObject') {
+        $content = $responseBody; //stream goes to serializer
+      } else {
+        $content = $responseBody->getContents();
+        if ($returnType !== 'string') {
+          $content = json_decode($content);
+        }
+      }
+
+      return [
+        ObjectSerializer::deserialize($content, $returnType, []),
+        $response->getStatusCode(),
+        $response->getHeaders()
+      ];
+
+    } catch (ApiException $e) {
+      switch ($e->getCode()) {
+        case 200:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\Lesson[]',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+      }
+      throw $e;
+    }
+  }
+
+  /**
+   * Operation getLessonsAsync
+   *
+   * List Lessons For a Room
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function getLessonsAsync($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    return $this->getLessonsAsyncWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date)
+      ->then(
+        function ($response) {
+          return $response[0];
+        }
+      );
+  }
+
+  /**
+   * Operation getLessonsAsyncWithHttpInfo
+   *
+   * List Lessons For a Room
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function getLessonsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    $returnType = '\Assembly\Client\Model\Lesson[]';
+    $request = $this->getLessonsRequest($id, $if_modified_since, $date, $start_date, $end_date);
+
+    return $this->client
+      ->sendAsync($request, $this->createHttpClientOption())
+      ->then(
+        function ($response) use ($returnType) {
+          $responseBody = $response->getBody();
+          if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+          } else {
+            $content = $responseBody->getContents();
+            if ($returnType !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        },
+        function ($exception) {
+          $response = $exception->getResponse();
+          $statusCode = $response->getStatusCode();
+          throw new ApiException(
+            sprintf(
+              '[%d] Error connecting to the API (%s)',
+              $statusCode,
+              $exception->getRequest()->getUri()
+            ),
+            $statusCode,
+            $response->getHeaders(),
+            $response->getBody()
+          );
+        }
+      );
+  }
+
+  /**
+   * Create request for operation 'getLessons'
+   *
+   * @param  int $id Internal identifier of the entity (required)
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  string $start_date The start date of the period to filter by (optional)
+   * @param  string $end_date The end date of the period to filter by (optional)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Psr7\Request
+   */
+  protected function getLessonsRequest($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  {
+    // verify the required parameter 'id' is set
+    if ($id === null || (is_array($id) && count($id) === 0)) {
+      throw new \InvalidArgumentException(
+        'Missing the required parameter $id when calling getLessons'
+      );
+    }
+
+    $resourcePath = '/rooms/{id}/lessons';
+    $formParams = [];
+    $queryParams = [];
+    $headerParams = [];
+    $httpBody = '';
+    $multipart = false;
+
+    // query params
+    if ($date !== null) {
+      $queryParams['date'] = ObjectSerializer::toQueryValue($date);
+    }
+    // query params
+    if ($start_date !== null) {
+      $queryParams['start_date'] = ObjectSerializer::toQueryValue($start_date);
+    }
+    // query params
+    if ($end_date !== null) {
+      $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+    }
+    // header params
+    if ($if_modified_since !== null) {
+      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+
+    // path params
+    if ($id !== null) {
+      $resourcePath = str_replace(
+        '{' . 'id' . '}',
+        ObjectSerializer::toPathValue($id),
+        $resourcePath
+      );
+    }
+
+    // body params
+    $_tempBody = null;
+
+    if ($multipart) {
+      $headers = $this->headerSelector->selectHeadersForMultipart(
+        ['application/vnd.assembly+json; version=1.1']
+      );
+    } else {
+      $headers = $this->headerSelector->selectHeaders(
+        ['application/vnd.assembly+json; version=1.1'],
+        []
+      );
+    }
+
+    // for model (json/xml)
+    if (isset($_tempBody)) {
+      // $_tempBody is the method argument, if present
+      $httpBody = $_tempBody;
+      // \stdClass has no __toString(), so we should encode it manually
+      if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($httpBody);
+      }
+    } elseif (count($formParams) > 0) {
+      if ($multipart) {
+        $multipartContents = [];
+        foreach ($formParams as $formParamName => $formParamValue) {
+          $multipartContents[] = [
+            'name' => $formParamName,
+            'contents' => $formParamValue
+          ];
+        }
+        // for HTTP post (form)
+        $httpBody = new MultipartStream($multipartContents);
+
+      } elseif ($headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($formParams);
+
+      } else {
+        // for HTTP post (form)
+        $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+      }
+    }
+
+    // this endpoint requires OAuth (access token)
+    if ($this->config->getAccessToken() !== null) {
+      $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+    }
+
+    $defaultHeaders = [];
+    if ($this->config->getUserAgent()) {
+      $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+    }
+
+    $headers = array_merge(
+      $defaultHeaders,
+      $headerParams,
+      $headers
+    );
+
+    $query = \GuzzleHttp\Psr7\build_query($queryParams);
+    return new Request(
+      'GET',
+      $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+      $headers,
+      $httpBody
+    );
+  }
+
+  /**
    * Operation getMedicalConditions
    *
    * List Medical Conditions
@@ -10735,6 +12096,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -10745,9 +12107,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getRegistrationGroupStudents($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getRegistrationGroupStudents($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    list($response) = $this->getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    list($response) = $this->getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
     return $response;
   }
 
@@ -10763,6 +12125,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -10773,10 +12136,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
 
     try {
       $options = $this->createHttpClientOption();
@@ -10881,6 +12244,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -10890,9 +12254,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getRegistrationGroupStudentsAsync($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getRegistrationGroupStudentsAsync($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    return $this->getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
+    return $this->getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
       ->then(
         function ($response) {
           return $response[0];
@@ -10912,6 +12276,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -10921,10 +12286,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -10973,6 +12338,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -10982,7 +12348,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getRegistrationGroupStudentsRequest($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  protected function getRegistrationGroupStudentsRequest($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -11017,6 +12383,10 @@ class AssemblyApi
     // query params
     if ($sen_needs !== null) {
       $queryParams['sen_needs'] = ObjectSerializer::toQueryValue($sen_needs);
+    }
+    // query params
+    if ($emails !== null) {
+      $queryParams['emails'] = ObjectSerializer::toQueryValue($emails);
     }
     // query params
     if ($addresses !== null) {
@@ -11717,6 +13087,323 @@ class AssemblyApi
     if ($students !== null) {
       $queryParams['students[]'] = ObjectSerializer::toQueryValue($students);
     }
+    // query params
+    if ($per_page !== null) {
+      $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+    }
+    // query params
+    if ($page !== null) {
+      $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+    }
+    // header params
+    if ($if_modified_since !== null) {
+      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+
+
+    // body params
+    $_tempBody = null;
+
+    if ($multipart) {
+      $headers = $this->headerSelector->selectHeadersForMultipart(
+        ['application/vnd.assembly+json; version=1.1']
+      );
+    } else {
+      $headers = $this->headerSelector->selectHeaders(
+        ['application/vnd.assembly+json; version=1.1'],
+        []
+      );
+    }
+
+    // for model (json/xml)
+    if (isset($_tempBody)) {
+      // $_tempBody is the method argument, if present
+      $httpBody = $_tempBody;
+      // \stdClass has no __toString(), so we should encode it manually
+      if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($httpBody);
+      }
+    } elseif (count($formParams) > 0) {
+      if ($multipart) {
+        $multipartContents = [];
+        foreach ($formParams as $formParamName => $formParamValue) {
+          $multipartContents[] = [
+            'name' => $formParamName,
+            'contents' => $formParamValue
+          ];
+        }
+        // for HTTP post (form)
+        $httpBody = new MultipartStream($multipartContents);
+
+      } elseif ($headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($formParams);
+
+      } else {
+        // for HTTP post (form)
+        $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+      }
+    }
+
+    // this endpoint requires OAuth (access token)
+    if ($this->config->getAccessToken() !== null) {
+      $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+    }
+
+    $defaultHeaders = [];
+    if ($this->config->getUserAgent()) {
+      $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+    }
+
+    $headers = array_merge(
+      $defaultHeaders,
+      $headerParams,
+      $headers
+    );
+
+    $query = \GuzzleHttp\Psr7\build_query($queryParams);
+    return new Request(
+      'GET',
+      $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+      $headers,
+      $httpBody
+    );
+  }
+
+  /**
+   * Operation getRooms
+   *
+   * List Rooms
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return \Assembly\Client\Model\Room[]
+   */
+  public function getRooms($if_modified_since = null, $per_page = '100', $page = '1')
+  {
+    list($response) = $this->getRoomsWithHttpInfo($if_modified_since, $per_page, $page);
+    return $response;
+  }
+
+  /**
+   * Operation getRoomsWithHttpInfo
+   *
+   * List Rooms
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return array of \Assembly\Client\Model\Room[], HTTP status code, HTTP response headers (array of strings)
+   */
+  public function getRoomsWithHttpInfo($if_modified_since = null, $per_page = '100', $page = '1')
+  {
+    $returnType = '\Assembly\Client\Model\Room[]';
+    $request = $this->getRoomsRequest($if_modified_since, $per_page, $page);
+
+    try {
+      $options = $this->createHttpClientOption();
+      try {
+        $response = $this->client->send($request, $options);
+      } catch (RequestException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+        );
+      }
+
+      $statusCode = $response->getStatusCode();
+
+      if ($statusCode < 200 || $statusCode > 299) {
+        throw new ApiException(
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          $response->getBody()
+        );
+      }
+
+      $responseBody = $response->getBody();
+      if ($returnType === '\SplFileObject') {
+        $content = $responseBody; //stream goes to serializer
+      } else {
+        $content = $responseBody->getContents();
+        if ($returnType !== 'string') {
+          $content = json_decode($content);
+        }
+      }
+
+      return [
+        ObjectSerializer::deserialize($content, $returnType, []),
+        $response->getStatusCode(),
+        $response->getHeaders()
+      ];
+
+    } catch (ApiException $e) {
+      switch ($e->getCode()) {
+        case 200:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\Room[]',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+      }
+      throw $e;
+    }
+  }
+
+  /**
+   * Operation getRoomsAsync
+   *
+   * List Rooms
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function getRoomsAsync($if_modified_since = null, $per_page = '100', $page = '1')
+  {
+    return $this->getRoomsAsyncWithHttpInfo($if_modified_since, $per_page, $page)
+      ->then(
+        function ($response) {
+          return $response[0];
+        }
+      );
+  }
+
+  /**
+   * Operation getRoomsAsyncWithHttpInfo
+   *
+   * List Rooms
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function getRoomsAsyncWithHttpInfo($if_modified_since = null, $per_page = '100', $page = '1')
+  {
+    $returnType = '\Assembly\Client\Model\Room[]';
+    $request = $this->getRoomsRequest($if_modified_since, $per_page, $page);
+
+    return $this->client
+      ->sendAsync($request, $this->createHttpClientOption())
+      ->then(
+        function ($response) use ($returnType) {
+          $responseBody = $response->getBody();
+          if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+          } else {
+            $content = $responseBody->getContents();
+            if ($returnType !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        },
+        function ($exception) {
+          $response = $exception->getResponse();
+          $statusCode = $response->getStatusCode();
+          throw new ApiException(
+            sprintf(
+              '[%d] Error connecting to the API (%s)',
+              $statusCode,
+              $exception->getRequest()->getUri()
+            ),
+            $statusCode,
+            $response->getHeaders(),
+            $response->getBody()
+          );
+        }
+      );
+  }
+
+  /**
+   * Create request for operation 'getRooms'
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Psr7\Request
+   */
+  protected function getRoomsRequest($if_modified_since = null, $per_page = '100', $page = '1')
+  {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getRooms, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getRooms, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getRooms, must be bigger than or equal to 1.');
+    }
+
+
+    $resourcePath = '/rooms';
+    $formParams = [];
+    $queryParams = [];
+    $headerParams = [];
+    $httpBody = '';
+    $multipart = false;
+
     // query params
     if ($per_page !== null) {
       $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
@@ -12843,6 +14530,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -12855,9 +14543,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getStudents($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getStudents($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getStudentsWithHttpInfo($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    list($response) = $this->getStudentsWithHttpInfo($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
     return $response;
   }
 
@@ -12873,6 +14561,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -12885,10 +14574,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getStudentsWithHttpInfo($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getStudentsWithHttpInfo($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getStudentsRequest($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    $request = $this->getStudentsRequest($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -12993,6 +14682,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -13004,9 +14694,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getStudentsAsync($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getStudentsAsync($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    return $this->getStudentsAsyncWithHttpInfo($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
+    return $this->getStudentsAsyncWithHttpInfo($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -13026,6 +14716,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -13037,10 +14728,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getStudentsAsyncWithHttpInfo($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getStudentsAsyncWithHttpInfo($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getStudentsRequest($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    $request = $this->getStudentsRequest($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -13089,6 +14780,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -13100,7 +14792,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getStudentsRequest($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  protected function getStudentsRequest($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getStudents, must be smaller than or equal to 1500.');
@@ -13147,6 +14839,10 @@ class AssemblyApi
     // query params
     if ($sen_needs !== null) {
       $queryParams['sen_needs'] = ObjectSerializer::toQueryValue($sen_needs);
+    }
+    // query params
+    if ($emails !== null) {
+      $queryParams['emails'] = ObjectSerializer::toQueryValue($emails);
     }
     // query params
     if ($addresses !== null) {
@@ -13571,6 +15267,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -13581,9 +15278,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getTeachingGroupStudents($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getTeachingGroupStudents($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    list($response) = $this->getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    list($response) = $this->getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
     return $response;
   }
 
@@ -13600,6 +15297,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -13610,10 +15308,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
 
     try {
       $options = $this->createHttpClientOption();
@@ -13719,6 +15417,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -13728,9 +15427,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getTeachingGroupStudentsAsync($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getTeachingGroupStudentsAsync($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    return $this->getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
+    return $this->getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
       ->then(
         function ($response) {
           return $response[0];
@@ -13751,6 +15450,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -13760,10 +15460,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -13813,6 +15513,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -13822,7 +15523,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getTeachingGroupStudentsRequest($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  protected function getTeachingGroupStudentsRequest($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -13861,6 +15562,10 @@ class AssemblyApi
     // query params
     if ($sen_needs !== null) {
       $queryParams['sen_needs'] = ObjectSerializer::toQueryValue($sen_needs);
+    }
+    // query params
+    if ($emails !== null) {
+      $queryParams['emails'] = ObjectSerializer::toQueryValue($emails);
     }
     // query params
     if ($addresses !== null) {
@@ -14318,6 +16023,323 @@ class AssemblyApi
   }
 
   /**
+   * Operation getTimetables
+   *
+   * List Timetables
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return \Assembly\Client\Model\Timetable[]
+   */
+  public function getTimetables($if_modified_since = null, $per_page = '100', $page = '1')
+  {
+    list($response) = $this->getTimetablesWithHttpInfo($if_modified_since, $per_page, $page);
+    return $response;
+  }
+
+  /**
+   * Operation getTimetablesWithHttpInfo
+   *
+   * List Timetables
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return array of \Assembly\Client\Model\Timetable[], HTTP status code, HTTP response headers (array of strings)
+   */
+  public function getTimetablesWithHttpInfo($if_modified_since = null, $per_page = '100', $page = '1')
+  {
+    $returnType = '\Assembly\Client\Model\Timetable[]';
+    $request = $this->getTimetablesRequest($if_modified_since, $per_page, $page);
+
+    try {
+      $options = $this->createHttpClientOption();
+      try {
+        $response = $this->client->send($request, $options);
+      } catch (RequestException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+        );
+      }
+
+      $statusCode = $response->getStatusCode();
+
+      if ($statusCode < 200 || $statusCode > 299) {
+        throw new ApiException(
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          $response->getBody()
+        );
+      }
+
+      $responseBody = $response->getBody();
+      if ($returnType === '\SplFileObject') {
+        $content = $responseBody; //stream goes to serializer
+      } else {
+        $content = $responseBody->getContents();
+        if ($returnType !== 'string') {
+          $content = json_decode($content);
+        }
+      }
+
+      return [
+        ObjectSerializer::deserialize($content, $returnType, []),
+        $response->getStatusCode(),
+        $response->getHeaders()
+      ];
+
+    } catch (ApiException $e) {
+      switch ($e->getCode()) {
+        case 200:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\Timetable[]',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+      }
+      throw $e;
+    }
+  }
+
+  /**
+   * Operation getTimetablesAsync
+   *
+   * List Timetables
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function getTimetablesAsync($if_modified_since = null, $per_page = '100', $page = '1')
+  {
+    return $this->getTimetablesAsyncWithHttpInfo($if_modified_since, $per_page, $page)
+      ->then(
+        function ($response) {
+          return $response[0];
+        }
+      );
+  }
+
+  /**
+   * Operation getTimetablesAsyncWithHttpInfo
+   *
+   * List Timetables
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function getTimetablesAsyncWithHttpInfo($if_modified_since = null, $per_page = '100', $page = '1')
+  {
+    $returnType = '\Assembly\Client\Model\Timetable[]';
+    $request = $this->getTimetablesRequest($if_modified_since, $per_page, $page);
+
+    return $this->client
+      ->sendAsync($request, $this->createHttpClientOption())
+      ->then(
+        function ($response) use ($returnType) {
+          $responseBody = $response->getBody();
+          if ($returnType === '\SplFileObject') {
+            $content = $responseBody; //stream goes to serializer
+          } else {
+            $content = $responseBody->getContents();
+            if ($returnType !== 'string') {
+              $content = json_decode($content);
+            }
+          }
+
+          return [
+            ObjectSerializer::deserialize($content, $returnType, []),
+            $response->getStatusCode(),
+            $response->getHeaders()
+          ];
+        },
+        function ($exception) {
+          $response = $exception->getResponse();
+          $statusCode = $response->getStatusCode();
+          throw new ApiException(
+            sprintf(
+              '[%d] Error connecting to the API (%s)',
+              $statusCode,
+              $exception->getRequest()->getUri()
+            ),
+            $statusCode,
+            $response->getHeaders(),
+            $response->getBody()
+          );
+        }
+      );
+  }
+
+  /**
+   * Create request for operation 'getTimetables'
+   *
+   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Psr7\Request
+   */
+  protected function getTimetablesRequest($if_modified_since = null, $per_page = '100', $page = '1')
+  {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getTimetables, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getTimetables, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getTimetables, must be bigger than or equal to 1.');
+    }
+
+
+    $resourcePath = '/timetables';
+    $formParams = [];
+    $queryParams = [];
+    $headerParams = [];
+    $httpBody = '';
+    $multipart = false;
+
+    // query params
+    if ($per_page !== null) {
+      $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+    }
+    // query params
+    if ($page !== null) {
+      $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+    }
+    // header params
+    if ($if_modified_since !== null) {
+      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+
+
+    // body params
+    $_tempBody = null;
+
+    if ($multipart) {
+      $headers = $this->headerSelector->selectHeadersForMultipart(
+        ['application/vnd.assembly+json; version=1.1']
+      );
+    } else {
+      $headers = $this->headerSelector->selectHeaders(
+        ['application/vnd.assembly+json; version=1.1'],
+        []
+      );
+    }
+
+    // for model (json/xml)
+    if (isset($_tempBody)) {
+      // $_tempBody is the method argument, if present
+      $httpBody = $_tempBody;
+      // \stdClass has no __toString(), so we should encode it manually
+      if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($httpBody);
+      }
+    } elseif (count($formParams) > 0) {
+      if ($multipart) {
+        $multipartContents = [];
+        foreach ($formParams as $formParamName => $formParamValue) {
+          $multipartContents[] = [
+            'name' => $formParamName,
+            'contents' => $formParamValue
+          ];
+        }
+        // for HTTP post (form)
+        $httpBody = new MultipartStream($multipartContents);
+
+      } elseif ($headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($formParams);
+
+      } else {
+        // for HTTP post (form)
+        $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+      }
+    }
+
+    // this endpoint requires OAuth (access token)
+    if ($this->config->getAccessToken() !== null) {
+      $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+    }
+
+    $defaultHeaders = [];
+    if ($this->config->getUserAgent()) {
+      $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+    }
+
+    $headers = array_merge(
+      $defaultHeaders,
+      $headerParams,
+      $headers
+    );
+
+    $query = \GuzzleHttp\Psr7\build_query($queryParams);
+    return new Request(
+      'GET',
+      $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+      $headers,
+      $httpBody
+    );
+  }
+
+  /**
    * Operation getYearGroupStudents
    *
    * List Students for Year Group
@@ -14328,6 +16350,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -14338,9 +16361,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getYearGroupStudents($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getYearGroupStudents($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    list($response) = $this->getYearGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    list($response) = $this->getYearGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
     return $response;
   }
 
@@ -14355,6 +16378,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -14365,10 +16389,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getYearGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getYearGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
 
     try {
       $options = $this->createHttpClientOption();
@@ -14472,6 +16496,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -14481,9 +16506,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getYearGroupStudentsAsync($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getYearGroupStudentsAsync($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    return $this->getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
+    return $this->getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
       ->then(
         function ($response) {
           return $response[0];
@@ -14502,6 +16527,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -14511,10 +16537,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -14562,6 +16588,7 @@ class AssemblyApi
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails translation missing: en.api.params.query.emails (optional)
    * @param  bool $addresses Include student address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
@@ -14571,7 +16598,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getYearGroupStudentsRequest($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  protected function getYearGroupStudentsRequest($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -14602,6 +16629,10 @@ class AssemblyApi
     // query params
     if ($sen_needs !== null) {
       $queryParams['sen_needs'] = ObjectSerializer::toQueryValue($sen_needs);
+    }
+    // query params
+    if ($emails !== null) {
+      $queryParams['emails'] = ObjectSerializer::toQueryValue($emails);
     }
     // query params
     if ($addresses !== null) {

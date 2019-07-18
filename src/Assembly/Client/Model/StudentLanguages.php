@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -45,6 +45,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'home_language_code' => 'string',
     'home_language_name' => 'string',
     'first_language_code' => 'string',
@@ -59,6 +60,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'home_language_code' => null,
     'home_language_name' => null,
     'first_language_code' => null,
@@ -94,6 +96,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'home_language_code' => 'home_language_code',
     'home_language_name' => 'home_language_name',
     'first_language_code' => 'first_language_code',
@@ -108,6 +111,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'home_language_code' => 'setHomeLanguageCode',
     'home_language_name' => 'setHomeLanguageName',
     'first_language_code' => 'setFirstLanguageCode',
@@ -122,6 +126,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'home_language_code' => 'getHomeLanguageCode',
     'home_language_name' => 'getHomeLanguageName',
     'first_language_code' => 'getFirstLanguageCode',
@@ -190,6 +195,7 @@ class StudentLanguages implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'student_languages';
     $this->container['home_language_code'] = isset($data['home_language_code']) ? $data['home_language_code'] : null;
     $this->container['home_language_name'] = isset($data['home_language_name']) ? $data['home_language_name'] : null;
     $this->container['first_language_code'] = isset($data['first_language_code']) ? $data['first_language_code'] : null;
@@ -222,6 +228,30 @@ class StudentLanguages implements ModelInterface, ArrayAccess
     return true;
   }
 
+
+  /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
 
   /**
    * Gets home_language_code

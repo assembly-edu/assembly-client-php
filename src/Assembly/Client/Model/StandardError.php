@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -23,7 +23,7 @@ use \Assembly\Client\ObjectSerializer;
  * StandardError Class Doc Comment
  *
  * @category Class
- * @description Error object. All propertires are optional, though typically an instance of this will have a concise &#x60;error&#x60; message and a &#x60;message&#x60; string with more detail
+ * @description Error object. All properties are optional, though typically an instance of this will have a concise &#x60;error&#x60; message and a &#x60;message&#x60; string with more detail
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php

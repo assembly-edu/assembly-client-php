@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -17,16 +17,16 @@
 namespace Assembly\Client;
 
 /**
- * CalendarEventMisTypeTest Class Doc Comment
+ * TimetableTest Class Doc Comment
  *
  * @category    Class */
-// * @description Details the type of event - whether it is a regular calendar event, a staff meeting or inset day
+// * @description A timetable
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
  * @link        https://github.com/assembly-edu/assembly-client-php
  */
-class CalendarEventMisTypeTest extends \PHPUnit_Framework_TestCase
+class TimetableTest extends \PHPUnit_Framework_TestCase
 {
 
   /**
@@ -58,9 +58,23 @@ class CalendarEventMisTypeTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test "CalendarEventMisType"
+   * Test "Timetable"
    */
-  public function testCalendarEventMisType()
+  public function testTimetable()
+  {
+  }
+
+  /**
+   * Test attribute "object"
+   */
+  public function testPropertyObject()
+  {
+  }
+
+  /**
+   * Test attribute "id"
+   */
+  public function testPropertyId()
   {
   }
 
@@ -75,6 +89,41 @@ class CalendarEventMisTypeTest extends \PHPUnit_Framework_TestCase
    * Test attribute "description"
    */
   public function testPropertyDescription()
+  {
+  }
+
+  /**
+   * Test attribute "start_date"
+   */
+  public function testPropertyStartDate()
+  {
+  }
+
+  /**
+   * Test attribute "end_date"
+   */
+  public function testPropertyEndDate()
+  {
+  }
+
+  /**
+   * Test attribute "days_per_week"
+   */
+  public function testPropertyDaysPerWeek()
+  {
+  }
+
+  /**
+   * Test attribute "periods_per_day"
+   */
+  public function testPropertyPeriodsPerDay()
+  {
+  }
+
+  /**
+   * Test attribute "days"
+   */
+  public function testPropertyDays()
   {
   }
 }

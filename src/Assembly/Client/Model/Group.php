@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -50,6 +50,7 @@ class Group implements ModelInterface, ArrayAccess
     'name' => 'string',
     'code' => 'string',
     'type' => 'string',
+    'mis_subject' => '\Assembly\Client\Model\GroupMisSubject',
     'start_date' => '\DateTime',
     'end_date' => '\DateTime',
     'supervisors' => '\Assembly\Client\Model\Supervisor[]',
@@ -67,6 +68,7 @@ class Group implements ModelInterface, ArrayAccess
     'name' => null,
     'code' => null,
     'type' => null,
+    'mis_subject' => null,
     'start_date' => 'date-time',
     'end_date' => 'date-time',
     'supervisors' => null,
@@ -105,6 +107,7 @@ class Group implements ModelInterface, ArrayAccess
     'name' => 'name',
     'code' => 'code',
     'type' => 'type',
+    'mis_subject' => 'mis_subject',
     'start_date' => 'start_date',
     'end_date' => 'end_date',
     'supervisors' => 'supervisors',
@@ -122,6 +125,7 @@ class Group implements ModelInterface, ArrayAccess
     'name' => 'setName',
     'code' => 'setCode',
     'type' => 'setType',
+    'mis_subject' => 'setMisSubject',
     'start_date' => 'setStartDate',
     'end_date' => 'setEndDate',
     'supervisors' => 'setSupervisors',
@@ -139,6 +143,7 @@ class Group implements ModelInterface, ArrayAccess
     'name' => 'getName',
     'code' => 'getCode',
     'type' => 'getType',
+    'mis_subject' => 'getMisSubject',
     'start_date' => 'getStartDate',
     'end_date' => 'getEndDate',
     'supervisors' => 'getSupervisors',
@@ -189,6 +194,8 @@ class Group implements ModelInterface, ArrayAccess
   const TYPE_YEAR_GROUP = 'YearGroup';
   const TYPE_TEACHING_GROUP = 'TeachingGroup';
   const TYPE_REGISTRATION_GROUP = 'RegistrationGroup';
+  const TYPE_HOUSE_GROUP = 'HouseGroup';
+  const TYPE_NON_TEACHING_GROUP = 'NonTeachingGroup';
   
 
   
@@ -203,6 +210,8 @@ class Group implements ModelInterface, ArrayAccess
       self::TYPE_YEAR_GROUP,
       self::TYPE_TEACHING_GROUP,
       self::TYPE_REGISTRATION_GROUP,
+      self::TYPE_HOUSE_GROUP,
+      self::TYPE_NON_TEACHING_GROUP,
     ];
   }
   
@@ -227,6 +236,7 @@ class Group implements ModelInterface, ArrayAccess
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['code'] = isset($data['code']) ? $data['code'] : null;
     $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+    $this->container['mis_subject'] = isset($data['mis_subject']) ? $data['mis_subject'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
     $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
     $this->container['supervisors'] = isset($data['supervisors']) ? $data['supervisors'] : null;
@@ -395,6 +405,30 @@ class Group implements ModelInterface, ArrayAccess
       );
     }
     $this->container['type'] = $type;
+
+    return $this;
+  }
+
+  /**
+   * Gets mis_subject
+   *
+   * @return \Assembly\Client\Model\GroupMisSubject
+   */
+  public function getMisSubject()
+  {
+    return $this->container['mis_subject'];
+  }
+
+  /**
+   * Sets mis_subject
+   *
+   * @param \Assembly\Client\Model\GroupMisSubject $mis_subject mis_subject
+   *
+   * @return $this
+   */
+  public function setMisSubject($mis_subject)
+  {
+    $this->container['mis_subject'] = $mis_subject;
 
     return $this;
   }

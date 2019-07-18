@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -180,6 +180,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
+   * Test case for findRoom
+   *
+   * View a Room.
+   *
+   */
+  public function testFindRoom()
+  {
+  }
+
+  /**
    * Test case for findSchool
    *
    * View School Details.
@@ -216,6 +226,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
    *
    */
   public function testFindTeachingGroup()
+  {
+  }
+
+  /**
+   * Test case for findTimetable
+   *
+   * View a Timetable.
+   *
+   */
+  public function testFindTimetable()
   {
   }
 
@@ -310,6 +330,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
+   * Test case for getClosures
+   *
+   * List Closures For a Room.
+   *
+   */
+  public function testGetClosures()
+  {
+  }
+
+  /**
    * Test case for getContacts
    *
    * List Contacts.
@@ -390,6 +420,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
+   * Test case for getLessons
+   *
+   * List Lessons For a Room.
+   *
+   */
+  public function testGetLessons()
+  {
+  }
+
+  /**
    * Test case for getMedicalConditions
    *
    * List Medical Conditions.
@@ -426,6 +466,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
    *
    */
   public function testGetResults()
+  {
+  }
+
+  /**
+   * Test case for getRooms
+   *
+   * List Rooms.
+   *
+   */
+  public function testGetRooms()
   {
   }
 
@@ -496,6 +546,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
    *
    */
   public function testGetTeachingGroups()
+  {
+  }
+
+  /**
+   * Test case for getTimetables
+   *
+   * List Timetables.
+   *
+   */
+  public function testGetTimetables()
   {
   }
 

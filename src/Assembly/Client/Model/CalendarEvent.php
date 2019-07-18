@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -47,13 +47,11 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   protected static $swaggerTypes = [
     'object' => 'string',
     'id' => 'int',
+    'type' => 'string',
     'name' => 'string',
     'description' => 'string',
     'start_date' => '\DateTime',
-    'end_date' => '\DateTime',
-    'is_active' => 'bool',
-    'is_recurrent' => 'bool',
-    'mis_type' => '\Assembly\Client\Model\CalendarEventMisType'
+    'end_date' => '\DateTime'
   ];
 
   /**
@@ -64,13 +62,11 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   protected static $swaggerFormats = [
     'object' => null,
     'id' => 'int32',
+    'type' => null,
     'name' => null,
     'description' => null,
     'start_date' => 'date-time',
-    'end_date' => 'date-time',
-    'is_active' => null,
-    'is_recurrent' => null,
-    'mis_type' => null
+    'end_date' => 'date-time'
   ];
 
   /**
@@ -102,13 +98,11 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   protected static $attributeMap = [
     'object' => 'object',
     'id' => 'id',
+    'type' => 'type',
     'name' => 'name',
     'description' => 'description',
     'start_date' => 'start_date',
-    'end_date' => 'end_date',
-    'is_active' => 'is_active',
-    'is_recurrent' => 'is_recurrent',
-    'mis_type' => 'mis_type'
+    'end_date' => 'end_date'
   ];
 
   /**
@@ -119,13 +113,11 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   protected static $setters = [
     'object' => 'setObject',
     'id' => 'setId',
+    'type' => 'setType',
     'name' => 'setName',
     'description' => 'setDescription',
     'start_date' => 'setStartDate',
-    'end_date' => 'setEndDate',
-    'is_active' => 'setIsActive',
-    'is_recurrent' => 'setIsRecurrent',
-    'mis_type' => 'setMisType'
+    'end_date' => 'setEndDate'
   ];
 
   /**
@@ -136,13 +128,11 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   protected static $getters = [
     'object' => 'getObject',
     'id' => 'getId',
+    'type' => 'getType',
     'name' => 'getName',
     'description' => 'getDescription',
     'start_date' => 'getStartDate',
-    'end_date' => 'getEndDate',
-    'is_active' => 'getIsActive',
-    'is_recurrent' => 'getIsRecurrent',
-    'mis_type' => 'getMisType'
+    'end_date' => 'getEndDate'
   ];
 
   /**
@@ -186,8 +176,27 @@ class CalendarEvent implements ModelInterface, ArrayAccess
     return self::$swaggerModelName;
   }
 
+  const TYPE_EVENT = 'Event';
+  const TYPE_MEETING = 'Meeting';
+  const TYPE_INSET = 'Inset';
+  const TYPE_HOLIDAY = 'Holiday';
   
 
+  
+  /**
+   * Gets allowable values of the enum
+   *
+   * @return string[]
+   */
+  public function getTypeAllowableValues()
+  {
+    return [
+      self::TYPE_EVENT,
+      self::TYPE_MEETING,
+      self::TYPE_INSET,
+      self::TYPE_HOLIDAY,
+    ];
+  }
   
 
   /**
@@ -207,13 +216,11 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   {
     $this->container['object'] = isset($data['object']) ? $data['object'] : 'calendar_event';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+    $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['description'] = isset($data['description']) ? $data['description'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
     $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
-    $this->container['is_active'] = isset($data['is_active']) ? $data['is_active'] : null;
-    $this->container['is_recurrent'] = isset($data['is_recurrent']) ? $data['is_recurrent'] : null;
-    $this->container['mis_type'] = isset($data['mis_type']) ? $data['mis_type'] : null;
   }
 
   /**
@@ -224,6 +231,14 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   public function listInvalidProperties()
   {
     $invalidProperties = [];
+
+    $allowedValues = $this->getTypeAllowableValues();
+    if (!in_array($this->container['type'], $allowedValues)) {
+      $invalidProperties[] = sprintf(
+        "invalid value for 'type', must be one of '%s'",
+        implode("', '", $allowedValues)
+      );
+    }
 
     return $invalidProperties;
   }
@@ -237,6 +252,10 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   public function valid()
   {
 
+    $allowedValues = $this->getTypeAllowableValues();
+    if (!in_array($this->container['type'], $allowedValues)) {
+      return false;
+    }
     return true;
   }
 
@@ -285,6 +304,39 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   public function setId($id)
   {
     $this->container['id'] = $id;
+
+    return $this;
+  }
+
+  /**
+   * Gets type
+   *
+   * @return string
+   */
+  public function getType()
+  {
+    return $this->container['type'];
+  }
+
+  /**
+   * Sets type
+   *
+   * @param string $type The type of the event
+   *
+   * @return $this
+   */
+  public function setType($type)
+  {
+    $allowedValues = $this->getTypeAllowableValues();
+    if (!is_null($type) && !in_array($type, $allowedValues)) {
+      throw new \InvalidArgumentException(
+        sprintf(
+          "Invalid value for 'type', must be one of '%s'",
+          implode("', '", $allowedValues)
+        )
+      );
+    }
+    $this->container['type'] = $type;
 
     return $this;
   }
@@ -381,78 +433,6 @@ class CalendarEvent implements ModelInterface, ArrayAccess
   public function setEndDate($end_date)
   {
     $this->container['end_date'] = $end_date;
-
-    return $this;
-  }
-
-  /**
-   * Gets is_active
-   *
-   * @return bool
-   */
-  public function getIsActive()
-  {
-    return $this->container['is_active'];
-  }
-
-  /**
-   * Sets is_active
-   *
-   * @param bool $is_active Whether the event is active or not
-   *
-   * @return $this
-   */
-  public function setIsActive($is_active)
-  {
-    $this->container['is_active'] = $is_active;
-
-    return $this;
-  }
-
-  /**
-   * Gets is_recurrent
-   *
-   * @return bool
-   */
-  public function getIsRecurrent()
-  {
-    return $this->container['is_recurrent'];
-  }
-
-  /**
-   * Sets is_recurrent
-   *
-   * @param bool $is_recurrent Whether the event recurs and (soon) details of recurrences
-   *
-   * @return $this
-   */
-  public function setIsRecurrent($is_recurrent)
-  {
-    $this->container['is_recurrent'] = $is_recurrent;
-
-    return $this;
-  }
-
-  /**
-   * Gets mis_type
-   *
-   * @return \Assembly\Client\Model\CalendarEventMisType
-   */
-  public function getMisType()
-  {
-    return $this->container['mis_type'];
-  }
-
-  /**
-   * Sets mis_type
-   *
-   * @param \Assembly\Client\Model\CalendarEventMisType $mis_type mis_type
-   *
-   * @return $this
-   */
-  public function setMisType($mis_type)
-  {
-    $this->container['mis_type'] = $mis_type;
 
     return $this;
   }

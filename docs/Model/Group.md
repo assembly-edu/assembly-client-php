@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **name** | **string** | Name of the group | [optional] 
 **code** | **string** | The code of the year that the group belongs to | [optional] 
 **type** | **string** | The type of group | [optional] 
+**mis_subject** | [**\Assembly\Client\Model\GroupMisSubject**](GroupMisSubject.md) |  | [optional] 
 **start_date** | [**\DateTime**](\DateTime.md) | The start date of the group | [optional] 
 **end_date** | [**\DateTime**](\DateTime.md) | The end date of the group | [optional] 
 **supervisors** | [**\Assembly\Client\Model\Supervisor[]**](Supervisor.md) | The IDs of supervisors (staff members) associated with the group and their role | [optional] 

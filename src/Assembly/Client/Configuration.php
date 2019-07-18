@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -65,25 +65,18 @@ class Configuration
   protected $password = '';
 
   /**
-   * The sandBoxHost
+   * The oauth provider
    *
-   * @var string
+   * @var $provider
    */
-  protected $sandBoxHost = 'https://api-sandbox.assembly.education';
-
-  /**
-   * The productionHost
-   *
-   * @var string
-   */
-  protected $productionHost = 'https://api.assembly.education';
+  protected $povider;
 
   /**
    * User agent of the HTTP request, set to "PHP-Swagger" by default
    *
    * @var string
    */
-  protected $userAgent = '1.2.368/php';
+  protected $userAgent = '1.2.376/php';
 
   /**
    * Debug switch (default set to false)
@@ -109,9 +102,15 @@ class Configuration
   /**
    * Constructor
    */
-  public function __construct()
+  public function __construct(\Assembly\Client\Auth\AssemblyAuth $provider = null)
   {
     $this->tempFolderPath = sys_get_temp_dir();
+
+    if ($provider == null) {
+      throw new Exception('Provider required');
+    }
+
+    $this->provider = $provider;
   }
 
   /**
@@ -144,7 +143,7 @@ class Configuration
    */
   public function getHost()
   {
-    return ($this->useSandbox()) ? $this->sandboxHost : $this->productionHost;
+    return $this->provider->baseApiUrl();
   }
 
   /**
@@ -249,10 +248,10 @@ class Configuration
    *
    * @return Configuration
    */
-  public static function getDefaultConfiguration()
+  public static function getDefaultConfiguration(\Assembly\Client\Auth\AssemblyAuth $provider = null)
   {
     if (self::$defaultConfiguration === null) {
-      self::$defaultConfiguration = new Configuration();
+      self::$defaultConfiguration = new Configuration($provider);
     }
 
     return self::$defaultConfiguration;
@@ -281,14 +280,9 @@ class Configuration
     $report .= '    OS: ' . php_uname() . PHP_EOL;
     $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
     $report .= '    OpenAPI Spec Version: 1.1.0' . PHP_EOL;
-    $report .= '    SDK Package Version: 1.2.368' . PHP_EOL;
+    $report .= '    SDK Package Version: 1.2.376' . PHP_EOL;
     $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
 
     return $report;
-  }
-
-  private function useSandbox()
-  {
-    return ( env('ASSEMBLY_ENVIRONMENT' ) != "production" );
   }
 }

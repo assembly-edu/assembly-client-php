@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -20,7 +20,7 @@ namespace Assembly\Client;
  * BulkResultsBodyTest Class Doc Comment
  *
  * @category    Class */
-// * @description A collection of results to bulk update ont he Platform
+// * @description A collection of results to bulk update on the Platform
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team

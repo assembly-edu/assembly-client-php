@@ -16,10 +16,12 @@ Method | HTTP request | Description
 [**findGroup**](AssemblyApi.md#findGroup) | **GET** /groups/{id} | View a Group
 [**findMedicalCondition**](AssemblyApi.md#findMedicalCondition) | **GET** /school/medical_conditions/{id} | View a Medical Condition
 [**findRegistrationGroup**](AssemblyApi.md#findRegistrationGroup) | **GET** /registration_groups/{id} | View a Registration Group
+[**findRoom**](AssemblyApi.md#findRoom) | **GET** /rooms/{id} | View a Room
 [**findSchool**](AssemblyApi.md#findSchool) | **GET** /school | View School Details
 [**findStaffMember**](AssemblyApi.md#findStaffMember) | **GET** /staff_members/{id} | View a Staff Member
 [**findStudent**](AssemblyApi.md#findStudent) | **GET** /students/{id} | View a Student
 [**findTeachingGroup**](AssemblyApi.md#findTeachingGroup) | **GET** /teaching_groups/{id} | View a Teaching Group
+[**findTimetable**](AssemblyApi.md#findTimetable) | **GET** /timetables/{id} | View a Timetable
 [**findYearGroup**](AssemblyApi.md#findYearGroup) | **GET** /year_groups/{id} | View a Year Group
 [**getAcademicYears**](AssemblyApi.md#getAcademicYears) | **GET** /academic_years | List Academic Years
 [**getAssessmentPointResults**](AssemblyApi.md#getAssessmentPointResults) | **GET** /assessment_points/{assessment_point_rank}/results | View Results for an Assessment Point
@@ -29,6 +31,7 @@ Method | HTTP request | Description
 [**getAttendanceSummaries**](AssemblyApi.md#getAttendanceSummaries) | **GET** /attendances/summaries | List Attendance Summaries
 [**getAttendances**](AssemblyApi.md#getAttendances) | **GET** /attendances | List Attendances
 [**getCalendarEvents**](AssemblyApi.md#getCalendarEvents) | **GET** /calendar_events | List Calendar Events
+[**getClosures**](AssemblyApi.md#getClosures) | **GET** /rooms/{id}/closures | List Closures For a Room
 [**getContacts**](AssemblyApi.md#getContacts) | **GET** /contacts | List Contacts
 [**getDietaryNeeds**](AssemblyApi.md#getDietaryNeeds) | **GET** /school/dietary_needs | List Dietary Needs
 [**getExclusions**](AssemblyApi.md#getExclusions) | **GET** /exclusions | List Exclusions
@@ -37,10 +40,12 @@ Method | HTTP request | Description
 [**getGroups**](AssemblyApi.md#getGroups) | **GET** /groups | List Groups
 [**getLeftStaffMembers**](AssemblyApi.md#getLeftStaffMembers) | **GET** /staff_members/left | List Left Staff Members
 [**getLeftStudents**](AssemblyApi.md#getLeftStudents) | **GET** /students/left | List Left Students
+[**getLessons**](AssemblyApi.md#getLessons) | **GET** /rooms/{id}/lessons | List Lessons For a Room
 [**getMedicalConditions**](AssemblyApi.md#getMedicalConditions) | **GET** /school/medical_conditions | List Medical Conditions
 [**getRegistrationGroupStudents**](AssemblyApi.md#getRegistrationGroupStudents) | **GET** /registration_groups/{id}/students | List Students for Registration Group
 [**getRegistrationGroups**](AssemblyApi.md#getRegistrationGroups) | **GET** /registration_groups | List Registration Groups
 [**getResults**](AssemblyApi.md#getResults) | **GET** /results | List Results
+[**getRooms**](AssemblyApi.md#getRooms) | **GET** /rooms | List Rooms
 [**getStaffAbsences**](AssemblyApi.md#getStaffAbsences) | **GET** /staff_absences | List Staff Absences
 [**getStaffContracts**](AssemblyApi.md#getStaffContracts) | **GET** /staff_contracts | List Staff Contracts
 [**getStaffMembers**](AssemblyApi.md#getStaffMembers) | **GET** /staff_members | List Staff Members
@@ -48,6 +53,7 @@ Method | HTTP request | Description
 [**getSubjects**](AssemblyApi.md#getSubjects) | **GET** /subjects | List Subjects
 [**getTeachingGroupStudents**](AssemblyApi.md#getTeachingGroupStudents) | **GET** /teaching_groups/{id}/students | List Students for Teaching Group
 [**getTeachingGroups**](AssemblyApi.md#getTeachingGroups) | **GET** /teaching_groups | List Teaching Groups
+[**getTimetables**](AssemblyApi.md#getTimetables) | **GET** /timetables | List Timetables
 [**getYearGroupStudents**](AssemblyApi.md#getYearGroupStudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 [**getYearGroups**](AssemblyApi.md#getYearGroups) | **GET** /year_groups | List Year Groups
 [**status**](AssemblyApi.md#status) | **GET** /school/status | View School Sync Status
@@ -692,6 +698,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **findRoom**
+> \Assembly\Client\Model\Room findRoom($id, $if_modified_since, $date, $start_date, $end_date)
+
+View a Room
+
+Returns a single room for the school associated with the provided `access_token`
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: SchoolToken
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
+);
+$id = 56; // int | Internal identifier of the entity
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+$start_date = 'start_date_example'; // string | The start date of the period to filter by
+$end_date = 'end_date_example'; // string | The end date of the period to filter by
+
+try {
+  $result = $apiInstance->findRoom($id, $if_modified_since, $date, $start_date, $end_date);
+  print_r($result);
+} catch (Exception $e) {
+  echo 'Exception when calling AssemblyApi->findRoom: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Internal identifier of the entity |
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **start_date** | **string**| The start date of the period to filter by | [optional]
+ **end_date** | **string**| The end date of the period to filter by | [optional]
+
+### Return type
+
+[**\Assembly\Client\Model\Room**](../Model/Room.md)
+
+### Authorization
+
+[SchoolToken](../../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **findSchool**
 > \Assembly\Client\Model\School findSchool()
 
@@ -799,7 +866,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **findStudent**
-> \Assembly\Client\Model\Student findStudent($id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
+> \Assembly\Client\Model\Student findStudent($id, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
 
 View a Student
 
@@ -823,6 +890,7 @@ $id = 56; // int | Internal identifier of the entity
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
+$emails = True; // bool | translation missing: en.api.params.query.emails
 $addresses = True; // bool | Include student address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -830,7 +898,7 @@ $languages = True; // bool | Include student language data
 $photo = True; // bool | Include student photo data
 
 try {
-  $result = $apiInstance->findStudent($id, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+  $result = $apiInstance->findStudent($id, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->findStudent: ', $e->getMessage(), PHP_EOL;
@@ -846,6 +914,7 @@ Name | Type | Description  | Notes
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
+ **emails** | **bool**| translation missing: en.api.params.query.emails | [optional]
  **addresses** | **bool**| Include student address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -910,6 +979,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Assembly\Client\Model\TeachingGroup**](../Model/TeachingGroup.md)
+
+### Authorization
+
+[SchoolToken](../../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **findTimetable**
+> \Assembly\Client\Model\Timetable[] findTimetable($id, $if_modified_since, $date, $start_date, $end_date)
+
+View a Timetable
+
+Returns an individual timetable for the given ID.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: SchoolToken
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
+);
+$id = 56; // int | Internal identifier of the entity
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+$start_date = 'start_date_example'; // string | The start date of the period to filter by
+$end_date = 'end_date_example'; // string | The end date of the period to filter by
+
+try {
+  $result = $apiInstance->findTimetable($id, $if_modified_since, $date, $start_date, $end_date);
+  print_r($result);
+} catch (Exception $e) {
+  echo 'Exception when calling AssemblyApi->findTimetable: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Internal identifier of the entity |
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **start_date** | **string**| The start date of the period to filter by | [optional]
+ **end_date** | **string**| The end date of the period to filter by | [optional]
+
+### Return type
+
+[**\Assembly\Client\Model\Timetable[]**](../Model/Timetable.md)
 
 ### Authorization
 
@@ -1381,11 +1511,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCalendarEvents**
-> \Assembly\Client\Model\CalendarEvent[] getCalendarEvents($if_modified_since, $event_type, $per_page, $page)
+> \Assembly\Client\Model\CalendarEvent[] getCalendarEvents($if_modified_since, $type, $per_page, $page)
 
 List Calendar Events
 
-Returns a list of calendar events from the school calendar. We *strongly* recommend that you use an object type to filter the events that will be returned to you. Presently, with SIMS only support, we've exposed the raw types from the underlying MIS. As such, it's most likely that you'll mostly be interested in 'User' events. This category includes items such as staff meetings and school assembly times as you can see from the sample response below
+Returns a list of calendar events from the school calendar. This category includes items such as staff meetings and school assembly times as you can see from the sample response below
 
 ### Example
 ```php
@@ -1402,12 +1532,12 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
-$event_type = 'event_type_example'; // string | Filter by a calendar object type from the underlying MIS
+$type = 'type_example'; // string | Filter by assessment point type
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getCalendarEvents($if_modified_since, $event_type, $per_page, $page);
+  $result = $apiInstance->getCalendarEvents($if_modified_since, $type, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getCalendarEvents: ', $e->getMessage(), PHP_EOL;
@@ -1420,13 +1550,74 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
- **event_type** | **string**| Filter by a calendar object type from the underlying MIS | [optional]
+ **type** | **string**| Filter by assessment point type | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
 [**\Assembly\Client\Model\CalendarEvent[]**](../Model/CalendarEvent.md)
+
+### Authorization
+
+[SchoolToken](../../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getClosures**
+> \Assembly\Client\Model\Closure[] getClosures($id, $if_modified_since, $date, $start_date, $end_date)
+
+List Closures For a Room
+
+Returns a list of room closures for the school associated with the provided `access_token`.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: SchoolToken
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
+);
+$id = 56; // int | Internal identifier of the entity
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+$start_date = 'start_date_example'; // string | The start date of the period to filter by
+$end_date = 'end_date_example'; // string | The end date of the period to filter by
+
+try {
+  $result = $apiInstance->getClosures($id, $if_modified_since, $date, $start_date, $end_date);
+  print_r($result);
+} catch (Exception $e) {
+  echo 'Exception when calling AssemblyApi->getClosures: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Internal identifier of the entity |
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **start_date** | **string**| The start date of the period to filter by | [optional]
+ **end_date** | **string**| The end date of the period to filter by | [optional]
+
+### Return type
+
+[**\Assembly\Client\Model\Closure[]**](../Model/Closure.md)
 
 ### Authorization
 
@@ -1893,6 +2084,67 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getLessons**
+> \Assembly\Client\Model\Lesson[] getLessons($id, $if_modified_since, $date, $start_date, $end_date)
+
+List Lessons For a Room
+
+Returns a list of lessons in a room for the school associated with the provided `access_token`.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: SchoolToken
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
+);
+$id = 56; // int | Internal identifier of the entity
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+$start_date = 'start_date_example'; // string | The start date of the period to filter by
+$end_date = 'end_date_example'; // string | The end date of the period to filter by
+
+try {
+  $result = $apiInstance->getLessons($id, $if_modified_since, $date, $start_date, $end_date);
+  print_r($result);
+} catch (Exception $e) {
+  echo 'Exception when calling AssemblyApi->getLessons: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Internal identifier of the entity |
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **start_date** | **string**| The start date of the period to filter by | [optional]
+ **end_date** | **string**| The end date of the period to filter by | [optional]
+
+### Return type
+
+[**\Assembly\Client\Model\Lesson[]**](../Model/Lesson.md)
+
+### Authorization
+
+[SchoolToken](../../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getMedicalConditions**
 > \Assembly\Client\Model\MedicalCondition[] getMedicalConditions($per_page, $page)
 
@@ -1949,7 +2201,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationGroupStudents**
-> \Assembly\Client\Model\Student[] getRegistrationGroupStudents($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
+> \Assembly\Client\Model\Student[] getRegistrationGroupStudents($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
 
 List Students for Registration Group
 
@@ -1976,6 +2228,7 @@ $year_code = 56; // int | Filter by school year
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
+$emails = True; // bool | translation missing: en.api.params.query.emails
 $addresses = True; // bool | Include student address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -1983,7 +2236,7 @@ $languages = True; // bool | Include student language data
 $photo = True; // bool | Include student photo data
 
 try {
-  $result = $apiInstance->getRegistrationGroupStudents($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+  $result = $apiInstance->getRegistrationGroupStudents($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getRegistrationGroupStudents: ', $e->getMessage(), PHP_EOL;
@@ -2002,6 +2255,7 @@ Name | Type | Description  | Notes
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
+ **emails** | **bool**| translation missing: en.api.params.query.emails | [optional]
  **addresses** | **bool**| Include student address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -2133,6 +2387,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Assembly\Client\Model\Result[]**](../Model/Result.md)
+
+### Authorization
+
+[SchoolToken](../../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getRooms**
+> \Assembly\Client\Model\Room[] getRooms($if_modified_since, $per_page, $page)
+
+List Rooms
+
+Returns a list of rooms for the school associated with the provided `access_token`.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: SchoolToken
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
+);
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
+
+try {
+  $result = $apiInstance->getRooms($if_modified_since, $per_page, $page);
+  print_r($result);
+} catch (Exception $e) {
+  echo 'Exception when calling AssemblyApi->getRooms: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**\Assembly\Client\Model\Room[]**](../Model/Room.md)
 
 ### Authorization
 
@@ -2335,7 +2646,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getStudents**
-> \Assembly\Client\Model\Student[] getStudents($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
+> \Assembly\Client\Model\Student[] getStudents($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
 
 List Students
 
@@ -2362,6 +2673,7 @@ $year_code = 56; // int | Filter by school year
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
+$emails = True; // bool | translation missing: en.api.params.query.emails
 $addresses = True; // bool | Include student address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2371,7 +2683,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getStudents($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+  $result = $apiInstance->getStudents($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getStudents: ', $e->getMessage(), PHP_EOL;
@@ -2390,6 +2702,7 @@ Name | Type | Description  | Notes
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
+ **emails** | **bool**| translation missing: en.api.params.query.emails | [optional]
  **addresses** | **bool**| Include student address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -2469,7 +2782,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTeachingGroupStudents**
-> \Assembly\Client\Model\Student[] getTeachingGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
+> \Assembly\Client\Model\Student[] getTeachingGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
 
 List Students for Teaching Group
 
@@ -2497,6 +2810,7 @@ $year_code = 56; // int | Filter by school year
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
+$emails = True; // bool | translation missing: en.api.params.query.emails
 $addresses = True; // bool | Include student address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2504,7 +2818,7 @@ $languages = True; // bool | Include student language data
 $photo = True; // bool | Include student photo data
 
 try {
-  $result = $apiInstance->getTeachingGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+  $result = $apiInstance->getTeachingGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getTeachingGroupStudents: ', $e->getMessage(), PHP_EOL;
@@ -2524,6 +2838,7 @@ Name | Type | Description  | Notes
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
+ **emails** | **bool**| translation missing: en.api.params.query.emails | [optional]
  **addresses** | **bool**| Include student address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -2550,7 +2865,7 @@ Name | Type | Description  | Notes
 
 List Teaching Groups
 
-Returns a list of teaching groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups `start_date` and `end_date`. Additionally when a date parameter is provided `student_ids` and `supervior_ids` are restricted to only those students who were enrolled in the group on the given date.
+Returns a list of teaching groups that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.
 
 ### Example
 ```php
@@ -2610,8 +2925,65 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getTimetables**
+> \Assembly\Client\Model\Timetable[] getTimetables($if_modified_since, $per_page, $page)
+
+List Timetables
+
+Returns a list of timetables that match the given set of filters.  If a date parameter is provided then the list of groups returned is filtered to only those where the provided date falls between the groups start_date and end_date. Additionally when a date parameter is provided student_ids and supervior_ids are restricted to only those students who were enrolled in the group on the given date.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: SchoolToken
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
+);
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
+
+try {
+  $result = $apiInstance->getTimetables($if_modified_since, $per_page, $page);
+  print_r($result);
+} catch (Exception $e) {
+  echo 'Exception when calling AssemblyApi->getTimetables: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**\Assembly\Client\Model\Timetable[]**](../Model/Timetable.md)
+
+### Authorization
+
+[SchoolToken](../../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getYearGroupStudents**
-> \Assembly\Client\Model\Student[] getYearGroupStudents($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo)
+> \Assembly\Client\Model\Student[] getYearGroupStudents($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
 
 List Students for Year Group
 
@@ -2637,6 +3009,7 @@ $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a s
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
+$emails = True; // bool | translation missing: en.api.params.query.emails
 $addresses = True; // bool | Include student address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2644,7 +3017,7 @@ $languages = True; // bool | Include student language data
 $photo = True; // bool | Include student photo data
 
 try {
-  $result = $apiInstance->getYearGroupStudents($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $addresses, $care, $ever_in_care, $languages, $photo);
+  $result = $apiInstance->getYearGroupStudents($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getYearGroupStudents: ', $e->getMessage(), PHP_EOL;
@@ -2662,6 +3035,7 @@ Name | Type | Description  | Notes
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
+ **emails** | **bool**| translation missing: en.api.params.query.emails | [optional]
  **addresses** | **bool**| Include student address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]

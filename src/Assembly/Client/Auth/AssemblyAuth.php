@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -27,12 +27,15 @@ class AssemblyAuth extends AbstractProvider
 {
   use BearerAuthorizationTrait;
 
+  protected $environment = 'sandbox';
+
   public function __construct(array $options = [], array $collaborators = [])
   {
-    $options = array_merge($options, [
-      'clientId'      => env('ASSEMBLY_CLIENT_ID'),    // The client ID assigned to you by the provider
-      'clientSecret'  => env('ASSEMBLY_CLIENT_SECRET')
-    ]);
+    $options = array_merge($options, array_filter([
+      'clientId'      => getenv('ASSEMBLY_CLIENT_ID'),    // The client ID assigned to you by the provider
+      'clientSecret'  => getenv('ASSEMBLY_CLIENT_SECRET'),
+      'environment'   => getenv('ASSEMBLY_ENVIRONMENT')
+    ]));
 
     parent::__construct($options, $collaborators);
   }
@@ -64,12 +67,12 @@ class AssemblyAuth extends AbstractProvider
 
   public function getScopeSeparator()
   {
-    return '+';
+    return ' ';
   }
 
   private function useSandbox()
   {
-    return ( env('ASSEMBLY_ENVIRONMENT' ) != "production" );
+    return ( $this->environment != "production" );
   }
 
   private function basePlatformUrl( $path )
@@ -77,7 +80,7 @@ class AssemblyAuth extends AbstractProvider
     return ( $this->useSandbox()  ? self::sandboxPlatformURL : self::productionPlatformURL ) . $path;
   }
 
-  private function baseApiUrl( $path )
+  public function baseApiUrl( $path = null)
   {
     return ( $this->useSandbox()  ? self::sandboxApiURL : self::productionApiURL ) . $path;
   }
@@ -92,5 +95,15 @@ class AssemblyAuth extends AbstractProvider
     if (!empty($data['error'])) {
       throw new IdentityProviderException($data['error'], $data['code'], $data);
     }
+  }
+
+  protected function getAccessTokenQuery(array $params)
+  {
+      return http_build_query($params, null, '&', \PHP_QUERY_RFC1738);
+  }
+
+  protected function getAuthorizationQuery(array $params)
+  {
+      return http_build_query($params, null, '&', \PHP_QUERY_RFC1738);
   }
 }

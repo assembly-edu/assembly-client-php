@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **demographics** | [**\Assembly\Client\Model\StudentDemographics**](StudentDemographics.md) |  | [optional] 
 **medical** | [**\Assembly\Client\Model\StudentMedical**](StudentMedical.md) |  | [optional] 
 **contacts** | [**\Assembly\Client\Model\StudentContacts[]**](StudentContacts.md) | A list of contact IDs which are associated with this student, and their relationship | [optional] 
+**emails** | [**\Assembly\Client\Model\EmailInfo[]**](EmailInfo.md) | A list of emails for the student | [optional] 
 **address** | [**\Assembly\Client\Model\StudentAddress**](StudentAddress.md) |  | [optional] 
 **languages** | [**\Assembly\Client\Model\StudentLanguages**](StudentLanguages.md) |  | [optional] 
 **photo** | [**\Assembly\Client\Model\StudentPhoto**](StudentPhoto.md) |  | [optional] 

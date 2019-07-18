@@ -1,7 +1,7 @@
 # PHP SDK for the Assembly API
 
 - API version: 1.1.0
-- Package version: 1.2.368
+- Package version: 1.2.376
 
 For more information, please visit [http://developers.assembly.education](http://developers.assembly.education)
 
@@ -37,22 +37,104 @@ composer install
 
 Please follow the [installation procedure](#installation--usage) and then run the following:
 
-The following variable are requied to be defined in your `.env` file.
+The following variables can to be defined in your `.env` file.
 ```
 ASSEMBLY_ENVIRONMENT=[sandbox / production]
 ASSEMBLY_CLIENT_ID=[YOUR_CLIENT_ID]
 ASSEMBLY_CLIENT_SECRET=[YOUR_CLIENT_SECRET]
 ```
 
+or passed to the `AssemblyAuth` constructor as parameters
+
+```
+[
+  'clientId' => [YOUR_CLIENT_ID],
+  'clientSecret' => [YOUR_CLIENT_SECRET],
+  'environment' => [sandbox / production]
+]
+```
+
+## Request School Authorization
+
+There is more information available on our [developer documentation](https://developers.assembly.education/#section/Authentication) site.
+**Note:** The `redirectUri` must match the uri defined in the application settings on the Assmebly Platform.
+
+```php
+<?php
+  $provider = new \Assembly\Client\Auth\AssemblyAuth([
+    'redirectUri' => 'http://example.com/your-redirect-url/',
+]);
+
+  $state = ''; // Set a state value that will be link to s chool in your data store.
+  $authorizationUrl = $provider->getAuthorizationUrl([
+  'scope'      => ['school:required'], // Add additional scopes are required
+	'state' => $state
+  ]);
+
+  //SaveSateToDataStore is a implementation placeholder which should be replace with your own data storage process.
+  SaveSateToDataStore($state);
+
+  // Redirect the user to the authorization URL.
+  header('Location: ' . $authorizationUrl);
+?>
+```
+
+## Handle School Authorization Callback
+
+```php
+<?php
+
+  $provider = new \Assembly\Client\Auth\AssemblyAuth([
+    'redirectUri' => 'http://example.com/your-redirect-url/',
+  ]);
+
+  //GetStateFromDataStore is a implementation placeholder which should be replace with your own data retrieval process.
+  $state = GetStateFromDataStore();
+
+  if (empty($_GET['state']) || (empty($state) && $_GET['state'] !== $state)) {
+    exit('Invalid state');
+  }
+
+  // Try to get an access token using the authorization code grant.
+  $accessToken = $provider->getAccessToken('authorization_code', [
+    'code' => $_GET['code']
+  ]);
+
+  // We have an access token, which we may use in authenticated requests against the service provider's API.
+  echo 'Access Token: ' . $accessToken->getToken() . "<br>";
+  echo 'Refresh Token: ' . $accessToken->getRefreshToken() . "<br>";
+  echo 'Expired in: ' . $accessToken->getExpires() . "<br>";
+  echo 'Already expired? ' . ($accessToken->hasExpired() ? 'expired' : 'not expired') . "<br>";
+
+  //SaveTokenToDatastore is a implementation placeholder which should be replace with your own data storage process.
+  SaveTokenToDatastore($accessToken->jsonSerialize());
+
+  $accessToken->jsonSerialize() will return the following
+  /*
+    {
+      "access_token": "ABCDE",
+      "refresh_token": "WXYZ",
+      "token_type": "bearer",
+      "level": "school",
+      "expires_in": 108000,
+      "school_id": 123,
+      "scopes": ["school", "students"]
+    }
+  */
+?>
+```
+
+## Request School Data
+
 ```php
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
 
-$provider = new AssemblyAuth();
+$provider = new \Assembly\Client\Auth\AssemblyAuth();
 
 //GetTokenFromDatastore is a implementation placeholder which should be replace with your own data retrieval process.
-$accessToken = new AccessToken(GetTokenFromDatastore());
+$accessToken = new \League\OAuth2\Client\Token\AccessToken(GetTokenFromDatastore());
 
 if ($accessToken->hasExpired()) {
   $accessToken = $provider->getAccessToken('refresh_token', ['refresh_token' => $accessToken->getRefreshToken()]);
@@ -62,7 +144,8 @@ if ($accessToken->hasExpired()) {
 }
 
 // Configure OAuth2 access token for authorization: SchoolToken
-$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken($accessToken->getToken());
+$config = Assembly\Client\Configuration::getDefaultConfiguration($provider);
+$config->setAccessToken($accessToken->getToken());
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
   // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
@@ -80,62 +163,6 @@ try {
   echo 'Exception when calling AssemblyApi->bulkUpdateResults: ', $e->getMessage(), PHP_EOL;
 }
 
-?>
-```
-
-## Request School Authorization Token
-
-There is more information available on our [developer documentation](https://developers.assembly.education/api/oauth/) site.
-
-```php
-<?php
-  $provider = new \Assembly\Client\Auth\AssemblyAuth([
-    'redirectUri' => 'http://example.com/your-redirect-url/',
-    'scopes'      => ['school:required'],
-]);
-
-  $authorizationUrl = $provider->getAuthorizationUrl();
-
-  //SaveSateToDataStore is a implementation placeholder which should be replace with your own data storage process.
-  SaveSateToDataStore($provider->getState());
-
-  // Redirect the user to the authorization URL.
-  header('Location: ' . $authorizationUrl);
-
-?>
-```
-
-### Handling Authorization Callback
-
-```php
-<?php
-
-  $provider = new \Assembly\Client\Auth\AssemblyAuth([
-    'redirectUri' => 'http://example.com/your-redirect-url/',
-  ]);
-
-  //GetStateFromDataStore is a implementation placeholder which should be replace with your own data retrieval process.
-  $state = GetStateFromDataStore();
-
-  if (empty($_GET['state']) || (empty($state) && $_GET['state'] !== $state)) {
-
-    exit('Invalid state');
-  }
-
-  // Try to get an access token using the authorization code grant.
-  $accessToken = $provider->getAccessToken('authorization_code', [
-    'code' => $_GET['code']
-  ]);
-
-  // We have an access token, which we may use in authenticated
-  // requests against the service provider's API.
-  echo 'Access Token: ' . $accessToken->getToken() . "<br>";
-  echo 'Refresh Token: ' . $accessToken->getRefreshToken() . "<br>";
-  echo 'Expired in: ' . $accessToken->getExpires() . "<br>";
-  echo 'Already expired? ' . ($accessToken->hasExpired() ? 'expired' : 'not expired') . "<br>";
-
-  //SaveTokenToDatastore is a implementation placeholder which should be replace with your own data storage process.
-  SaveTokenToDatastore($accessToken->jsonSerialize())
 ?>
 ```
 
@@ -157,10 +184,12 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**findGroup**](docs/Api/AssemblyApi.md#findgroup) | **GET** /groups/{id} | View a Group
 *AssemblyApi* | [**findMedicalCondition**](docs/Api/AssemblyApi.md#findmedicalcondition) | **GET** /school/medical_conditions/{id} | View a Medical Condition
 *AssemblyApi* | [**findRegistrationGroup**](docs/Api/AssemblyApi.md#findregistrationgroup) | **GET** /registration_groups/{id} | View a Registration Group
+*AssemblyApi* | [**findRoom**](docs/Api/AssemblyApi.md#findroom) | **GET** /rooms/{id} | View a Room
 *AssemblyApi* | [**findSchool**](docs/Api/AssemblyApi.md#findschool) | **GET** /school | View School Details
 *AssemblyApi* | [**findStaffMember**](docs/Api/AssemblyApi.md#findstaffmember) | **GET** /staff_members/{id} | View a Staff Member
 *AssemblyApi* | [**findStudent**](docs/Api/AssemblyApi.md#findstudent) | **GET** /students/{id} | View a Student
 *AssemblyApi* | [**findTeachingGroup**](docs/Api/AssemblyApi.md#findteachinggroup) | **GET** /teaching_groups/{id} | View a Teaching Group
+*AssemblyApi* | [**findTimetable**](docs/Api/AssemblyApi.md#findtimetable) | **GET** /timetables/{id} | View a Timetable
 *AssemblyApi* | [**findYearGroup**](docs/Api/AssemblyApi.md#findyeargroup) | **GET** /year_groups/{id} | View a Year Group
 *AssemblyApi* | [**getAcademicYears**](docs/Api/AssemblyApi.md#getacademicyears) | **GET** /academic_years | List Academic Years
 *AssemblyApi* | [**getAssessmentPointResults**](docs/Api/AssemblyApi.md#getassessmentpointresults) | **GET** /assessment_points/{assessment_point_rank}/results | View Results for an Assessment Point
@@ -170,6 +199,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getAttendanceSummaries**](docs/Api/AssemblyApi.md#getattendancesummaries) | **GET** /attendances/summaries | List Attendance Summaries
 *AssemblyApi* | [**getAttendances**](docs/Api/AssemblyApi.md#getattendances) | **GET** /attendances | List Attendances
 *AssemblyApi* | [**getCalendarEvents**](docs/Api/AssemblyApi.md#getcalendarevents) | **GET** /calendar_events | List Calendar Events
+*AssemblyApi* | [**getClosures**](docs/Api/AssemblyApi.md#getclosures) | **GET** /rooms/{id}/closures | List Closures For a Room
 *AssemblyApi* | [**getContacts**](docs/Api/AssemblyApi.md#getcontacts) | **GET** /contacts | List Contacts
 *AssemblyApi* | [**getDietaryNeeds**](docs/Api/AssemblyApi.md#getdietaryneeds) | **GET** /school/dietary_needs | List Dietary Needs
 *AssemblyApi* | [**getExclusions**](docs/Api/AssemblyApi.md#getexclusions) | **GET** /exclusions | List Exclusions
@@ -178,10 +208,12 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getGroups**](docs/Api/AssemblyApi.md#getgroups) | **GET** /groups | List Groups
 *AssemblyApi* | [**getLeftStaffMembers**](docs/Api/AssemblyApi.md#getleftstaffmembers) | **GET** /staff_members/left | List Left Staff Members
 *AssemblyApi* | [**getLeftStudents**](docs/Api/AssemblyApi.md#getleftstudents) | **GET** /students/left | List Left Students
+*AssemblyApi* | [**getLessons**](docs/Api/AssemblyApi.md#getlessons) | **GET** /rooms/{id}/lessons | List Lessons For a Room
 *AssemblyApi* | [**getMedicalConditions**](docs/Api/AssemblyApi.md#getmedicalconditions) | **GET** /school/medical_conditions | List Medical Conditions
 *AssemblyApi* | [**getRegistrationGroupStudents**](docs/Api/AssemblyApi.md#getregistrationgroupstudents) | **GET** /registration_groups/{id}/students | List Students for Registration Group
 *AssemblyApi* | [**getRegistrationGroups**](docs/Api/AssemblyApi.md#getregistrationgroups) | **GET** /registration_groups | List Registration Groups
 *AssemblyApi* | [**getResults**](docs/Api/AssemblyApi.md#getresults) | **GET** /results | List Results
+*AssemblyApi* | [**getRooms**](docs/Api/AssemblyApi.md#getrooms) | **GET** /rooms | List Rooms
 *AssemblyApi* | [**getStaffAbsences**](docs/Api/AssemblyApi.md#getstaffabsences) | **GET** /staff_absences | List Staff Absences
 *AssemblyApi* | [**getStaffContracts**](docs/Api/AssemblyApi.md#getstaffcontracts) | **GET** /staff_contracts | List Staff Contracts
 *AssemblyApi* | [**getStaffMembers**](docs/Api/AssemblyApi.md#getstaffmembers) | **GET** /staff_members | List Staff Members
@@ -189,6 +221,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getSubjects**](docs/Api/AssemblyApi.md#getsubjects) | **GET** /subjects | List Subjects
 *AssemblyApi* | [**getTeachingGroupStudents**](docs/Api/AssemblyApi.md#getteachinggroupstudents) | **GET** /teaching_groups/{id}/students | List Students for Teaching Group
 *AssemblyApi* | [**getTeachingGroups**](docs/Api/AssemblyApi.md#getteachinggroups) | **GET** /teaching_groups | List Teaching Groups
+*AssemblyApi* | [**getTimetables**](docs/Api/AssemblyApi.md#gettimetables) | **GET** /timetables | List Timetables
 *AssemblyApi* | [**getYearGroupStudents**](docs/Api/AssemblyApi.md#getyeargroupstudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 *AssemblyApi* | [**getYearGroups**](docs/Api/AssemblyApi.md#getyeargroups) | **GET** /year_groups | List Year Groups
 *AssemblyApi* | [**status**](docs/Api/AssemblyApi.md#status) | **GET** /school/status | View School Sync Status
@@ -206,7 +239,7 @@ Class | Method | HTTP request | Description
  - [BulkResultResponse](docs/Model/BulkResultResponse.md)
  - [BulkResultsBody](docs/Model/BulkResultsBody.md)
  - [CalendarEvent](docs/Model/CalendarEvent.md)
- - [CalendarEventMisType](docs/Model/CalendarEventMisType.md)
+ - [Closure](docs/Model/Closure.md)
  - [Contact](docs/Model/Contact.md)
  - [ContactStudents](docs/Model/ContactStudents.md)
  - [DietaryNeed](docs/Model/DietaryNeed.md)
@@ -216,6 +249,11 @@ Class | Method | HTTP request | Description
  - [Grade](docs/Model/Grade.md)
  - [GradeSet](docs/Model/GradeSet.md)
  - [Group](docs/Model/Group.md)
+ - [GroupMisSubject](docs/Model/GroupMisSubject.md)
+ - [GroupMisSubjectSubject](docs/Model/GroupMisSubjectSubject.md)
+ - [Lesson](docs/Model/Lesson.md)
+ - [LessonGroup](docs/Model/LessonGroup.md)
+ - [LessonRooms](docs/Model/LessonRooms.md)
  - [Me](docs/Model/Me.md)
  - [MeToken](docs/Model/MeToken.md)
  - [MedicalCondition](docs/Model/MedicalCondition.md)
@@ -224,6 +262,7 @@ Class | Method | HTTP request | Description
  - [Result](docs/Model/Result.md)
  - [ResultBody](docs/Model/ResultBody.md)
  - [ResultEntry](docs/Model/ResultEntry.md)
+ - [Room](docs/Model/Room.md)
  - [School](docs/Model/School.md)
  - [SchoolStatus](docs/Model/SchoolStatus.md)
  - [SenNeed](docs/Model/SenNeed.md)
@@ -252,6 +291,13 @@ Class | Method | HTTP request | Description
  - [Supervisor](docs/Model/Supervisor.md)
  - [TeachingGroup](docs/Model/TeachingGroup.md)
  - [TelephoneNumberInfo](docs/Model/TelephoneNumberInfo.md)
+ - [Timetable](docs/Model/Timetable.md)
+ - [TimetableDays](docs/Model/TimetableDays.md)
+ - [TimetableLessons](docs/Model/TimetableLessons.md)
+ - [TimetablePeriods](docs/Model/TimetablePeriods.md)
+ - [TimetableStructure](docs/Model/TimetableStructure.md)
+ - [TimetableStructureDays](docs/Model/TimetableStructureDays.md)
+ - [TimetableStructurePeriods](docs/Model/TimetableStructurePeriods.md)
  - [YearGroup](docs/Model/YearGroup.md)
 
 

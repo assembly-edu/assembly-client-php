@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -45,6 +45,7 @@ class StudentPhoto implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
     'url' => 'string',
     'hash' => 'string'
   ];
@@ -55,6 +56,7 @@ class StudentPhoto implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
     'url' => null,
     'hash' => null
   ];
@@ -86,6 +88,7 @@ class StudentPhoto implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
     'url' => 'url',
     'hash' => 'hash'
   ];
@@ -96,6 +99,7 @@ class StudentPhoto implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
     'url' => 'setUrl',
     'hash' => 'setHash'
   ];
@@ -106,6 +110,7 @@ class StudentPhoto implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
     'url' => 'getUrl',
     'hash' => 'getHash'
   ];
@@ -170,6 +175,7 @@ class StudentPhoto implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'photo';
     $this->container['url'] = isset($data['url']) ? $data['url'] : null;
     $this->container['hash'] = isset($data['hash']) ? $data['hash'] : null;
   }
@@ -198,6 +204,30 @@ class StudentPhoto implements ModelInterface, ArrayAccess
     return true;
   }
 
+
+  /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
 
   /**
    * Gets url

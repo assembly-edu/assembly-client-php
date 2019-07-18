@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.368
+ * SDK Version 1.2.376
  * API Version 1.1.0
  *
  * Support
@@ -20,15 +20,15 @@ use \ArrayAccess;
 use \Assembly\Client\ObjectSerializer;
 
 /**
- * CalendarEventMisType Class Doc Comment
+ * Room Class Doc Comment
  *
  * @category Class
- * @description Details the type of event - whether it is a regular calendar event, a staff meeting or inset day
+ * @description A room
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
  */
-class CalendarEventMisType implements ModelInterface, ArrayAccess
+class Room implements ModelInterface, ArrayAccess
 {
   const DISCRIMINATOR = null;
 
@@ -37,7 +37,7 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
     *
     * @var string
     */
-  protected static $swaggerModelName = 'CalendarEventMisType';
+  protected static $swaggerModelName = 'Room';
 
   /**
     * Array of property to type mappings. Used for (de)serialization
@@ -45,8 +45,12 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
+    'object' => 'string',
+    'id' => 'int',
+    'code' => 'string',
     'name' => 'string',
-    'description' => 'string'
+    'description' => 'string',
+    'maximum_capacity' => 'int'
   ];
 
   /**
@@ -55,8 +59,12 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerFormats = [
+    'object' => null,
+    'id' => 'int32',
+    'code' => null,
     'name' => null,
-    'description' => null
+    'description' => null,
+    'maximum_capacity' => 'int32'
   ];
 
   /**
@@ -86,8 +94,12 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $attributeMap = [
+    'object' => 'object',
+    'id' => 'id',
+    'code' => 'code',
     'name' => 'name',
-    'description' => 'description'
+    'description' => 'description',
+    'maximum_capacity' => 'maximum_capacity'
   ];
 
   /**
@@ -96,8 +108,12 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $setters = [
+    'object' => 'setObject',
+    'id' => 'setId',
+    'code' => 'setCode',
     'name' => 'setName',
-    'description' => 'setDescription'
+    'description' => 'setDescription',
+    'maximum_capacity' => 'setMaximumCapacity'
   ];
 
   /**
@@ -106,8 +122,12 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
    * @var string[]
    */
   protected static $getters = [
+    'object' => 'getObject',
+    'id' => 'getId',
+    'code' => 'getCode',
     'name' => 'getName',
-    'description' => 'getDescription'
+    'description' => 'getDescription',
+    'maximum_capacity' => 'getMaximumCapacity'
   ];
 
   /**
@@ -170,8 +190,12 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'room';
+    $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+    $this->container['code'] = isset($data['code']) ? $data['code'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+    $this->container['maximum_capacity'] = isset($data['maximum_capacity']) ? $data['maximum_capacity'] : null;
   }
 
   /**
@@ -200,6 +224,78 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
 
 
   /**
+   * Gets object
+   *
+   * @return string
+   */
+  public function getObject()
+  {
+    return $this->container['object'];
+  }
+
+  /**
+   * Sets object
+   *
+   * @param string $object Descriminator
+   *
+   * @return $this
+   */
+  public function setObject($object)
+  {
+    $this->container['object'] = $object;
+
+    return $this;
+  }
+
+  /**
+   * Gets id
+   *
+   * @return int
+   */
+  public function getId()
+  {
+    return $this->container['id'];
+  }
+
+  /**
+   * Sets id
+   *
+   * @param int $id Internal stable ID
+   *
+   * @return $this
+   */
+  public function setId($id)
+  {
+    $this->container['id'] = $id;
+
+    return $this;
+  }
+
+  /**
+   * Gets code
+   *
+   * @return string
+   */
+  public function getCode()
+  {
+    return $this->container['code'];
+  }
+
+  /**
+   * Sets code
+   *
+   * @param string $code Room code
+   *
+   * @return $this
+   */
+  public function setCode($code)
+  {
+    $this->container['code'] = $code;
+
+    return $this;
+  }
+
+  /**
    * Gets name
    *
    * @return string
@@ -212,7 +308,7 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
   /**
    * Sets name
    *
-   * @param string $name The type of the event
+   * @param string $name Room name
    *
    * @return $this
    */
@@ -236,13 +332,37 @@ class CalendarEventMisType implements ModelInterface, ArrayAccess
   /**
    * Sets description
    *
-   * @param string $description Any additional description of this event type
+   * @param string $description Room description
    *
    * @return $this
    */
   public function setDescription($description)
   {
     $this->container['description'] = $description;
+
+    return $this;
+  }
+
+  /**
+   * Gets maximum_capacity
+   *
+   * @return int
+   */
+  public function getMaximumCapacity()
+  {
+    return $this->container['maximum_capacity'];
+  }
+
+  /**
+   * Sets maximum_capacity
+   *
+   * @param int $maximum_capacity Maximum capacity of the room
+   *
+   * @return $this
+   */
+  public function setMaximumCapacity($maximum_capacity)
+  {
+    $this->container['maximum_capacity'] = $maximum_capacity;
 
     return $this;
   }
