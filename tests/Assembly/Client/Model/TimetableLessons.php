@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.376
+ * SDK Version 1.2.379
  * API Version 1.1.0
  *
  * Support
@@ -103,6 +103,13 @@ class TimetableLessonsTest extends \PHPUnit_Framework_TestCase
    * Test attribute "end_date"
    */
   public function testPropertyEndDate()
+  {
+  }
+
+  /**
+   * Test attribute "supervisors"
+   */
+  public function testPropertySupervisors()
   {
   }
 

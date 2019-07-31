@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.376
+ * SDK Version 1.2.379
  * API Version 1.1.0
  *
  * Support
@@ -156,6 +156,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
    *
    */
   public function testFindGroup()
+  {
+  }
+
+  /**
+   * Test case for findLearningAim
+   *
+   * View a Post-16 Learning Aim.
+   *
+   */
+  public function testFindLearningAim()
   {
   }
 
@@ -396,6 +406,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
    *
    */
   public function testGetGroups()
+  {
+  }
+
+  /**
+   * Test case for getLearningAims
+   *
+   * List Post-16 Learning Aims.
+   *
+   */
+  public function testGetLearningAims()
   {
   }
 

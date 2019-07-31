@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **emails** | [**\Assembly\Client\Model\EmailInfo[]**](EmailInfo.md) | A list of emails for the student | [optional] 
 **address** | [**\Assembly\Client\Model\StudentAddress**](StudentAddress.md) |  | [optional] 
 **languages** | [**\Assembly\Client\Model\StudentLanguages**](StudentLanguages.md) |  | [optional] 
+**learning_aims** | [**\Assembly\Client\Model\StudentLearningAims**](StudentLearningAims.md) |  | [optional] 
 **photo** | [**\Assembly\Client\Model\StudentPhoto**](StudentPhoto.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

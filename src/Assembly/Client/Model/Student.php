@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.376
+ * SDK Version 1.2.379
  * API Version 1.1.0
  *
  * Support
@@ -69,6 +69,7 @@ class Student implements ModelInterface, ArrayAccess
     'emails' => '\Assembly\Client\Model\EmailInfo[]',
     'address' => '\Assembly\Client\Model\StudentAddress',
     'languages' => '\Assembly\Client\Model\StudentLanguages',
+    'learning_aims' => '\Assembly\Client\Model\StudentLearningAims',
     'photo' => '\Assembly\Client\Model\StudentPhoto'
   ];
 
@@ -102,6 +103,7 @@ class Student implements ModelInterface, ArrayAccess
     'emails' => null,
     'address' => null,
     'languages' => null,
+    'learning_aims' => null,
     'photo' => null
   ];
 
@@ -156,6 +158,7 @@ class Student implements ModelInterface, ArrayAccess
     'emails' => 'emails',
     'address' => 'address',
     'languages' => 'languages',
+    'learning_aims' => 'learning_aims',
     'photo' => 'photo'
   ];
 
@@ -189,6 +192,7 @@ class Student implements ModelInterface, ArrayAccess
     'emails' => 'setEmails',
     'address' => 'setAddress',
     'languages' => 'setLanguages',
+    'learning_aims' => 'setLearningAims',
     'photo' => 'setPhoto'
   ];
 
@@ -222,6 +226,7 @@ class Student implements ModelInterface, ArrayAccess
     'emails' => 'getEmails',
     'address' => 'getAddress',
     'languages' => 'getLanguages',
+    'learning_aims' => 'getLearningAims',
     'photo' => 'getPhoto'
   ];
 
@@ -309,6 +314,7 @@ class Student implements ModelInterface, ArrayAccess
     $this->container['emails'] = isset($data['emails']) ? $data['emails'] : null;
     $this->container['address'] = isset($data['address']) ? $data['address'] : null;
     $this->container['languages'] = isset($data['languages']) ? $data['languages'] : null;
+    $this->container['learning_aims'] = isset($data['learning_aims']) ? $data['learning_aims'] : null;
     $this->container['photo'] = isset($data['photo']) ? $data['photo'] : null;
   }
 
@@ -909,6 +915,30 @@ class Student implements ModelInterface, ArrayAccess
   public function setLanguages($languages)
   {
     $this->container['languages'] = $languages;
+
+    return $this;
+  }
+
+  /**
+   * Gets learning_aims
+   *
+   * @return \Assembly\Client\Model\StudentLearningAims
+   */
+  public function getLearningAims()
+  {
+    return $this->container['learning_aims'];
+  }
+
+  /**
+   * Sets learning_aims
+   *
+   * @param \Assembly\Client\Model\StudentLearningAims $learning_aims learning_aims
+   *
+   * @return $this
+   */
+  public function setLearningAims($learning_aims)
+  {
+    $this->container['learning_aims'] = $learning_aims;
 
     return $this;
   }

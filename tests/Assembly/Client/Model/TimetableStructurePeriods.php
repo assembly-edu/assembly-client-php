@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.376
+ * SDK Version 1.2.379
  * API Version 1.1.0
  *
  * Support
@@ -93,16 +93,23 @@ class TimetableStructurePeriodsTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test attribute "start_date"
+   * Test attribute "start_time"
    */
-  public function testPropertyStartDate()
+  public function testPropertyStartTime()
   {
   }
 
   /**
-   * Test attribute "end_date"
+   * Test attribute "end_time"
    */
-  public function testPropertyEndDate()
+  public function testPropertyEndTime()
+  {
+  }
+
+  /**
+   * Test attribute "display_order"
+   */
+  public function testPropertyDisplayOrder()
   {
   }
 }

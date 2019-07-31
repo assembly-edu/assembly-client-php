@@ -1,7 +1,7 @@
 # PHP SDK for the Assembly API
 
 - API version: 1.1.0
-- Package version: 1.2.376
+- Package version: 1.2.379
 
 For more information, please visit [http://developers.assembly.education](http://developers.assembly.education)
 
@@ -182,6 +182,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**findFacet**](docs/Api/AssemblyApi.md#findfacet) | **GET** /facets/{id} | View a Facet
 *AssemblyApi* | [**findGradeSet**](docs/Api/AssemblyApi.md#findgradeset) | **GET** /grade_sets/{id} | View a Grade Set
 *AssemblyApi* | [**findGroup**](docs/Api/AssemblyApi.md#findgroup) | **GET** /groups/{id} | View a Group
+*AssemblyApi* | [**findLearningAim**](docs/Api/AssemblyApi.md#findlearningaim) | **GET** /school/learning_aims/{id} | View a Post-16 Learning Aim
 *AssemblyApi* | [**findMedicalCondition**](docs/Api/AssemblyApi.md#findmedicalcondition) | **GET** /school/medical_conditions/{id} | View a Medical Condition
 *AssemblyApi* | [**findRegistrationGroup**](docs/Api/AssemblyApi.md#findregistrationgroup) | **GET** /registration_groups/{id} | View a Registration Group
 *AssemblyApi* | [**findRoom**](docs/Api/AssemblyApi.md#findroom) | **GET** /rooms/{id} | View a Room
@@ -206,6 +207,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getFacets**](docs/Api/AssemblyApi.md#getfacets) | **GET** /facets | List Facets
 *AssemblyApi* | [**getGradeSets**](docs/Api/AssemblyApi.md#getgradesets) | **GET** /grade_sets | List Grade Sets
 *AssemblyApi* | [**getGroups**](docs/Api/AssemblyApi.md#getgroups) | **GET** /groups | List Groups
+*AssemblyApi* | [**getLearningAims**](docs/Api/AssemblyApi.md#getlearningaims) | **GET** /school/learning_aims | List Post-16 Learning Aims
 *AssemblyApi* | [**getLeftStaffMembers**](docs/Api/AssemblyApi.md#getleftstaffmembers) | **GET** /staff_members/left | List Left Staff Members
 *AssemblyApi* | [**getLeftStudents**](docs/Api/AssemblyApi.md#getleftstudents) | **GET** /students/left | List Left Students
 *AssemblyApi* | [**getLessons**](docs/Api/AssemblyApi.md#getlessons) | **GET** /rooms/{id}/lessons | List Lessons For a Room
@@ -251,8 +253,10 @@ Class | Method | HTTP request | Description
  - [Group](docs/Model/Group.md)
  - [GroupMisSubject](docs/Model/GroupMisSubject.md)
  - [GroupMisSubjectSubject](docs/Model/GroupMisSubjectSubject.md)
+ - [LearningAim](docs/Model/LearningAim.md)
  - [Lesson](docs/Model/Lesson.md)
  - [LessonGroup](docs/Model/LessonGroup.md)
+ - [LessonGroupMisSubject](docs/Model/LessonGroupMisSubject.md)
  - [LessonRooms](docs/Model/LessonRooms.md)
  - [Me](docs/Model/Me.md)
  - [MeToken](docs/Model/MeToken.md)
@@ -283,6 +287,7 @@ Class | Method | HTTP request | Description
  - [StudentContacts](docs/Model/StudentContacts.md)
  - [StudentDemographics](docs/Model/StudentDemographics.md)
  - [StudentLanguages](docs/Model/StudentLanguages.md)
+ - [StudentLearningAims](docs/Model/StudentLearningAims.md)
  - [StudentMedical](docs/Model/StudentMedical.md)
  - [StudentMedicalCondition](docs/Model/StudentMedicalCondition.md)
  - [StudentMedicalNote](docs/Model/StudentMedicalNote.md)
@@ -298,6 +303,7 @@ Class | Method | HTTP request | Description
  - [TimetableStructure](docs/Model/TimetableStructure.md)
  - [TimetableStructureDays](docs/Model/TimetableStructureDays.md)
  - [TimetableStructurePeriods](docs/Model/TimetableStructurePeriods.md)
+ - [TimetableSupervisors](docs/Model/TimetableSupervisors.md)
  - [YearGroup](docs/Model/YearGroup.md)
 
 

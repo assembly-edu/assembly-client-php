@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.376
+ * SDK Version 1.2.379
  * API Version 1.1.0
  *
  * Support
@@ -50,7 +50,8 @@ class LessonGroup implements ModelInterface, ArrayAccess
     'name' => 'string',
     'code' => 'string',
     'type' => 'string',
-    'mis_subject' => '\Assembly\Client\Model\GroupMisSubject'
+    'mis_subject' => '\Assembly\Client\Model\LessonGroupMisSubject',
+    'subject' => '\Assembly\Client\Model\GroupMisSubjectSubject'
   ];
 
   /**
@@ -64,7 +65,8 @@ class LessonGroup implements ModelInterface, ArrayAccess
     'name' => null,
     'code' => null,
     'type' => null,
-    'mis_subject' => null
+    'mis_subject' => null,
+    'subject' => null
   ];
 
   /**
@@ -99,7 +101,8 @@ class LessonGroup implements ModelInterface, ArrayAccess
     'name' => 'name',
     'code' => 'code',
     'type' => 'type',
-    'mis_subject' => 'mis_subject'
+    'mis_subject' => 'mis_subject',
+    'subject' => 'subject'
   ];
 
   /**
@@ -113,7 +116,8 @@ class LessonGroup implements ModelInterface, ArrayAccess
     'name' => 'setName',
     'code' => 'setCode',
     'type' => 'setType',
-    'mis_subject' => 'setMisSubject'
+    'mis_subject' => 'setMisSubject',
+    'subject' => 'setSubject'
   ];
 
   /**
@@ -127,7 +131,8 @@ class LessonGroup implements ModelInterface, ArrayAccess
     'name' => 'getName',
     'code' => 'getCode',
     'type' => 'getType',
-    'mis_subject' => 'getMisSubject'
+    'mis_subject' => 'getMisSubject',
+    'subject' => 'getSubject'
   ];
 
   /**
@@ -217,6 +222,7 @@ class LessonGroup implements ModelInterface, ArrayAccess
     $this->container['code'] = isset($data['code']) ? $data['code'] : null;
     $this->container['type'] = isset($data['type']) ? $data['type'] : null;
     $this->container['mis_subject'] = isset($data['mis_subject']) ? $data['mis_subject'] : null;
+    $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
   }
 
   /**
@@ -388,7 +394,7 @@ class LessonGroup implements ModelInterface, ArrayAccess
   /**
    * Gets mis_subject
    *
-   * @return \Assembly\Client\Model\GroupMisSubject
+   * @return \Assembly\Client\Model\LessonGroupMisSubject
    */
   public function getMisSubject()
   {
@@ -398,13 +404,37 @@ class LessonGroup implements ModelInterface, ArrayAccess
   /**
    * Sets mis_subject
    *
-   * @param \Assembly\Client\Model\GroupMisSubject $mis_subject mis_subject
+   * @param \Assembly\Client\Model\LessonGroupMisSubject $mis_subject mis_subject
    *
    * @return $this
    */
   public function setMisSubject($mis_subject)
   {
     $this->container['mis_subject'] = $mis_subject;
+
+    return $this;
+  }
+
+  /**
+   * Gets subject
+   *
+   * @return \Assembly\Client\Model\GroupMisSubjectSubject
+   */
+  public function getSubject()
+  {
+    return $this->container['subject'];
+  }
+
+  /**
+   * Sets subject
+   *
+   * @param \Assembly\Client\Model\GroupMisSubjectSubject $subject subject
+   *
+   * @return $this
+   */
+  public function setSubject($subject)
+  {
+    $this->container['subject'] = $subject;
 
     return $this;
   }

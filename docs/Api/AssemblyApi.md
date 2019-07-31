@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**findFacet**](AssemblyApi.md#findFacet) | **GET** /facets/{id} | View a Facet
 [**findGradeSet**](AssemblyApi.md#findGradeSet) | **GET** /grade_sets/{id} | View a Grade Set
 [**findGroup**](AssemblyApi.md#findGroup) | **GET** /groups/{id} | View a Group
+[**findLearningAim**](AssemblyApi.md#findLearningAim) | **GET** /school/learning_aims/{id} | View a Post-16 Learning Aim
 [**findMedicalCondition**](AssemblyApi.md#findMedicalCondition) | **GET** /school/medical_conditions/{id} | View a Medical Condition
 [**findRegistrationGroup**](AssemblyApi.md#findRegistrationGroup) | **GET** /registration_groups/{id} | View a Registration Group
 [**findRoom**](AssemblyApi.md#findRoom) | **GET** /rooms/{id} | View a Room
@@ -38,6 +39,7 @@ Method | HTTP request | Description
 [**getFacets**](AssemblyApi.md#getFacets) | **GET** /facets | List Facets
 [**getGradeSets**](AssemblyApi.md#getGradeSets) | **GET** /grade_sets | List Grade Sets
 [**getGroups**](AssemblyApi.md#getGroups) | **GET** /groups | List Groups
+[**getLearningAims**](AssemblyApi.md#getLearningAims) | **GET** /school/learning_aims | List Post-16 Learning Aims
 [**getLeftStaffMembers**](AssemblyApi.md#getLeftStaffMembers) | **GET** /staff_members/left | List Left Staff Members
 [**getLeftStudents**](AssemblyApi.md#getLeftStudents) | **GET** /students/left | List Left Students
 [**getLessons**](AssemblyApi.md#getLessons) | **GET** /rooms/{id}/lessons | List Lessons For a Room
@@ -590,6 +592,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **findLearningAim**
+> \Assembly\Client\Model\LearningAim findLearningAim($id)
+
+View a Post-16 Learning Aim
+
+Returns a Post-16 Learning Aim retrieved by ID
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: SchoolToken
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
+);
+$id = 56; // int | Internal identifier of the entity
+
+try {
+  $result = $apiInstance->findLearningAim($id);
+  print_r($result);
+} catch (Exception $e) {
+  echo 'Exception when calling AssemblyApi->findLearningAim: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Internal identifier of the entity |
+
+### Return type
+
+[**\Assembly\Client\Model\LearningAim**](../Model/LearningAim.md)
+
+### Authorization
+
+[SchoolToken](../../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **findMedicalCondition**
 > \Assembly\Client\Model\MedicalCondition findMedicalCondition($id)
 
@@ -890,7 +945,7 @@ $id = 56; // int | Internal identifier of the entity
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
-$emails = True; // bool | translation missing: en.api.params.query.emails
+$emails = True; // bool | Include email addresses
 $addresses = True; // bool | Include student address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -914,7 +969,7 @@ Name | Type | Description  | Notes
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
- **emails** | **bool**| translation missing: en.api.params.query.emails | [optional]
+ **emails** | **bool**| Include email addresses | [optional]
  **addresses** | **bool**| Include student address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -992,7 +1047,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **findTimetable**
-> \Assembly\Client\Model\Timetable[] findTimetable($id, $if_modified_since, $date, $start_date, $end_date)
+> \Assembly\Client\Model\Timetable findTimetable($id, $if_modified_since, $date, $start_date, $end_date)
 
 View a Timetable
 
@@ -1039,7 +1094,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Assembly\Client\Model\Timetable[]**](../Model/Timetable.md)
+[**\Assembly\Client\Model\Timetable**](../Model/Timetable.md)
 
 ### Authorization
 
@@ -1972,6 +2027,61 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getLearningAims**
+> \Assembly\Client\Model\LearningAim[] getLearningAims($per_page, $page)
+
+List Post-16 Learning Aims
+
+Returns a list of Post-16 Learning Aims defined within the school
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: SchoolToken
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
+);
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
+
+try {
+  $result = $apiInstance->getLearningAims($per_page, $page);
+  print_r($result);
+} catch (Exception $e) {
+  echo 'Exception when calling AssemblyApi->getLearningAims: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**\Assembly\Client\Model\LearningAim[]**](../Model/LearningAim.md)
+
+### Authorization
+
+[SchoolToken](../../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getLeftStaffMembers**
 > \Assembly\Client\Model\StaffMember[] getLeftStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications)
 
@@ -2228,7 +2338,7 @@ $year_code = 56; // int | Filter by school year
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
-$emails = True; // bool | translation missing: en.api.params.query.emails
+$emails = True; // bool | Include email addresses
 $addresses = True; // bool | Include student address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2255,7 +2365,7 @@ Name | Type | Description  | Notes
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
- **emails** | **bool**| translation missing: en.api.params.query.emails | [optional]
+ **emails** | **bool**| Include email addresses | [optional]
  **addresses** | **bool**| Include student address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -2673,7 +2783,7 @@ $year_code = 56; // int | Filter by school year
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
-$emails = True; // bool | translation missing: en.api.params.query.emails
+$emails = True; // bool | Include email addresses
 $addresses = True; // bool | Include student address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2702,7 +2812,7 @@ Name | Type | Description  | Notes
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
- **emails** | **bool**| translation missing: en.api.params.query.emails | [optional]
+ **emails** | **bool**| Include email addresses | [optional]
  **addresses** | **bool**| Include student address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -2810,7 +2920,7 @@ $year_code = 56; // int | Filter by school year
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
-$emails = True; // bool | translation missing: en.api.params.query.emails
+$emails = True; // bool | Include email addresses
 $addresses = True; // bool | Include student address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -2838,7 +2948,7 @@ Name | Type | Description  | Notes
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
- **emails** | **bool**| translation missing: en.api.params.query.emails | [optional]
+ **emails** | **bool**| Include email addresses | [optional]
  **addresses** | **bool**| Include student address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
@@ -3009,7 +3119,7 @@ $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a s
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
-$emails = True; // bool | translation missing: en.api.params.query.emails
+$emails = True; // bool | Include email addresses
 $addresses = True; // bool | Include student address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
@@ -3035,7 +3145,7 @@ Name | Type | Description  | Notes
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
- **emails** | **bool**| translation missing: en.api.params.query.emails | [optional]
+ **emails** | **bool**| Include email addresses | [optional]
  **addresses** | **bool**| Include student address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]

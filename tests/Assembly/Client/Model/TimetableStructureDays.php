@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.376
+ * SDK Version 1.2.379
  * API Version 1.1.0
  *
  * Support
@@ -89,6 +89,13 @@ class TimetableStructureDaysTest extends \PHPUnit_Framework_TestCase
    * Test attribute "long_name"
    */
   public function testPropertyLongName()
+  {
+  }
+
+  /**
+   * Test attribute "display_order"
+   */
+  public function testPropertyDisplayOrder()
   {
   }
 

@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.376
+ * SDK Version 1.2.379
  * API Version 1.1.0
  *
  * Support
@@ -48,6 +48,7 @@ class TimetableDays implements ModelInterface, ArrayAccess
     'id' => 'int',
     'short_name' => 'string',
     'long_name' => 'string',
+    'display_order' => 'int',
     'periods' => '\Assembly\Client\Model\TimetablePeriods[]'
   ];
 
@@ -61,6 +62,7 @@ class TimetableDays implements ModelInterface, ArrayAccess
     'id' => 'int32',
     'short_name' => null,
     'long_name' => null,
+    'display_order' => 'int32',
     'periods' => null
   ];
 
@@ -95,6 +97,7 @@ class TimetableDays implements ModelInterface, ArrayAccess
     'id' => 'id',
     'short_name' => 'short_name',
     'long_name' => 'long_name',
+    'display_order' => 'display_order',
     'periods' => 'periods'
   ];
 
@@ -108,6 +111,7 @@ class TimetableDays implements ModelInterface, ArrayAccess
     'id' => 'setId',
     'short_name' => 'setShortName',
     'long_name' => 'setLongName',
+    'display_order' => 'setDisplayOrder',
     'periods' => 'setPeriods'
   ];
 
@@ -121,6 +125,7 @@ class TimetableDays implements ModelInterface, ArrayAccess
     'id' => 'getId',
     'short_name' => 'getShortName',
     'long_name' => 'getLongName',
+    'display_order' => 'getDisplayOrder',
     'periods' => 'getPeriods'
   ];
 
@@ -188,6 +193,7 @@ class TimetableDays implements ModelInterface, ArrayAccess
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['short_name'] = isset($data['short_name']) ? $data['short_name'] : null;
     $this->container['long_name'] = isset($data['long_name']) ? $data['long_name'] : null;
+    $this->container['display_order'] = isset($data['display_order']) ? $data['display_order'] : null;
     $this->container['periods'] = isset($data['periods']) ? $data['periods'] : null;
   }
 
@@ -308,6 +314,30 @@ class TimetableDays implements ModelInterface, ArrayAccess
   public function setLongName($long_name)
   {
     $this->container['long_name'] = $long_name;
+
+    return $this;
+  }
+
+  /**
+   * Gets display_order
+   *
+   * @return int
+   */
+  public function getDisplayOrder()
+  {
+    return $this->container['display_order'];
+  }
+
+  /**
+   * Sets display_order
+   *
+   * @param int $display_order The order in which days should be displayed
+   *
+   * @return $this
+   */
+  public function setDisplayOrder($display_order)
+  {
+    $this->container['display_order'] = $display_order;
 
     return $this;
   }

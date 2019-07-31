@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.376
+ * SDK Version 1.2.379
  * API Version 1.1.0
  *
  * Support
@@ -50,6 +50,7 @@ class TimetableLessons implements ModelInterface, ArrayAccess
     'group' => '\Assembly\Client\Model\LessonGroup',
     'start_date' => '\DateTime',
     'end_date' => '\DateTime',
+    'supervisors' => '\Assembly\Client\Model\TimetableSupervisors[]',
     'rooms' => '\Assembly\Client\Model\LessonRooms[]'
   ];
 
@@ -65,6 +66,7 @@ class TimetableLessons implements ModelInterface, ArrayAccess
     'group' => null,
     'start_date' => 'date-time',
     'end_date' => 'date-time',
+    'supervisors' => null,
     'rooms' => null
   ];
 
@@ -101,6 +103,7 @@ class TimetableLessons implements ModelInterface, ArrayAccess
     'group' => 'group',
     'start_date' => 'start_date',
     'end_date' => 'end_date',
+    'supervisors' => 'supervisors',
     'rooms' => 'rooms'
   ];
 
@@ -116,6 +119,7 @@ class TimetableLessons implements ModelInterface, ArrayAccess
     'group' => 'setGroup',
     'start_date' => 'setStartDate',
     'end_date' => 'setEndDate',
+    'supervisors' => 'setSupervisors',
     'rooms' => 'setRooms'
   ];
 
@@ -131,6 +135,7 @@ class TimetableLessons implements ModelInterface, ArrayAccess
     'group' => 'getGroup',
     'start_date' => 'getStartDate',
     'end_date' => 'getEndDate',
+    'supervisors' => 'getSupervisors',
     'rooms' => 'getRooms'
   ];
 
@@ -178,7 +183,7 @@ class TimetableLessons implements ModelInterface, ArrayAccess
   const TYPE_SCHEDULED = 'Scheduled';
   const TYPE_ROOM_COVER = 'RoomCover';
   const TYPE_STAFF_COVER = 'StaffCover';
-  const TYPE_INVIGULATION_COVER = 'InvigulationCover';
+  const TYPE_INVIGILATION_COVER = 'InvigilationCover';
   
 
   
@@ -193,7 +198,7 @@ class TimetableLessons implements ModelInterface, ArrayAccess
       self::TYPE_SCHEDULED,
       self::TYPE_ROOM_COVER,
       self::TYPE_STAFF_COVER,
-      self::TYPE_INVIGULATION_COVER,
+      self::TYPE_INVIGILATION_COVER,
     ];
   }
   
@@ -219,6 +224,7 @@ class TimetableLessons implements ModelInterface, ArrayAccess
     $this->container['group'] = isset($data['group']) ? $data['group'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
     $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
+    $this->container['supervisors'] = isset($data['supervisors']) ? $data['supervisors'] : null;
     $this->container['rooms'] = isset($data['rooms']) ? $data['rooms'] : null;
   }
 
@@ -408,6 +414,30 @@ class TimetableLessons implements ModelInterface, ArrayAccess
   public function setEndDate($end_date)
   {
     $this->container['end_date'] = $end_date;
+
+    return $this;
+  }
+
+  /**
+   * Gets supervisors
+   *
+   * @return \Assembly\Client\Model\TimetableSupervisors[]
+   */
+  public function getSupervisors()
+  {
+    return $this->container['supervisors'];
+  }
+
+  /**
+   * Sets supervisors
+   *
+   * @param \Assembly\Client\Model\TimetableSupervisors[] $supervisors The ID of a staff member who supervises a group and their role.
+   *
+   * @return $this
+   */
+  public function setSupervisors($supervisors)
+  {
+    $this->container['supervisors'] = $supervisors;
 
     return $this;
   }

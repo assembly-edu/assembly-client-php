@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.376
+ * SDK Version 1.2.379
  * API Version 1.1.0
  *
  * Support
@@ -48,8 +48,9 @@ class TimetablePeriods implements ModelInterface, ArrayAccess
     'id' => 'int',
     'short_name' => 'string',
     'long_name' => 'string',
-    'start_date' => '\DateTime',
-    'end_date' => '\DateTime',
+    'start_time' => 'string',
+    'end_time' => 'string',
+    'display_order' => 'int',
     'lessons' => '\Assembly\Client\Model\TimetableLessons[]'
   ];
 
@@ -63,8 +64,9 @@ class TimetablePeriods implements ModelInterface, ArrayAccess
     'id' => 'int32',
     'short_name' => null,
     'long_name' => null,
-    'start_date' => 'date-time',
-    'end_date' => 'date-time',
+    'start_time' => null,
+    'end_time' => null,
+    'display_order' => 'int32',
     'lessons' => null
   ];
 
@@ -99,8 +101,9 @@ class TimetablePeriods implements ModelInterface, ArrayAccess
     'id' => 'id',
     'short_name' => 'short_name',
     'long_name' => 'long_name',
-    'start_date' => 'start_date',
-    'end_date' => 'end_date',
+    'start_time' => 'start_time',
+    'end_time' => 'end_time',
+    'display_order' => 'display_order',
     'lessons' => 'lessons'
   ];
 
@@ -114,8 +117,9 @@ class TimetablePeriods implements ModelInterface, ArrayAccess
     'id' => 'setId',
     'short_name' => 'setShortName',
     'long_name' => 'setLongName',
-    'start_date' => 'setStartDate',
-    'end_date' => 'setEndDate',
+    'start_time' => 'setStartTime',
+    'end_time' => 'setEndTime',
+    'display_order' => 'setDisplayOrder',
     'lessons' => 'setLessons'
   ];
 
@@ -129,8 +133,9 @@ class TimetablePeriods implements ModelInterface, ArrayAccess
     'id' => 'getId',
     'short_name' => 'getShortName',
     'long_name' => 'getLongName',
-    'start_date' => 'getStartDate',
-    'end_date' => 'getEndDate',
+    'start_time' => 'getStartTime',
+    'end_time' => 'getEndTime',
+    'display_order' => 'getDisplayOrder',
     'lessons' => 'getLessons'
   ];
 
@@ -198,8 +203,9 @@ class TimetablePeriods implements ModelInterface, ArrayAccess
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['short_name'] = isset($data['short_name']) ? $data['short_name'] : null;
     $this->container['long_name'] = isset($data['long_name']) ? $data['long_name'] : null;
-    $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
-    $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
+    $this->container['start_time'] = isset($data['start_time']) ? $data['start_time'] : null;
+    $this->container['end_time'] = isset($data['end_time']) ? $data['end_time'] : null;
+    $this->container['display_order'] = isset($data['display_order']) ? $data['display_order'] : null;
     $this->container['lessons'] = isset($data['lessons']) ? $data['lessons'] : null;
   }
 
@@ -211,6 +217,14 @@ class TimetablePeriods implements ModelInterface, ArrayAccess
   public function listInvalidProperties()
   {
     $invalidProperties = [];
+
+    if (!is_null($this->container['start_time']) && !preg_match("/^\\d{2}:\\d{2}$/", $this->container['start_time'])) {
+      $invalidProperties[] = "invalid value for 'start_time', must be conform to the pattern /^\\d{2}:\\d{2}$/.";
+    }
+
+    if (!is_null($this->container['end_time']) && !preg_match("/^\\d{2}:\\d{2}$/", $this->container['end_time'])) {
+      $invalidProperties[] = "invalid value for 'end_time', must be conform to the pattern /^\\d{2}:\\d{2}$/.";
+    }
 
     return $invalidProperties;
   }
@@ -224,6 +238,12 @@ class TimetablePeriods implements ModelInterface, ArrayAccess
   public function valid()
   {
 
+    if (!preg_match("/^\\d{2}:\\d{2}$/", $this->container['start_time'])) {
+      return false;
+    }
+    if (!preg_match("/^\\d{2}:\\d{2}$/", $this->container['end_time'])) {
+      return false;
+    }
     return true;
   }
 
@@ -325,49 +345,83 @@ class TimetablePeriods implements ModelInterface, ArrayAccess
   }
 
   /**
-   * Gets start_date
+   * Gets start_time
    *
-   * @return \DateTime
+   * @return string
    */
-  public function getStartDate()
+  public function getStartTime()
   {
-    return $this->container['start_date'];
+    return $this->container['start_time'];
   }
 
   /**
-   * Sets start_date
+   * Sets start_time
    *
-   * @param \DateTime $start_date The start time of the period
+   * @param string $start_time The start time of the period
    *
    * @return $this
    */
-  public function setStartDate($start_date)
+  public function setStartTime($start_time)
   {
-    $this->container['start_date'] = $start_date;
+
+    if (!is_null($start_time) && (!preg_match("/^\\d{2}:\\d{2}$/", $start_time))) {
+      throw new \InvalidArgumentException("invalid value for $start_time when calling TimetablePeriods., must conform to the pattern /^\\d{2}:\\d{2}$/.");
+    }
+
+    $this->container['start_time'] = $start_time;
 
     return $this;
   }
 
   /**
-   * Gets end_date
+   * Gets end_time
    *
-   * @return \DateTime
+   * @return string
    */
-  public function getEndDate()
+  public function getEndTime()
   {
-    return $this->container['end_date'];
+    return $this->container['end_time'];
   }
 
   /**
-   * Sets end_date
+   * Sets end_time
    *
-   * @param \DateTime $end_date The end time of the period
+   * @param string $end_time The end time of the period
    *
    * @return $this
    */
-  public function setEndDate($end_date)
+  public function setEndTime($end_time)
   {
-    $this->container['end_date'] = $end_date;
+
+    if (!is_null($end_time) && (!preg_match("/^\\d{2}:\\d{2}$/", $end_time))) {
+      throw new \InvalidArgumentException("invalid value for $end_time when calling TimetablePeriods., must conform to the pattern /^\\d{2}:\\d{2}$/.");
+    }
+
+    $this->container['end_time'] = $end_time;
+
+    return $this;
+  }
+
+  /**
+   * Gets display_order
+   *
+   * @return int
+   */
+  public function getDisplayOrder()
+  {
+    return $this->container['display_order'];
+  }
+
+  /**
+   * Sets display_order
+   *
+   * @param int $display_order The order in which periods should be displayed
+   *
+   * @return $this
+   */
+  public function setDisplayOrder($display_order)
+  {
+    $this->container['display_order'] = $display_order;
 
     return $this;
   }

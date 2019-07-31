@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.376
+ * SDK Version 1.2.379
  * API Version 1.1.0
  *
  * Support
@@ -229,6 +229,13 @@ class StudentTest extends \PHPUnit_Framework_TestCase
    * Test attribute "languages"
    */
   public function testPropertyLanguages()
+  {
+  }
+
+  /**
+   * Test attribute "learning_aims"
+   */
+  public function testPropertyLearningAims()
   {
   }
 
