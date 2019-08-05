@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **legal_last_name** | **string** | The legal first name of the staff member, may be the same as &#x60;legal_last_name&#x60; | [optional] 
 **former_last_name** | **string** | The former last name of the staff member, may be &#x60;null&#x60; | [optional] 
 **title** | **string** | The title of the staff member | [optional] 
+**salutation** | **string** | The salutation for the staff member | [optional] 
 **dob** | [**\DateTime**](\DateTime.md) | The staff member&#39;s date of birth | [optional] 
 **email** | **string** | The email address of the staff member. Deprecated in favour of &#x60;emails&#x60; | [optional] 
 **emails** | [**\Assembly\Client\Model\EmailInfo[]**](EmailInfo.md) | The email addresses of the staff member. | [optional] 

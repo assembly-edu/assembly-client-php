@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.379
+ * SDK Version 1.2.381
  * API Version 1.1.0
  *
  * Support
@@ -56,6 +56,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     'legal_last_name' => 'string',
     'former_last_name' => 'string',
     'title' => 'string',
+    'salutation' => 'string',
     'dob' => '\DateTime',
     'email' => 'string',
     'emails' => '\Assembly\Client\Model\EmailInfo[]',
@@ -85,6 +86,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     'legal_last_name' => null,
     'former_last_name' => null,
     'title' => null,
+    'salutation' => null,
     'dob' => 'date-time',
     'email' => null,
     'emails' => null,
@@ -135,6 +137,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     'legal_last_name' => 'legal_last_name',
     'former_last_name' => 'former_last_name',
     'title' => 'title',
+    'salutation' => 'salutation',
     'dob' => 'dob',
     'email' => 'email',
     'emails' => 'emails',
@@ -164,6 +167,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     'legal_last_name' => 'setLegalLastName',
     'former_last_name' => 'setFormerLastName',
     'title' => 'setTitle',
+    'salutation' => 'setSalutation',
     'dob' => 'setDob',
     'email' => 'setEmail',
     'emails' => 'setEmails',
@@ -193,6 +197,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     'legal_last_name' => 'getLegalLastName',
     'former_last_name' => 'getFormerLastName',
     'title' => 'getTitle',
+    'salutation' => 'getSalutation',
     'dob' => 'getDob',
     'email' => 'getEmail',
     'emails' => 'getEmails',
@@ -276,6 +281,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     $this->container['legal_last_name'] = isset($data['legal_last_name']) ? $data['legal_last_name'] : null;
     $this->container['former_last_name'] = isset($data['former_last_name']) ? $data['former_last_name'] : null;
     $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+    $this->container['salutation'] = isset($data['salutation']) ? $data['salutation'] : null;
     $this->container['dob'] = isset($data['dob']) ? $data['dob'] : null;
     $this->container['email'] = isset($data['email']) ? $data['email'] : null;
     $this->container['emails'] = isset($data['emails']) ? $data['emails'] : null;
@@ -573,6 +579,30 @@ class StaffMember implements ModelInterface, ArrayAccess
   public function setTitle($title)
   {
     $this->container['title'] = $title;
+
+    return $this;
+  }
+
+  /**
+   * Gets salutation
+   *
+   * @return string
+   */
+  public function getSalutation()
+  {
+    return $this->container['salutation'];
+  }
+
+  /**
+   * Sets salutation
+   *
+   * @param string $salutation The salutation for the staff member
+   *
+   * @return $this
+   */
+  public function setSalutation($salutation)
+  {
+    $this->container['salutation'] = $salutation;
 
     return $this;
   }
