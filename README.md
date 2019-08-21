@@ -1,7 +1,7 @@
 # PHP SDK for the Assembly API
 
 - API version: 1.1.0
-- Package version: 1.2.384
+- Package version: 1.2.404
 
 For more information, please visit [http://developers.assembly.education](http://developers.assembly.education)
 
