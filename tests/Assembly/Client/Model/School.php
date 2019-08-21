@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.381
+ * SDK Version 1.2.384
  * API Version 1.1.0
  *
  * Support
@@ -75,6 +75,13 @@ class SchoolTest extends \PHPUnit_Framework_TestCase
    * Test attribute "name"
    */
   public function testPropertyName()
+  {
+  }
+
+  /**
+   * Test attribute "slug"
+   */
+  public function testPropertySlug()
   {
   }
 

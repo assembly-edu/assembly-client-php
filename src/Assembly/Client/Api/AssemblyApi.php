@@ -11,7 +11,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.381
+ * SDK Version 1.2.384
  * API Version 1.1.0
  *
  * Support
@@ -6656,14 +6656,16 @@ class AssemblyApi
    *
    * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Result[]
    */
-  public function getAssessmentPointResults($assessment_point_rank, $students)
+  public function getAssessmentPointResults($assessment_point_rank, $students, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getAssessmentPointResultsWithHttpInfo($assessment_point_rank, $students);
+    list($response) = $this->getAssessmentPointResultsWithHttpInfo($assessment_point_rank, $students, $per_page, $page);
     return $response;
   }
 
@@ -6674,15 +6676,17 @@ class AssemblyApi
    *
    * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Result[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getAssessmentPointResultsWithHttpInfo($assessment_point_rank, $students)
+  public function getAssessmentPointResultsWithHttpInfo($assessment_point_rank, $students, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Result[]';
-    $request = $this->getAssessmentPointResultsRequest($assessment_point_rank, $students);
+    $request = $this->getAssessmentPointResultsRequest($assessment_point_rank, $students, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -6782,13 +6786,15 @@ class AssemblyApi
    *
    * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAssessmentPointResultsAsync($assessment_point_rank, $students)
+  public function getAssessmentPointResultsAsync($assessment_point_rank, $students, $per_page = '100', $page = '1')
   {
-    return $this->getAssessmentPointResultsAsyncWithHttpInfo($assessment_point_rank, $students)
+    return $this->getAssessmentPointResultsAsyncWithHttpInfo($assessment_point_rank, $students, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -6803,14 +6809,16 @@ class AssemblyApi
    *
    * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAssessmentPointResultsAsyncWithHttpInfo($assessment_point_rank, $students)
+  public function getAssessmentPointResultsAsyncWithHttpInfo($assessment_point_rank, $students, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Result[]';
-    $request = $this->getAssessmentPointResultsRequest($assessment_point_rank, $students);
+    $request = $this->getAssessmentPointResultsRequest($assessment_point_rank, $students, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -6854,11 +6862,13 @@ class AssemblyApi
    *
    * @param  int $assessment_point_rank The rank of the assessment point as an Integer (required)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getAssessmentPointResultsRequest($assessment_point_rank, $students)
+  protected function getAssessmentPointResultsRequest($assessment_point_rank, $students, $per_page = '100', $page = '1')
   {
     // verify the required parameter 'assessment_point_rank' is set
     if ($assessment_point_rank === null || (is_array($assessment_point_rank) && count($assessment_point_rank) === 0)) {
@@ -6872,6 +6882,17 @@ class AssemblyApi
         'Missing the required parameter $students when calling getAssessmentPointResults'
       );
     }
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAssessmentPointResults, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAssessmentPointResults, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getAssessmentPointResults, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/assessment_points/{assessment_point_rank}/results';
     $formParams = [];
@@ -6886,6 +6907,14 @@ class AssemblyApi
     }
     if ($students !== null) {
       $queryParams['students[]'] = ObjectSerializer::toQueryValue($students);
+    }
+    // query params
+    if ($per_page !== null) {
+      $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+    }
+    // query params
+    if ($page !== null) {
+      $queryParams['page'] = ObjectSerializer::toQueryValue($page);
     }
 
     // path params
@@ -7298,14 +7327,16 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Result[]
    */
-  public function getAssessmentResults($id, $students)
+  public function getAssessmentResults($id, $students, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getAssessmentResultsWithHttpInfo($id, $students);
+    list($response) = $this->getAssessmentResultsWithHttpInfo($id, $students, $per_page, $page);
     return $response;
   }
 
@@ -7316,15 +7347,17 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Result[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getAssessmentResultsWithHttpInfo($id, $students)
+  public function getAssessmentResultsWithHttpInfo($id, $students, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Result[]';
-    $request = $this->getAssessmentResultsRequest($id, $students);
+    $request = $this->getAssessmentResultsRequest($id, $students, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -7424,13 +7457,15 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAssessmentResultsAsync($id, $students)
+  public function getAssessmentResultsAsync($id, $students, $per_page = '100', $page = '1')
   {
-    return $this->getAssessmentResultsAsyncWithHttpInfo($id, $students)
+    return $this->getAssessmentResultsAsyncWithHttpInfo($id, $students, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -7445,14 +7480,16 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAssessmentResultsAsyncWithHttpInfo($id, $students)
+  public function getAssessmentResultsAsyncWithHttpInfo($id, $students, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Result[]';
-    $request = $this->getAssessmentResultsRequest($id, $students);
+    $request = $this->getAssessmentResultsRequest($id, $students, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -7496,11 +7533,13 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getAssessmentResultsRequest($id, $students)
+  protected function getAssessmentResultsRequest($id, $students, $per_page = '100', $page = '1')
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -7514,6 +7553,17 @@ class AssemblyApi
         'Missing the required parameter $students when calling getAssessmentResults'
       );
     }
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAssessmentResults, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAssessmentResults, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getAssessmentResults, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/assessments/{id}/results';
     $formParams = [];
@@ -7528,6 +7578,14 @@ class AssemblyApi
     }
     if ($students !== null) {
       $queryParams['students[]'] = ObjectSerializer::toQueryValue($students);
+    }
+    // query params
+    if ($per_page !== null) {
+      $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+    }
+    // query params
+    if ($page !== null) {
+      $queryParams['page'] = ObjectSerializer::toQueryValue($page);
     }
 
     // path params
@@ -7924,14 +7982,16 @@ class AssemblyApi
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\AttendanceSummary[]
    */
-  public function getAttendanceSummaries($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null)
+  public function getAttendanceSummaries($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getAttendanceSummariesWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $academic_year_id);
+    list($response) = $this->getAttendanceSummariesWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $academic_year_id, $per_page, $page);
     return $response;
   }
 
@@ -7944,15 +8004,17 @@ class AssemblyApi
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\AttendanceSummary[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getAttendanceSummariesWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null)
+  public function getAttendanceSummariesWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\AttendanceSummary[]';
-    $request = $this->getAttendanceSummariesRequest($if_modified_since, $student_id, $registration_group_id, $academic_year_id);
+    $request = $this->getAttendanceSummariesRequest($if_modified_since, $student_id, $registration_group_id, $academic_year_id, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -8054,13 +8116,15 @@ class AssemblyApi
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAttendanceSummariesAsync($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null)
+  public function getAttendanceSummariesAsync($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    return $this->getAttendanceSummariesAsyncWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $academic_year_id)
+    return $this->getAttendanceSummariesAsyncWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $academic_year_id, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -8077,14 +8141,16 @@ class AssemblyApi
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAttendanceSummariesAsyncWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null)
+  public function getAttendanceSummariesAsyncWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\AttendanceSummary[]';
-    $request = $this->getAttendanceSummariesRequest($if_modified_since, $student_id, $registration_group_id, $academic_year_id);
+    $request = $this->getAttendanceSummariesRequest($if_modified_since, $student_id, $registration_group_id, $academic_year_id, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -8130,12 +8196,25 @@ class AssemblyApi
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getAttendanceSummariesRequest($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null)
+  protected function getAttendanceSummariesRequest($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAttendanceSummaries, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAttendanceSummaries, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getAttendanceSummaries, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/attendances/summaries';
     $formParams = [];
@@ -8155,6 +8234,14 @@ class AssemblyApi
     // query params
     if ($academic_year_id !== null) {
       $queryParams['academic_year_id'] = ObjectSerializer::toQueryValue($academic_year_id);
+    }
+    // query params
+    if ($per_page !== null) {
+      $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+    }
+    // query params
+    if ($page !== null) {
+      $queryParams['page'] = ObjectSerializer::toQueryValue($page);
     }
     // header params
     if ($if_modified_since !== null) {
@@ -11462,14 +11549,16 @@ class AssemblyApi
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\StaffMember[]
    */
-  public function getLeftStaffMembers($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null)
+  public function getLeftStaffMembers($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getLeftStaffMembersWithHttpInfo($if_modified_since, $teachers_only, $demographics, $qualifications);
+    list($response) = $this->getLeftStaffMembersWithHttpInfo($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
     return $response;
   }
 
@@ -11482,15 +11571,17 @@ class AssemblyApi
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\StaffMember[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getLeftStaffMembersWithHttpInfo($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null)
+  public function getLeftStaffMembersWithHttpInfo($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffMember[]';
-    $request = $this->getLeftStaffMembersRequest($if_modified_since, $teachers_only, $demographics, $qualifications);
+    $request = $this->getLeftStaffMembersRequest($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -11592,13 +11683,15 @@ class AssemblyApi
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLeftStaffMembersAsync($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null)
+  public function getLeftStaffMembersAsync($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
-    return $this->getLeftStaffMembersAsyncWithHttpInfo($if_modified_since, $teachers_only, $demographics, $qualifications)
+    return $this->getLeftStaffMembersAsyncWithHttpInfo($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -11615,14 +11708,16 @@ class AssemblyApi
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLeftStaffMembersAsyncWithHttpInfo($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null)
+  public function getLeftStaffMembersAsyncWithHttpInfo($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffMember[]';
-    $request = $this->getLeftStaffMembersRequest($if_modified_since, $teachers_only, $demographics, $qualifications);
+    $request = $this->getLeftStaffMembersRequest($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -11668,12 +11763,25 @@ class AssemblyApi
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getLeftStaffMembersRequest($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null)
+  protected function getLeftStaffMembersRequest($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getLeftStaffMembers, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getLeftStaffMembers, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getLeftStaffMembers, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/staff_members/left';
     $formParams = [];
@@ -11693,6 +11801,14 @@ class AssemblyApi
     // query params
     if ($qualifications !== null) {
       $queryParams['qualifications'] = ObjectSerializer::toQueryValue($qualifications);
+    }
+    // query params
+    if ($per_page !== null) {
+      $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+    }
+    // query params
+    if ($page !== null) {
+      $queryParams['page'] = ObjectSerializer::toQueryValue($page);
     }
     // header params
     if ($if_modified_since !== null) {
@@ -11774,14 +11890,16 @@ class AssemblyApi
    * List Left Students
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getLeftStudents($if_modified_since = null)
+  public function getLeftStudents($if_modified_since = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getLeftStudentsWithHttpInfo($if_modified_since);
+    list($response) = $this->getLeftStudentsWithHttpInfo($if_modified_since, $per_page, $page);
     return $response;
   }
 
@@ -11791,15 +11909,17 @@ class AssemblyApi
    * List Left Students
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getLeftStudentsWithHttpInfo($if_modified_since = null)
+  public function getLeftStudentsWithHttpInfo($if_modified_since = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getLeftStudentsRequest($if_modified_since);
+    $request = $this->getLeftStudentsRequest($if_modified_since, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -11898,13 +12018,15 @@ class AssemblyApi
    * List Left Students
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLeftStudentsAsync($if_modified_since = null)
+  public function getLeftStudentsAsync($if_modified_since = null, $per_page = '100', $page = '1')
   {
-    return $this->getLeftStudentsAsyncWithHttpInfo($if_modified_since)
+    return $this->getLeftStudentsAsyncWithHttpInfo($if_modified_since, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -11918,14 +12040,16 @@ class AssemblyApi
    * List Left Students
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLeftStudentsAsyncWithHttpInfo($if_modified_since = null)
+  public function getLeftStudentsAsyncWithHttpInfo($if_modified_since = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getLeftStudentsRequest($if_modified_since);
+    $request = $this->getLeftStudentsRequest($if_modified_since, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -11968,12 +12092,25 @@ class AssemblyApi
    * Create request for operation 'getLeftStudents'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getLeftStudentsRequest($if_modified_since = null)
+  protected function getLeftStudentsRequest($if_modified_since = null, $per_page = '100', $page = '1')
   {
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getLeftStudents, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getLeftStudents, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getLeftStudents, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/students/left';
     $formParams = [];
@@ -11982,6 +12119,14 @@ class AssemblyApi
     $httpBody = '';
     $multipart = false;
 
+    // query params
+    if ($per_page !== null) {
+      $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+    }
+    // query params
+    if ($page !== null) {
+      $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+    }
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
@@ -12066,14 +12211,16 @@ class AssemblyApi
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $start_date The start date of the period to filter by (optional)
    * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Lesson[]
    */
-  public function getLessons($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function getLessons($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getLessonsWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date);
+    list($response) = $this->getLessonsWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date, $per_page, $page);
     return $response;
   }
 
@@ -12087,15 +12234,17 @@ class AssemblyApi
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $start_date The start date of the period to filter by (optional)
    * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Lesson[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getLessonsWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function getLessonsWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Lesson[]';
-    $request = $this->getLessonsRequest($id, $if_modified_since, $date, $start_date, $end_date);
+    $request = $this->getLessonsRequest($id, $if_modified_since, $date, $start_date, $end_date, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -12198,13 +12347,15 @@ class AssemblyApi
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $start_date The start date of the period to filter by (optional)
    * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLessonsAsync($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function getLessonsAsync($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
-    return $this->getLessonsAsyncWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date)
+    return $this->getLessonsAsyncWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -12222,14 +12373,16 @@ class AssemblyApi
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $start_date The start date of the period to filter by (optional)
    * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLessonsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function getLessonsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Lesson[]';
-    $request = $this->getLessonsRequest($id, $if_modified_since, $date, $start_date, $end_date);
+    $request = $this->getLessonsRequest($id, $if_modified_since, $date, $start_date, $end_date, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -12276,11 +12429,13 @@ class AssemblyApi
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $start_date The start date of the period to filter by (optional)
    * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getLessonsRequest($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  protected function getLessonsRequest($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -12288,6 +12443,17 @@ class AssemblyApi
         'Missing the required parameter $id when calling getLessons'
       );
     }
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getLessons, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getLessons, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getLessons, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/rooms/{id}/lessons';
     $formParams = [];
@@ -12307,6 +12473,14 @@ class AssemblyApi
     // query params
     if ($end_date !== null) {
       $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
+    }
+    // query params
+    if ($per_page !== null) {
+      $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+    }
+    // query params
+    if ($page !== null) {
+      $queryParams['page'] = ObjectSerializer::toQueryValue($page);
     }
     // header params
     if ($if_modified_since !== null) {
@@ -12716,14 +12890,16 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getRegistrationGroupStudents($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getRegistrationGroupStudents($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+    list($response) = $this->getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
     return $response;
   }
 
@@ -12745,15 +12921,17 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -12864,13 +13042,15 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getRegistrationGroupStudentsAsync($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getRegistrationGroupStudentsAsync($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    return $this->getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
+    return $this->getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -12896,14 +13076,16 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -12958,11 +13140,13 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getRegistrationGroupStudentsRequest($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  protected function getRegistrationGroupStudentsRequest($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -12970,6 +13154,17 @@ class AssemblyApi
         'Missing the required parameter $id when calling getRegistrationGroupStudents'
       );
     }
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getRegistrationGroupStudents, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getRegistrationGroupStudents, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getRegistrationGroupStudents, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/registration_groups/{id}/students';
     $formParams = [];
@@ -13021,6 +13216,14 @@ class AssemblyApi
     // query params
     if ($photo !== null) {
       $queryParams['photo'] = ObjectSerializer::toQueryValue($photo);
+    }
+    // query params
+    if ($per_page !== null) {
+      $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+    }
+    // query params
+    if ($page !== null) {
+      $queryParams['page'] = ObjectSerializer::toQueryValue($page);
     }
     // header params
     if ($if_modified_since !== null) {
@@ -15887,14 +16090,16 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getTeachingGroupStudents($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getTeachingGroupStudents($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+    list($response) = $this->getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
     return $response;
   }
 
@@ -15917,15 +16122,17 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -16037,13 +16244,15 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getTeachingGroupStudentsAsync($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getTeachingGroupStudentsAsync($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    return $this->getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
+    return $this->getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -16070,14 +16279,16 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -16133,11 +16344,13 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getTeachingGroupStudentsRequest($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  protected function getTeachingGroupStudentsRequest($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -16145,6 +16358,17 @@ class AssemblyApi
         'Missing the required parameter $id when calling getTeachingGroupStudents'
       );
     }
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getTeachingGroupStudents, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getTeachingGroupStudents, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getTeachingGroupStudents, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/teaching_groups/{id}/students';
     $formParams = [];
@@ -16200,6 +16424,14 @@ class AssemblyApi
     // query params
     if ($photo !== null) {
       $queryParams['photo'] = ObjectSerializer::toQueryValue($photo);
+    }
+    // query params
+    if ($per_page !== null) {
+      $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+    }
+    // query params
+    if ($page !== null) {
+      $queryParams['page'] = ObjectSerializer::toQueryValue($page);
     }
     // header params
     if ($if_modified_since !== null) {
@@ -16970,14 +17202,16 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getYearGroupStudents($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getYearGroupStudents($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getYearGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+    list($response) = $this->getYearGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
     return $response;
   }
 
@@ -16998,15 +17232,17 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getYearGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getYearGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -17116,13 +17352,15 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getYearGroupStudentsAsync($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getYearGroupStudentsAsync($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    return $this->getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
+    return $this->getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -17147,14 +17385,16 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -17208,11 +17448,13 @@ class AssemblyApi
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
    * @param  bool $photo Include student photo data (optional)
+   * @param  int $per_page Number of results to return (optional, default to 100)
+   * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getYearGroupStudentsRequest($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  protected function getYearGroupStudentsRequest($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -17220,6 +17462,17 @@ class AssemblyApi
         'Missing the required parameter $id when calling getYearGroupStudents'
       );
     }
+    if ($per_page !== null && $per_page > 1500) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getYearGroupStudents, must be smaller than or equal to 1500.');
+    }
+    if ($per_page !== null && $per_page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getYearGroupStudents, must be bigger than or equal to 1.');
+    }
+
+    if ($page !== null && $page < 1) {
+      throw new \InvalidArgumentException('invalid value for "$page" when calling AssemblyApi.getYearGroupStudents, must be bigger than or equal to 1.');
+    }
+
 
     $resourcePath = '/year_groups/{id}/students';
     $formParams = [];
@@ -17267,6 +17520,14 @@ class AssemblyApi
     // query params
     if ($photo !== null) {
       $queryParams['photo'] = ObjectSerializer::toQueryValue($photo);
+    }
+    // query params
+    if ($per_page !== null) {
+      $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+    }
+    // query params
+    if ($page !== null) {
+      $queryParams['page'] = ObjectSerializer::toQueryValue($page);
     }
     // header params
     if ($if_modified_since !== null) {

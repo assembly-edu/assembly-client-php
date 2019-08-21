@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.381
+ * SDK Version 1.2.384
  * API Version 1.1.0
  *
  * Support
@@ -47,6 +47,7 @@ class School implements ModelInterface, ArrayAccess
   protected static $swaggerTypes = [
     'object' => 'string',
     'name' => 'string',
+    'slug' => 'string',
     'urn' => 'string',
     'mis_provider' => 'string',
     'la_code' => 'int',
@@ -68,6 +69,7 @@ class School implements ModelInterface, ArrayAccess
   protected static $swaggerFormats = [
     'object' => null,
     'name' => null,
+    'slug' => null,
     'urn' => null,
     'mis_provider' => null,
     'la_code' => 'int32',
@@ -110,6 +112,7 @@ class School implements ModelInterface, ArrayAccess
   protected static $attributeMap = [
     'object' => 'object',
     'name' => 'name',
+    'slug' => 'slug',
     'urn' => 'urn',
     'mis_provider' => 'mis_provider',
     'la_code' => 'la_code',
@@ -131,6 +134,7 @@ class School implements ModelInterface, ArrayAccess
   protected static $setters = [
     'object' => 'setObject',
     'name' => 'setName',
+    'slug' => 'setSlug',
     'urn' => 'setUrn',
     'mis_provider' => 'setMisProvider',
     'la_code' => 'setLaCode',
@@ -152,6 +156,7 @@ class School implements ModelInterface, ArrayAccess
   protected static $getters = [
     'object' => 'getObject',
     'name' => 'getName',
+    'slug' => 'getSlug',
     'urn' => 'getUrn',
     'mis_provider' => 'getMisProvider',
     'la_code' => 'getLaCode',
@@ -227,6 +232,7 @@ class School implements ModelInterface, ArrayAccess
   {
     $this->container['object'] = isset($data['object']) ? $data['object'] : 'school';
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+    $this->container['slug'] = isset($data['slug']) ? $data['slug'] : null;
     $this->container['urn'] = isset($data['urn']) ? $data['urn'] : null;
     $this->container['mis_provider'] = isset($data['mis_provider']) ? $data['mis_provider'] : null;
     $this->container['la_code'] = isset($data['la_code']) ? $data['la_code'] : null;
@@ -309,6 +315,30 @@ class School implements ModelInterface, ArrayAccess
   public function setName($name)
   {
     $this->container['name'] = $name;
+
+    return $this;
+  }
+
+  /**
+   * Gets slug
+   *
+   * @return string
+   */
+  public function getSlug()
+  {
+    return $this->container['slug'];
+  }
+
+  /**
+   * Sets slug
+   *
+   * @param string $slug Assembly slug for the school
+   *
+   * @return $this
+   */
+  public function setSlug($slug)
+  {
+    $this->container['slug'] = $slug;
 
     return $this;
   }

@@ -1218,7 +1218,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAssessmentPointResults**
-> \Assembly\Client\Model\Result[] getAssessmentPointResults($assessment_point_rank, $students)
+> \Assembly\Client\Model\Result[] getAssessmentPointResults($assessment_point_rank, $students, $per_page, $page)
 
 View Results for an Assessment Point
 
@@ -1240,9 +1240,11 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 $assessment_point_rank = 56; // int | The rank of the assessment point as an Integer
 $students = array(56); // int[] | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getAssessmentPointResults($assessment_point_rank, $students);
+  $result = $apiInstance->getAssessmentPointResults($assessment_point_rank, $students, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getAssessmentPointResults: ', $e->getMessage(), PHP_EOL;
@@ -1256,6 +1258,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **assessment_point_rank** | **int**| The rank of the assessment point as an Integer |
  **students** | [**int[]**](../Model/int.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) |
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -1332,7 +1336,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAssessmentResults**
-> \Assembly\Client\Model\Result[] getAssessmentResults($id, $students)
+> \Assembly\Client\Model\Result[] getAssessmentResults($id, $students, $per_page, $page)
 
 View Results for an Assessment
 
@@ -1354,9 +1358,11 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 $id = 56; // int | Internal identifier of the entity
 $students = array(56); // int[] | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getAssessmentResults($id, $students);
+  $result = $apiInstance->getAssessmentResults($id, $students, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getAssessmentResults: ', $e->getMessage(), PHP_EOL;
@@ -1370,6 +1376,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
  **students** | [**int[]**](../Model/int.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) |
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -1442,7 +1450,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAttendanceSummaries**
-> \Assembly\Client\Model\AttendanceSummary[] getAttendanceSummaries($if_modified_since, $student_id, $registration_group_id, $academic_year_id)
+> \Assembly\Client\Model\AttendanceSummary[] getAttendanceSummaries($if_modified_since, $student_id, $registration_group_id, $academic_year_id, $per_page, $page)
 
 List Attendance Summaries
 
@@ -1466,9 +1474,11 @@ $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 $student_id = 56; // int | Filter to the specified student
 $registration_group_id = 56; // int | ID of a registration group
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getAttendanceSummaries($if_modified_since, $student_id, $registration_group_id, $academic_year_id);
+  $result = $apiInstance->getAttendanceSummaries($if_modified_since, $student_id, $registration_group_id, $academic_year_id, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getAttendanceSummaries: ', $e->getMessage(), PHP_EOL;
@@ -1484,6 +1494,8 @@ Name | Type | Description  | Notes
  **student_id** | **int**| Filter to the specified student | [optional]
  **registration_group_id** | **int**| ID of a registration group | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -2083,7 +2095,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getLeftStaffMembers**
-> \Assembly\Client\Model\StaffMember[] getLeftStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications)
+> \Assembly\Client\Model\StaffMember[] getLeftStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page)
 
 List Left Staff Members
 
@@ -2107,9 +2119,11 @@ $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 $teachers_only = True; // bool | Filter to staff who are teachers
 $demographics = True; // bool | Include demographics data
 $qualifications = True; // bool | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getLeftStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications);
+  $result = $apiInstance->getLeftStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getLeftStaffMembers: ', $e->getMessage(), PHP_EOL;
@@ -2125,6 +2139,8 @@ Name | Type | Description  | Notes
  **teachers_only** | **bool**| Filter to staff who are teachers | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
  **qualifications** | **bool**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -2142,7 +2158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getLeftStudents**
-> \Assembly\Client\Model\Student[] getLeftStudents($if_modified_since)
+> \Assembly\Client\Model\Student[] getLeftStudents($if_modified_since, $per_page, $page)
 
 List Left Students
 
@@ -2163,9 +2179,11 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getLeftStudents($if_modified_since);
+  $result = $apiInstance->getLeftStudents($if_modified_since, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getLeftStudents: ', $e->getMessage(), PHP_EOL;
@@ -2178,6 +2196,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -2195,7 +2215,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getLessons**
-> \Assembly\Client\Model\Lesson[] getLessons($id, $if_modified_since, $date, $start_date, $end_date)
+> \Assembly\Client\Model\Lesson[] getLessons($id, $if_modified_since, $date, $start_date, $end_date, $per_page, $page)
 
 List Lessons For a Room
 
@@ -2220,9 +2240,11 @@ $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 $date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $start_date = 'start_date_example'; // string | The start date of the period to filter by
 $end_date = 'end_date_example'; // string | The end date of the period to filter by
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getLessons($id, $if_modified_since, $date, $start_date, $end_date);
+  $result = $apiInstance->getLessons($id, $if_modified_since, $date, $start_date, $end_date, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getLessons: ', $e->getMessage(), PHP_EOL;
@@ -2239,6 +2261,8 @@ Name | Type | Description  | Notes
  **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **start_date** | **string**| The start date of the period to filter by | [optional]
  **end_date** | **string**| The end date of the period to filter by | [optional]
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -2311,7 +2335,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationGroupStudents**
-> \Assembly\Client\Model\Student[] getRegistrationGroupStudents($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
+> \Assembly\Client\Model\Student[] getRegistrationGroupStudents($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
 
 List Students for Registration Group
 
@@ -2344,9 +2368,11 @@ $care = True; // bool | Include student care data (you must also supply the demo
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
 $languages = True; // bool | Include student language data
 $photo = True; // bool | Include student photo data
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getRegistrationGroupStudents($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+  $result = $apiInstance->getRegistrationGroupStudents($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getRegistrationGroupStudents: ', $e->getMessage(), PHP_EOL;
@@ -2371,6 +2397,8 @@ Name | Type | Description  | Notes
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **bool**| Include student language data | [optional]
  **photo** | **bool**| Include student photo data | [optional]
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -2892,7 +2920,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTeachingGroupStudents**
-> \Assembly\Client\Model\Student[] getTeachingGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
+> \Assembly\Client\Model\Student[] getTeachingGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
 
 List Students for Teaching Group
 
@@ -2926,9 +2954,11 @@ $care = True; // bool | Include student care data (you must also supply the demo
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
 $languages = True; // bool | Include student language data
 $photo = True; // bool | Include student photo data
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getTeachingGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+  $result = $apiInstance->getTeachingGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getTeachingGroupStudents: ', $e->getMessage(), PHP_EOL;
@@ -2954,6 +2984,8 @@ Name | Type | Description  | Notes
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **bool**| Include student language data | [optional]
  **photo** | **bool**| Include student photo data | [optional]
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
@@ -3093,7 +3125,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getYearGroupStudents**
-> \Assembly\Client\Model\Student[] getYearGroupStudents($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
+> \Assembly\Client\Model\Student[] getYearGroupStudents($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
 
 List Students for Year Group
 
@@ -3125,9 +3157,11 @@ $care = True; // bool | Include student care data (you must also supply the demo
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
 $languages = True; // bool | Include student language data
 $photo = True; // bool | Include student photo data
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getYearGroupStudents($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+  $result = $apiInstance->getYearGroupStudents($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getYearGroupStudents: ', $e->getMessage(), PHP_EOL;
@@ -3151,6 +3185,8 @@ Name | Type | Description  | Notes
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **bool**| Include student language data | [optional]
  **photo** | **bool**| Include student photo data | [optional]
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
 
 ### Return type
 
