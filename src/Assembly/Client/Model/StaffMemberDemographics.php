@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.404
+ * SDK Version 1.2.407
  * API Version 1.1.0
  *
  * Support
@@ -49,7 +49,8 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     'ethnicity_code' => 'string',
     'ethnicity_group' => 'string',
     'gender' => 'string',
-    'disability' => 'string'
+    'disability' => 'string',
+    'disability_cdoe' => 'string'
   ];
 
   /**
@@ -62,7 +63,8 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     'ethnicity_code' => null,
     'ethnicity_group' => null,
     'gender' => null,
-    'disability' => null
+    'disability' => null,
+    'disability_cdoe' => null
   ];
 
   /**
@@ -96,7 +98,8 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     'ethnicity_code' => 'ethnicity_code',
     'ethnicity_group' => 'ethnicity_group',
     'gender' => 'gender',
-    'disability' => 'disability'
+    'disability' => 'disability',
+    'disability_cdoe' => 'disability_cdoe'
   ];
 
   /**
@@ -109,7 +112,8 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     'ethnicity_code' => 'setEthnicityCode',
     'ethnicity_group' => 'setEthnicityGroup',
     'gender' => 'setGender',
-    'disability' => 'setDisability'
+    'disability' => 'setDisability',
+    'disability_cdoe' => 'setDisabilityCdoe'
   ];
 
   /**
@@ -122,7 +126,8 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     'ethnicity_code' => 'getEthnicityCode',
     'ethnicity_group' => 'getEthnicityGroup',
     'gender' => 'getGender',
-    'disability' => 'getDisability'
+    'disability' => 'getDisability',
+    'disability_cdoe' => 'getDisabilityCdoe'
   ];
 
   /**
@@ -190,6 +195,7 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
     $this->container['ethnicity_group'] = isset($data['ethnicity_group']) ? $data['ethnicity_group'] : null;
     $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
     $this->container['disability'] = isset($data['disability']) ? $data['disability'] : null;
+    $this->container['disability_cdoe'] = isset($data['disability_cdoe']) ? $data['disability_cdoe'] : null;
   }
 
   /**
@@ -333,6 +339,30 @@ class StaffMemberDemographics implements ModelInterface, ArrayAccess
   public function setDisability($disability)
   {
     $this->container['disability'] = $disability;
+
+    return $this;
+  }
+
+  /**
+   * Gets disability_cdoe
+   *
+   * @return string
+   */
+  public function getDisabilityCdoe()
+  {
+    return $this->container['disability_cdoe'];
+  }
+
+  /**
+   * Sets disability_cdoe
+   *
+   * @param string $disability_cdoe The disability status code of a staff member
+   *
+   * @return $this
+   */
+  public function setDisabilityCdoe($disability_cdoe)
+  {
+    $this->container['disability_cdoe'] = $disability_cdoe;
 
     return $this;
   }

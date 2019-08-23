@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.404
+ * SDK Version 1.2.407
  * API Version 1.1.0
  *
  * Support
@@ -52,6 +52,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     'end_date' => '\DateTime',
     'working_days_lost' => 'float',
     'absence_category' => 'string',
+    'absence_category_code' => 'string',
     'illness_category' => 'string',
     'pay_rate' => 'string'
   ];
@@ -69,6 +70,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     'end_date' => 'date-time',
     'working_days_lost' => 'float',
     'absence_category' => null,
+    'absence_category_code' => null,
     'illness_category' => null,
     'pay_rate' => null
   ];
@@ -107,6 +109,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     'end_date' => 'end_date',
     'working_days_lost' => 'working_days_lost',
     'absence_category' => 'absence_category',
+    'absence_category_code' => 'absence_category_code',
     'illness_category' => 'illness_category',
     'pay_rate' => 'pay_rate'
   ];
@@ -124,6 +127,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     'end_date' => 'setEndDate',
     'working_days_lost' => 'setWorkingDaysLost',
     'absence_category' => 'setAbsenceCategory',
+    'absence_category_code' => 'setAbsenceCategoryCode',
     'illness_category' => 'setIllnessCategory',
     'pay_rate' => 'setPayRate'
   ];
@@ -141,6 +145,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     'end_date' => 'getEndDate',
     'working_days_lost' => 'getWorkingDaysLost',
     'absence_category' => 'getAbsenceCategory',
+    'absence_category_code' => 'getAbsenceCategoryCode',
     'illness_category' => 'getIllnessCategory',
     'pay_rate' => 'getPayRate'
   ];
@@ -212,6 +217,7 @@ class StaffAbsence implements ModelInterface, ArrayAccess
     $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
     $this->container['working_days_lost'] = isset($data['working_days_lost']) ? $data['working_days_lost'] : null;
     $this->container['absence_category'] = isset($data['absence_category']) ? $data['absence_category'] : null;
+    $this->container['absence_category_code'] = isset($data['absence_category_code']) ? $data['absence_category_code'] : null;
     $this->container['illness_category'] = isset($data['illness_category']) ? $data['illness_category'] : null;
     $this->container['pay_rate'] = isset($data['pay_rate']) ? $data['pay_rate'] : null;
   }
@@ -405,6 +411,30 @@ class StaffAbsence implements ModelInterface, ArrayAccess
   public function setAbsenceCategory($absence_category)
   {
     $this->container['absence_category'] = $absence_category;
+
+    return $this;
+  }
+
+  /**
+   * Gets absence_category_code
+   *
+   * @return string
+   */
+  public function getAbsenceCategoryCode()
+  {
+    return $this->container['absence_category_code'];
+  }
+
+  /**
+   * Sets absence_category_code
+   *
+   * @param string $absence_category_code The category code of the absence
+   *
+   * @return $this
+   */
+  public function setAbsenceCategoryCode($absence_category_code)
+  {
+    $this->container['absence_category_code'] = $absence_category_code;
 
     return $this;
   }

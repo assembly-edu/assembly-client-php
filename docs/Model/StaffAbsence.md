@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **end_date** | [**\DateTime**](\DateTime.md) | The end date of the absence | [optional] 
 **working_days_lost** | **float** | Number of working days that were lost during the absence | [optional] 
 **absence_category** | **string** | The category of the absence | [optional] 
+**absence_category_code** | **string** | The category code of the absence | [optional] 
 **illness_category** | **string** | If the absence category was \&quot;Illness\&quot;, the specific code | [optional] 
 **pay_rate** | **string** | Whether or not the staff member was paid for the absence | [optional] 
 

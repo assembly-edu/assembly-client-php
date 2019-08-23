@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.404
+ * SDK Version 1.2.407
  * API Version 1.1.0
  *
  * Support
@@ -47,6 +47,7 @@ class Contact implements ModelInterface, ArrayAccess
   protected static $swaggerTypes = [
     'object' => 'string',
     'id' => 'int',
+    'mis_id' => 'string',
     'first_name' => 'string',
     'middle_name' => 'string',
     'last_name' => 'string',
@@ -66,6 +67,7 @@ class Contact implements ModelInterface, ArrayAccess
   protected static $swaggerFormats = [
     'object' => null,
     'id' => 'int32',
+    'mis_id' => null,
     'first_name' => null,
     'middle_name' => null,
     'last_name' => null,
@@ -106,6 +108,7 @@ class Contact implements ModelInterface, ArrayAccess
   protected static $attributeMap = [
     'object' => 'object',
     'id' => 'id',
+    'mis_id' => 'mis_id',
     'first_name' => 'first_name',
     'middle_name' => 'middle_name',
     'last_name' => 'last_name',
@@ -125,6 +128,7 @@ class Contact implements ModelInterface, ArrayAccess
   protected static $setters = [
     'object' => 'setObject',
     'id' => 'setId',
+    'mis_id' => 'setMisId',
     'first_name' => 'setFirstName',
     'middle_name' => 'setMiddleName',
     'last_name' => 'setLastName',
@@ -144,6 +148,7 @@ class Contact implements ModelInterface, ArrayAccess
   protected static $getters = [
     'object' => 'getObject',
     'id' => 'getId',
+    'mis_id' => 'getMisId',
     'first_name' => 'getFirstName',
     'middle_name' => 'getMiddleName',
     'last_name' => 'getLastName',
@@ -217,6 +222,7 @@ class Contact implements ModelInterface, ArrayAccess
   {
     $this->container['object'] = isset($data['object']) ? $data['object'] : 'contact';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+    $this->container['mis_id'] = isset($data['mis_id']) ? $data['mis_id'] : null;
     $this->container['first_name'] = isset($data['first_name']) ? $data['first_name'] : null;
     $this->container['middle_name'] = isset($data['middle_name']) ? $data['middle_name'] : null;
     $this->container['last_name'] = isset($data['last_name']) ? $data['last_name'] : null;
@@ -297,6 +303,30 @@ class Contact implements ModelInterface, ArrayAccess
   public function setId($id)
   {
     $this->container['id'] = $id;
+
+    return $this;
+  }
+
+  /**
+   * Gets mis_id
+   *
+   * @return string
+   */
+  public function getMisId()
+  {
+    return $this->container['mis_id'];
+  }
+
+  /**
+   * Sets mis_id
+   *
+   * @param string $mis_id The ID of the contact from the MIS
+   *
+   * @return $this
+   */
+  public function setMisId($mis_id)
+  {
+    $this->container['mis_id'] = $mis_id;
 
     return $this;
   }

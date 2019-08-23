@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.404
+ * SDK Version 1.2.407
  * API Version 1.1.0
  *
  * Support
@@ -75,6 +75,13 @@ class ContactTest extends \PHPUnit_Framework_TestCase
    * Test attribute "id"
    */
   public function testPropertyId()
+  {
+  }
+
+  /**
+   * Test attribute "mis_id"
+   */
+  public function testPropertyMisId()
   {
   }
 

@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.404
+ * SDK Version 1.2.407
  * API Version 1.1.0
  *
  * Support
@@ -96,6 +96,13 @@ class StaffMemberDemographicsTest extends \PHPUnit_Framework_TestCase
    * Test attribute "disability"
    */
   public function testPropertyDisability()
+  {
+  }
+
+  /**
+   * Test attribute "disability_cdoe"
+   */
+  public function testPropertyDisabilityCdoe()
   {
   }
 }

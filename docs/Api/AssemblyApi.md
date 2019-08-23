@@ -1069,9 +1069,9 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 $id = 56; // int | Internal identifier of the entity
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
-$date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
-$start_date = 'start_date_example'; // string | The start date of the period to filter by
-$end_date = 'end_date_example'; // string | The end date of the period to filter by
+$date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+$start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The start date of the period to filter by
+$end_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The end date of the period to filter by
 
 try {
   $result = $apiInstance->findTimetable($id, $if_modified_since, $date, $start_date, $end_date);
@@ -1088,9 +1088,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
- **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
- **start_date** | **string**| The start date of the period to filter by | [optional]
- **end_date** | **string**| The end date of the period to filter by | [optional]
+ **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **start_date** | **\DateTime**| The start date of the period to filter by | [optional]
+ **end_date** | **\DateTime**| The end date of the period to filter by | [optional]
 
 ### Return type
 
@@ -1659,9 +1659,9 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 $id = 56; // int | Internal identifier of the entity
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
-$date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
-$start_date = 'start_date_example'; // string | The start date of the period to filter by
-$end_date = 'end_date_example'; // string | The end date of the period to filter by
+$date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+$start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The start date of the period to filter by
+$end_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The end date of the period to filter by
 
 try {
   $result = $apiInstance->getClosures($id, $if_modified_since, $date, $start_date, $end_date);
@@ -1678,9 +1678,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
- **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
- **start_date** | **string**| The start date of the period to filter by | [optional]
- **end_date** | **string**| The end date of the period to filter by | [optional]
+ **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **start_date** | **\DateTime**| The start date of the period to filter by | [optional]
+ **end_date** | **\DateTime**| The end date of the period to filter by | [optional]
 
 ### Return type
 
@@ -2237,9 +2237,9 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 $id = 56; // int | Internal identifier of the entity
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
-$date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
-$start_date = 'start_date_example'; // string | The start date of the period to filter by
-$end_date = 'end_date_example'; // string | The end date of the period to filter by
+$date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+$start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The start date of the period to filter by
+$end_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The end date of the period to filter by
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
@@ -2258,9 +2258,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
- **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
- **start_date** | **string**| The start date of the period to filter by | [optional]
- **end_date** | **string**| The end date of the period to filter by | [optional]
+ **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **start_date** | **\DateTime**| The start date of the period to filter by | [optional]
+ **end_date** | **\DateTime**| The end date of the period to filter by | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
 

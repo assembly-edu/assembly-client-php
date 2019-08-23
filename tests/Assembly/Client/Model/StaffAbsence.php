@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.404
+ * SDK Version 1.2.407
  * API Version 1.1.0
  *
  * Support
@@ -110,6 +110,13 @@ class StaffAbsenceTest extends \PHPUnit_Framework_TestCase
    * Test attribute "absence_category"
    */
   public function testPropertyAbsenceCategory()
+  {
+  }
+
+  /**
+   * Test attribute "absence_category_code"
+   */
+  public function testPropertyAbsenceCategoryCode()
   {
   }
 

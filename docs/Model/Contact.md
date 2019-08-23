@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **object** | **string** | Descriminator | [optional] [default to 'contact']
 **id** | **int** | Internal stable ID | [optional] 
+**mis_id** | **string** | The ID of the contact from the MIS | [optional] 
 **first_name** | **string** | The first name of the contact | [optional] 
 **middle_name** | **string** | The middle name of the contact | [optional] 
 **last_name** | **string** | The last name of the contact | [optional] 

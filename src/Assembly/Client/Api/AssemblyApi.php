@@ -11,7 +11,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.404
+ * SDK Version 1.2.407
  * API Version 1.1.0
  *
  * Support
@@ -5691,9 +5691,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -5712,9 +5712,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -5831,9 +5831,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5855,9 +5855,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5909,9 +5909,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -9003,9 +9003,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -9024,9 +9024,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
@@ -9135,9 +9135,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9159,9 +9159,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
@@ -9213,9 +9213,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
@@ -12208,9 +12208,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -12231,9 +12231,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -12344,9 +12344,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -12370,9 +12370,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -12426,9 +12426,9 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
-   * @param  string $start_date The start date of the period to filter by (optional)
-   * @param  string $end_date The end date of the period to filter by (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  \DateTime $start_date The start date of the period to filter by (optional)
+   * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
