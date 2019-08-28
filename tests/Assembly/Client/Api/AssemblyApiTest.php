@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.407
+ * SDK Version 1.2.410
  * API Version 1.1.0
  *
  * Support
@@ -396,6 +396,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
    *
    */
   public function testGetGradeSets()
+  {
+  }
+
+  /**
+   * Test case for getGroupStudents
+   *
+   * List Students for Group.
+   *
+   */
+  public function testGetGroupStudents()
   {
   }
 

@@ -38,6 +38,7 @@ Method | HTTP request | Description
 [**getExclusions**](AssemblyApi.md#getExclusions) | **GET** /exclusions | List Exclusions
 [**getFacets**](AssemblyApi.md#getFacets) | **GET** /facets | List Facets
 [**getGradeSets**](AssemblyApi.md#getGradeSets) | **GET** /grade_sets | List Grade Sets
+[**getGroupStudents**](AssemblyApi.md#getGroupStudents) | **GET** /groups/{id}/students | List Students for Group
 [**getGroups**](AssemblyApi.md#getGroups) | **GET** /groups | List Groups
 [**getLearningAims**](AssemblyApi.md#getLearningAims) | **GET** /school/learning_aims | List Post-16 Learning Aims
 [**getLeftStaffMembers**](AssemblyApi.md#getLeftStaffMembers) | **GET** /staff_members/left | List Left Staff Members
@@ -540,7 +541,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **findGroup**
-> \Assembly\Client\Model\Group findGroup($id)
+> \Assembly\Client\Model\Group findGroup($id, $date)
 
 View a Group
 
@@ -561,9 +562,10 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $id = 56; // int | Internal identifier of the entity
+$date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 
 try {
-  $result = $apiInstance->findGroup($id);
+  $result = $apiInstance->findGroup($id, $date);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->findGroup: ', $e->getMessage(), PHP_EOL;
@@ -576,6 +578,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
+ **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
 
 ### Return type
 
@@ -1980,8 +1983,87 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getGroupStudents**
+> \Assembly\Client\Model\Student[] getGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
+
+List Students for Group
+
+Returns a list of all the students that are present in the group identified by `group_id`
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: SchoolToken
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+  // This is optional, `GuzzleHttp\Client` will be used as default.
+  new GuzzleHttp\Client(),
+  $config
+);
+$id = 56; // int | Internal identifier of the entity
+$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
+$date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+$year_code = 'year_code_example'; // string | Filter by school year
+$demographics = True; // bool | Include demographics data
+$contacts = True; // bool | Include contacts data
+$sen_needs = True; // bool | Include SEN needs data
+$emails = True; // bool | Include email addresses
+$addresses = True; // bool | Include student address data
+$care = True; // bool | Include student care data (you must also supply the demographics parameter)
+$ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
+$languages = True; // bool | Include student language data
+$photo = True; // bool | Include student photo data
+
+try {
+  $result = $apiInstance->getGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+  print_r($result);
+} catch (Exception $e) {
+  echo 'Exception when calling AssemblyApi->getGroupStudents: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **int**| Internal identifier of the entity |
+ **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
+ **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **year_code** | **string**| Filter by school year | [optional]
+ **demographics** | **bool**| Include demographics data | [optional]
+ **contacts** | **bool**| Include contacts data | [optional]
+ **sen_needs** | **bool**| Include SEN needs data | [optional]
+ **emails** | **bool**| Include email addresses | [optional]
+ **addresses** | **bool**| Include student address data | [optional]
+ **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
+ **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **bool**| Include student language data | [optional]
+ **photo** | **bool**| Include student photo data | [optional]
+
+### Return type
+
+[**\Assembly\Client\Model\Student[]**](../Model/Student.md)
+
+### Authorization
+
+[SchoolToken](../../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **getGroups**
-> \Assembly\Client\Model\Group[] getGroups($if_modified_since, $academic_year_id, $per_page, $page)
+> \Assembly\Client\Model\Group[] getGroups($if_modified_since, $year_code, $date, $academic_year_id, $type, $per_page, $page)
 
 List Groups
 
@@ -2002,12 +2084,15 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$year_code = 'year_code_example'; // string | Filter by school year
+$date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
+$type = 'type_example'; // string | Filter by assessment point type
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getGroups($if_modified_since, $academic_year_id, $per_page, $page);
+  $result = $apiInstance->getGroups($if_modified_since, $year_code, $date, $academic_year_id, $type, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getGroups: ', $e->getMessage(), PHP_EOL;
@@ -2020,7 +2105,10 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **year_code** | **string**| Filter by school year | [optional]
+ **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
+ **type** | **string**| Filter by assessment point type | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
 
@@ -2807,7 +2895,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $students = array(56); // int[] | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
-$year_code = 56; // int | Filter by school year
+$year_code = 'year_code_example'; // string | Filter by school year
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
@@ -2836,7 +2924,7 @@ Name | Type | Description  | Notes
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **students** | [**int[]**](../Model/int.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
- **year_code** | **int**| Filter by school year | [optional]
+ **year_code** | **string**| Filter by school year | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
