@@ -1,7 +1,7 @@
 # PHP SDK for the Assembly API
 
 - API version: 1.1.0
-- Package version: 1.2.410
+- Package version: 1.2.412
 
 For more information, please visit [http://developers.assembly.education](http://developers.assembly.education)
 
@@ -145,12 +145,15 @@ if ($accessToken->hasExpired()) {
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration($provider);
+// $config = $config->setDebug(true);
+// $config = $config->setDebugFile('LOCATION_OF_FILE');
 $config->setAccessToken($accessToken->getToken());
 
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
+
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 

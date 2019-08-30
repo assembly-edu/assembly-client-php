@@ -77,11 +77,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $bulk_results_body = new \Assembly\Client\Model\BulkResultsBody(); // \Assembly\Client\Model\BulkResultsBody | 
@@ -130,11 +133,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $result_body = new \Assembly\Client\Model\ResultBody(); // \Assembly\Client\Model\ResultBody | 
@@ -183,11 +189,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -236,11 +245,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -289,11 +301,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -342,11 +357,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $assessment_point_rank = 56; // int | The rank of the assessment point as an Integer
@@ -395,11 +413,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -448,11 +469,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -501,11 +525,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -554,11 +581,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -609,11 +639,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -662,11 +695,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -715,11 +751,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -770,11 +809,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -831,11 +873,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 
@@ -880,11 +925,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -937,11 +985,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -1008,11 +1059,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -1063,11 +1117,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -1124,11 +1181,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -1179,11 +1239,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $per_page = 50; // int | Number of results to return
@@ -1234,11 +1297,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $assessment_point_rank = 56; // int | The rank of the assessment point as an Integer
@@ -1293,11 +1359,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $year_code = 56; // int | Filter by school year
@@ -1352,11 +1421,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -1411,11 +1483,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $per_page = 50; // int | Number of results to return
@@ -1466,11 +1541,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -1529,11 +1607,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -1594,11 +1675,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -1653,11 +1737,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -1714,11 +1801,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $student_id = 56; // int | Filter to the specified student
@@ -1771,11 +1861,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $per_page = 50; // int | Number of results to return
@@ -1826,11 +1919,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $student_id = 56; // int | Filter to the specified student
@@ -1887,11 +1983,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $per_page = 50; // int | Number of results to return
@@ -1942,11 +2041,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $per_page = 50; // int | Number of results to return
@@ -1997,11 +2099,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -2076,11 +2181,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -2141,11 +2249,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $per_page = 50; // int | Number of results to return
@@ -2196,11 +2307,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -2259,11 +2373,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -2316,11 +2433,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -2381,11 +2501,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $per_page = 50; // int | Number of results to return
@@ -2436,11 +2559,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -2517,11 +2643,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -2580,11 +2709,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $students = array(56); // int[] | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
@@ -2639,11 +2771,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -2696,11 +2831,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $staff_member_id = 56; // int | Filter to the specified staff member
@@ -2757,11 +2895,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $staff_member_id = 56; // int | Filter to the specified staff member
@@ -2822,11 +2963,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -2885,11 +3029,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -2966,11 +3113,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $per_page = 50; // int | Number of results to return
@@ -3021,11 +3171,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -3104,11 +3257,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -3169,11 +3325,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -3226,11 +3385,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
@@ -3305,11 +3467,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
@@ -3368,11 +3533,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 
@@ -3417,11 +3585,14 @@ require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure OAuth2 access token for authorization: SchoolToken
 $config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
 
 $apiInstance = new Assembly\Client\Api\AssemblyApi(
-  // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-  // This is optional, `GuzzleHttp\Client` will be used as default.
-  new GuzzleHttp\Client(),
+  $client,
   $config
 );
 $id = 56; // int | Internal identifier of the entity
