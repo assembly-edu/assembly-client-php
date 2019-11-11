@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.424
+ * SDK Version 1.2.432
  * API Version 1.1.0
  *
  * Support
@@ -49,6 +49,7 @@ class Attendance implements ModelInterface, ArrayAccess
     'id' => 'int',
     'student_id' => 'int',
     'registration_group_id' => 'int',
+    'group_id' => 'int',
     'session_date' => '\DateTime',
     'session_name' => 'string',
     'attendance_mark' => 'string',
@@ -66,6 +67,7 @@ class Attendance implements ModelInterface, ArrayAccess
     'id' => 'int32',
     'student_id' => 'int32',
     'registration_group_id' => 'int32',
+    'group_id' => 'int32',
     'session_date' => 'date-time',
     'session_name' => null,
     'attendance_mark' => null,
@@ -104,6 +106,7 @@ class Attendance implements ModelInterface, ArrayAccess
     'id' => 'id',
     'student_id' => 'student_id',
     'registration_group_id' => 'registration_group_id',
+    'group_id' => 'group_id',
     'session_date' => 'session_date',
     'session_name' => 'session_name',
     'attendance_mark' => 'attendance_mark',
@@ -121,6 +124,7 @@ class Attendance implements ModelInterface, ArrayAccess
     'id' => 'setId',
     'student_id' => 'setStudentId',
     'registration_group_id' => 'setRegistrationGroupId',
+    'group_id' => 'setGroupId',
     'session_date' => 'setSessionDate',
     'session_name' => 'setSessionName',
     'attendance_mark' => 'setAttendanceMark',
@@ -138,6 +142,7 @@ class Attendance implements ModelInterface, ArrayAccess
     'id' => 'getId',
     'student_id' => 'getStudentId',
     'registration_group_id' => 'getRegistrationGroupId',
+    'group_id' => 'getGroupId',
     'session_date' => 'getSessionDate',
     'session_name' => 'getSessionName',
     'attendance_mark' => 'getAttendanceMark',
@@ -209,6 +214,7 @@ class Attendance implements ModelInterface, ArrayAccess
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['student_id'] = isset($data['student_id']) ? $data['student_id'] : null;
     $this->container['registration_group_id'] = isset($data['registration_group_id']) ? $data['registration_group_id'] : null;
+    $this->container['group_id'] = isset($data['group_id']) ? $data['group_id'] : null;
     $this->container['session_date'] = isset($data['session_date']) ? $data['session_date'] : null;
     $this->container['session_name'] = isset($data['session_name']) ? $data['session_name'] : null;
     $this->container['attendance_mark'] = isset($data['attendance_mark']) ? $data['attendance_mark'] : null;
@@ -326,13 +332,37 @@ class Attendance implements ModelInterface, ArrayAccess
   /**
    * Sets registration_group_id
    *
-   * @param int $registration_group_id The ID of the subject that the attendance is attached to
+   * @param int $registration_group_id The ID of the registration group that the attendance is attached to
    *
    * @return $this
    */
   public function setRegistrationGroupId($registration_group_id)
   {
     $this->container['registration_group_id'] = $registration_group_id;
+
+    return $this;
+  }
+
+  /**
+   * Gets group_id
+   *
+   * @return int
+   */
+  public function getGroupId()
+  {
+    return $this->container['group_id'];
+  }
+
+  /**
+   * Sets group_id
+   *
+   * @param int $group_id The ID of the group that the attendance is attached to (requires `groups` scope)
+   *
+   * @return $this
+   */
+  public function setGroupId($group_id)
+  {
+    $this->container['group_id'] = $group_id;
 
     return $this;
   }

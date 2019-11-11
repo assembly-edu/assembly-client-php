@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **id** | **int** | Internal stable ID | [optional] 
 **student_id** | **int** | The ID of the student | [optional] 
 **registration_group_id** | **int** | The ID of the student&#39;s registration group | [optional] 
+**group_id** | **int** | The ID of the group that the attendance summary is attached to (requires &#x60;groups&#x60; scope) | [optional] 
 **academic_year_id** | **int** | The ID of the academic year | [optional] 
 **start_date** | [**\DateTime**](\DateTime.md) | Start date for the attendance summary | [optional] 
 **end_date** | [**\DateTime**](\DateTime.md) | End date for the attendance summary | [optional] 

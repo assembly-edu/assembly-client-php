@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.424
+ * SDK Version 1.2.432
  * API Version 1.1.0
  *
  * Support
@@ -54,6 +54,7 @@ class Contact implements ModelInterface, ArrayAccess
     'gender' => 'string',
     'title' => 'string',
     'salutation' => 'string',
+    'address' => '\Assembly\Client\Model\ContactAddress',
     'emails' => '\Assembly\Client\Model\EmailInfo[]',
     'telephone_numbers' => '\Assembly\Client\Model\TelephoneNumberInfo[]',
     'students' => '\Assembly\Client\Model\ContactStudents[]'
@@ -74,6 +75,7 @@ class Contact implements ModelInterface, ArrayAccess
     'gender' => null,
     'title' => null,
     'salutation' => null,
+    'address' => null,
     'emails' => null,
     'telephone_numbers' => null,
     'students' => null
@@ -115,6 +117,7 @@ class Contact implements ModelInterface, ArrayAccess
     'gender' => 'gender',
     'title' => 'title',
     'salutation' => 'salutation',
+    'address' => 'address',
     'emails' => 'emails',
     'telephone_numbers' => 'telephone_numbers',
     'students' => 'students'
@@ -135,6 +138,7 @@ class Contact implements ModelInterface, ArrayAccess
     'gender' => 'setGender',
     'title' => 'setTitle',
     'salutation' => 'setSalutation',
+    'address' => 'setAddress',
     'emails' => 'setEmails',
     'telephone_numbers' => 'setTelephoneNumbers',
     'students' => 'setStudents'
@@ -155,6 +159,7 @@ class Contact implements ModelInterface, ArrayAccess
     'gender' => 'getGender',
     'title' => 'getTitle',
     'salutation' => 'getSalutation',
+    'address' => 'getAddress',
     'emails' => 'getEmails',
     'telephone_numbers' => 'getTelephoneNumbers',
     'students' => 'getStudents'
@@ -229,6 +234,7 @@ class Contact implements ModelInterface, ArrayAccess
     $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
     $this->container['title'] = isset($data['title']) ? $data['title'] : null;
     $this->container['salutation'] = isset($data['salutation']) ? $data['salutation'] : null;
+    $this->container['address'] = isset($data['address']) ? $data['address'] : null;
     $this->container['emails'] = isset($data['emails']) ? $data['emails'] : null;
     $this->container['telephone_numbers'] = isset($data['telephone_numbers']) ? $data['telephone_numbers'] : null;
     $this->container['students'] = isset($data['students']) ? $data['students'] : null;
@@ -471,6 +477,30 @@ class Contact implements ModelInterface, ArrayAccess
   public function setSalutation($salutation)
   {
     $this->container['salutation'] = $salutation;
+
+    return $this;
+  }
+
+  /**
+   * Gets address
+   *
+   * @return \Assembly\Client\Model\ContactAddress
+   */
+  public function getAddress()
+  {
+    return $this->container['address'];
+  }
+
+  /**
+   * Sets address
+   *
+   * @param \Assembly\Client\Model\ContactAddress $address address
+   *
+   * @return $this
+   */
+  public function setAddress($address)
+  {
+    $this->container['address'] = $address;
 
     return $this;
   }

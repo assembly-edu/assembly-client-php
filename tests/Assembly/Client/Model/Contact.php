@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.424
+ * SDK Version 1.2.432
  * API Version 1.1.0
  *
  * Support
@@ -124,6 +124,13 @@ class ContactTest extends \PHPUnit_Framework_TestCase
    * Test attribute "salutation"
    */
   public function testPropertySalutation()
+  {
+  }
+
+  /**
+   * Test attribute "address"
+   */
+  public function testPropertyAddress()
   {
   }
 

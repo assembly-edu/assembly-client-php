@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **gender** | **string** | The gender of the contact | [optional] 
 **title** | **string** | The title of the contact | [optional] 
 **salutation** | **string** | The salutation for the contact | [optional] 
+**address** | [**\Assembly\Client\Model\ContactAddress**](ContactAddress.md) |  | [optional] 
 **emails** | [**\Assembly\Client\Model\EmailInfo[]**](EmailInfo.md) | A list of emails for the contact | [optional] 
 **telephone_numbers** | [**\Assembly\Client\Model\TelephoneNumberInfo[]**](TelephoneNumberInfo.md) | A list of telephone numbers for the contact | [optional] 
 **students** | [**\Assembly\Client\Model\ContactStudents[]**](ContactStudents.md) | A list of student IDs which are associated with this contact, and their relationship | [optional] 

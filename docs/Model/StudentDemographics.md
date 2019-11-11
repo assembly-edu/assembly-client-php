@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **fsm_review_date** | **string** | Free school meal review date -Review date for pupil&#39;s free school meal eligibility | [optional] 
 **is_fsm** | **bool** | Free School Meals (FSM) - indicates if the student is eligible for free school meals | [optional] 
 **is_fsm6** | **bool** | Free School Meals 6 (FSM6) - indicates if the student has been eligible for free school meals within the last 6 years | [optional] 
+**fsm_history** | [**\Assembly\Client\Model\FsmEntitlement[]**](FsmEntitlement.md) | Free School Meal (FSM) entitlement history | [optional] 
 **in_care** | **bool** | Looked after status - indicates whether the student is &#39;looked after&#39; by the local authority | [optional] 
 **ever_in_care** | **bool** | Ever in care status - indicates whether the student is either currently &#39;looked after&#39;, or has been at any point in the past | [optional] 
 **service_child** | **bool** | Service Child - indicates whether the student has parent(s) who are Service personnel serving in regular military units of all forces and exercising parental care and responsibility | [optional] 

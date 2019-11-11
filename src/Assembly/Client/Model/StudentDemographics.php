@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.424
+ * SDK Version 1.2.432
  * API Version 1.1.0
  *
  * Support
@@ -57,6 +57,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'fsm_review_date' => 'string',
     'is_fsm' => 'bool',
     'is_fsm6' => 'bool',
+    'fsm_history' => '\Assembly\Client\Model\FsmEntitlement[]',
     'in_care' => 'bool',
     'ever_in_care' => 'bool',
     'service_child' => 'bool',
@@ -81,6 +82,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'fsm_review_date' => null,
     'is_fsm' => null,
     'is_fsm6' => null,
+    'fsm_history' => null,
     'in_care' => null,
     'ever_in_care' => null,
     'service_child' => null,
@@ -126,6 +128,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'fsm_review_date' => 'fsm_review_date',
     'is_fsm' => 'is_fsm',
     'is_fsm6' => 'is_fsm6',
+    'fsm_history' => 'fsm_history',
     'in_care' => 'in_care',
     'ever_in_care' => 'ever_in_care',
     'service_child' => 'service_child',
@@ -150,6 +153,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'fsm_review_date' => 'setFsmReviewDate',
     'is_fsm' => 'setIsFsm',
     'is_fsm6' => 'setIsFsm6',
+    'fsm_history' => 'setFsmHistory',
     'in_care' => 'setInCare',
     'ever_in_care' => 'setEverInCare',
     'service_child' => 'setServiceChild',
@@ -174,6 +178,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'fsm_review_date' => 'getFsmReviewDate',
     'is_fsm' => 'getIsFsm',
     'is_fsm6' => 'getIsFsm6',
+    'fsm_history' => 'getFsmHistory',
     'in_care' => 'getInCare',
     'ever_in_care' => 'getEverInCare',
     'service_child' => 'getServiceChild',
@@ -252,6 +257,7 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     $this->container['fsm_review_date'] = isset($data['fsm_review_date']) ? $data['fsm_review_date'] : null;
     $this->container['is_fsm'] = isset($data['is_fsm']) ? $data['is_fsm'] : null;
     $this->container['is_fsm6'] = isset($data['is_fsm6']) ? $data['is_fsm6'] : null;
+    $this->container['fsm_history'] = isset($data['fsm_history']) ? $data['fsm_history'] : null;
     $this->container['in_care'] = isset($data['in_care']) ? $data['in_care'] : null;
     $this->container['ever_in_care'] = isset($data['ever_in_care']) ? $data['ever_in_care'] : null;
     $this->container['service_child'] = isset($data['service_child']) ? $data['service_child'] : null;
@@ -567,6 +573,30 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   public function setIsFsm6($is_fsm6)
   {
     $this->container['is_fsm6'] = $is_fsm6;
+
+    return $this;
+  }
+
+  /**
+   * Gets fsm_history
+   *
+   * @return \Assembly\Client\Model\FsmEntitlement[]
+   */
+  public function getFsmHistory()
+  {
+    return $this->container['fsm_history'];
+  }
+
+  /**
+   * Sets fsm_history
+   *
+   * @param \Assembly\Client\Model\FsmEntitlement[] $fsm_history Free School Meal (FSM) entitlement history
+   *
+   * @return $this
+   */
+  public function setFsmHistory($fsm_history)
+  {
+    $this->container['fsm_history'] = $fsm_history;
 
     return $this;
   }

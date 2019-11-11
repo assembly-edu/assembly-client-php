@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.424
+ * SDK Version 1.2.432
  * API Version 1.1.0
  *
  * Support
@@ -49,6 +49,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     'id' => 'int',
     'student_id' => 'int',
     'registration_group_id' => 'int',
+    'group_id' => 'int',
     'academic_year_id' => 'int',
     'start_date' => '\DateTime',
     'end_date' => '\DateTime',
@@ -69,6 +70,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     'id' => 'int32',
     'student_id' => 'int32',
     'registration_group_id' => 'int32',
+    'group_id' => 'int32',
     'academic_year_id' => 'int32',
     'start_date' => 'date-time',
     'end_date' => 'date-time',
@@ -110,6 +112,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     'id' => 'id',
     'student_id' => 'student_id',
     'registration_group_id' => 'registration_group_id',
+    'group_id' => 'group_id',
     'academic_year_id' => 'academic_year_id',
     'start_date' => 'start_date',
     'end_date' => 'end_date',
@@ -130,6 +133,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     'id' => 'setId',
     'student_id' => 'setStudentId',
     'registration_group_id' => 'setRegistrationGroupId',
+    'group_id' => 'setGroupId',
     'academic_year_id' => 'setAcademicYearId',
     'start_date' => 'setStartDate',
     'end_date' => 'setEndDate',
@@ -150,6 +154,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     'id' => 'getId',
     'student_id' => 'getStudentId',
     'registration_group_id' => 'getRegistrationGroupId',
+    'group_id' => 'getGroupId',
     'academic_year_id' => 'getAcademicYearId',
     'start_date' => 'getStartDate',
     'end_date' => 'getEndDate',
@@ -224,6 +229,7 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['student_id'] = isset($data['student_id']) ? $data['student_id'] : null;
     $this->container['registration_group_id'] = isset($data['registration_group_id']) ? $data['registration_group_id'] : null;
+    $this->container['group_id'] = isset($data['group_id']) ? $data['group_id'] : null;
     $this->container['academic_year_id'] = isset($data['academic_year_id']) ? $data['academic_year_id'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
     $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
@@ -351,6 +357,30 @@ class AttendanceSummary implements ModelInterface, ArrayAccess
   public function setRegistrationGroupId($registration_group_id)
   {
     $this->container['registration_group_id'] = $registration_group_id;
+
+    return $this;
+  }
+
+  /**
+   * Gets group_id
+   *
+   * @return int
+   */
+  public function getGroupId()
+  {
+    return $this->container['group_id'];
+  }
+
+  /**
+   * Sets group_id
+   *
+   * @param int $group_id The ID of the group that the attendance summary is attached to (requires `groups` scope)
+   *
+   * @return $this
+   */
+  public function setGroupId($group_id)
+  {
+    $this->container['group_id'] = $group_id;
 
     return $this;
   }

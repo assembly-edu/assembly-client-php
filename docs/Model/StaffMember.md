@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **title** | **string** | The title of the staff member | [optional] 
 **salutation** | **string** | The salutation for the staff member | [optional] 
 **dob** | [**\DateTime**](\DateTime.md) | The staff member&#39;s date of birth | [optional] 
+**address** | [**\Assembly\Client\Model\StaffMemberAddress**](StaffMemberAddress.md) |  | [optional] 
 **email** | **string** | The email address of the staff member. Deprecated in favour of &#x60;emails&#x60; | [optional] 
 **emails** | [**\Assembly\Client\Model\EmailInfo[]**](EmailInfo.md) | The email addresses of the staff member. | [optional] 
 **telephone_numbers** | [**\Assembly\Client\Model\TelephoneNumberInfo[]**](TelephoneNumberInfo.md) | A list of telephone numbers for the staff member | [optional] 

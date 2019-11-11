@@ -11,7 +11,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.424
+ * SDK Version 1.2.432
  * API Version 1.1.0
  *
  * Support
@@ -4673,6 +4673,7 @@ class AssemblyApi
    * View a Staff Member
    *
    * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
@@ -4680,9 +4681,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\StaffMember
    */
-  public function findStaffMember($id, $demographics = null, $qualifications = null)
+  public function findStaffMember($id, $addresses = null, $demographics = null, $qualifications = null)
   {
-    list($response) = $this->findStaffMemberWithHttpInfo($id, $demographics, $qualifications);
+    list($response) = $this->findStaffMemberWithHttpInfo($id, $addresses, $demographics, $qualifications);
     return $response;
   }
 
@@ -4692,6 +4693,7 @@ class AssemblyApi
    * View a Staff Member
    *
    * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
@@ -4699,10 +4701,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\StaffMember, HTTP status code, HTTP response headers (array of strings)
    */
-  public function findStaffMemberWithHttpInfo($id, $demographics = null, $qualifications = null)
+  public function findStaffMemberWithHttpInfo($id, $addresses = null, $demographics = null, $qualifications = null)
   {
     $returnType = '\Assembly\Client\Model\StaffMember';
-    $request = $this->findStaffMemberRequest($id, $demographics, $qualifications);
+    $request = $this->findStaffMemberRequest($id, $addresses, $demographics, $qualifications);
 
     try {
       $options = $this->createHttpClientOption();
@@ -4809,15 +4811,16 @@ class AssemblyApi
    * View a Staff Member
    *
    * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findStaffMemberAsync($id, $demographics = null, $qualifications = null)
+  public function findStaffMemberAsync($id, $addresses = null, $demographics = null, $qualifications = null)
   {
-    return $this->findStaffMemberAsyncWithHttpInfo($id, $demographics, $qualifications)
+    return $this->findStaffMemberAsyncWithHttpInfo($id, $addresses, $demographics, $qualifications)
       ->then(
         function ($response) {
           return $response[0];
@@ -4831,16 +4834,17 @@ class AssemblyApi
    * View a Staff Member
    *
    * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findStaffMemberAsyncWithHttpInfo($id, $demographics = null, $qualifications = null)
+  public function findStaffMemberAsyncWithHttpInfo($id, $addresses = null, $demographics = null, $qualifications = null)
   {
     $returnType = '\Assembly\Client\Model\StaffMember';
-    $request = $this->findStaffMemberRequest($id, $demographics, $qualifications);
+    $request = $this->findStaffMemberRequest($id, $addresses, $demographics, $qualifications);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -4883,13 +4887,14 @@ class AssemblyApi
    * Create request for operation 'findStaffMember'
    *
    * @param  int $id Internal identifier of the entity (required)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function findStaffMemberRequest($id, $demographics = null, $qualifications = null)
+  protected function findStaffMemberRequest($id, $addresses = null, $demographics = null, $qualifications = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -4905,6 +4910,10 @@ class AssemblyApi
     $httpBody = '';
     $multipart = false;
 
+    // query params
+    if ($addresses !== null) {
+      $queryParams['addresses'] = ObjectSerializer::toQueryValue($addresses);
+    }
     // query params
     if ($demographics !== null) {
       $queryParams['demographics'] = ObjectSerializer::toQueryValue($demographics);
@@ -5001,7 +5010,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -5027,7 +5036,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -5151,7 +5160,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -5180,7 +5189,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -5239,7 +5248,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -7009,7 +7018,7 @@ class AssemblyApi
    * List Assessment Points
    *
    * @param  int $year_code Filter by school year (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -7029,7 +7038,7 @@ class AssemblyApi
    * List Assessment Points
    *
    * @param  int $year_code Filter by school year (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -7139,7 +7148,7 @@ class AssemblyApi
    * List Assessment Points
    *
    * @param  int $year_code Filter by school year (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -7162,7 +7171,7 @@ class AssemblyApi
    * List Assessment Points
    *
    * @param  int $year_code Filter by school year (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -7215,7 +7224,7 @@ class AssemblyApi
    * Create request for operation 'getAssessmentPoints'
    *
    * @param  int $year_code Filter by school year (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -7990,6 +7999,7 @@ class AssemblyApi
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $group_id Filter to the specified group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -7998,9 +8008,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\AttendanceSummary[]
    */
-  public function getAttendanceSummaries($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getAttendanceSummaries($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getAttendanceSummariesWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $academic_year_id, $per_page, $page);
+    list($response) = $this->getAttendanceSummariesWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page);
     return $response;
   }
 
@@ -8012,6 +8022,7 @@ class AssemblyApi
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $group_id Filter to the specified group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -8020,10 +8031,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\AttendanceSummary[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getAttendanceSummariesWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getAttendanceSummariesWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\AttendanceSummary[]';
-    $request = $this->getAttendanceSummariesRequest($if_modified_since, $student_id, $registration_group_id, $academic_year_id, $per_page, $page);
+    $request = $this->getAttendanceSummariesRequest($if_modified_since, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -8124,6 +8135,7 @@ class AssemblyApi
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $group_id Filter to the specified group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -8131,9 +8143,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAttendanceSummariesAsync($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getAttendanceSummariesAsync($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    return $this->getAttendanceSummariesAsyncWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $academic_year_id, $per_page, $page)
+    return $this->getAttendanceSummariesAsyncWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -8149,6 +8161,7 @@ class AssemblyApi
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $group_id Filter to the specified group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -8156,10 +8169,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAttendanceSummariesAsyncWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getAttendanceSummariesAsyncWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\AttendanceSummary[]';
-    $request = $this->getAttendanceSummariesRequest($if_modified_since, $student_id, $registration_group_id, $academic_year_id, $per_page, $page);
+    $request = $this->getAttendanceSummariesRequest($if_modified_since, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -8204,6 +8217,7 @@ class AssemblyApi
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $group_id Filter to the specified group (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -8211,7 +8225,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getAttendanceSummariesRequest($if_modified_since = null, $student_id = null, $registration_group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  protected function getAttendanceSummariesRequest($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAttendanceSummaries, must be smaller than or equal to 1500.');
@@ -8239,6 +8253,10 @@ class AssemblyApi
     // query params
     if ($registration_group_id !== null) {
       $queryParams['registration_group_id'] = ObjectSerializer::toQueryValue($registration_group_id);
+    }
+    // query params
+    if ($group_id !== null) {
+      $queryParams['group_id'] = ObjectSerializer::toQueryValue($group_id);
     }
     // query params
     if ($academic_year_id !== null) {
@@ -8334,6 +8352,7 @@ class AssemblyApi
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $group_id Filter to the specified group (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -8343,9 +8362,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Attendance[]
    */
-  public function getAttendances($if_modified_since = null, $student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getAttendances($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getAttendancesWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $start_date, $end_date, $per_page, $page);
+    list($response) = $this->getAttendancesWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page);
     return $response;
   }
 
@@ -8357,6 +8376,7 @@ class AssemblyApi
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $group_id Filter to the specified group (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -8366,10 +8386,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Attendance[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getAttendancesWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getAttendancesWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Attendance[]';
-    $request = $this->getAttendancesRequest($if_modified_since, $student_id, $registration_group_id, $start_date, $end_date, $per_page, $page);
+    $request = $this->getAttendancesRequest($if_modified_since, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -8470,6 +8490,7 @@ class AssemblyApi
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $group_id Filter to the specified group (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -8478,9 +8499,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAttendancesAsync($if_modified_since = null, $student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getAttendancesAsync($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
-    return $this->getAttendancesAsyncWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $start_date, $end_date, $per_page, $page)
+    return $this->getAttendancesAsyncWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -8496,6 +8517,7 @@ class AssemblyApi
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $group_id Filter to the specified group (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -8504,10 +8526,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAttendancesAsyncWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getAttendancesAsyncWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Attendance[]';
-    $request = $this->getAttendancesRequest($if_modified_since, $student_id, $registration_group_id, $start_date, $end_date, $per_page, $page);
+    $request = $this->getAttendancesRequest($if_modified_since, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -8552,6 +8574,7 @@ class AssemblyApi
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
+   * @param  int $group_id Filter to the specified group (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -8560,7 +8583,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getAttendancesRequest($if_modified_since = null, $student_id = null, $registration_group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  protected function getAttendancesRequest($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAttendances, must be smaller than or equal to 1500.');
@@ -8588,6 +8611,10 @@ class AssemblyApi
     // query params
     if ($registration_group_id !== null) {
       $queryParams['registration_group_id'] = ObjectSerializer::toQueryValue($registration_group_id);
+    }
+    // query params
+    if ($group_id !== null) {
+      $queryParams['group_id'] = ObjectSerializer::toQueryValue($group_id);
     }
     // query params
     if ($start_date !== null) {
@@ -8685,7 +8712,7 @@ class AssemblyApi
    * List Calendar Events
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -8705,7 +8732,7 @@ class AssemblyApi
    * List Calendar Events
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -8815,7 +8842,7 @@ class AssemblyApi
    * List Calendar Events
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -8838,7 +8865,7 @@ class AssemblyApi
    * List Calendar Events
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -8891,7 +8918,7 @@ class AssemblyApi
    * Create request for operation 'getCalendarEvents'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9345,6 +9372,7 @@ class AssemblyApi
    * List Contacts
    *
    * @param  int $student_id Filter to the specified student (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9352,9 +9380,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Contact[]
    */
-  public function getContacts($student_id = null, $per_page = '100', $page = '1')
+  public function getContacts($student_id = null, $addresses = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getContactsWithHttpInfo($student_id, $per_page, $page);
+    list($response) = $this->getContactsWithHttpInfo($student_id, $addresses, $per_page, $page);
     return $response;
   }
 
@@ -9364,6 +9392,7 @@ class AssemblyApi
    * List Contacts
    *
    * @param  int $student_id Filter to the specified student (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -9371,10 +9400,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Contact[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getContactsWithHttpInfo($student_id = null, $per_page = '100', $page = '1')
+  public function getContactsWithHttpInfo($student_id = null, $addresses = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Contact[]';
-    $request = $this->getContactsRequest($student_id, $per_page, $page);
+    $request = $this->getContactsRequest($student_id, $addresses, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -9473,15 +9502,16 @@ class AssemblyApi
    * List Contacts
    *
    * @param  int $student_id Filter to the specified student (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getContactsAsync($student_id = null, $per_page = '100', $page = '1')
+  public function getContactsAsync($student_id = null, $addresses = null, $per_page = '100', $page = '1')
   {
-    return $this->getContactsAsyncWithHttpInfo($student_id, $per_page, $page)
+    return $this->getContactsAsyncWithHttpInfo($student_id, $addresses, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -9495,16 +9525,17 @@ class AssemblyApi
    * List Contacts
    *
    * @param  int $student_id Filter to the specified student (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getContactsAsyncWithHttpInfo($student_id = null, $per_page = '100', $page = '1')
+  public function getContactsAsyncWithHttpInfo($student_id = null, $addresses = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Contact[]';
-    $request = $this->getContactsRequest($student_id, $per_page, $page);
+    $request = $this->getContactsRequest($student_id, $addresses, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -9547,13 +9578,14 @@ class AssemblyApi
    * Create request for operation 'getContacts'
    *
    * @param  int $student_id Filter to the specified student (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getContactsRequest($student_id = null, $per_page = '100', $page = '1')
+  protected function getContactsRequest($student_id = null, $addresses = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getContacts, must be smaller than or equal to 1500.');
@@ -9577,6 +9609,10 @@ class AssemblyApi
     // query params
     if ($student_id !== null) {
       $queryParams['student_id'] = ObjectSerializer::toQueryValue($student_id);
+    }
+    // query params
+    if ($addresses !== null) {
+      $queryParams['addresses'] = ObjectSerializer::toQueryValue($addresses);
     }
     // query params
     if ($per_page !== null) {
@@ -10929,7 +10965,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -10959,7 +10995,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -11079,7 +11115,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -11112,7 +11148,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -11175,7 +11211,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -11339,7 +11375,7 @@ class AssemblyApi
    * @param  string $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11362,7 +11398,7 @@ class AssemblyApi
    * @param  string $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11475,7 +11511,7 @@ class AssemblyApi
    * @param  string $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11501,7 +11537,7 @@ class AssemblyApi
    * @param  string $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11557,7 +11593,7 @@ class AssemblyApi
    * @param  string $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
-   * @param  string $type Filter by assessment point type (optional)
+   * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -11998,6 +12034,7 @@ class AssemblyApi
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -12007,9 +12044,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\StaffMember[]
    */
-  public function getLeftStaffMembers($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getLeftStaffMembers($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getLeftStaffMembersWithHttpInfo($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
+    list($response) = $this->getLeftStaffMembersWithHttpInfo($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
     return $response;
   }
 
@@ -12020,6 +12057,7 @@ class AssemblyApi
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -12029,10 +12067,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\StaffMember[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getLeftStaffMembersWithHttpInfo($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getLeftStaffMembersWithHttpInfo($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffMember[]';
-    $request = $this->getLeftStaffMembersRequest($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
+    $request = $this->getLeftStaffMembersRequest($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -12132,6 +12170,7 @@ class AssemblyApi
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -12140,9 +12179,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLeftStaffMembersAsync($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getLeftStaffMembersAsync($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
-    return $this->getLeftStaffMembersAsyncWithHttpInfo($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page)
+    return $this->getLeftStaffMembersAsyncWithHttpInfo($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -12157,6 +12196,7 @@ class AssemblyApi
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -12165,10 +12205,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLeftStaffMembersAsyncWithHttpInfo($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getLeftStaffMembersAsyncWithHttpInfo($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffMember[]';
-    $request = $this->getLeftStaffMembersRequest($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
+    $request = $this->getLeftStaffMembersRequest($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -12212,6 +12252,7 @@ class AssemblyApi
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -12220,7 +12261,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getLeftStaffMembersRequest($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  protected function getLeftStaffMembersRequest($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getLeftStaffMembers, must be smaller than or equal to 1500.');
@@ -12244,6 +12285,10 @@ class AssemblyApi
     // query params
     if ($teachers_only !== null) {
       $queryParams['teachers_only'] = ObjectSerializer::toQueryValue($teachers_only);
+    }
+    // query params
+    if ($addresses !== null) {
+      $queryParams['addresses'] = ObjectSerializer::toQueryValue($addresses);
     }
     // query params
     if ($demographics !== null) {
@@ -13336,7 +13381,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -13367,7 +13412,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -13488,7 +13533,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -13522,7 +13567,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -13586,7 +13631,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -15449,6 +15494,7 @@ class AssemblyApi
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -15458,9 +15504,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\StaffMember[]
    */
-  public function getStaffMembers($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getStaffMembers($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getStaffMembersWithHttpInfo($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
+    list($response) = $this->getStaffMembersWithHttpInfo($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
     return $response;
   }
 
@@ -15471,6 +15517,7 @@ class AssemblyApi
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -15480,10 +15527,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\StaffMember[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getStaffMembersWithHttpInfo($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getStaffMembersWithHttpInfo($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffMember[]';
-    $request = $this->getStaffMembersRequest($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
+    $request = $this->getStaffMembersRequest($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -15583,6 +15630,7 @@ class AssemblyApi
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -15591,9 +15639,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getStaffMembersAsync($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getStaffMembersAsync($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
-    return $this->getStaffMembersAsyncWithHttpInfo($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page)
+    return $this->getStaffMembersAsyncWithHttpInfo($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -15608,6 +15656,7 @@ class AssemblyApi
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -15616,10 +15665,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getStaffMembersAsyncWithHttpInfo($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getStaffMembersAsyncWithHttpInfo($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffMember[]';
-    $request = $this->getStaffMembersRequest($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
+    $request = $this->getStaffMembersRequest($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -15663,6 +15712,7 @@ class AssemblyApi
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $qualifications Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
@@ -15671,7 +15721,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getStaffMembersRequest($if_modified_since = null, $teachers_only = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  protected function getStaffMembersRequest($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getStaffMembers, must be smaller than or equal to 1500.');
@@ -15695,6 +15745,10 @@ class AssemblyApi
     // query params
     if ($teachers_only !== null) {
       $queryParams['teachers_only'] = ObjectSerializer::toQueryValue($teachers_only);
+    }
+    // query params
+    if ($addresses !== null) {
+      $queryParams['addresses'] = ObjectSerializer::toQueryValue($addresses);
     }
     // query params
     if ($demographics !== null) {
@@ -15799,7 +15853,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -15830,7 +15884,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -15951,7 +16005,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -15985,7 +16039,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -16049,7 +16103,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -16536,7 +16590,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -16568,7 +16622,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -16690,7 +16744,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -16725,7 +16779,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -16790,7 +16844,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -17648,7 +17702,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -17678,7 +17732,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -17798,7 +17852,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -17831,7 +17885,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)
@@ -17894,7 +17948,7 @@ class AssemblyApi
    * @param  bool $contacts Include contacts data (optional)
    * @param  bool $sen_needs Include SEN needs data (optional)
    * @param  bool $emails Include email addresses (optional)
-   * @param  bool $addresses Include student address data (optional)
+   * @param  bool $addresses Include address data (optional)
    * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
    * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
    * @param  bool $languages Include student language data (optional)

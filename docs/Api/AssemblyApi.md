@@ -912,7 +912,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **findStaffMember**
-> \Assembly\Client\Model\StaffMember findStaffMember($id, $demographics, $qualifications)
+> \Assembly\Client\Model\StaffMember findStaffMember($id, $addresses, $demographics, $qualifications)
 
 View a Staff Member
 
@@ -936,11 +936,12 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $id = 56; // int | Internal identifier of the entity
+$addresses = True; // bool | Include address data
 $demographics = True; // bool | Include demographics data
 $qualifications = True; // bool | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 
 try {
-  $result = $apiInstance->findStaffMember($id, $demographics, $qualifications);
+  $result = $apiInstance->findStaffMember($id, $addresses, $demographics, $qualifications);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->findStaffMember: ', $e->getMessage(), PHP_EOL;
@@ -953,6 +954,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
+ **addresses** | **bool**| Include address data | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
  **qualifications** | **bool**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
 
@@ -1000,7 +1002,7 @@ $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
 $emails = True; // bool | Include email addresses
-$addresses = True; // bool | Include student address data
+$addresses = True; // bool | Include address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
 $languages = True; // bool | Include student language data
@@ -1024,7 +1026,7 @@ Name | Type | Description  | Notes
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
  **emails** | **bool**| Include email addresses | [optional]
- **addresses** | **bool**| Include student address data | [optional]
+ **addresses** | **bool**| Include address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **bool**| Include student language data | [optional]
@@ -1370,7 +1372,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $year_code = 56; // int | Filter by school year
-$type = 'type_example'; // string | Filter by assessment point type
+$type = 'type_example'; // string | Filter by type
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
@@ -1388,7 +1390,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **year_code** | **int**| Filter by school year | [optional]
- **type** | **string**| Filter by assessment point type | [optional]
+ **type** | **string**| Filter by type | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
 
@@ -1528,7 +1530,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAttendanceSummaries**
-> \Assembly\Client\Model\AttendanceSummary[] getAttendanceSummaries($if_modified_since, $student_id, $registration_group_id, $academic_year_id, $per_page, $page)
+> \Assembly\Client\Model\AttendanceSummary[] getAttendanceSummaries($if_modified_since, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page)
 
 List Attendance Summaries
 
@@ -1554,12 +1556,13 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $student_id = 56; // int | Filter to the specified student
 $registration_group_id = 56; // int | ID of a registration group
+$group_id = 56; // int | Filter to the specified group
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getAttendanceSummaries($if_modified_since, $student_id, $registration_group_id, $academic_year_id, $per_page, $page);
+  $result = $apiInstance->getAttendanceSummaries($if_modified_since, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getAttendanceSummaries: ', $e->getMessage(), PHP_EOL;
@@ -1574,6 +1577,7 @@ Name | Type | Description  | Notes
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **student_id** | **int**| Filter to the specified student | [optional]
  **registration_group_id** | **int**| ID of a registration group | [optional]
+ **group_id** | **int**| Filter to the specified group | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
@@ -1594,7 +1598,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAttendances**
-> \Assembly\Client\Model\Attendance[] getAttendances($if_modified_since, $student_id, $registration_group_id, $start_date, $end_date, $per_page, $page)
+> \Assembly\Client\Model\Attendance[] getAttendances($if_modified_since, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page)
 
 List Attendances
 
@@ -1620,13 +1624,14 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $student_id = 56; // int | Filter to the specified student
 $registration_group_id = 56; // int | ID of a registration group
+$group_id = 56; // int | Filter to the specified group
 $start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The start date of the period to filter by
 $end_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The end date of the period to filter by
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getAttendances($if_modified_since, $student_id, $registration_group_id, $start_date, $end_date, $per_page, $page);
+  $result = $apiInstance->getAttendances($if_modified_since, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getAttendances: ', $e->getMessage(), PHP_EOL;
@@ -1641,6 +1646,7 @@ Name | Type | Description  | Notes
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **student_id** | **int**| Filter to the specified student | [optional]
  **registration_group_id** | **int**| ID of a registration group | [optional]
+ **group_id** | **int**| Filter to the specified group | [optional]
  **start_date** | **\DateTime**| The start date of the period to filter by | [optional]
  **end_date** | **\DateTime**| The end date of the period to filter by | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
@@ -1686,7 +1692,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
-$type = 'type_example'; // string | Filter by assessment point type
+$type = 'type_example'; // string | Filter by type
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
@@ -1704,7 +1710,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
- **type** | **string**| Filter by assessment point type | [optional]
+ **type** | **string**| Filter by type | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
 
@@ -1788,7 +1794,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getContacts**
-> \Assembly\Client\Model\Contact[] getContacts($student_id, $per_page, $page)
+> \Assembly\Client\Model\Contact[] getContacts($student_id, $addresses, $per_page, $page)
 
 List Contacts
 
@@ -1812,11 +1818,12 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $student_id = 56; // int | Filter to the specified student
+$addresses = True; // bool | Include address data
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getContacts($student_id, $per_page, $page);
+  $result = $apiInstance->getContacts($student_id, $addresses, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getContacts: ', $e->getMessage(), PHP_EOL;
@@ -1829,6 +1836,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **student_id** | **int**| Filter to the specified student | [optional]
+ **addresses** | **bool**| Include address data | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
 
@@ -2118,7 +2126,7 @@ $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
 $emails = True; // bool | Include email addresses
-$addresses = True; // bool | Include student address data
+$addresses = True; // bool | Include address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
 $languages = True; // bool | Include student language data
@@ -2146,7 +2154,7 @@ Name | Type | Description  | Notes
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
  **emails** | **bool**| Include email addresses | [optional]
- **addresses** | **bool**| Include student address data | [optional]
+ **addresses** | **bool**| Include address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **bool**| Include student language data | [optional]
@@ -2195,7 +2203,7 @@ $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | 
 $year_code = 'year_code_example'; // string | Filter by school year
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
-$type = 'type_example'; // string | Filter by assessment point type
+$type = 'type_example'; // string | Filter by type
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
@@ -2216,7 +2224,7 @@ Name | Type | Description  | Notes
  **year_code** | **string**| Filter by school year | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
- **type** | **string**| Filter by assessment point type | [optional]
+ **type** | **string**| Filter by type | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
 
@@ -2294,7 +2302,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getLeftStaffMembers**
-> \Assembly\Client\Model\StaffMember[] getLeftStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page)
+> \Assembly\Client\Model\StaffMember[] getLeftStaffMembers($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page)
 
 List Left Staff Members
 
@@ -2319,13 +2327,14 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $teachers_only = True; // bool | Filter to staff who are teachers
+$addresses = True; // bool | Include address data
 $demographics = True; // bool | Include demographics data
 $qualifications = True; // bool | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getLeftStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
+  $result = $apiInstance->getLeftStaffMembers($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getLeftStaffMembers: ', $e->getMessage(), PHP_EOL;
@@ -2339,6 +2348,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **teachers_only** | **bool**| Filter to staff who are teachers | [optional]
+ **addresses** | **bool**| Include address data | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
  **qualifications** | **bool**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
@@ -2577,7 +2587,7 @@ $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
 $emails = True; // bool | Include email addresses
-$addresses = True; // bool | Include student address data
+$addresses = True; // bool | Include address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
 $languages = True; // bool | Include student language data
@@ -2606,7 +2616,7 @@ Name | Type | Description  | Notes
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
  **emails** | **bool**| Include email addresses | [optional]
- **addresses** | **bool**| Include student address data | [optional]
+ **addresses** | **bool**| Include address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **bool**| Include student language data | [optional]
@@ -2950,7 +2960,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getStaffMembers**
-> \Assembly\Client\Model\StaffMember[] getStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page)
+> \Assembly\Client\Model\StaffMember[] getStaffMembers($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page)
 
 List Staff Members
 
@@ -2975,13 +2985,14 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $teachers_only = True; // bool | Filter to staff who are teachers
+$addresses = True; // bool | Include address data
 $demographics = True; // bool | Include demographics data
 $qualifications = True; // bool | Include HLTA status, QT status, QT route and previous degree information (requires `staff_members.qualifications` scope)
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getStaffMembers($if_modified_since, $teachers_only, $demographics, $qualifications, $per_page, $page);
+  $result = $apiInstance->getStaffMembers($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getStaffMembers: ', $e->getMessage(), PHP_EOL;
@@ -2995,6 +3006,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **teachers_only** | **bool**| Filter to staff who are teachers | [optional]
+ **addresses** | **bool**| Include address data | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
  **qualifications** | **bool**| Include HLTA status, QT status, QT route and previous degree information (requires &#x60;staff_members.qualifications&#x60; scope) | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
@@ -3047,7 +3059,7 @@ $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
 $emails = True; // bool | Include email addresses
-$addresses = True; // bool | Include student address data
+$addresses = True; // bool | Include address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
 $languages = True; // bool | Include student language data
@@ -3076,7 +3088,7 @@ Name | Type | Description  | Notes
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
  **emails** | **bool**| Include email addresses | [optional]
- **addresses** | **bool**| Include student address data | [optional]
+ **addresses** | **bool**| Include address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **bool**| Include student language data | [optional]
@@ -3190,7 +3202,7 @@ $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
 $emails = True; // bool | Include email addresses
-$addresses = True; // bool | Include student address data
+$addresses = True; // bool | Include address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
 $languages = True; // bool | Include student language data
@@ -3220,7 +3232,7 @@ Name | Type | Description  | Notes
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
  **emails** | **bool**| Include email addresses | [optional]
- **addresses** | **bool**| Include student address data | [optional]
+ **addresses** | **bool**| Include address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **bool**| Include student language data | [optional]
@@ -3402,7 +3414,7 @@ $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
 $sen_needs = True; // bool | Include SEN needs data
 $emails = True; // bool | Include email addresses
-$addresses = True; // bool | Include student address data
+$addresses = True; // bool | Include address data
 $care = True; // bool | Include student care data (you must also supply the demographics parameter)
 $ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
 $languages = True; // bool | Include student language data
@@ -3430,7 +3442,7 @@ Name | Type | Description  | Notes
  **contacts** | **bool**| Include contacts data | [optional]
  **sen_needs** | **bool**| Include SEN needs data | [optional]
  **emails** | **bool**| Include email addresses | [optional]
- **addresses** | **bool**| Include student address data | [optional]
+ **addresses** | **bool**| Include address data | [optional]
  **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
  **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
  **languages** | **bool**| Include student language data | [optional]

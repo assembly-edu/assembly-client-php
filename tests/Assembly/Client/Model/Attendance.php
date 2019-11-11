@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.424
+ * SDK Version 1.2.432
  * API Version 1.1.0
  *
  * Support
@@ -89,6 +89,13 @@ class AttendanceTest extends \PHPUnit_Framework_TestCase
    * Test attribute "registration_group_id"
    */
   public function testPropertyRegistrationGroupId()
+  {
+  }
+
+  /**
+   * Test attribute "group_id"
+   */
+  public function testPropertyGroupId()
   {
   }
 

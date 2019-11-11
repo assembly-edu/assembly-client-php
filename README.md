@@ -1,7 +1,7 @@
 # PHP SDK for the Assembly API
 
 - API version: 1.1.0
-- Package version: 1.2.424
+- Package version: 1.2.432
 
 For more information, please visit [http://developers.assembly.education](http://developers.assembly.education)
 
@@ -247,11 +247,13 @@ Class | Method | HTTP request | Description
  - [CalendarEvent](docs/Model/CalendarEvent.md)
  - [Closure](docs/Model/Closure.md)
  - [Contact](docs/Model/Contact.md)
+ - [ContactAddress](docs/Model/ContactAddress.md)
  - [ContactStudents](docs/Model/ContactStudents.md)
  - [DietaryNeed](docs/Model/DietaryNeed.md)
  - [EmailInfo](docs/Model/EmailInfo.md)
  - [Exclusion](docs/Model/Exclusion.md)
  - [Facet](docs/Model/Facet.md)
+ - [FsmEntitlement](docs/Model/FsmEntitlement.md)
  - [Grade](docs/Model/Grade.md)
  - [GradeSet](docs/Model/GradeSet.md)
  - [Group](docs/Model/Group.md)
@@ -278,6 +280,7 @@ Class | Method | HTTP request | Description
  - [StaffAllowance](docs/Model/StaffAllowance.md)
  - [StaffContract](docs/Model/StaffContract.md)
  - [StaffMember](docs/Model/StaffMember.md)
+ - [StaffMemberAddress](docs/Model/StaffMemberAddress.md)
  - [StaffMemberDemographics](docs/Model/StaffMemberDemographics.md)
  - [StaffMemberQualificationInfo](docs/Model/StaffMemberQualificationInfo.md)
  - [StaffQualification](docs/Model/StaffQualification.md)

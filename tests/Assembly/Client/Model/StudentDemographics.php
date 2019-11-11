@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.424
+ * SDK Version 1.2.432
  * API Version 1.1.0
  *
  * Support
@@ -145,6 +145,13 @@ class StudentDemographicsTest extends \PHPUnit_Framework_TestCase
    * Test attribute "is_fsm6"
    */
   public function testPropertyIsFsm6()
+  {
+  }
+
+  /**
+   * Test attribute "fsm_history"
+   */
+  public function testPropertyFsmHistory()
   {
   }
 

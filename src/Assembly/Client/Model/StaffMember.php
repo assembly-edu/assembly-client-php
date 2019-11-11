@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.424
+ * SDK Version 1.2.432
  * API Version 1.1.0
  *
  * Support
@@ -58,6 +58,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     'title' => 'string',
     'salutation' => 'string',
     'dob' => '\DateTime',
+    'address' => '\Assembly\Client\Model\StaffMemberAddress',
     'email' => 'string',
     'emails' => '\Assembly\Client\Model\EmailInfo[]',
     'telephone_numbers' => '\Assembly\Client\Model\TelephoneNumberInfo[]',
@@ -88,6 +89,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     'title' => null,
     'salutation' => null,
     'dob' => 'date-time',
+    'address' => null,
     'email' => null,
     'emails' => null,
     'telephone_numbers' => null,
@@ -139,6 +141,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     'title' => 'title',
     'salutation' => 'salutation',
     'dob' => 'dob',
+    'address' => 'address',
     'email' => 'email',
     'emails' => 'emails',
     'telephone_numbers' => 'telephone_numbers',
@@ -169,6 +172,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     'title' => 'setTitle',
     'salutation' => 'setSalutation',
     'dob' => 'setDob',
+    'address' => 'setAddress',
     'email' => 'setEmail',
     'emails' => 'setEmails',
     'telephone_numbers' => 'setTelephoneNumbers',
@@ -199,6 +203,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     'title' => 'getTitle',
     'salutation' => 'getSalutation',
     'dob' => 'getDob',
+    'address' => 'getAddress',
     'email' => 'getEmail',
     'emails' => 'getEmails',
     'telephone_numbers' => 'getTelephoneNumbers',
@@ -283,6 +288,7 @@ class StaffMember implements ModelInterface, ArrayAccess
     $this->container['title'] = isset($data['title']) ? $data['title'] : null;
     $this->container['salutation'] = isset($data['salutation']) ? $data['salutation'] : null;
     $this->container['dob'] = isset($data['dob']) ? $data['dob'] : null;
+    $this->container['address'] = isset($data['address']) ? $data['address'] : null;
     $this->container['email'] = isset($data['email']) ? $data['email'] : null;
     $this->container['emails'] = isset($data['emails']) ? $data['emails'] : null;
     $this->container['telephone_numbers'] = isset($data['telephone_numbers']) ? $data['telephone_numbers'] : null;
@@ -627,6 +633,30 @@ class StaffMember implements ModelInterface, ArrayAccess
   public function setDob($dob)
   {
     $this->container['dob'] = $dob;
+
+    return $this;
+  }
+
+  /**
+   * Gets address
+   *
+   * @return \Assembly\Client\Model\StaffMemberAddress
+   */
+  public function getAddress()
+  {
+    return $this->container['address'];
+  }
+
+  /**
+   * Sets address
+   *
+   * @param \Assembly\Client\Model\StaffMemberAddress $address address
+   *
+   * @return $this
+   */
+  public function setAddress($address)
+  {
+    $this->container['address'] = $address;
 
     return $this;
   }
