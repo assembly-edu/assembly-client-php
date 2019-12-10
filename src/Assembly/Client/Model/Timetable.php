@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.432
+ * SDK Version 1.2.436
  * API Version 1.1.0
  *
  * Support
@@ -51,6 +51,7 @@ class Timetable implements ModelInterface, ArrayAccess
     'description' => 'string',
     'start_date' => '\DateTime',
     'end_date' => '\DateTime',
+    'weeks' => 'int',
     'days_per_week' => 'int',
     'periods_per_day' => 'int',
     'days' => '\Assembly\Client\Model\TimetableDays[]'
@@ -68,6 +69,7 @@ class Timetable implements ModelInterface, ArrayAccess
     'description' => null,
     'start_date' => 'date-time',
     'end_date' => 'date-time',
+    'weeks' => 'int32',
     'days_per_week' => 'int32',
     'periods_per_day' => 'int32',
     'days' => null
@@ -106,6 +108,7 @@ class Timetable implements ModelInterface, ArrayAccess
     'description' => 'description',
     'start_date' => 'start_date',
     'end_date' => 'end_date',
+    'weeks' => 'weeks',
     'days_per_week' => 'days_per_week',
     'periods_per_day' => 'periods_per_day',
     'days' => 'days'
@@ -123,6 +126,7 @@ class Timetable implements ModelInterface, ArrayAccess
     'description' => 'setDescription',
     'start_date' => 'setStartDate',
     'end_date' => 'setEndDate',
+    'weeks' => 'setWeeks',
     'days_per_week' => 'setDaysPerWeek',
     'periods_per_day' => 'setPeriodsPerDay',
     'days' => 'setDays'
@@ -140,6 +144,7 @@ class Timetable implements ModelInterface, ArrayAccess
     'description' => 'getDescription',
     'start_date' => 'getStartDate',
     'end_date' => 'getEndDate',
+    'weeks' => 'getWeeks',
     'days_per_week' => 'getDaysPerWeek',
     'periods_per_day' => 'getPeriodsPerDay',
     'days' => 'getDays'
@@ -211,6 +216,7 @@ class Timetable implements ModelInterface, ArrayAccess
     $this->container['description'] = isset($data['description']) ? $data['description'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
     $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
+    $this->container['weeks'] = isset($data['weeks']) ? $data['weeks'] : null;
     $this->container['days_per_week'] = isset($data['days_per_week']) ? $data['days_per_week'] : null;
     $this->container['periods_per_day'] = isset($data['periods_per_day']) ? $data['periods_per_day'] : null;
     $this->container['days'] = isset($data['days']) ? $data['days'] : null;
@@ -381,6 +387,30 @@ class Timetable implements ModelInterface, ArrayAccess
   public function setEndDate($end_date)
   {
     $this->container['end_date'] = $end_date;
+
+    return $this;
+  }
+
+  /**
+   * Gets weeks
+   *
+   * @return int
+   */
+  public function getWeeks()
+  {
+    return $this->container['weeks'];
+  }
+
+  /**
+   * Sets weeks
+   *
+   * @param int $weeks The number of weeks in the timetable cycle
+   *
+   * @return $this
+   */
+  public function setWeeks($weeks)
+  {
+    $this->container['weeks'] = $weeks;
 
     return $this;
   }

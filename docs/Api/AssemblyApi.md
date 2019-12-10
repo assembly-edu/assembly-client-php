@@ -3584,7 +3584,7 @@ This endpoint does not need any parameter.
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **updateResults**
-> \Assembly\Client\Model\Result updateResults($id, $result_entry)
+> \Assembly\Client\Model\Result updateResults($id, $result_update)
 
 Update a Single Result
 
@@ -3608,10 +3608,10 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $id = 56; // int | Internal identifier of the entity
-$result_entry = new \Assembly\Client\Model\ResultEntry(); // \Assembly\Client\Model\ResultEntry | 
+$result_update = new \Assembly\Client\Model\ResultUpdate(); // \Assembly\Client\Model\ResultUpdate | 
 
 try {
-  $result = $apiInstance->updateResults($id, $result_entry);
+  $result = $apiInstance->updateResults($id, $result_update);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->updateResults: ', $e->getMessage(), PHP_EOL;
@@ -3624,7 +3624,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
- **result_entry** | [**\Assembly\Client\Model\ResultEntry**](../Model/ResultEntry.md)|  | [optional]
+ **result_update** | [**\Assembly\Client\Model\ResultUpdate**](../Model/ResultUpdate.md)|  | [optional]
 
 ### Return type
 

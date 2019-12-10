@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.432
+ * SDK Version 1.2.436
  * API Version 1.1.0
  *
  * Support
@@ -68,13 +68,6 @@ class ResultEntryTest extends \PHPUnit_Framework_TestCase
    * Test attribute "student_id"
    */
   public function testPropertyStudentId()
-  {
-  }
-
-  /**
-   * Test attribute "result_id"
-   */
-  public function testPropertyResultId()
   {
   }
 

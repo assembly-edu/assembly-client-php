@@ -11,7 +11,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.432
+ * SDK Version 1.2.436
  * API Version 1.1.0
  *
  * Support
@@ -18745,15 +18745,15 @@ class AssemblyApi
    * Update a Single Result
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \Assembly\Client\Model\ResultEntry $result_entry result_entry (optional)
+   * @param  \Assembly\Client\Model\ResultUpdate $result_update result_update (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Result
    */
-  public function updateResults($id, $result_entry = null)
+  public function updateResults($id, $result_update = null)
   {
-    list($response) = $this->updateResultsWithHttpInfo($id, $result_entry);
+    list($response) = $this->updateResultsWithHttpInfo($id, $result_update);
     return $response;
   }
 
@@ -18763,16 +18763,16 @@ class AssemblyApi
    * Update a Single Result
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \Assembly\Client\Model\ResultEntry $result_entry (optional)
+   * @param  \Assembly\Client\Model\ResultUpdate $result_update (optional)
    *
    * @throws \Assembly\Client\ApiException on non-2xx response
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Result, HTTP status code, HTTP response headers (array of strings)
    */
-  public function updateResultsWithHttpInfo($id, $result_entry = null)
+  public function updateResultsWithHttpInfo($id, $result_update = null)
   {
     $returnType = '\Assembly\Client\Model\Result';
-    $request = $this->updateResultsRequest($id, $result_entry);
+    $request = $this->updateResultsRequest($id, $result_update);
 
     try {
       $options = $this->createHttpClientOption();
@@ -18871,14 +18871,14 @@ class AssemblyApi
    * Update a Single Result
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \Assembly\Client\Model\ResultEntry $result_entry (optional)
+   * @param  \Assembly\Client\Model\ResultUpdate $result_update (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function updateResultsAsync($id, $result_entry = null)
+  public function updateResultsAsync($id, $result_update = null)
   {
-    return $this->updateResultsAsyncWithHttpInfo($id, $result_entry)
+    return $this->updateResultsAsyncWithHttpInfo($id, $result_update)
       ->then(
         function ($response) {
           return $response[0];
@@ -18892,15 +18892,15 @@ class AssemblyApi
    * Update a Single Result
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \Assembly\Client\Model\ResultEntry $result_entry (optional)
+   * @param  \Assembly\Client\Model\ResultUpdate $result_update (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function updateResultsAsyncWithHttpInfo($id, $result_entry = null)
+  public function updateResultsAsyncWithHttpInfo($id, $result_update = null)
   {
     $returnType = '\Assembly\Client\Model\Result';
-    $request = $this->updateResultsRequest($id, $result_entry);
+    $request = $this->updateResultsRequest($id, $result_update);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -18943,12 +18943,12 @@ class AssemblyApi
    * Create request for operation 'updateResults'
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \Assembly\Client\Model\ResultEntry $result_entry (optional)
+   * @param  \Assembly\Client\Model\ResultUpdate $result_update (optional)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function updateResultsRequest($id, $result_entry = null)
+  protected function updateResultsRequest($id, $result_update = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -18976,8 +18976,8 @@ class AssemblyApi
 
     // body params
     $_tempBody = null;
-    if (isset($result_entry)) {
-      $_tempBody = $result_entry;
+    if (isset($result_update)) {
+      $_tempBody = $result_update;
     }
 
     if ($multipart) {

@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.432
+ * SDK Version 1.2.436
  * API Version 1.1.0
  *
  * Support
@@ -50,8 +50,10 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'ethnicity_group' => 'string',
     'gender' => 'string',
     'is_pp' => 'bool',
+    'pp_history' => '\Assembly\Client\Model\PpEntitlement[]',
     'is_eal' => 'bool',
     'sen_category' => 'string',
+    'sen_category_history' => '\Assembly\Client\Model\SenCategory[]',
     'country_of_birth' => 'string',
     'nationalities' => 'string[]',
     'fsm_review_date' => 'string',
@@ -75,8 +77,10 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'ethnicity_group' => null,
     'gender' => null,
     'is_pp' => null,
+    'pp_history' => null,
     'is_eal' => null,
     'sen_category' => null,
+    'sen_category_history' => null,
     'country_of_birth' => null,
     'nationalities' => null,
     'fsm_review_date' => null,
@@ -121,8 +125,10 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'ethnicity_group' => 'ethnicity_group',
     'gender' => 'gender',
     'is_pp' => 'is_pp',
+    'pp_history' => 'pp_history',
     'is_eal' => 'is_eal',
     'sen_category' => 'sen_category',
+    'sen_category_history' => 'sen_category_history',
     'country_of_birth' => 'country_of_birth',
     'nationalities' => 'nationalities',
     'fsm_review_date' => 'fsm_review_date',
@@ -146,8 +152,10 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'ethnicity_group' => 'setEthnicityGroup',
     'gender' => 'setGender',
     'is_pp' => 'setIsPp',
+    'pp_history' => 'setPpHistory',
     'is_eal' => 'setIsEal',
     'sen_category' => 'setSenCategory',
+    'sen_category_history' => 'setSenCategoryHistory',
     'country_of_birth' => 'setCountryOfBirth',
     'nationalities' => 'setNationalities',
     'fsm_review_date' => 'setFsmReviewDate',
@@ -171,8 +179,10 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     'ethnicity_group' => 'getEthnicityGroup',
     'gender' => 'getGender',
     'is_pp' => 'getIsPp',
+    'pp_history' => 'getPpHistory',
     'is_eal' => 'getIsEal',
     'sen_category' => 'getSenCategory',
+    'sen_category_history' => 'getSenCategoryHistory',
     'country_of_birth' => 'getCountryOfBirth',
     'nationalities' => 'getNationalities',
     'fsm_review_date' => 'getFsmReviewDate',
@@ -250,8 +260,10 @@ class StudentDemographics implements ModelInterface, ArrayAccess
     $this->container['ethnicity_group'] = isset($data['ethnicity_group']) ? $data['ethnicity_group'] : null;
     $this->container['gender'] = isset($data['gender']) ? $data['gender'] : null;
     $this->container['is_pp'] = isset($data['is_pp']) ? $data['is_pp'] : null;
+    $this->container['pp_history'] = isset($data['pp_history']) ? $data['pp_history'] : null;
     $this->container['is_eal'] = isset($data['is_eal']) ? $data['is_eal'] : null;
     $this->container['sen_category'] = isset($data['sen_category']) ? $data['sen_category'] : null;
+    $this->container['sen_category_history'] = isset($data['sen_category_history']) ? $data['sen_category_history'] : null;
     $this->container['country_of_birth'] = isset($data['country_of_birth']) ? $data['country_of_birth'] : null;
     $this->container['nationalities'] = isset($data['nationalities']) ? $data['nationalities'] : null;
     $this->container['fsm_review_date'] = isset($data['fsm_review_date']) ? $data['fsm_review_date'] : null;
@@ -410,6 +422,30 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   }
 
   /**
+   * Gets pp_history
+   *
+   * @return \Assembly\Client\Model\PpEntitlement[]
+   */
+  public function getPpHistory()
+  {
+    return $this->container['pp_history'];
+  }
+
+  /**
+   * Sets pp_history
+   *
+   * @param \Assembly\Client\Model\PpEntitlement[] $pp_history Pupil Premium (PP) entitlement history
+   *
+   * @return $this
+   */
+  public function setPpHistory($pp_history)
+  {
+    $this->container['pp_history'] = $pp_history;
+
+    return $this;
+  }
+
+  /**
    * Gets is_eal
    *
    * @return bool
@@ -453,6 +489,30 @@ class StudentDemographics implements ModelInterface, ArrayAccess
   public function setSenCategory($sen_category)
   {
     $this->container['sen_category'] = $sen_category;
+
+    return $this;
+  }
+
+  /**
+   * Gets sen_category_history
+   *
+   * @return \Assembly\Client\Model\SenCategory[]
+   */
+  public function getSenCategoryHistory()
+  {
+    return $this->container['sen_category_history'];
+  }
+
+  /**
+   * Sets sen_category_history
+   *
+   * @param \Assembly\Client\Model\SenCategory[] $sen_category_history Special Education Need (SEN) category history
+   *
+   * @return $this
+   */
+  public function setSenCategoryHistory($sen_category_history)
+  {
+    $this->container['sen_category_history'] = $sen_category_history;
 
     return $this;
   }

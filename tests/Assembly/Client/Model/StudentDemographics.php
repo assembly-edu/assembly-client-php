@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.432
+ * SDK Version 1.2.436
  * API Version 1.1.0
  *
  * Support
@@ -100,6 +100,13 @@ class StudentDemographicsTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
+   * Test attribute "pp_history"
+   */
+  public function testPropertyPpHistory()
+  {
+  }
+
+  /**
    * Test attribute "is_eal"
    */
   public function testPropertyIsEal()
@@ -110,6 +117,13 @@ class StudentDemographicsTest extends \PHPUnit_Framework_TestCase
    * Test attribute "sen_category"
    */
   public function testPropertySenCategory()
+  {
+  }
+
+  /**
+   * Test attribute "sen_category_history"
+   */
+  public function testPropertySenCategoryHistory()
   {
   }
 

@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.432
+ * SDK Version 1.2.436
  * API Version 1.1.0
  *
  * Support
@@ -49,6 +49,7 @@ class TimetableDays implements ModelInterface, ArrayAccess
     'short_name' => 'string',
     'long_name' => 'string',
     'display_order' => 'int',
+    'occurs_on' => '\DateTime[]',
     'periods' => '\Assembly\Client\Model\TimetablePeriods[]'
   ];
 
@@ -63,6 +64,7 @@ class TimetableDays implements ModelInterface, ArrayAccess
     'short_name' => null,
     'long_name' => null,
     'display_order' => 'int32',
+    'occurs_on' => 'date',
     'periods' => null
   ];
 
@@ -98,6 +100,7 @@ class TimetableDays implements ModelInterface, ArrayAccess
     'short_name' => 'short_name',
     'long_name' => 'long_name',
     'display_order' => 'display_order',
+    'occurs_on' => 'occurs_on',
     'periods' => 'periods'
   ];
 
@@ -112,6 +115,7 @@ class TimetableDays implements ModelInterface, ArrayAccess
     'short_name' => 'setShortName',
     'long_name' => 'setLongName',
     'display_order' => 'setDisplayOrder',
+    'occurs_on' => 'setOccursOn',
     'periods' => 'setPeriods'
   ];
 
@@ -126,6 +130,7 @@ class TimetableDays implements ModelInterface, ArrayAccess
     'short_name' => 'getShortName',
     'long_name' => 'getLongName',
     'display_order' => 'getDisplayOrder',
+    'occurs_on' => 'getOccursOn',
     'periods' => 'getPeriods'
   ];
 
@@ -194,6 +199,7 @@ class TimetableDays implements ModelInterface, ArrayAccess
     $this->container['short_name'] = isset($data['short_name']) ? $data['short_name'] : null;
     $this->container['long_name'] = isset($data['long_name']) ? $data['long_name'] : null;
     $this->container['display_order'] = isset($data['display_order']) ? $data['display_order'] : null;
+    $this->container['occurs_on'] = isset($data['occurs_on']) ? $data['occurs_on'] : null;
     $this->container['periods'] = isset($data['periods']) ? $data['periods'] : null;
   }
 
@@ -338,6 +344,30 @@ class TimetableDays implements ModelInterface, ArrayAccess
   public function setDisplayOrder($display_order)
   {
     $this->container['display_order'] = $display_order;
+
+    return $this;
+  }
+
+  /**
+   * Gets occurs_on
+   *
+   * @return \DateTime[]
+   */
+  public function getOccursOn()
+  {
+    return $this->container['occurs_on'];
+  }
+
+  /**
+   * Sets occurs_on
+   *
+   * @param \DateTime[] $occurs_on An array of dates for when the timetabled day occurs.
+   *
+   * @return $this
+   */
+  public function setOccursOn($occurs_on)
+  {
+    $this->container['occurs_on'] = $occurs_on;
 
     return $this;
   }

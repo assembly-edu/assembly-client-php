@@ -4,7 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **student_id** | **int** | The ID of the student | [optional] 
-**result_id** | **int** | The ID of the result | [optional] 
 **grade_id** | **int** | The ID of the grade | [optional] 
 **result_date** | [**\DateTime**](\DateTime.md) | The date/time that this result was recorded | [optional] 
 

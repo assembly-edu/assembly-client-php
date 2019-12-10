@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.432
+ * SDK Version 1.2.436
  * API Version 1.1.0
  *
  * Support
@@ -46,7 +46,6 @@ class ResultEntry implements ModelInterface, ArrayAccess
     */
   protected static $swaggerTypes = [
     'student_id' => 'int',
-    'result_id' => 'int',
     'grade_id' => 'int',
     'result_date' => '\DateTime'
   ];
@@ -58,7 +57,6 @@ class ResultEntry implements ModelInterface, ArrayAccess
     */
   protected static $swaggerFormats = [
     'student_id' => 'int32',
-    'result_id' => 'int32',
     'grade_id' => 'int32',
     'result_date' => 'date-time'
   ];
@@ -91,7 +89,6 @@ class ResultEntry implements ModelInterface, ArrayAccess
    */
   protected static $attributeMap = [
     'student_id' => 'student_id',
-    'result_id' => 'result_id',
     'grade_id' => 'grade_id',
     'result_date' => 'result_date'
   ];
@@ -103,7 +100,6 @@ class ResultEntry implements ModelInterface, ArrayAccess
    */
   protected static $setters = [
     'student_id' => 'setStudentId',
-    'result_id' => 'setResultId',
     'grade_id' => 'setGradeId',
     'result_date' => 'setResultDate'
   ];
@@ -115,7 +111,6 @@ class ResultEntry implements ModelInterface, ArrayAccess
    */
   protected static $getters = [
     'student_id' => 'getStudentId',
-    'result_id' => 'getResultId',
     'grade_id' => 'getGradeId',
     'result_date' => 'getResultDate'
   ];
@@ -181,7 +176,6 @@ class ResultEntry implements ModelInterface, ArrayAccess
   public function __construct(array $data = null)
   {
     $this->container['student_id'] = isset($data['student_id']) ? $data['student_id'] : null;
-    $this->container['result_id'] = isset($data['result_id']) ? $data['result_id'] : null;
     $this->container['grade_id'] = isset($data['grade_id']) ? $data['grade_id'] : null;
     $this->container['result_date'] = isset($data['result_date']) ? $data['result_date'] : null;
   }
@@ -231,30 +225,6 @@ class ResultEntry implements ModelInterface, ArrayAccess
   public function setStudentId($student_id)
   {
     $this->container['student_id'] = $student_id;
-
-    return $this;
-  }
-
-  /**
-   * Gets result_id
-   *
-   * @return int
-   */
-  public function getResultId()
-  {
-    return $this->container['result_id'];
-  }
-
-  /**
-   * Sets result_id
-   *
-   * @param int $result_id The ID of the result
-   *
-   * @return $this
-   */
-  public function setResultId($result_id)
-  {
-    $this->container['result_id'] = $result_id;
 
     return $this;
   }

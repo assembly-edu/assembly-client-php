@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.432
+ * SDK Version 1.2.436
  * API Version 1.1.0
  *
  * Support
@@ -45,7 +45,7 @@ class BulkResultsBody implements ModelInterface, ArrayAccess
     * @var string[]
     */
   protected static $swaggerTypes = [
-    'results' => '\Assembly\Client\Model\ResultEntry[]'
+    'results' => '\Assembly\Client\Model\ResultUpdate[]'
   ];
 
   /**
@@ -196,7 +196,7 @@ class BulkResultsBody implements ModelInterface, ArrayAccess
   /**
    * Gets results
    *
-   * @return \Assembly\Client\Model\ResultEntry[]
+   * @return \Assembly\Client\Model\ResultUpdate[]
    */
   public function getResults()
   {
@@ -206,7 +206,7 @@ class BulkResultsBody implements ModelInterface, ArrayAccess
   /**
    * Sets results
    *
-   * @param \Assembly\Client\Model\ResultEntry[] $results results
+   * @param \Assembly\Client\Model\ResultUpdate[] $results results
    *
    * @return $this
    */

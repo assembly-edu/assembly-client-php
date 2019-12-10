@@ -1,7 +1,7 @@
 # PHP SDK for the Assembly API
 
 - API version: 1.1.0
-- Package version: 1.2.432
+- Package version: 1.2.436
 
 For more information, please visit [http://developers.assembly.education](http://developers.assembly.education)
 
@@ -268,13 +268,16 @@ Class | Method | HTTP request | Description
  - [MeToken](docs/Model/MeToken.md)
  - [MedicalCondition](docs/Model/MedicalCondition.md)
  - [MisSubject](docs/Model/MisSubject.md)
+ - [PpEntitlement](docs/Model/PpEntitlement.md)
  - [RegistrationGroup](docs/Model/RegistrationGroup.md)
  - [Result](docs/Model/Result.md)
  - [ResultBody](docs/Model/ResultBody.md)
  - [ResultEntry](docs/Model/ResultEntry.md)
+ - [ResultUpdate](docs/Model/ResultUpdate.md)
  - [Room](docs/Model/Room.md)
  - [School](docs/Model/School.md)
  - [SchoolStatus](docs/Model/SchoolStatus.md)
+ - [SenCategory](docs/Model/SenCategory.md)
  - [SenNeed](docs/Model/SenNeed.md)
  - [StaffAbsence](docs/Model/StaffAbsence.md)
  - [StaffAllowance](docs/Model/StaffAllowance.md)
