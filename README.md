@@ -1,7 +1,7 @@
 # PHP SDK for the Assembly API
 
 - API version: 1.1.0
-- Package version: 1.2.436
+- Package version: 1.2.450
 
 For more information, please visit [http://developers.assembly.education](http://developers.assembly.education)
 
@@ -216,6 +216,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getLeftStudents**](docs/Api/AssemblyApi.md#getleftstudents) | **GET** /students/left | List Left Students
 *AssemblyApi* | [**getLessons**](docs/Api/AssemblyApi.md#getlessons) | **GET** /rooms/{id}/lessons | List Lessons For a Room
 *AssemblyApi* | [**getMedicalConditions**](docs/Api/AssemblyApi.md#getmedicalconditions) | **GET** /school/medical_conditions | List Medical Conditions
+*AssemblyApi* | [**getMisSubjects**](docs/Api/AssemblyApi.md#getmissubjects) | **GET** /mis_subjects | List MIS Subjects
 *AssemblyApi* | [**getRegistrationGroupStudents**](docs/Api/AssemblyApi.md#getregistrationgroupstudents) | **GET** /registration_groups/{id}/students | List Students for Registration Group
 *AssemblyApi* | [**getRegistrationGroups**](docs/Api/AssemblyApi.md#getregistrationgroups) | **GET** /registration_groups | List Registration Groups
 *AssemblyApi* | [**getResults**](docs/Api/AssemblyApi.md#getresults) | **GET** /results | List Results
@@ -268,6 +269,7 @@ Class | Method | HTTP request | Description
  - [MeToken](docs/Model/MeToken.md)
  - [MedicalCondition](docs/Model/MedicalCondition.md)
  - [MisSubject](docs/Model/MisSubject.md)
+ - [MisSubjectSubject](docs/Model/MisSubjectSubject.md)
  - [PpEntitlement](docs/Model/PpEntitlement.md)
  - [RegistrationGroup](docs/Model/RegistrationGroup.md)
  - [Result](docs/Model/Result.md)
@@ -308,6 +310,8 @@ Class | Method | HTTP request | Description
  - [TelephoneNumberInfo](docs/Model/TelephoneNumberInfo.md)
  - [Timetable](docs/Model/Timetable.md)
  - [TimetableDays](docs/Model/TimetableDays.md)
+ - [TimetableGroup](docs/Model/TimetableGroup.md)
+ - [TimetableGroupMisSubject](docs/Model/TimetableGroupMisSubject.md)
  - [TimetableLessons](docs/Model/TimetableLessons.md)
  - [TimetablePeriods](docs/Model/TimetablePeriods.md)
  - [TimetableStructure](docs/Model/TimetableStructure.md)

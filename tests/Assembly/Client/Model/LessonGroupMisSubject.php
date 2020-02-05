@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.436
+ * SDK Version 1.2.450
  * API Version 1.1.0
  *
  * Support
@@ -89,6 +89,20 @@ class LessonGroupMisSubjectTest extends \PHPUnit_Framework_TestCase
    * Test attribute "code"
    */
   public function testPropertyCode()
+  {
+  }
+
+  /**
+   * Test attribute "alt_name"
+   */
+  public function testPropertyAltName()
+  {
+  }
+
+  /**
+   * Test attribute "alt_code"
+   */
+  public function testPropertyAltCode()
   {
   }
 }

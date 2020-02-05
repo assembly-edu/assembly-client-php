@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.436
+ * SDK Version 1.2.450
  * API Version 1.1.0
  *
  * Support
@@ -49,7 +49,9 @@ class MisSubject implements ModelInterface, ArrayAccess
     'id' => 'int',
     'name' => 'string',
     'code' => 'string',
-    'subject' => '\Assembly\Client\Model\GroupMisSubjectSubject'
+    'alt_name' => 'string',
+    'alt_code' => 'string',
+    'subject' => '\Assembly\Client\Model\MisSubjectSubject'
   ];
 
   /**
@@ -62,6 +64,8 @@ class MisSubject implements ModelInterface, ArrayAccess
     'id' => 'int32',
     'name' => null,
     'code' => null,
+    'alt_name' => null,
+    'alt_code' => null,
     'subject' => null
   ];
 
@@ -96,6 +100,8 @@ class MisSubject implements ModelInterface, ArrayAccess
     'id' => 'id',
     'name' => 'name',
     'code' => 'code',
+    'alt_name' => 'alt_name',
+    'alt_code' => 'alt_code',
     'subject' => 'subject'
   ];
 
@@ -109,6 +115,8 @@ class MisSubject implements ModelInterface, ArrayAccess
     'id' => 'setId',
     'name' => 'setName',
     'code' => 'setCode',
+    'alt_name' => 'setAltName',
+    'alt_code' => 'setAltCode',
     'subject' => 'setSubject'
   ];
 
@@ -122,6 +130,8 @@ class MisSubject implements ModelInterface, ArrayAccess
     'id' => 'getId',
     'name' => 'getName',
     'code' => 'getCode',
+    'alt_name' => 'getAltName',
+    'alt_code' => 'getAltCode',
     'subject' => 'getSubject'
   ];
 
@@ -189,6 +199,8 @@ class MisSubject implements ModelInterface, ArrayAccess
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
     $this->container['code'] = isset($data['code']) ? $data['code'] : null;
+    $this->container['alt_name'] = isset($data['alt_name']) ? $data['alt_name'] : null;
+    $this->container['alt_code'] = isset($data['alt_code']) ? $data['alt_code'] : null;
     $this->container['subject'] = isset($data['subject']) ? $data['subject'] : null;
   }
 
@@ -314,9 +326,57 @@ class MisSubject implements ModelInterface, ArrayAccess
   }
 
   /**
+   * Gets alt_name
+   *
+   * @return string
+   */
+  public function getAltName()
+  {
+    return $this->container['alt_name'];
+  }
+
+  /**
+   * Sets alt_name
+   *
+   * @param string $alt_name An alternative name for the subject in the MIS
+   *
+   * @return $this
+   */
+  public function setAltName($alt_name)
+  {
+    $this->container['alt_name'] = $alt_name;
+
+    return $this;
+  }
+
+  /**
+   * Gets alt_code
+   *
+   * @return string
+   */
+  public function getAltCode()
+  {
+    return $this->container['alt_code'];
+  }
+
+  /**
+   * Sets alt_code
+   *
+   * @param string $alt_code An alternative code for the subject in the MIS
+   *
+   * @return $this
+   */
+  public function setAltCode($alt_code)
+  {
+    $this->container['alt_code'] = $alt_code;
+
+    return $this;
+  }
+
+  /**
    * Gets subject
    *
-   * @return \Assembly\Client\Model\GroupMisSubjectSubject
+   * @return \Assembly\Client\Model\MisSubjectSubject
    */
   public function getSubject()
   {
@@ -326,7 +386,7 @@ class MisSubject implements ModelInterface, ArrayAccess
   /**
    * Sets subject
    *
-   * @param \Assembly\Client\Model\GroupMisSubjectSubject $subject subject
+   * @param \Assembly\Client\Model\MisSubjectSubject $subject subject
    *
    * @return $this
    */

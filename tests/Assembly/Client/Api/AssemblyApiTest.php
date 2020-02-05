@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.436
+ * SDK Version 1.2.450
  * API Version 1.1.0
  *
  * Support
@@ -466,6 +466,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
    *
    */
   public function testGetMedicalConditions()
+  {
+  }
+
+  /**
+   * Test case for getMisSubjects
+   *
+   * List MIS Subjects.
+   *
+   */
+  public function testGetMisSubjects()
   {
   }
 

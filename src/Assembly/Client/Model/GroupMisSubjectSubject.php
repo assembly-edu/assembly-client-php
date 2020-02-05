@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.436
+ * SDK Version 1.2.450
  * API Version 1.1.0
  *
  * Support
@@ -48,7 +48,9 @@ class GroupMisSubjectSubject implements ModelInterface, ArrayAccess
     'object' => 'string',
     'id' => 'int',
     'code' => 'string',
-    'name' => 'string'
+    'name' => 'string',
+    'alt_name' => 'string',
+    'alt_code' => 'string'
   ];
 
   /**
@@ -60,7 +62,9 @@ class GroupMisSubjectSubject implements ModelInterface, ArrayAccess
     'object' => null,
     'id' => 'int32',
     'code' => null,
-    'name' => null
+    'name' => null,
+    'alt_name' => null,
+    'alt_code' => null
   ];
 
   /**
@@ -93,7 +97,9 @@ class GroupMisSubjectSubject implements ModelInterface, ArrayAccess
     'object' => 'object',
     'id' => 'id',
     'code' => 'code',
-    'name' => 'name'
+    'name' => 'name',
+    'alt_name' => 'alt_name',
+    'alt_code' => 'alt_code'
   ];
 
   /**
@@ -105,7 +111,9 @@ class GroupMisSubjectSubject implements ModelInterface, ArrayAccess
     'object' => 'setObject',
     'id' => 'setId',
     'code' => 'setCode',
-    'name' => 'setName'
+    'name' => 'setName',
+    'alt_name' => 'setAltName',
+    'alt_code' => 'setAltCode'
   ];
 
   /**
@@ -117,7 +125,9 @@ class GroupMisSubjectSubject implements ModelInterface, ArrayAccess
     'object' => 'getObject',
     'id' => 'getId',
     'code' => 'getCode',
-    'name' => 'getName'
+    'name' => 'getName',
+    'alt_name' => 'getAltName',
+    'alt_code' => 'getAltCode'
   ];
 
   /**
@@ -184,6 +194,8 @@ class GroupMisSubjectSubject implements ModelInterface, ArrayAccess
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['code'] = isset($data['code']) ? $data['code'] : null;
     $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+    $this->container['alt_name'] = isset($data['alt_name']) ? $data['alt_name'] : null;
+    $this->container['alt_code'] = isset($data['alt_code']) ? $data['alt_code'] : null;
   }
 
   /**
@@ -303,6 +315,54 @@ class GroupMisSubjectSubject implements ModelInterface, ArrayAccess
   public function setName($name)
   {
     $this->container['name'] = $name;
+
+    return $this;
+  }
+
+  /**
+   * Gets alt_name
+   *
+   * @return string
+   */
+  public function getAltName()
+  {
+    return $this->container['alt_name'];
+  }
+
+  /**
+   * Sets alt_name
+   *
+   * @param string $alt_name An alternative name for the subject in the MIS
+   *
+   * @return $this
+   */
+  public function setAltName($alt_name)
+  {
+    $this->container['alt_name'] = $alt_name;
+
+    return $this;
+  }
+
+  /**
+   * Gets alt_code
+   *
+   * @return string
+   */
+  public function getAltCode()
+  {
+    return $this->container['alt_code'];
+  }
+
+  /**
+   * Sets alt_code
+   *
+   * @param string $alt_code An alternative code for the subject in the MIS
+   *
+   * @return $this
+   */
+  public function setAltCode($alt_code)
+  {
+    $this->container['alt_code'] = $alt_code;
 
     return $this;
   }

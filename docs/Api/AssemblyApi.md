@@ -45,6 +45,7 @@ Method | HTTP request | Description
 [**getLeftStudents**](AssemblyApi.md#getLeftStudents) | **GET** /students/left | List Left Students
 [**getLessons**](AssemblyApi.md#getLessons) | **GET** /rooms/{id}/lessons | List Lessons For a Room
 [**getMedicalConditions**](AssemblyApi.md#getMedicalConditions) | **GET** /school/medical_conditions | List Medical Conditions
+[**getMisSubjects**](AssemblyApi.md#getMisSubjects) | **GET** /mis_subjects | List MIS Subjects
 [**getRegistrationGroupStudents**](AssemblyApi.md#getRegistrationGroupStudents) | **GET** /registration_groups/{id}/students | List Students for Registration Group
 [**getRegistrationGroups**](AssemblyApi.md#getRegistrationGroups) | **GET** /registration_groups | List Registration Groups
 [**getResults**](AssemblyApi.md#getResults) | **GET** /results | List Results
@@ -2543,6 +2544,64 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Assembly\Client\Model\MedicalCondition[]**](../Model/MedicalCondition.md)
+
+### Authorization
+
+[SchoolToken](../../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getMisSubjects**
+> \Assembly\Client\Model\MisSubject[] getMisSubjects($per_page, $page)
+
+List MIS Subjects
+
+Returns a list of the schools's mis subjects
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: SchoolToken
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+  $client,
+  $config
+);
+$per_page = 50; // int | Number of results to return
+$page = 5; // int | Page number to return
+
+try {
+  $result = $apiInstance->getMisSubjects($per_page, $page);
+  print_r($result);
+} catch (Exception $e) {
+  echo 'Exception when calling AssemblyApi->getMisSubjects: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **per_page** | **int**| Number of results to return | [optional] [default to 100]
+ **page** | **int**| Page number to return | [optional] [default to 1]
+
+### Return type
+
+[**\Assembly\Client\Model\MisSubject[]**](../Model/MisSubject.md)
 
 ### Authorization
 

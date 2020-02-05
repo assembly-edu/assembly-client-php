@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.436
+ * SDK Version 1.2.450
  * API Version 1.1.0
  *
  * Support
@@ -51,7 +51,7 @@ class LessonGroup implements ModelInterface, ArrayAccess
     'code' => 'string',
     'type' => 'string',
     'mis_subject' => '\Assembly\Client\Model\LessonGroupMisSubject',
-    'subject' => '\Assembly\Client\Model\GroupMisSubjectSubject'
+    'subject' => '\Assembly\Client\Model\MisSubjectSubject'
   ];
 
   /**
@@ -418,7 +418,7 @@ class LessonGroup implements ModelInterface, ArrayAccess
   /**
    * Gets subject
    *
-   * @return \Assembly\Client\Model\GroupMisSubjectSubject
+   * @return \Assembly\Client\Model\MisSubjectSubject
    */
   public function getSubject()
   {
@@ -428,7 +428,7 @@ class LessonGroup implements ModelInterface, ArrayAccess
   /**
    * Sets subject
    *
-   * @param \Assembly\Client\Model\GroupMisSubjectSubject $subject subject
+   * @param \Assembly\Client\Model\MisSubjectSubject $subject subject
    *
    * @return $this
    */

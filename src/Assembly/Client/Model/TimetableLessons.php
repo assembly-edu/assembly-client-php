@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.436
+ * SDK Version 1.2.450
  * API Version 1.1.0
  *
  * Support
@@ -47,7 +47,7 @@ class TimetableLessons implements ModelInterface, ArrayAccess
     'object' => 'string',
     'id' => 'int',
     'type' => 'string',
-    'group' => '\Assembly\Client\Model\LessonGroup',
+    'group' => '\Assembly\Client\Model\TimetableGroup',
     'start_date' => '\DateTime',
     'end_date' => '\DateTime',
     'supervisors' => '\Assembly\Client\Model\TimetableSupervisors[]',
@@ -349,7 +349,7 @@ class TimetableLessons implements ModelInterface, ArrayAccess
   /**
    * Gets group
    *
-   * @return \Assembly\Client\Model\LessonGroup
+   * @return \Assembly\Client\Model\TimetableGroup
    */
   public function getGroup()
   {
@@ -359,7 +359,7 @@ class TimetableLessons implements ModelInterface, ArrayAccess
   /**
    * Sets group
    *
-   * @param \Assembly\Client\Model\LessonGroup $group group
+   * @param \Assembly\Client\Model\TimetableGroup $group group
    *
    * @return $this
    */
