@@ -1,7 +1,7 @@
 # PHP SDK for the Assembly API
 
 - API version: 1.1.0
-- Package version: 1.2.450
+- Package version: 1.2.463
 
 For more information, please visit [http://developers.assembly.education](http://developers.assembly.education)
 
@@ -177,6 +177,7 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AssemblyApi* | [**bulkUpdateResults**](docs/Api/AssemblyApi.md#bulkupdateresults) | **PATCH** /results | Update Multiple Results
 *AssemblyApi* | [**createResult**](docs/Api/AssemblyApi.md#createresult) | **POST** /results | Write Results
+*AssemblyApi* | [**deauthorize**](docs/Api/AssemblyApi.md#deauthorize) | **POST** /school/deauthorize | Deauthorize School
 *AssemblyApi* | [**findAcademicYear**](docs/Api/AssemblyApi.md#findacademicyear) | **GET** /academic_years/{id} | View an Academic Year
 *AssemblyApi* | [**findAssessment**](docs/Api/AssemblyApi.md#findassessment) | **GET** /assessments/{id} | View an Assessment
 *AssemblyApi* | [**findAssessmentGradeSet**](docs/Api/AssemblyApi.md#findassessmentgradeset) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
@@ -232,6 +233,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getYearGroupStudents**](docs/Api/AssemblyApi.md#getyeargroupstudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 *AssemblyApi* | [**getYearGroups**](docs/Api/AssemblyApi.md#getyeargroups) | **GET** /year_groups | List Year Groups
 *AssemblyApi* | [**status**](docs/Api/AssemblyApi.md#status) | **GET** /school/status | View School Sync Status
+*AssemblyApi* | [**sync**](docs/Api/AssemblyApi.md#sync) | **POST** /school/sync | Request a School Sync
 *AssemblyApi* | [**updateResults**](docs/Api/AssemblyApi.md#updateresults) | **PATCH** /results/{id} | Update a Single Result
 
 

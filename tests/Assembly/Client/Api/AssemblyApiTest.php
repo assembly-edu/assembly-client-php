@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.450
+ * SDK Version 1.2.463
  * API Version 1.1.0
  *
  * Support
@@ -76,6 +76,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
    *
    */
   public function testCreateResult()
+  {
+  }
+
+  /**
+   * Test case for deauthorize
+   *
+   * Deauthorize School.
+   *
+   */
+  public function testDeauthorize()
   {
   }
 
@@ -626,6 +636,16 @@ class AssemblyApiTest extends \PHPUnit_Framework_TestCase
    *
    */
   public function testStatus()
+  {
+  }
+
+  /**
+   * Test case for sync
+   *
+   * Request a School Sync.
+   *
+   */
+  public function testSync()
   {
   }
 

@@ -11,7 +11,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.450
+ * SDK Version 1.2.463
  * API Version 1.1.0
  *
  * Support
@@ -605,6 +605,248 @@ class AssemblyApi
       $headers = $this->headerSelector->selectHeaders(
         ['application/vnd.assembly+json; version=1.1'],
         ['application/json']
+      );
+    }
+
+    // for model (json/xml)
+    if (isset($_tempBody)) {
+      // $_tempBody is the method argument, if present
+      $httpBody = $_tempBody;
+      // \stdClass has no __toString(), so we should encode it manually
+      if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($httpBody);
+      }
+    } elseif (count($formParams) > 0) {
+      if ($multipart) {
+        $multipartContents = [];
+        foreach ($formParams as $formParamName => $formParamValue) {
+          $multipartContents[] = [
+            'name' => $formParamName,
+            'contents' => $formParamValue
+          ];
+        }
+        // for HTTP post (form)
+        $httpBody = new MultipartStream($multipartContents);
+
+      } elseif ($headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($formParams);
+
+      } else {
+        // for HTTP post (form)
+        $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+      }
+    }
+
+    // this endpoint requires OAuth (access token)
+    if ($this->config->getAccessToken() !== null) {
+      $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+    }
+
+    $defaultHeaders = [];
+    if ($this->config->getUserAgent()) {
+      $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+    }
+
+    $headers = array_merge(
+      $defaultHeaders,
+      $headerParams,
+      $headers
+    );
+
+    $query = \GuzzleHttp\Psr7\build_query($queryParams);
+    return new Request(
+      'POST',
+      $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+      $headers,
+      $httpBody
+    );
+  }
+
+  /**
+   * Operation deauthorize
+   *
+   * Deauthorize School
+   *
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return void
+   */
+  public function deauthorize()
+  {
+    $this->deauthorizeWithHttpInfo();
+  }
+
+  /**
+   * Operation deauthorizeWithHttpInfo
+   *
+   * Deauthorize School
+   *
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return array of null, HTTP status code, HTTP response headers (array of strings)
+   */
+  public function deauthorizeWithHttpInfo()
+  {
+    $returnType = '';
+    $request = $this->deauthorizeRequest();
+
+    try {
+      $options = $this->createHttpClientOption();
+      try {
+        $response = $this->client->send($request, $options);
+      } catch (RequestException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+        );
+      }
+
+      $statusCode = $response->getStatusCode();
+
+      if ($statusCode < 200 || $statusCode > 299) {
+        throw new ApiException(
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          $response->getBody()
+        );
+      }
+
+      return [null, $statusCode, $response->getHeaders()];
+
+    } catch (ApiException $e) {
+      switch ($e->getCode()) {
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+      }
+      throw $e;
+    }
+  }
+
+  /**
+   * Operation deauthorizeAsync
+   *
+   * Deauthorize School
+   *
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function deauthorizeAsync()
+  {
+    return $this->deauthorizeAsyncWithHttpInfo()
+      ->then(
+        function ($response) {
+          return $response[0];
+        }
+      );
+  }
+
+  /**
+   * Operation deauthorizeAsyncWithHttpInfo
+   *
+   * Deauthorize School
+   *
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function deauthorizeAsyncWithHttpInfo()
+  {
+    $returnType = '';
+    $request = $this->deauthorizeRequest();
+
+    return $this->client
+      ->sendAsync($request, $this->createHttpClientOption())
+      ->then(
+        function ($response) use ($returnType) {
+          return [null, $response->getStatusCode(), $response->getHeaders()];
+        },
+        function ($exception) {
+          $response = $exception->getResponse();
+          $statusCode = $response->getStatusCode();
+          throw new ApiException(
+            sprintf(
+              '[%d] Error connecting to the API (%s)',
+              $statusCode,
+              $exception->getRequest()->getUri()
+            ),
+            $statusCode,
+            $response->getHeaders(),
+            $response->getBody()
+          );
+        }
+      );
+  }
+
+  /**
+   * Create request for operation 'deauthorize'
+   *
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Psr7\Request
+   */
+  protected function deauthorizeRequest()
+  {
+
+    $resourcePath = '/school/deauthorize';
+    $formParams = [];
+    $queryParams = [];
+    $headerParams = [];
+    $httpBody = '';
+    $multipart = false;
+
+
+
+    // body params
+    $_tempBody = null;
+
+    if ($multipart) {
+      $headers = $this->headerSelector->selectHeadersForMultipart(
+        ['application/vnd.assembly+json; version=1.1']
+      );
+    } else {
+      $headers = $this->headerSelector->selectHeaders(
+        ['application/vnd.assembly+json; version=1.1'],
+        []
       );
     }
 
@@ -19041,6 +19283,248 @@ class AssemblyApi
     $query = \GuzzleHttp\Psr7\build_query($queryParams);
     return new Request(
       'GET',
+      $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+      $headers,
+      $httpBody
+    );
+  }
+
+  /**
+   * Operation sync
+   *
+   * Request a School Sync
+   *
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return void
+   */
+  public function sync()
+  {
+    $this->syncWithHttpInfo();
+  }
+
+  /**
+   * Operation syncWithHttpInfo
+   *
+   * Request a School Sync
+   *
+   *
+   * @throws \Assembly\Client\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   * @return array of null, HTTP status code, HTTP response headers (array of strings)
+   */
+  public function syncWithHttpInfo()
+  {
+    $returnType = '';
+    $request = $this->syncRequest();
+
+    try {
+      $options = $this->createHttpClientOption();
+      try {
+        $response = $this->client->send($request, $options);
+      } catch (RequestException $e) {
+        throw new ApiException(
+          "[{$e->getCode()}] {$e->getMessage()}",
+          $e->getCode(),
+          $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+          $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+        );
+      }
+
+      $statusCode = $response->getStatusCode();
+
+      if ($statusCode < 200 || $statusCode > 299) {
+        throw new ApiException(
+          sprintf(
+            '[%d] Error connecting to the API (%s)',
+            $statusCode,
+            $request->getUri()
+          ),
+          $statusCode,
+          $response->getHeaders(),
+          $response->getBody()
+        );
+      }
+
+      return [null, $statusCode, $response->getHeaders()];
+
+    } catch (ApiException $e) {
+      switch ($e->getCode()) {
+        case 400:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 401:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 406:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+        case 429:
+          $data = ObjectSerializer::deserialize(
+            $e->getResponseBody(),
+            '\Assembly\Client\Model\StandardError',
+            $e->getResponseHeaders()
+          );
+          $e->setResponseObject($data);
+          break;
+      }
+      throw $e;
+    }
+  }
+
+  /**
+   * Operation syncAsync
+   *
+   * Request a School Sync
+   *
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function syncAsync()
+  {
+    return $this->syncAsyncWithHttpInfo()
+      ->then(
+        function ($response) {
+          return $response[0];
+        }
+      );
+  }
+
+  /**
+   * Operation syncAsyncWithHttpInfo
+   *
+   * Request a School Sync
+   *
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Promise\PromiseInterface
+   */
+  public function syncAsyncWithHttpInfo()
+  {
+    $returnType = '';
+    $request = $this->syncRequest();
+
+    return $this->client
+      ->sendAsync($request, $this->createHttpClientOption())
+      ->then(
+        function ($response) use ($returnType) {
+          return [null, $response->getStatusCode(), $response->getHeaders()];
+        },
+        function ($exception) {
+          $response = $exception->getResponse();
+          $statusCode = $response->getStatusCode();
+          throw new ApiException(
+            sprintf(
+              '[%d] Error connecting to the API (%s)',
+              $statusCode,
+              $exception->getRequest()->getUri()
+            ),
+            $statusCode,
+            $response->getHeaders(),
+            $response->getBody()
+          );
+        }
+      );
+  }
+
+  /**
+   * Create request for operation 'sync'
+   *
+   *
+   * @throws \InvalidArgumentException
+   * @return \GuzzleHttp\Psr7\Request
+   */
+  protected function syncRequest()
+  {
+
+    $resourcePath = '/school/sync';
+    $formParams = [];
+    $queryParams = [];
+    $headerParams = [];
+    $httpBody = '';
+    $multipart = false;
+
+
+
+    // body params
+    $_tempBody = null;
+
+    if ($multipart) {
+      $headers = $this->headerSelector->selectHeadersForMultipart(
+        ['application/vnd.assembly+json; version=1.1']
+      );
+    } else {
+      $headers = $this->headerSelector->selectHeaders(
+        ['application/vnd.assembly+json; version=1.1'],
+        []
+      );
+    }
+
+    // for model (json/xml)
+    if (isset($_tempBody)) {
+      // $_tempBody is the method argument, if present
+      $httpBody = $_tempBody;
+      // \stdClass has no __toString(), so we should encode it manually
+      if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($httpBody);
+      }
+    } elseif (count($formParams) > 0) {
+      if ($multipart) {
+        $multipartContents = [];
+        foreach ($formParams as $formParamName => $formParamValue) {
+          $multipartContents[] = [
+            'name' => $formParamName,
+            'contents' => $formParamValue
+          ];
+        }
+        // for HTTP post (form)
+        $httpBody = new MultipartStream($multipartContents);
+
+      } elseif ($headers['Content-Type'] === 'application/json') {
+        $httpBody = \GuzzleHttp\json_encode($formParams);
+
+      } else {
+        // for HTTP post (form)
+        $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+      }
+    }
+
+    // this endpoint requires OAuth (access token)
+    if ($this->config->getAccessToken() !== null) {
+      $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+    }
+
+    $defaultHeaders = [];
+    if ($this->config->getUserAgent()) {
+      $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+    }
+
+    $headers = array_merge(
+      $defaultHeaders,
+      $headerParams,
+      $headers
+    );
+
+    $query = \GuzzleHttp\Psr7\build_query($queryParams);
+    return new Request(
+      'POST',
       $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
       $headers,
       $httpBody

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**bulkUpdateResults**](AssemblyApi.md#bulkUpdateResults) | **PATCH** /results | Update Multiple Results
 [**createResult**](AssemblyApi.md#createResult) | **POST** /results | Write Results
+[**deauthorize**](AssemblyApi.md#deauthorize) | **POST** /school/deauthorize | Deauthorize School
 [**findAcademicYear**](AssemblyApi.md#findAcademicYear) | **GET** /academic_years/{id} | View an Academic Year
 [**findAssessment**](AssemblyApi.md#findAssessment) | **GET** /assessments/{id} | View an Assessment
 [**findAssessmentGradeSet**](AssemblyApi.md#findAssessmentGradeSet) | **GET** /assessments/{id}/grade_set | View Grade Set for an Assessment
@@ -61,6 +62,7 @@ Method | HTTP request | Description
 [**getYearGroupStudents**](AssemblyApi.md#getYearGroupStudents) | **GET** /year_groups/{id}/students | List Students for Year Group
 [**getYearGroups**](AssemblyApi.md#getYearGroups) | **GET** /year_groups | List Year Groups
 [**status**](AssemblyApi.md#status) | **GET** /school/status | View School Sync Status
+[**sync**](AssemblyApi.md#sync) | **POST** /school/sync | Request a School Sync
 [**updateResults**](AssemblyApi.md#updateResults) | **PATCH** /results/{id} | Update a Single Result
 
 
@@ -172,6 +174,57 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **deauthorize**
+> deauthorize()
+
+Deauthorize School
+
+Disable your application for the school associated with the provided `access_token`
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: SchoolToken
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+  $client,
+  $config
+);
+
+try {
+  $apiInstance->deauthorize();
+} catch (Exception $e) {
+  echo 'Exception when calling AssemblyApi->deauthorize: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[SchoolToken](../../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/vnd.assembly+json; version=1.1
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
@@ -3630,6 +3683,57 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**\Assembly\Client\Model\SchoolStatus**](../Model/SchoolStatus.md)
+
+### Authorization
+
+[SchoolToken](../../README.md#SchoolToken)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.assembly+json; version=1.1
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **sync**
+> sync()
+
+Request a School Sync
+
+Returns a sync request status for the school associated with the provided `access_token`
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure OAuth2 access token for authorization: SchoolToken
+$config = Assembly\Client\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+//$config = $config->setDebug(true);
+//$config = $config->setDebugFile('LOCATION_OF_FILE');
+
+$handler = new \GuzzleHttp\Handler\StreamHandler();
+$client = new \GuzzleHttp\Client(['handler' => $handler]);
+
+$apiInstance = new Assembly\Client\Api\AssemblyApi(
+  $client,
+  $config
+);
+
+try {
+  $apiInstance->sync();
+} catch (Exception $e) {
+  echo 'Exception when calling AssemblyApi->sync: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 

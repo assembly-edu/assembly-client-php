@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.450
+ * SDK Version 1.2.463
  * API Version 1.1.0
  *
  * Support
@@ -196,6 +196,7 @@ class Group implements ModelInterface, ArrayAccess
   const TYPE_REGISTRATION_GROUP = 'RegistrationGroup';
   const TYPE_HOUSE_GROUP = 'HouseGroup';
   const TYPE_NON_TEACHING_GROUP = 'NonTeachingGroup';
+  const TYPE_USER_GROUP = 'UserGroup';
   
 
   
@@ -212,6 +213,7 @@ class Group implements ModelInterface, ArrayAccess
       self::TYPE_REGISTRATION_GROUP,
       self::TYPE_HOUSE_GROUP,
       self::TYPE_NON_TEACHING_GROUP,
+      self::TYPE_USER_GROUP,
     ];
   }
   
