@@ -11,7 +11,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.463
+ * SDK Version 1.2.464
  * API Version 1.1.0
  *
  * Support
@@ -4286,7 +4286,6 @@ class AssemblyApi
    * View a Room
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $start_date The start date of the period to filter by (optional)
    * @param  string $end_date The end date of the period to filter by (optional)
@@ -4295,9 +4294,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Room
    */
-  public function findRoom($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function findRoom($id, $date = null, $start_date = null, $end_date = null)
   {
-    list($response) = $this->findRoomWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date);
+    list($response) = $this->findRoomWithHttpInfo($id, $date, $start_date, $end_date);
     return $response;
   }
 
@@ -4307,7 +4306,6 @@ class AssemblyApi
    * View a Room
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $start_date The start date of the period to filter by (optional)
    * @param  string $end_date The end date of the period to filter by (optional)
@@ -4316,10 +4314,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Room, HTTP status code, HTTP response headers (array of strings)
    */
-  public function findRoomWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function findRoomWithHttpInfo($id, $date = null, $start_date = null, $end_date = null)
   {
     $returnType = '\Assembly\Client\Model\Room';
-    $request = $this->findRoomRequest($id, $if_modified_since, $date, $start_date, $end_date);
+    $request = $this->findRoomRequest($id, $date, $start_date, $end_date);
 
     try {
       $options = $this->createHttpClientOption();
@@ -4426,7 +4424,6 @@ class AssemblyApi
    * View a Room
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $start_date The start date of the period to filter by (optional)
    * @param  string $end_date The end date of the period to filter by (optional)
@@ -4434,9 +4431,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findRoomAsync($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function findRoomAsync($id, $date = null, $start_date = null, $end_date = null)
   {
-    return $this->findRoomAsyncWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date)
+    return $this->findRoomAsyncWithHttpInfo($id, $date, $start_date, $end_date)
       ->then(
         function ($response) {
           return $response[0];
@@ -4450,7 +4447,6 @@ class AssemblyApi
    * View a Room
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $start_date The start date of the period to filter by (optional)
    * @param  string $end_date The end date of the period to filter by (optional)
@@ -4458,10 +4454,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findRoomAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function findRoomAsyncWithHttpInfo($id, $date = null, $start_date = null, $end_date = null)
   {
     $returnType = '\Assembly\Client\Model\Room';
-    $request = $this->findRoomRequest($id, $if_modified_since, $date, $start_date, $end_date);
+    $request = $this->findRoomRequest($id, $date, $start_date, $end_date);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -4504,7 +4500,6 @@ class AssemblyApi
    * Create request for operation 'findRoom'
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $start_date The start date of the period to filter by (optional)
    * @param  string $end_date The end date of the period to filter by (optional)
@@ -4512,7 +4507,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function findRoomRequest($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  protected function findRoomRequest($id, $date = null, $start_date = null, $end_date = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -4539,10 +4534,6 @@ class AssemblyApi
     // query params
     if ($end_date !== null) {
       $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
-    }
-    // header params
-    if ($if_modified_since !== null) {
-      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
     }
 
     // path params
@@ -5950,7 +5941,6 @@ class AssemblyApi
    * View a Timetable
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -5959,9 +5949,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Timetable
    */
-  public function findTimetable($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function findTimetable($id, $date = null, $start_date = null, $end_date = null)
   {
-    list($response) = $this->findTimetableWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date);
+    list($response) = $this->findTimetableWithHttpInfo($id, $date, $start_date, $end_date);
     return $response;
   }
 
@@ -5971,7 +5961,6 @@ class AssemblyApi
    * View a Timetable
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -5980,10 +5969,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Timetable, HTTP status code, HTTP response headers (array of strings)
    */
-  public function findTimetableWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function findTimetableWithHttpInfo($id, $date = null, $start_date = null, $end_date = null)
   {
     $returnType = '\Assembly\Client\Model\Timetable';
-    $request = $this->findTimetableRequest($id, $if_modified_since, $date, $start_date, $end_date);
+    $request = $this->findTimetableRequest($id, $date, $start_date, $end_date);
 
     try {
       $options = $this->createHttpClientOption();
@@ -6090,7 +6079,6 @@ class AssemblyApi
    * View a Timetable
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -6098,9 +6086,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findTimetableAsync($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function findTimetableAsync($id, $date = null, $start_date = null, $end_date = null)
   {
-    return $this->findTimetableAsyncWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date)
+    return $this->findTimetableAsyncWithHttpInfo($id, $date, $start_date, $end_date)
       ->then(
         function ($response) {
           return $response[0];
@@ -6114,7 +6102,6 @@ class AssemblyApi
    * View a Timetable
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -6122,10 +6109,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function findTimetableAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function findTimetableAsyncWithHttpInfo($id, $date = null, $start_date = null, $end_date = null)
   {
     $returnType = '\Assembly\Client\Model\Timetable';
-    $request = $this->findTimetableRequest($id, $if_modified_since, $date, $start_date, $end_date);
+    $request = $this->findTimetableRequest($id, $date, $start_date, $end_date);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -6168,7 +6155,6 @@ class AssemblyApi
    * Create request for operation 'findTimetable'
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -6176,7 +6162,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function findTimetableRequest($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  protected function findTimetableRequest($id, $date = null, $start_date = null, $end_date = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -6203,10 +6189,6 @@ class AssemblyApi
     // query params
     if ($end_date !== null) {
       $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
-    }
-    // header params
-    if ($if_modified_since !== null) {
-      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
     }
 
     // path params
@@ -8239,6 +8221,7 @@ class AssemblyApi
    * List Attendance Summaries
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $group_id Filter to the specified group (optional)
@@ -8250,9 +8233,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\AttendanceSummary[]
    */
-  public function getAttendanceSummaries($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getAttendanceSummaries($if_modified_since = null, $if_none_match = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getAttendanceSummariesWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page);
+    list($response) = $this->getAttendanceSummariesWithHttpInfo($if_modified_since, $if_none_match, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page);
     return $response;
   }
 
@@ -8262,6 +8245,7 @@ class AssemblyApi
    * List Attendance Summaries
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $group_id Filter to the specified group (optional)
@@ -8273,10 +8257,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\AttendanceSummary[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getAttendanceSummariesWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getAttendanceSummariesWithHttpInfo($if_modified_since = null, $if_none_match = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\AttendanceSummary[]';
-    $request = $this->getAttendanceSummariesRequest($if_modified_since, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page);
+    $request = $this->getAttendanceSummariesRequest($if_modified_since, $if_none_match, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -8375,6 +8359,7 @@ class AssemblyApi
    * List Attendance Summaries
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $group_id Filter to the specified group (optional)
@@ -8385,9 +8370,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAttendanceSummariesAsync($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getAttendanceSummariesAsync($if_modified_since = null, $if_none_match = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    return $this->getAttendanceSummariesAsyncWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page)
+    return $this->getAttendanceSummariesAsyncWithHttpInfo($if_modified_since, $if_none_match, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -8401,6 +8386,7 @@ class AssemblyApi
    * List Attendance Summaries
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $group_id Filter to the specified group (optional)
@@ -8411,10 +8397,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAttendanceSummariesAsyncWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getAttendanceSummariesAsyncWithHttpInfo($if_modified_since = null, $if_none_match = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\AttendanceSummary[]';
-    $request = $this->getAttendanceSummariesRequest($if_modified_since, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page);
+    $request = $this->getAttendanceSummariesRequest($if_modified_since, $if_none_match, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -8457,6 +8443,7 @@ class AssemblyApi
    * Create request for operation 'getAttendanceSummaries'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $group_id Filter to the specified group (optional)
@@ -8467,7 +8454,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getAttendanceSummariesRequest($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  protected function getAttendanceSummariesRequest($if_modified_since = null, $if_none_match = null, $student_id = null, $registration_group_id = null, $group_id = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAttendanceSummaries, must be smaller than or equal to 1500.');
@@ -8515,6 +8502,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 
@@ -8592,6 +8583,7 @@ class AssemblyApi
    * List Attendances
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $group_id Filter to the specified group (optional)
@@ -8604,9 +8596,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Attendance[]
    */
-  public function getAttendances($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getAttendances($if_modified_since = null, $if_none_match = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getAttendancesWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page);
+    list($response) = $this->getAttendancesWithHttpInfo($if_modified_since, $if_none_match, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page);
     return $response;
   }
 
@@ -8616,6 +8608,7 @@ class AssemblyApi
    * List Attendances
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $group_id Filter to the specified group (optional)
@@ -8628,10 +8621,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Attendance[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getAttendancesWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getAttendancesWithHttpInfo($if_modified_since = null, $if_none_match = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Attendance[]';
-    $request = $this->getAttendancesRequest($if_modified_since, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page);
+    $request = $this->getAttendancesRequest($if_modified_since, $if_none_match, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -8730,6 +8723,7 @@ class AssemblyApi
    * List Attendances
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $group_id Filter to the specified group (optional)
@@ -8741,9 +8735,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAttendancesAsync($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getAttendancesAsync($if_modified_since = null, $if_none_match = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
-    return $this->getAttendancesAsyncWithHttpInfo($if_modified_since, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page)
+    return $this->getAttendancesAsyncWithHttpInfo($if_modified_since, $if_none_match, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -8757,6 +8751,7 @@ class AssemblyApi
    * List Attendances
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $group_id Filter to the specified group (optional)
@@ -8768,10 +8763,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getAttendancesAsyncWithHttpInfo($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getAttendancesAsyncWithHttpInfo($if_modified_since = null, $if_none_match = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Attendance[]';
-    $request = $this->getAttendancesRequest($if_modified_since, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page);
+    $request = $this->getAttendancesRequest($if_modified_since, $if_none_match, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -8814,6 +8809,7 @@ class AssemblyApi
    * Create request for operation 'getAttendances'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $student_id Filter to the specified student (optional)
    * @param  int $registration_group_id ID of a registration group (optional)
    * @param  int $group_id Filter to the specified group (optional)
@@ -8825,7 +8821,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getAttendancesRequest($if_modified_since = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  protected function getAttendancesRequest($if_modified_since = null, $if_none_match = null, $student_id = null, $registration_group_id = null, $group_id = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getAttendances, must be smaller than or equal to 1500.');
@@ -8877,6 +8873,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 
@@ -8954,6 +8954,7 @@ class AssemblyApi
    * List Calendar Events
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -8962,9 +8963,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\CalendarEvent[]
    */
-  public function getCalendarEvents($if_modified_since = null, $type = null, $per_page = '100', $page = '1')
+  public function getCalendarEvents($if_modified_since = null, $if_none_match = null, $type = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getCalendarEventsWithHttpInfo($if_modified_since, $type, $per_page, $page);
+    list($response) = $this->getCalendarEventsWithHttpInfo($if_modified_since, $if_none_match, $type, $per_page, $page);
     return $response;
   }
 
@@ -8974,6 +8975,7 @@ class AssemblyApi
    * List Calendar Events
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -8982,10 +8984,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\CalendarEvent[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getCalendarEventsWithHttpInfo($if_modified_since = null, $type = null, $per_page = '100', $page = '1')
+  public function getCalendarEventsWithHttpInfo($if_modified_since = null, $if_none_match = null, $type = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\CalendarEvent[]';
-    $request = $this->getCalendarEventsRequest($if_modified_since, $type, $per_page, $page);
+    $request = $this->getCalendarEventsRequest($if_modified_since, $if_none_match, $type, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -9084,6 +9086,7 @@ class AssemblyApi
    * List Calendar Events
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -9091,9 +9094,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getCalendarEventsAsync($if_modified_since = null, $type = null, $per_page = '100', $page = '1')
+  public function getCalendarEventsAsync($if_modified_since = null, $if_none_match = null, $type = null, $per_page = '100', $page = '1')
   {
-    return $this->getCalendarEventsAsyncWithHttpInfo($if_modified_since, $type, $per_page, $page)
+    return $this->getCalendarEventsAsyncWithHttpInfo($if_modified_since, $if_none_match, $type, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -9107,6 +9110,7 @@ class AssemblyApi
    * List Calendar Events
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -9114,10 +9118,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getCalendarEventsAsyncWithHttpInfo($if_modified_since = null, $type = null, $per_page = '100', $page = '1')
+  public function getCalendarEventsAsyncWithHttpInfo($if_modified_since = null, $if_none_match = null, $type = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\CalendarEvent[]';
-    $request = $this->getCalendarEventsRequest($if_modified_since, $type, $per_page, $page);
+    $request = $this->getCalendarEventsRequest($if_modified_since, $if_none_match, $type, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -9160,6 +9164,7 @@ class AssemblyApi
    * Create request for operation 'getCalendarEvents'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $type Filter by type (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
@@ -9167,7 +9172,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getCalendarEventsRequest($if_modified_since = null, $type = null, $per_page = '100', $page = '1')
+  protected function getCalendarEventsRequest($if_modified_since = null, $if_none_match = null, $type = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getCalendarEvents, must be smaller than or equal to 1500.');
@@ -9203,6 +9208,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 
@@ -9280,7 +9289,6 @@ class AssemblyApi
    * List Closures For a Room
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -9289,9 +9297,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Closure[]
    */
-  public function getClosures($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function getClosures($id, $date = null, $start_date = null, $end_date = null)
   {
-    list($response) = $this->getClosuresWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date);
+    list($response) = $this->getClosuresWithHttpInfo($id, $date, $start_date, $end_date);
     return $response;
   }
 
@@ -9301,7 +9309,6 @@ class AssemblyApi
    * List Closures For a Room
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -9310,10 +9317,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Closure[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getClosuresWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function getClosuresWithHttpInfo($id, $date = null, $start_date = null, $end_date = null)
   {
     $returnType = '\Assembly\Client\Model\Closure[]';
-    $request = $this->getClosuresRequest($id, $if_modified_since, $date, $start_date, $end_date);
+    $request = $this->getClosuresRequest($id, $date, $start_date, $end_date);
 
     try {
       $options = $this->createHttpClientOption();
@@ -9412,7 +9419,6 @@ class AssemblyApi
    * List Closures For a Room
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -9420,9 +9426,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getClosuresAsync($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function getClosuresAsync($id, $date = null, $start_date = null, $end_date = null)
   {
-    return $this->getClosuresAsyncWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date)
+    return $this->getClosuresAsyncWithHttpInfo($id, $date, $start_date, $end_date)
       ->then(
         function ($response) {
           return $response[0];
@@ -9436,7 +9442,6 @@ class AssemblyApi
    * List Closures For a Room
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -9444,10 +9449,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getClosuresAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  public function getClosuresAsyncWithHttpInfo($id, $date = null, $start_date = null, $end_date = null)
   {
     $returnType = '\Assembly\Client\Model\Closure[]';
-    $request = $this->getClosuresRequest($id, $if_modified_since, $date, $start_date, $end_date);
+    $request = $this->getClosuresRequest($id, $date, $start_date, $end_date);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -9490,7 +9495,6 @@ class AssemblyApi
    * Create request for operation 'getClosures'
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -9498,7 +9502,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getClosuresRequest($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null)
+  protected function getClosuresRequest($id, $date = null, $start_date = null, $end_date = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -9525,10 +9529,6 @@ class AssemblyApi
     // query params
     if ($end_date !== null) {
       $queryParams['end_date'] = ObjectSerializer::toQueryValue($end_date);
-    }
-    // header params
-    if ($if_modified_since !== null) {
-      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
     }
 
     // path params
@@ -11200,6 +11200,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
@@ -11217,9 +11218,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getGroupStudents($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getGroupStudents($id, $if_modified_since = null, $if_none_match = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    list($response) = $this->getGroupStudentsWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+    list($response) = $this->getGroupStudentsWithHttpInfo($id, $if_modified_since, $if_none_match, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
     return $response;
   }
 
@@ -11230,6 +11231,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
@@ -11247,10 +11249,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getGroupStudentsWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getGroupStudentsWithHttpInfo($id, $if_modified_since = null, $if_none_match = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getGroupStudentsRequest($id, $if_modified_since, $if_none_match, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
 
     try {
       $options = $this->createHttpClientOption();
@@ -11350,6 +11352,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
@@ -11366,9 +11369,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getGroupStudentsAsync($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getGroupStudentsAsync($id, $if_modified_since = null, $if_none_match = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
-    return $this->getGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
+    return $this->getGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $if_none_match, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
       ->then(
         function ($response) {
           return $response[0];
@@ -11383,6 +11386,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
@@ -11399,10 +11403,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  public function getGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $if_none_match = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+    $request = $this->getGroupStudentsRequest($id, $if_modified_since, $if_none_match, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -11446,6 +11450,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
@@ -11462,7 +11467,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getGroupStudentsRequest($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
+  protected function getGroupStudentsRequest($id, $if_modified_since = null, $if_none_match = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null)
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -11529,6 +11534,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
     // path params
@@ -11614,6 +11623,7 @@ class AssemblyApi
    * List Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -11625,9 +11635,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Group[]
    */
-  public function getGroups($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $type = null, $per_page = '100', $page = '1')
+  public function getGroups($if_modified_since = null, $if_none_match = null, $year_code = null, $date = null, $academic_year_id = null, $type = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getGroupsWithHttpInfo($if_modified_since, $year_code, $date, $academic_year_id, $type, $per_page, $page);
+    list($response) = $this->getGroupsWithHttpInfo($if_modified_since, $if_none_match, $year_code, $date, $academic_year_id, $type, $per_page, $page);
     return $response;
   }
 
@@ -11637,6 +11647,7 @@ class AssemblyApi
    * List Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -11648,10 +11659,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Group[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getGroupsWithHttpInfo($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $type = null, $per_page = '100', $page = '1')
+  public function getGroupsWithHttpInfo($if_modified_since = null, $if_none_match = null, $year_code = null, $date = null, $academic_year_id = null, $type = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Group[]';
-    $request = $this->getGroupsRequest($if_modified_since, $year_code, $date, $academic_year_id, $type, $per_page, $page);
+    $request = $this->getGroupsRequest($if_modified_since, $if_none_match, $year_code, $date, $academic_year_id, $type, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -11750,6 +11761,7 @@ class AssemblyApi
    * List Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -11760,9 +11772,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getGroupsAsync($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $type = null, $per_page = '100', $page = '1')
+  public function getGroupsAsync($if_modified_since = null, $if_none_match = null, $year_code = null, $date = null, $academic_year_id = null, $type = null, $per_page = '100', $page = '1')
   {
-    return $this->getGroupsAsyncWithHttpInfo($if_modified_since, $year_code, $date, $academic_year_id, $type, $per_page, $page)
+    return $this->getGroupsAsyncWithHttpInfo($if_modified_since, $if_none_match, $year_code, $date, $academic_year_id, $type, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -11776,6 +11788,7 @@ class AssemblyApi
    * List Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -11786,10 +11799,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getGroupsAsyncWithHttpInfo($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $type = null, $per_page = '100', $page = '1')
+  public function getGroupsAsyncWithHttpInfo($if_modified_since = null, $if_none_match = null, $year_code = null, $date = null, $academic_year_id = null, $type = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Group[]';
-    $request = $this->getGroupsRequest($if_modified_since, $year_code, $date, $academic_year_id, $type, $per_page, $page);
+    $request = $this->getGroupsRequest($if_modified_since, $if_none_match, $year_code, $date, $academic_year_id, $type, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -11832,6 +11845,7 @@ class AssemblyApi
    * Create request for operation 'getGroups'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -11842,7 +11856,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getGroupsRequest($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $type = null, $per_page = '100', $page = '1')
+  protected function getGroupsRequest($if_modified_since = null, $if_none_match = null, $year_code = null, $date = null, $academic_year_id = null, $type = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getGroups, must be smaller than or equal to 1500.');
@@ -11890,6 +11904,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 
@@ -12275,6 +12293,7 @@ class AssemblyApi
    * List Left Staff Members
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -12286,9 +12305,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\StaffMember[]
    */
-  public function getLeftStaffMembers($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getLeftStaffMembers($if_modified_since = null, $if_none_match = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getLeftStaffMembersWithHttpInfo($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
+    list($response) = $this->getLeftStaffMembersWithHttpInfo($if_modified_since, $if_none_match, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
     return $response;
   }
 
@@ -12298,6 +12317,7 @@ class AssemblyApi
    * List Left Staff Members
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -12309,10 +12329,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\StaffMember[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getLeftStaffMembersWithHttpInfo($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getLeftStaffMembersWithHttpInfo($if_modified_since = null, $if_none_match = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffMember[]';
-    $request = $this->getLeftStaffMembersRequest($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
+    $request = $this->getLeftStaffMembersRequest($if_modified_since, $if_none_match, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -12411,6 +12431,7 @@ class AssemblyApi
    * List Left Staff Members
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -12421,9 +12442,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLeftStaffMembersAsync($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getLeftStaffMembersAsync($if_modified_since = null, $if_none_match = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
-    return $this->getLeftStaffMembersAsyncWithHttpInfo($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page)
+    return $this->getLeftStaffMembersAsyncWithHttpInfo($if_modified_since, $if_none_match, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -12437,6 +12458,7 @@ class AssemblyApi
    * List Left Staff Members
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -12447,10 +12469,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLeftStaffMembersAsyncWithHttpInfo($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getLeftStaffMembersAsyncWithHttpInfo($if_modified_since = null, $if_none_match = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffMember[]';
-    $request = $this->getLeftStaffMembersRequest($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
+    $request = $this->getLeftStaffMembersRequest($if_modified_since, $if_none_match, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -12493,6 +12515,7 @@ class AssemblyApi
    * Create request for operation 'getLeftStaffMembers'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -12503,7 +12526,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getLeftStaffMembersRequest($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  protected function getLeftStaffMembersRequest($if_modified_since = null, $if_none_match = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getLeftStaffMembers, must be smaller than or equal to 1500.');
@@ -12551,6 +12574,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 
@@ -12628,6 +12655,16 @@ class AssemblyApi
    * List Left Students
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails Include email addresses (optional)
+   * @param  bool $addresses Include address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -12635,9 +12672,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getLeftStudents($if_modified_since = null, $per_page = '100', $page = '1')
+  public function getLeftStudents($if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getLeftStudentsWithHttpInfo($if_modified_since, $per_page, $page);
+    list($response) = $this->getLeftStudentsWithHttpInfo($if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
     return $response;
   }
 
@@ -12647,6 +12684,16 @@ class AssemblyApi
    * List Left Students
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails Include email addresses (optional)
+   * @param  bool $addresses Include address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -12654,10 +12701,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getLeftStudentsWithHttpInfo($if_modified_since = null, $per_page = '100', $page = '1')
+  public function getLeftStudentsWithHttpInfo($if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getLeftStudentsRequest($if_modified_since, $per_page, $page);
+    $request = $this->getLeftStudentsRequest($if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -12756,15 +12803,25 @@ class AssemblyApi
    * List Left Students
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails Include email addresses (optional)
+   * @param  bool $addresses Include address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLeftStudentsAsync($if_modified_since = null, $per_page = '100', $page = '1')
+  public function getLeftStudentsAsync($if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    return $this->getLeftStudentsAsyncWithHttpInfo($if_modified_since, $per_page, $page)
+    return $this->getLeftStudentsAsyncWithHttpInfo($if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -12778,16 +12835,26 @@ class AssemblyApi
    * List Left Students
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails Include email addresses (optional)
+   * @param  bool $addresses Include address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLeftStudentsAsyncWithHttpInfo($if_modified_since = null, $per_page = '100', $page = '1')
+  public function getLeftStudentsAsyncWithHttpInfo($if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getLeftStudentsRequest($if_modified_since, $per_page, $page);
+    $request = $this->getLeftStudentsRequest($if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -12830,13 +12897,23 @@ class AssemblyApi
    * Create request for operation 'getLeftStudents'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
+   * @param  bool $demographics Include demographics data (optional)
+   * @param  bool $contacts Include contacts data (optional)
+   * @param  bool $sen_needs Include SEN needs data (optional)
+   * @param  bool $emails Include email addresses (optional)
+   * @param  bool $addresses Include address data (optional)
+   * @param  bool $care Include student care data (you must also supply the demographics parameter) (optional)
+   * @param  bool $ever_in_care Include whether the student has ever been in care (you must also supply the demographics parameter) (optional)
+   * @param  bool $languages Include student language data (optional)
+   * @param  bool $photo Include student photo data (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getLeftStudentsRequest($if_modified_since = null, $per_page = '100', $page = '1')
+  protected function getLeftStudentsRequest($if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getLeftStudents, must be smaller than or equal to 1500.');
@@ -12857,6 +12934,46 @@ class AssemblyApi
     $httpBody = '';
     $multipart = false;
 
+    // query params
+    if ($date !== null) {
+      $queryParams['date'] = ObjectSerializer::toQueryValue($date);
+    }
+    // query params
+    if ($demographics !== null) {
+      $queryParams['demographics'] = ObjectSerializer::toQueryValue($demographics);
+    }
+    // query params
+    if ($contacts !== null) {
+      $queryParams['contacts'] = ObjectSerializer::toQueryValue($contacts);
+    }
+    // query params
+    if ($sen_needs !== null) {
+      $queryParams['sen_needs'] = ObjectSerializer::toQueryValue($sen_needs);
+    }
+    // query params
+    if ($emails !== null) {
+      $queryParams['emails'] = ObjectSerializer::toQueryValue($emails);
+    }
+    // query params
+    if ($addresses !== null) {
+      $queryParams['addresses'] = ObjectSerializer::toQueryValue($addresses);
+    }
+    // query params
+    if ($care !== null) {
+      $queryParams['care'] = ObjectSerializer::toQueryValue($care);
+    }
+    // query params
+    if ($ever_in_care !== null) {
+      $queryParams['ever_in_care'] = ObjectSerializer::toQueryValue($ever_in_care);
+    }
+    // query params
+    if ($languages !== null) {
+      $queryParams['languages'] = ObjectSerializer::toQueryValue($languages);
+    }
+    // query params
+    if ($photo !== null) {
+      $queryParams['photo'] = ObjectSerializer::toQueryValue($photo);
+    }
     // query params
     if ($per_page !== null) {
       $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
@@ -12945,7 +13062,6 @@ class AssemblyApi
    * List Lessons For a Room
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -12956,9 +13072,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Lesson[]
    */
-  public function getLessons($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getLessons($id, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getLessonsWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date, $per_page, $page);
+    list($response) = $this->getLessonsWithHttpInfo($id, $date, $start_date, $end_date, $per_page, $page);
     return $response;
   }
 
@@ -12968,7 +13084,6 @@ class AssemblyApi
    * List Lessons For a Room
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -12979,10 +13094,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Lesson[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getLessonsWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getLessonsWithHttpInfo($id, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Lesson[]';
-    $request = $this->getLessonsRequest($id, $if_modified_since, $date, $start_date, $end_date, $per_page, $page);
+    $request = $this->getLessonsRequest($id, $date, $start_date, $end_date, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -13081,7 +13196,6 @@ class AssemblyApi
    * List Lessons For a Room
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -13091,9 +13205,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLessonsAsync($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getLessonsAsync($id, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
-    return $this->getLessonsAsyncWithHttpInfo($id, $if_modified_since, $date, $start_date, $end_date, $per_page, $page)
+    return $this->getLessonsAsyncWithHttpInfo($id, $date, $start_date, $end_date, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -13107,7 +13221,6 @@ class AssemblyApi
    * List Lessons For a Room
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -13117,10 +13230,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getLessonsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  public function getLessonsAsyncWithHttpInfo($id, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Lesson[]';
-    $request = $this->getLessonsRequest($id, $if_modified_since, $date, $start_date, $end_date, $per_page, $page);
+    $request = $this->getLessonsRequest($id, $date, $start_date, $end_date, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -13163,7 +13276,6 @@ class AssemblyApi
    * Create request for operation 'getLessons'
    *
    * @param  int $id Internal identifier of the entity (required)
-   * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  \DateTime $start_date The start date of the period to filter by (optional)
    * @param  \DateTime $end_date The end date of the period to filter by (optional)
@@ -13173,7 +13285,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getLessonsRequest($id, $if_modified_since = null, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
+  protected function getLessonsRequest($id, $date = null, $start_date = null, $end_date = null, $per_page = '100', $page = '1')
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -13219,10 +13331,6 @@ class AssemblyApi
     // query params
     if ($page !== null) {
       $queryParams['page'] = ObjectSerializer::toQueryValue($page);
-    }
-    // header params
-    if ($if_modified_since !== null) {
-      $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
     }
 
     // path params
@@ -13925,6 +14033,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -13943,9 +14052,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getRegistrationGroupStudents($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getRegistrationGroupStudents($id, $if_modified_since = null, $if_none_match = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    list($response) = $this->getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since, $if_none_match, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
     return $response;
   }
 
@@ -13956,6 +14065,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -13974,10 +14084,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getRegistrationGroupStudentsWithHttpInfo($id, $if_modified_since = null, $if_none_match = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $if_none_match, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -14077,6 +14187,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -14094,9 +14205,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getRegistrationGroupStudentsAsync($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getRegistrationGroupStudentsAsync($id, $if_modified_since = null, $if_none_match = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    return $this->getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
+    return $this->getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $if_none_match, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -14111,6 +14222,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -14128,10 +14240,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getRegistrationGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $if_none_match = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    $request = $this->getRegistrationGroupStudentsRequest($id, $if_modified_since, $if_none_match, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -14175,6 +14287,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -14192,7 +14305,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getRegistrationGroupStudentsRequest($id, $if_modified_since = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  protected function getRegistrationGroupStudentsRequest($id, $if_modified_since = null, $if_none_match = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -14274,6 +14387,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
     // path params
@@ -14359,6 +14476,7 @@ class AssemblyApi
    * List Registration Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -14369,9 +14487,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\RegistrationGroup[]
    */
-  public function getRegistrationGroups($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getRegistrationGroups($if_modified_since = null, $if_none_match = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getRegistrationGroupsWithHttpInfo($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page);
+    list($response) = $this->getRegistrationGroupsWithHttpInfo($if_modified_since, $if_none_match, $year_code, $date, $academic_year_id, $per_page, $page);
     return $response;
   }
 
@@ -14381,6 +14499,7 @@ class AssemblyApi
    * List Registration Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -14391,10 +14510,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\RegistrationGroup[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getRegistrationGroupsWithHttpInfo($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getRegistrationGroupsWithHttpInfo($if_modified_since = null, $if_none_match = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\RegistrationGroup[]';
-    $request = $this->getRegistrationGroupsRequest($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page);
+    $request = $this->getRegistrationGroupsRequest($if_modified_since, $if_none_match, $year_code, $date, $academic_year_id, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -14493,6 +14612,7 @@ class AssemblyApi
    * List Registration Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -14502,9 +14622,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getRegistrationGroupsAsync($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getRegistrationGroupsAsync($if_modified_since = null, $if_none_match = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    return $this->getRegistrationGroupsAsyncWithHttpInfo($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page)
+    return $this->getRegistrationGroupsAsyncWithHttpInfo($if_modified_since, $if_none_match, $year_code, $date, $academic_year_id, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -14518,6 +14638,7 @@ class AssemblyApi
    * List Registration Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -14527,10 +14648,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getRegistrationGroupsAsyncWithHttpInfo($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getRegistrationGroupsAsyncWithHttpInfo($if_modified_since = null, $if_none_match = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\RegistrationGroup[]';
-    $request = $this->getRegistrationGroupsRequest($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page);
+    $request = $this->getRegistrationGroupsRequest($if_modified_since, $if_none_match, $year_code, $date, $academic_year_id, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -14573,6 +14694,7 @@ class AssemblyApi
    * Create request for operation 'getRegistrationGroups'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -14582,7 +14704,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getRegistrationGroupsRequest($if_modified_since = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  protected function getRegistrationGroupsRequest($if_modified_since = null, $if_none_match = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getRegistrationGroups, must be smaller than or equal to 1500.');
@@ -14626,6 +14748,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 
@@ -14704,6 +14830,7 @@ class AssemblyApi
    *
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -14711,9 +14838,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Result[]
    */
-  public function getResults($students, $if_modified_since = null, $per_page = '100', $page = '1')
+  public function getResults($students, $if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getResultsWithHttpInfo($students, $if_modified_since, $per_page, $page);
+    list($response) = $this->getResultsWithHttpInfo($students, $if_modified_since, $if_none_match, $per_page, $page);
     return $response;
   }
 
@@ -14724,6 +14851,7 @@ class AssemblyApi
    *
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -14731,10 +14859,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Result[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getResultsWithHttpInfo($students, $if_modified_since = null, $per_page = '100', $page = '1')
+  public function getResultsWithHttpInfo($students, $if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Result[]';
-    $request = $this->getResultsRequest($students, $if_modified_since, $per_page, $page);
+    $request = $this->getResultsRequest($students, $if_modified_since, $if_none_match, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -14834,15 +14962,16 @@ class AssemblyApi
    *
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getResultsAsync($students, $if_modified_since = null, $per_page = '100', $page = '1')
+  public function getResultsAsync($students, $if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
-    return $this->getResultsAsyncWithHttpInfo($students, $if_modified_since, $per_page, $page)
+    return $this->getResultsAsyncWithHttpInfo($students, $if_modified_since, $if_none_match, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -14857,16 +14986,17 @@ class AssemblyApi
    *
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getResultsAsyncWithHttpInfo($students, $if_modified_since = null, $per_page = '100', $page = '1')
+  public function getResultsAsyncWithHttpInfo($students, $if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Result[]';
-    $request = $this->getResultsRequest($students, $if_modified_since, $per_page, $page);
+    $request = $this->getResultsRequest($students, $if_modified_since, $if_none_match, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -14910,13 +15040,14 @@ class AssemblyApi
    *
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getResultsRequest($students, $if_modified_since = null, $per_page = '100', $page = '1')
+  protected function getResultsRequest($students, $if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
     // verify the required parameter 'students' is set
     if ($students === null || (is_array($students) && count($students) === 0)) {
@@ -14961,6 +15092,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 
@@ -15038,6 +15173,7 @@ class AssemblyApi
    * List Rooms
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -15045,9 +15181,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Room[]
    */
-  public function getRooms($if_modified_since = null, $per_page = '100', $page = '1')
+  public function getRooms($if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getRoomsWithHttpInfo($if_modified_since, $per_page, $page);
+    list($response) = $this->getRoomsWithHttpInfo($if_modified_since, $if_none_match, $per_page, $page);
     return $response;
   }
 
@@ -15057,6 +15193,7 @@ class AssemblyApi
    * List Rooms
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -15064,10 +15201,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Room[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getRoomsWithHttpInfo($if_modified_since = null, $per_page = '100', $page = '1')
+  public function getRoomsWithHttpInfo($if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Room[]';
-    $request = $this->getRoomsRequest($if_modified_since, $per_page, $page);
+    $request = $this->getRoomsRequest($if_modified_since, $if_none_match, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -15166,15 +15303,16 @@ class AssemblyApi
    * List Rooms
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getRoomsAsync($if_modified_since = null, $per_page = '100', $page = '1')
+  public function getRoomsAsync($if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
-    return $this->getRoomsAsyncWithHttpInfo($if_modified_since, $per_page, $page)
+    return $this->getRoomsAsyncWithHttpInfo($if_modified_since, $if_none_match, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -15188,16 +15326,17 @@ class AssemblyApi
    * List Rooms
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getRoomsAsyncWithHttpInfo($if_modified_since = null, $per_page = '100', $page = '1')
+  public function getRoomsAsyncWithHttpInfo($if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Room[]';
-    $request = $this->getRoomsRequest($if_modified_since, $per_page, $page);
+    $request = $this->getRoomsRequest($if_modified_since, $if_none_match, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -15240,13 +15379,14 @@ class AssemblyApi
    * Create request for operation 'getRooms'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getRoomsRequest($if_modified_since = null, $per_page = '100', $page = '1')
+  protected function getRoomsRequest($if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getRooms, must be smaller than or equal to 1500.');
@@ -15278,6 +15418,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 
@@ -16043,6 +16187,7 @@ class AssemblyApi
    * List Staff Members
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -16054,9 +16199,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\StaffMember[]
    */
-  public function getStaffMembers($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getStaffMembers($if_modified_since = null, $if_none_match = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getStaffMembersWithHttpInfo($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
+    list($response) = $this->getStaffMembersWithHttpInfo($if_modified_since, $if_none_match, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
     return $response;
   }
 
@@ -16066,6 +16211,7 @@ class AssemblyApi
    * List Staff Members
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -16077,10 +16223,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\StaffMember[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getStaffMembersWithHttpInfo($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getStaffMembersWithHttpInfo($if_modified_since = null, $if_none_match = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffMember[]';
-    $request = $this->getStaffMembersRequest($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
+    $request = $this->getStaffMembersRequest($if_modified_since, $if_none_match, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -16179,6 +16325,7 @@ class AssemblyApi
    * List Staff Members
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -16189,9 +16336,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getStaffMembersAsync($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getStaffMembersAsync($if_modified_since = null, $if_none_match = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
-    return $this->getStaffMembersAsyncWithHttpInfo($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page)
+    return $this->getStaffMembersAsyncWithHttpInfo($if_modified_since, $if_none_match, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -16205,6 +16352,7 @@ class AssemblyApi
    * List Staff Members
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -16215,10 +16363,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getStaffMembersAsyncWithHttpInfo($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  public function getStaffMembersAsyncWithHttpInfo($if_modified_since = null, $if_none_match = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\StaffMember[]';
-    $request = $this->getStaffMembersRequest($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
+    $request = $this->getStaffMembersRequest($if_modified_since, $if_none_match, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -16261,6 +16409,7 @@ class AssemblyApi
    * Create request for operation 'getStaffMembers'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  bool $teachers_only Filter to staff who are teachers (optional)
    * @param  bool $addresses Include address data (optional)
    * @param  bool $demographics Include demographics data (optional)
@@ -16271,7 +16420,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getStaffMembersRequest($if_modified_since = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
+  protected function getStaffMembersRequest($if_modified_since = null, $if_none_match = null, $teachers_only = null, $addresses = null, $demographics = null, $qualifications = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getStaffMembers, must be smaller than or equal to 1500.');
@@ -16319,6 +16468,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 
@@ -16396,6 +16549,7 @@ class AssemblyApi
    * List Students
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
@@ -16415,9 +16569,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getStudents($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getStudents($if_modified_since = null, $if_none_match = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getStudentsWithHttpInfo($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    list($response) = $this->getStudentsWithHttpInfo($if_modified_since, $if_none_match, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
     return $response;
   }
 
@@ -16427,6 +16581,7 @@ class AssemblyApi
    * List Students
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
@@ -16446,10 +16601,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getStudentsWithHttpInfo($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getStudentsWithHttpInfo($if_modified_since = null, $if_none_match = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getStudentsRequest($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    $request = $this->getStudentsRequest($if_modified_since, $if_none_match, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -16548,6 +16703,7 @@ class AssemblyApi
    * List Students
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
@@ -16566,9 +16722,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getStudentsAsync($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getStudentsAsync($if_modified_since = null, $if_none_match = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    return $this->getStudentsAsyncWithHttpInfo($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
+    return $this->getStudentsAsyncWithHttpInfo($if_modified_since, $if_none_match, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -16582,6 +16738,7 @@ class AssemblyApi
    * List Students
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
@@ -16600,10 +16757,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getStudentsAsyncWithHttpInfo($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getStudentsAsyncWithHttpInfo($if_modified_since = null, $if_none_match = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getStudentsRequest($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    $request = $this->getStudentsRequest($if_modified_since, $if_none_match, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -16646,6 +16803,7 @@ class AssemblyApi
    * Create request for operation 'getStudents'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int[] $students ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
@@ -16664,7 +16822,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getStudentsRequest($if_modified_since = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  protected function getStudentsRequest($if_modified_since = null, $if_none_match = null, $students = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getStudents, must be smaller than or equal to 1500.');
@@ -16747,6 +16905,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 
@@ -17133,6 +17295,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -17152,9 +17315,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getTeachingGroupStudents($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getTeachingGroupStudents($id, $if_modified_since = null, $if_none_match = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    list($response) = $this->getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since, $if_none_match, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
     return $response;
   }
 
@@ -17165,6 +17328,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -17184,10 +17348,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getTeachingGroupStudentsWithHttpInfo($id, $if_modified_since = null, $if_none_match = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $if_none_match, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -17287,6 +17451,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -17305,9 +17470,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getTeachingGroupStudentsAsync($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getTeachingGroupStudentsAsync($id, $if_modified_since = null, $if_none_match = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    return $this->getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
+    return $this->getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $if_none_match, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -17322,6 +17487,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -17340,10 +17506,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getTeachingGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $if_none_match = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    $request = $this->getTeachingGroupStudentsRequest($id, $if_modified_since, $if_none_match, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -17387,6 +17553,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
    * @param  string $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  int $year_code Filter by school year (optional)
@@ -17405,7 +17572,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getTeachingGroupStudentsRequest($id, $if_modified_since = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  protected function getTeachingGroupStudentsRequest($id, $if_modified_since = null, $if_none_match = null, $academic_year_id = null, $date = null, $year_code = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -17492,6 +17659,10 @@ class AssemblyApi
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
     }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
+    }
 
     // path params
     if ($id !== null) {
@@ -17576,6 +17747,7 @@ class AssemblyApi
    * List Teaching Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $subject_code Filter by subject (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
@@ -17587,9 +17759,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\TeachingGroup[]
    */
-  public function getTeachingGroups($if_modified_since = null, $subject_code = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getTeachingGroups($if_modified_since = null, $if_none_match = null, $subject_code = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getTeachingGroupsWithHttpInfo($if_modified_since, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page);
+    list($response) = $this->getTeachingGroupsWithHttpInfo($if_modified_since, $if_none_match, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page);
     return $response;
   }
 
@@ -17599,6 +17771,7 @@ class AssemblyApi
    * List Teaching Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $subject_code Filter by subject (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
@@ -17610,10 +17783,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\TeachingGroup[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getTeachingGroupsWithHttpInfo($if_modified_since = null, $subject_code = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getTeachingGroupsWithHttpInfo($if_modified_since = null, $if_none_match = null, $subject_code = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\TeachingGroup[]';
-    $request = $this->getTeachingGroupsRequest($if_modified_since, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page);
+    $request = $this->getTeachingGroupsRequest($if_modified_since, $if_none_match, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -17712,6 +17885,7 @@ class AssemblyApi
    * List Teaching Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $subject_code Filter by subject (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
@@ -17722,9 +17896,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getTeachingGroupsAsync($if_modified_since = null, $subject_code = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getTeachingGroupsAsync($if_modified_since = null, $if_none_match = null, $subject_code = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    return $this->getTeachingGroupsAsyncWithHttpInfo($if_modified_since, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page)
+    return $this->getTeachingGroupsAsyncWithHttpInfo($if_modified_since, $if_none_match, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -17738,6 +17912,7 @@ class AssemblyApi
    * List Teaching Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $subject_code Filter by subject (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
@@ -17748,10 +17923,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getTeachingGroupsAsyncWithHttpInfo($if_modified_since = null, $subject_code = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getTeachingGroupsAsyncWithHttpInfo($if_modified_since = null, $if_none_match = null, $subject_code = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\TeachingGroup[]';
-    $request = $this->getTeachingGroupsRequest($if_modified_since, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page);
+    $request = $this->getTeachingGroupsRequest($if_modified_since, $if_none_match, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -17794,6 +17969,7 @@ class AssemblyApi
    * Create request for operation 'getTeachingGroups'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  string $subject_code Filter by subject (optional)
    * @param  int $year_code Filter by school year (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
@@ -17804,7 +17980,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getTeachingGroupsRequest($if_modified_since = null, $subject_code = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  protected function getTeachingGroupsRequest($if_modified_since = null, $if_none_match = null, $subject_code = null, $year_code = null, $date = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getTeachingGroups, must be smaller than or equal to 1500.');
@@ -17852,6 +18028,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 
@@ -17929,6 +18109,7 @@ class AssemblyApi
    * List Timetables
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -17936,9 +18117,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Timetable[]
    */
-  public function getTimetables($if_modified_since = null, $per_page = '100', $page = '1')
+  public function getTimetables($if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getTimetablesWithHttpInfo($if_modified_since, $per_page, $page);
+    list($response) = $this->getTimetablesWithHttpInfo($if_modified_since, $if_none_match, $per_page, $page);
     return $response;
   }
 
@@ -17948,6 +18129,7 @@ class AssemblyApi
    * List Timetables
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
@@ -17955,10 +18137,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Timetable[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getTimetablesWithHttpInfo($if_modified_since = null, $per_page = '100', $page = '1')
+  public function getTimetablesWithHttpInfo($if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Timetable[]';
-    $request = $this->getTimetablesRequest($if_modified_since, $per_page, $page);
+    $request = $this->getTimetablesRequest($if_modified_since, $if_none_match, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -18057,15 +18239,16 @@ class AssemblyApi
    * List Timetables
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getTimetablesAsync($if_modified_since = null, $per_page = '100', $page = '1')
+  public function getTimetablesAsync($if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
-    return $this->getTimetablesAsyncWithHttpInfo($if_modified_since, $per_page, $page)
+    return $this->getTimetablesAsyncWithHttpInfo($if_modified_since, $if_none_match, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -18079,16 +18262,17 @@ class AssemblyApi
    * List Timetables
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getTimetablesAsyncWithHttpInfo($if_modified_since = null, $per_page = '100', $page = '1')
+  public function getTimetablesAsyncWithHttpInfo($if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Timetable[]';
-    $request = $this->getTimetablesRequest($if_modified_since, $per_page, $page);
+    $request = $this->getTimetablesRequest($if_modified_since, $if_none_match, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -18131,13 +18315,14 @@ class AssemblyApi
    * Create request for operation 'getTimetables'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  int $per_page Number of results to return (optional, default to 100)
    * @param  int $page Page number to return (optional, default to 1)
    *
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getTimetablesRequest($if_modified_since = null, $per_page = '100', $page = '1')
+  protected function getTimetablesRequest($if_modified_since = null, $if_none_match = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getTimetables, must be smaller than or equal to 1500.');
@@ -18169,6 +18354,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 
@@ -18247,6 +18436,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
@@ -18264,9 +18454,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\Student[]
    */
-  public function getYearGroupStudents($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getYearGroupStudents($id, $if_modified_since = null, $if_none_match = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getYearGroupStudentsWithHttpInfo($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    list($response) = $this->getYearGroupStudentsWithHttpInfo($id, $if_modified_since, $if_none_match, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
     return $response;
   }
 
@@ -18277,6 +18467,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
@@ -18294,10 +18485,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\Student[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getYearGroupStudentsWithHttpInfo($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getYearGroupStudentsWithHttpInfo($id, $if_modified_since = null, $if_none_match = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $if_none_match, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -18397,6 +18588,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
@@ -18413,9 +18605,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getYearGroupStudentsAsync($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getYearGroupStudentsAsync($id, $if_modified_since = null, $if_none_match = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
-    return $this->getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
+    return $this->getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since, $if_none_match, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -18430,6 +18622,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
@@ -18446,10 +18639,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  public function getYearGroupStudentsAsyncWithHttpInfo($id, $if_modified_since = null, $if_none_match = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\Student[]';
-    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+    $request = $this->getYearGroupStudentsRequest($id, $if_modified_since, $if_none_match, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -18493,6 +18686,7 @@ class AssemblyApi
    *
    * @param  int $id Internal identifier of the entity (required)
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  bool $demographics Include demographics data (optional)
    * @param  bool $contacts Include contacts data (optional)
@@ -18509,7 +18703,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getYearGroupStudentsRequest($id, $if_modified_since = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
+  protected function getYearGroupStudentsRequest($id, $if_modified_since = null, $if_none_match = null, $date = null, $demographics = null, $contacts = null, $sen_needs = null, $emails = null, $addresses = null, $care = null, $ever_in_care = null, $languages = null, $photo = null, $per_page = '100', $page = '1')
   {
     // verify the required parameter 'id' is set
     if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -18587,6 +18781,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
     // path params
@@ -18672,6 +18870,7 @@ class AssemblyApi
    * List Year Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -18682,9 +18881,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \Assembly\Client\Model\YearGroup[]
    */
-  public function getYearGroups($if_modified_since = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getYearGroups($if_modified_since = null, $if_none_match = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    list($response) = $this->getYearGroupsWithHttpInfo($if_modified_since, $date, $year_code, $academic_year_id, $per_page, $page);
+    list($response) = $this->getYearGroupsWithHttpInfo($if_modified_since, $if_none_match, $date, $year_code, $academic_year_id, $per_page, $page);
     return $response;
   }
 
@@ -18694,6 +18893,7 @@ class AssemblyApi
    * List Year Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -18704,10 +18904,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return array of \Assembly\Client\Model\YearGroup[], HTTP status code, HTTP response headers (array of strings)
    */
-  public function getYearGroupsWithHttpInfo($if_modified_since = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getYearGroupsWithHttpInfo($if_modified_since = null, $if_none_match = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\YearGroup[]';
-    $request = $this->getYearGroupsRequest($if_modified_since, $date, $year_code, $academic_year_id, $per_page, $page);
+    $request = $this->getYearGroupsRequest($if_modified_since, $if_none_match, $date, $year_code, $academic_year_id, $per_page, $page);
 
     try {
       $options = $this->createHttpClientOption();
@@ -18806,6 +19006,7 @@ class AssemblyApi
    * List Year Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -18815,9 +19016,9 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getYearGroupsAsync($if_modified_since = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getYearGroupsAsync($if_modified_since = null, $if_none_match = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
-    return $this->getYearGroupsAsyncWithHttpInfo($if_modified_since, $date, $year_code, $academic_year_id, $per_page, $page)
+    return $this->getYearGroupsAsyncWithHttpInfo($if_modified_since, $if_none_match, $date, $year_code, $academic_year_id, $per_page, $page)
       ->then(
         function ($response) {
           return $response[0];
@@ -18831,6 +19032,7 @@ class AssemblyApi
    * List Year Groups
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -18840,10 +19042,10 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Promise\PromiseInterface
    */
-  public function getYearGroupsAsyncWithHttpInfo($if_modified_since = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  public function getYearGroupsAsyncWithHttpInfo($if_modified_since = null, $if_none_match = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     $returnType = '\Assembly\Client\Model\YearGroup[]';
-    $request = $this->getYearGroupsRequest($if_modified_since, $date, $year_code, $academic_year_id, $per_page, $page);
+    $request = $this->getYearGroupsRequest($if_modified_since, $if_none_match, $date, $year_code, $academic_year_id, $per_page, $page);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
@@ -18886,6 +19088,7 @@ class AssemblyApi
    * Create request for operation 'getYearGroups'
    *
    * @param  \DateTime $if_modified_since Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
+   * @param  string $if_none_match Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) (optional)
    * @param  \DateTime $date Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable (optional)
    * @param  string $year_code Filter by school year (optional)
    * @param  int $academic_year_id Include all groups and group memberships from the specified academic year (optional)
@@ -18895,7 +19098,7 @@ class AssemblyApi
    * @throws \InvalidArgumentException
    * @return \GuzzleHttp\Psr7\Request
    */
-  protected function getYearGroupsRequest($if_modified_since = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
+  protected function getYearGroupsRequest($if_modified_since = null, $if_none_match = null, $date = null, $year_code = null, $academic_year_id = null, $per_page = '100', $page = '1')
   {
     if ($per_page !== null && $per_page > 1500) {
       throw new \InvalidArgumentException('invalid value for "$per_page" when calling AssemblyApi.getYearGroups, must be smaller than or equal to 1500.');
@@ -18939,6 +19142,10 @@ class AssemblyApi
     // header params
     if ($if_modified_since !== null) {
       $headerParams['If-Modified-Since'] = ObjectSerializer::toHeaderValue($if_modified_since);
+    }
+    // header params
+    if ($if_none_match !== null) {
+      $headerParams['If-None-Match'] = ObjectSerializer::toHeaderValue($if_none_match);
     }
 
 

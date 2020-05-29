@@ -850,7 +850,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **findRoom**
-> \Assembly\Client\Model\Room findRoom($id, $if_modified_since, $date, $start_date, $end_date)
+> \Assembly\Client\Model\Room findRoom($id, $date, $start_date, $end_date)
 
 View a Room
 
@@ -874,13 +874,12 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $id = 56; // int | Internal identifier of the entity
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $start_date = 'start_date_example'; // string | The start date of the period to filter by
 $end_date = 'end_date_example'; // string | The end date of the period to filter by
 
 try {
-  $result = $apiInstance->findRoom($id, $if_modified_since, $date, $start_date, $end_date);
+  $result = $apiInstance->findRoom($id, $date, $start_date, $end_date);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->findRoom: ', $e->getMessage(), PHP_EOL;
@@ -893,7 +892,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **start_date** | **string**| The start date of the period to filter by | [optional]
  **end_date** | **string**| The end date of the period to filter by | [optional]
@@ -1160,7 +1158,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **findTimetable**
-> \Assembly\Client\Model\Timetable findTimetable($id, $if_modified_since, $date, $start_date, $end_date)
+> \Assembly\Client\Model\Timetable findTimetable($id, $date, $start_date, $end_date)
 
 View a Timetable
 
@@ -1184,13 +1182,12 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $id = 56; // int | Internal identifier of the entity
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The start date of the period to filter by
 $end_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The end date of the period to filter by
 
 try {
-  $result = $apiInstance->findTimetable($id, $if_modified_since, $date, $start_date, $end_date);
+  $result = $apiInstance->findTimetable($id, $date, $start_date, $end_date);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->findTimetable: ', $e->getMessage(), PHP_EOL;
@@ -1203,7 +1200,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **start_date** | **\DateTime**| The start date of the period to filter by | [optional]
  **end_date** | **\DateTime**| The end date of the period to filter by | [optional]
@@ -1584,7 +1580,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAttendanceSummaries**
-> \Assembly\Client\Model\AttendanceSummary[] getAttendanceSummaries($if_modified_since, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page)
+> \Assembly\Client\Model\AttendanceSummary[] getAttendanceSummaries($if_modified_since, $if_none_match, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page)
 
 List Attendance Summaries
 
@@ -1608,6 +1604,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $student_id = 56; // int | Filter to the specified student
 $registration_group_id = 56; // int | ID of a registration group
 $group_id = 56; // int | Filter to the specified group
@@ -1616,7 +1613,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getAttendanceSummaries($if_modified_since, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page);
+  $result = $apiInstance->getAttendanceSummaries($if_modified_since, $if_none_match, $student_id, $registration_group_id, $group_id, $academic_year_id, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getAttendanceSummaries: ', $e->getMessage(), PHP_EOL;
@@ -1629,6 +1626,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **student_id** | **int**| Filter to the specified student | [optional]
  **registration_group_id** | **int**| ID of a registration group | [optional]
  **group_id** | **int**| Filter to the specified group | [optional]
@@ -1652,7 +1650,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getAttendances**
-> \Assembly\Client\Model\Attendance[] getAttendances($if_modified_since, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page)
+> \Assembly\Client\Model\Attendance[] getAttendances($if_modified_since, $if_none_match, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page)
 
 List Attendances
 
@@ -1676,6 +1674,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $student_id = 56; // int | Filter to the specified student
 $registration_group_id = 56; // int | ID of a registration group
 $group_id = 56; // int | Filter to the specified group
@@ -1685,7 +1684,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getAttendances($if_modified_since, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page);
+  $result = $apiInstance->getAttendances($if_modified_since, $if_none_match, $student_id, $registration_group_id, $group_id, $start_date, $end_date, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getAttendances: ', $e->getMessage(), PHP_EOL;
@@ -1698,6 +1697,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **student_id** | **int**| Filter to the specified student | [optional]
  **registration_group_id** | **int**| ID of a registration group | [optional]
  **group_id** | **int**| Filter to the specified group | [optional]
@@ -1722,7 +1722,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getCalendarEvents**
-> \Assembly\Client\Model\CalendarEvent[] getCalendarEvents($if_modified_since, $type, $per_page, $page)
+> \Assembly\Client\Model\CalendarEvent[] getCalendarEvents($if_modified_since, $if_none_match, $type, $per_page, $page)
 
 List Calendar Events
 
@@ -1746,12 +1746,13 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $type = 'type_example'; // string | Filter by type
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getCalendarEvents($if_modified_since, $type, $per_page, $page);
+  $result = $apiInstance->getCalendarEvents($if_modified_since, $if_none_match, $type, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getCalendarEvents: ', $e->getMessage(), PHP_EOL;
@@ -1764,6 +1765,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **type** | **string**| Filter by type | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
@@ -1784,7 +1786,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getClosures**
-> \Assembly\Client\Model\Closure[] getClosures($id, $if_modified_since, $date, $start_date, $end_date)
+> \Assembly\Client\Model\Closure[] getClosures($id, $date, $start_date, $end_date)
 
 List Closures For a Room
 
@@ -1808,13 +1810,12 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $id = 56; // int | Internal identifier of the entity
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The start date of the period to filter by
 $end_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The end date of the period to filter by
 
 try {
-  $result = $apiInstance->getClosures($id, $if_modified_since, $date, $start_date, $end_date);
+  $result = $apiInstance->getClosures($id, $date, $start_date, $end_date);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getClosures: ', $e->getMessage(), PHP_EOL;
@@ -1827,7 +1828,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **start_date** | **\DateTime**| The start date of the period to filter by | [optional]
  **end_date** | **\DateTime**| The end date of the period to filter by | [optional]
@@ -2148,7 +2148,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getGroupStudents**
-> \Assembly\Client\Model\Student[] getGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
+> \Assembly\Client\Model\Student[] getGroupStudents($id, $if_modified_since, $if_none_match, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo)
 
 List Students for Group
 
@@ -2173,6 +2173,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 $id = 56; // int | Internal identifier of the entity
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
 $date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $year_code = 'year_code_example'; // string | Filter by school year
@@ -2187,7 +2188,7 @@ $languages = True; // bool | Include student language data
 $photo = True; // bool | Include student photo data
 
 try {
-  $result = $apiInstance->getGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
+  $result = $apiInstance->getGroupStudents($id, $if_modified_since, $if_none_match, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getGroupStudents: ', $e->getMessage(), PHP_EOL;
@@ -2201,6 +2202,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
  **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **year_code** | **string**| Filter by school year | [optional]
@@ -2230,7 +2232,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getGroups**
-> \Assembly\Client\Model\Group[] getGroups($if_modified_since, $year_code, $date, $academic_year_id, $type, $per_page, $page)
+> \Assembly\Client\Model\Group[] getGroups($if_modified_since, $if_none_match, $year_code, $date, $academic_year_id, $type, $per_page, $page)
 
 List Groups
 
@@ -2254,6 +2256,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $year_code = 'year_code_example'; // string | Filter by school year
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
@@ -2262,7 +2265,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getGroups($if_modified_since, $year_code, $date, $academic_year_id, $type, $per_page, $page);
+  $result = $apiInstance->getGroups($if_modified_since, $if_none_match, $year_code, $date, $academic_year_id, $type, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getGroups: ', $e->getMessage(), PHP_EOL;
@@ -2275,6 +2278,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **year_code** | **string**| Filter by school year | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
@@ -2356,7 +2360,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getLeftStaffMembers**
-> \Assembly\Client\Model\StaffMember[] getLeftStaffMembers($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page)
+> \Assembly\Client\Model\StaffMember[] getLeftStaffMembers($if_modified_since, $if_none_match, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page)
 
 List Left Staff Members
 
@@ -2380,6 +2384,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $teachers_only = True; // bool | Filter to staff who are teachers
 $addresses = True; // bool | Include address data
 $demographics = True; // bool | Include demographics data
@@ -2388,7 +2393,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getLeftStaffMembers($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
+  $result = $apiInstance->getLeftStaffMembers($if_modified_since, $if_none_match, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getLeftStaffMembers: ', $e->getMessage(), PHP_EOL;
@@ -2401,6 +2406,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **teachers_only** | **bool**| Filter to staff who are teachers | [optional]
  **addresses** | **bool**| Include address data | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
@@ -2424,7 +2430,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getLeftStudents**
-> \Assembly\Client\Model\Student[] getLeftStudents($if_modified_since, $per_page, $page)
+> \Assembly\Client\Model\Student[] getLeftStudents($if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
 
 List Left Students
 
@@ -2448,11 +2454,21 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
+$demographics = True; // bool | Include demographics data
+$contacts = True; // bool | Include contacts data
+$sen_needs = True; // bool | Include SEN needs data
+$emails = True; // bool | Include email addresses
+$addresses = True; // bool | Include address data
+$care = True; // bool | Include student care data (you must also supply the demographics parameter)
+$ever_in_care = True; // bool | Include whether the student has ever been in care (you must also supply the demographics parameter)
+$languages = True; // bool | Include student language data
+$photo = True; // bool | Include student photo data
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getLeftStudents($if_modified_since, $per_page, $page);
+  $result = $apiInstance->getLeftStudents($if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getLeftStudents: ', $e->getMessage(), PHP_EOL;
@@ -2465,6 +2481,16 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
+ **demographics** | **bool**| Include demographics data | [optional]
+ **contacts** | **bool**| Include contacts data | [optional]
+ **sen_needs** | **bool**| Include SEN needs data | [optional]
+ **emails** | **bool**| Include email addresses | [optional]
+ **addresses** | **bool**| Include address data | [optional]
+ **care** | **bool**| Include student care data (you must also supply the demographics parameter) | [optional]
+ **ever_in_care** | **bool**| Include whether the student has ever been in care (you must also supply the demographics parameter) | [optional]
+ **languages** | **bool**| Include student language data | [optional]
+ **photo** | **bool**| Include student photo data | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
 
@@ -2484,7 +2510,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getLessons**
-> \Assembly\Client\Model\Lesson[] getLessons($id, $if_modified_since, $date, $start_date, $end_date, $per_page, $page)
+> \Assembly\Client\Model\Lesson[] getLessons($id, $date, $start_date, $end_date, $per_page, $page)
 
 List Lessons For a Room
 
@@ -2508,7 +2534,6 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $id = 56; // int | Internal identifier of the entity
-$if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $start_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The start date of the period to filter by
 $end_date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | The end date of the period to filter by
@@ -2516,7 +2541,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getLessons($id, $if_modified_since, $date, $start_date, $end_date, $per_page, $page);
+  $result = $apiInstance->getLessons($id, $date, $start_date, $end_date, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getLessons: ', $e->getMessage(), PHP_EOL;
@@ -2529,7 +2554,6 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
- **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **start_date** | **\DateTime**| The start date of the period to filter by | [optional]
  **end_date** | **\DateTime**| The end date of the period to filter by | [optional]
@@ -2668,7 +2692,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationGroupStudents**
-> \Assembly\Client\Model\Student[] getRegistrationGroupStudents($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
+> \Assembly\Client\Model\Student[] getRegistrationGroupStudents($id, $if_modified_since, $if_none_match, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
 
 List Students for Registration Group
 
@@ -2693,6 +2717,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 $id = 56; // int | Internal identifier of the entity
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $year_code = 56; // int | Filter by school year
 $demographics = True; // bool | Include demographics data
@@ -2708,7 +2733,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getRegistrationGroupStudents($id, $if_modified_since, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+  $result = $apiInstance->getRegistrationGroupStudents($id, $if_modified_since, $if_none_match, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getRegistrationGroupStudents: ', $e->getMessage(), PHP_EOL;
@@ -2722,6 +2747,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **year_code** | **int**| Filter by school year | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
@@ -2752,7 +2778,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRegistrationGroups**
-> \Assembly\Client\Model\RegistrationGroup[] getRegistrationGroups($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page)
+> \Assembly\Client\Model\RegistrationGroup[] getRegistrationGroups($if_modified_since, $if_none_match, $year_code, $date, $academic_year_id, $per_page, $page)
 
 List Registration Groups
 
@@ -2776,6 +2802,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $year_code = 56; // int | Filter by school year
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
@@ -2783,7 +2810,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getRegistrationGroups($if_modified_since, $year_code, $date, $academic_year_id, $per_page, $page);
+  $result = $apiInstance->getRegistrationGroups($if_modified_since, $if_none_match, $year_code, $date, $academic_year_id, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getRegistrationGroups: ', $e->getMessage(), PHP_EOL;
@@ -2796,6 +2823,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **year_code** | **int**| Filter by school year | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
@@ -2818,7 +2846,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getResults**
-> \Assembly\Client\Model\Result[] getResults($students, $if_modified_since, $per_page, $page)
+> \Assembly\Client\Model\Result[] getResults($students, $if_modified_since, $if_none_match, $per_page, $page)
 
 List Results
 
@@ -2843,11 +2871,12 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 $students = array(56); // int[] | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getResults($students, $if_modified_since, $per_page, $page);
+  $result = $apiInstance->getResults($students, $if_modified_since, $if_none_match, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getResults: ', $e->getMessage(), PHP_EOL;
@@ -2861,6 +2890,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **students** | [**int[]**](../Model/int.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) |
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
 
@@ -2880,7 +2910,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getRooms**
-> \Assembly\Client\Model\Room[] getRooms($if_modified_since, $per_page, $page)
+> \Assembly\Client\Model\Room[] getRooms($if_modified_since, $if_none_match, $per_page, $page)
 
 List Rooms
 
@@ -2904,11 +2934,12 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getRooms($if_modified_since, $per_page, $page);
+  $result = $apiInstance->getRooms($if_modified_since, $if_none_match, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getRooms: ', $e->getMessage(), PHP_EOL;
@@ -2921,6 +2952,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
 
@@ -3072,7 +3104,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getStaffMembers**
-> \Assembly\Client\Model\StaffMember[] getStaffMembers($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page)
+> \Assembly\Client\Model\StaffMember[] getStaffMembers($if_modified_since, $if_none_match, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page)
 
 List Staff Members
 
@@ -3096,6 +3128,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $teachers_only = True; // bool | Filter to staff who are teachers
 $addresses = True; // bool | Include address data
 $demographics = True; // bool | Include demographics data
@@ -3104,7 +3137,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getStaffMembers($if_modified_since, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
+  $result = $apiInstance->getStaffMembers($if_modified_since, $if_none_match, $teachers_only, $addresses, $demographics, $qualifications, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getStaffMembers: ', $e->getMessage(), PHP_EOL;
@@ -3117,6 +3150,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **teachers_only** | **bool**| Filter to staff who are teachers | [optional]
  **addresses** | **bool**| Include address data | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
@@ -3140,7 +3174,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getStudents**
-> \Assembly\Client\Model\Student[] getStudents($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
+> \Assembly\Client\Model\Student[] getStudents($if_modified_since, $if_none_match, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
 
 List Students
 
@@ -3164,6 +3198,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $students = array(56); // int[] | ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded)
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $year_code = 'year_code_example'; // string | Filter by school year
@@ -3180,7 +3215,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getStudents($if_modified_since, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+  $result = $apiInstance->getStudents($if_modified_since, $if_none_match, $students, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getStudents: ', $e->getMessage(), PHP_EOL;
@@ -3193,6 +3228,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **students** | [**int[]**](../Model/int.md)| ID(s) of the student(s) as an Integer. Multiple IDs can be separated with a space (so a + URL encoded) | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **year_code** | **string**| Filter by school year | [optional]
@@ -3282,7 +3318,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTeachingGroupStudents**
-> \Assembly\Client\Model\Student[] getTeachingGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
+> \Assembly\Client\Model\Student[] getTeachingGroupStudents($id, $if_modified_since, $if_none_match, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
 
 List Students for Teaching Group
 
@@ -3307,6 +3343,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 $id = 56; // int | Internal identifier of the entity
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
 $date = 'date_example'; // string | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $year_code = 56; // int | Filter by school year
@@ -3323,7 +3360,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getTeachingGroupStudents($id, $if_modified_since, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+  $result = $apiInstance->getTeachingGroupStudents($id, $if_modified_since, $if_none_match, $academic_year_id, $date, $year_code, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getTeachingGroupStudents: ', $e->getMessage(), PHP_EOL;
@@ -3337,6 +3374,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
  **date** | **string**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **year_code** | **int**| Filter by school year | [optional]
@@ -3368,7 +3406,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTeachingGroups**
-> \Assembly\Client\Model\TeachingGroup[] getTeachingGroups($if_modified_since, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page)
+> \Assembly\Client\Model\TeachingGroup[] getTeachingGroups($if_modified_since, $if_none_match, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page)
 
 List Teaching Groups
 
@@ -3392,6 +3430,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $subject_code = 'subject_code_example'; // string | Filter by subject
 $year_code = 56; // int | Filter by school year
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
@@ -3400,7 +3439,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getTeachingGroups($if_modified_since, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page);
+  $result = $apiInstance->getTeachingGroups($if_modified_since, $if_none_match, $subject_code, $year_code, $date, $academic_year_id, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getTeachingGroups: ', $e->getMessage(), PHP_EOL;
@@ -3413,6 +3452,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **subject_code** | **string**| Filter by subject | [optional]
  **year_code** | **int**| Filter by school year | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
@@ -3436,7 +3476,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getTimetables**
-> \Assembly\Client\Model\Timetable[] getTimetables($if_modified_since, $per_page, $page)
+> \Assembly\Client\Model\Timetable[] getTimetables($if_modified_since, $if_none_match, $per_page, $page)
 
 List Timetables
 
@@ -3460,11 +3500,12 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getTimetables($if_modified_since, $per_page, $page);
+  $result = $apiInstance->getTimetables($if_modified_since, $if_none_match, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getTimetables: ', $e->getMessage(), PHP_EOL;
@@ -3477,6 +3518,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **per_page** | **int**| Number of results to return | [optional] [default to 100]
  **page** | **int**| Page number to return | [optional] [default to 1]
 
@@ -3496,7 +3538,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getYearGroupStudents**
-> \Assembly\Client\Model\Student[] getYearGroupStudents($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
+> \Assembly\Client\Model\Student[] getYearGroupStudents($id, $if_modified_since, $if_none_match, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page)
 
 List Students for Year Group
 
@@ -3521,6 +3563,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
 );
 $id = 56; // int | Internal identifier of the entity
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $demographics = True; // bool | Include demographics data
 $contacts = True; // bool | Include contacts data
@@ -3535,7 +3578,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getYearGroupStudents($id, $if_modified_since, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
+  $result = $apiInstance->getYearGroupStudents($id, $if_modified_since, $if_none_match, $date, $demographics, $contacts, $sen_needs, $emails, $addresses, $care, $ever_in_care, $languages, $photo, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getYearGroupStudents: ', $e->getMessage(), PHP_EOL;
@@ -3549,6 +3592,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **int**| Internal identifier of the entity |
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **demographics** | **bool**| Include demographics data | [optional]
  **contacts** | **bool**| Include contacts data | [optional]
@@ -3578,7 +3622,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getYearGroups**
-> \Assembly\Client\Model\YearGroup[] getYearGroups($if_modified_since, $date, $year_code, $academic_year_id, $per_page, $page)
+> \Assembly\Client\Model\YearGroup[] getYearGroups($if_modified_since, $if_none_match, $date, $year_code, $academic_year_id, $per_page, $page)
 
 List Year Groups
 
@@ -3602,6 +3646,7 @@ $apiInstance = new Assembly\Client\Api\AssemblyApi(
   $config
 );
 $if_modified_since = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
+$if_none_match = 'if_none_match_example'; // string | Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests))
 $date = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Filter by a specific date, used as the `start_date` and `end_date` where applicable
 $year_code = 'year_code_example'; // string | Filter by school year
 $academic_year_id = 56; // int | Include all groups and group memberships from the specified academic year
@@ -3609,7 +3654,7 @@ $per_page = 50; // int | Number of results to return
 $page = 5; // int | Page number to return
 
 try {
-  $result = $apiInstance->getYearGroups($if_modified_since, $date, $year_code, $academic_year_id, $per_page, $page);
+  $result = $apiInstance->getYearGroups($if_modified_since, $if_none_match, $date, $year_code, $academic_year_id, $per_page, $page);
   print_r($result);
 } catch (Exception $e) {
   echo 'Exception when calling AssemblyApi->getYearGroups: ', $e->getMessage(), PHP_EOL;
@@ -3622,6 +3667,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **if_modified_since** | **\DateTime**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
+ **if_none_match** | **string**| Filter results since it was last fetched (see [Conditional Requests](/#section/Concepts/Conditional-Requests)) | [optional]
  **date** | **\DateTime**| Filter by a specific date, used as the &#x60;start_date&#x60; and &#x60;end_date&#x60; where applicable | [optional]
  **year_code** | **string**| Filter by school year | [optional]
  **academic_year_id** | **int**| Include all groups and group memberships from the specified academic year | [optional]
