@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.463
+ * SDK Version 1.2.470
  * API Version 1.1.0
  *
  * Support
@@ -96,6 +96,20 @@ class ExclusionTest extends \PHPUnit_Framework_TestCase
    * Test attribute "exclusion_reason"
    */
   public function testPropertyExclusionReason()
+  {
+  }
+
+  /**
+   * Test attribute "exclusion_reason_2"
+   */
+  public function testPropertyExclusionReason2()
+  {
+  }
+
+  /**
+   * Test attribute "exclusion_reason_3"
+   */
+  public function testPropertyExclusionReason3()
   {
   }
 

@@ -1,7 +1,7 @@
 # PHP SDK for the Assembly API
 
 - API version: 1.1.0
-- Package version: 1.2.463
+- Package version: 1.2.470
 
 For more information, please visit [http://developers.assembly.education](http://developers.assembly.education)
 
@@ -210,6 +210,7 @@ Class | Method | HTTP request | Description
 *AssemblyApi* | [**getExclusions**](docs/Api/AssemblyApi.md#getexclusions) | **GET** /exclusions | List Exclusions
 *AssemblyApi* | [**getFacets**](docs/Api/AssemblyApi.md#getfacets) | **GET** /facets | List Facets
 *AssemblyApi* | [**getGradeSets**](docs/Api/AssemblyApi.md#getgradesets) | **GET** /grade_sets | List Grade Sets
+*AssemblyApi* | [**getGroupEnrolments**](docs/Api/AssemblyApi.md#getgroupenrolments) | **GET** /groups/enrolments | List Group Enrolments
 *AssemblyApi* | [**getGroupStudents**](docs/Api/AssemblyApi.md#getgroupstudents) | **GET** /groups/{id}/students | List Students for Group
 *AssemblyApi* | [**getGroups**](docs/Api/AssemblyApi.md#getgroups) | **GET** /groups | List Groups
 *AssemblyApi* | [**getLearningAims**](docs/Api/AssemblyApi.md#getlearningaims) | **GET** /school/learning_aims | List Post-16 Learning Aims
@@ -254,6 +255,7 @@ Class | Method | HTTP request | Description
  - [ContactStudents](docs/Model/ContactStudents.md)
  - [DietaryNeed](docs/Model/DietaryNeed.md)
  - [EmailInfo](docs/Model/EmailInfo.md)
+ - [Enrolment](docs/Model/Enrolment.md)
  - [Exclusion](docs/Model/Exclusion.md)
  - [Facet](docs/Model/Facet.md)
  - [FsmEntitlement](docs/Model/FsmEntitlement.md)

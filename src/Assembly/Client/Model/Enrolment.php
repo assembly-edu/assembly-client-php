@@ -20,15 +20,15 @@ use \ArrayAccess;
 use \Assembly\Client\ObjectSerializer;
 
 /**
- * MedicalCondition Class Doc Comment
+ * Enrolment Class Doc Comment
  *
  * @category Class
- * @description A medical condition defined in the MIS.
+ * @description An group enrolment of a student from a school.
  * @package  Assembly\Client
  * @author   Assembly Developer Team
  * @link     https://github.com/assembly-edu/assembly-client-php
  */
-class MedicalCondition implements ModelInterface, ArrayAccess
+class Enrolment implements ModelInterface, ArrayAccess
 {
   const DISCRIMINATOR = null;
 
@@ -37,7 +37,7 @@ class MedicalCondition implements ModelInterface, ArrayAccess
     *
     * @var string
     */
-  protected static $swaggerModelName = 'MedicalCondition';
+  protected static $swaggerModelName = 'Enrolment';
 
   /**
     * Array of property to type mappings. Used for (de)serialization
@@ -47,8 +47,10 @@ class MedicalCondition implements ModelInterface, ArrayAccess
   protected static $swaggerTypes = [
     'object' => 'string',
     'id' => 'int',
-    'code' => 'string',
-    'name' => 'string'
+    'student_id' => 'int',
+    'group_id' => 'int',
+    'start_date' => '\DateTime',
+    'end_date' => '\DateTime'
   ];
 
   /**
@@ -59,8 +61,10 @@ class MedicalCondition implements ModelInterface, ArrayAccess
   protected static $swaggerFormats = [
     'object' => null,
     'id' => 'int32',
-    'code' => null,
-    'name' => null
+    'student_id' => 'int32',
+    'group_id' => 'int32',
+    'start_date' => 'date-time',
+    'end_date' => 'date-time'
   ];
 
   /**
@@ -92,8 +96,10 @@ class MedicalCondition implements ModelInterface, ArrayAccess
   protected static $attributeMap = [
     'object' => 'object',
     'id' => 'id',
-    'code' => 'code',
-    'name' => 'name'
+    'student_id' => 'student_id',
+    'group_id' => 'group_id',
+    'start_date' => 'start_date',
+    'end_date' => 'end_date'
   ];
 
   /**
@@ -104,8 +110,10 @@ class MedicalCondition implements ModelInterface, ArrayAccess
   protected static $setters = [
     'object' => 'setObject',
     'id' => 'setId',
-    'code' => 'setCode',
-    'name' => 'setName'
+    'student_id' => 'setStudentId',
+    'group_id' => 'setGroupId',
+    'start_date' => 'setStartDate',
+    'end_date' => 'setEndDate'
   ];
 
   /**
@@ -116,8 +124,10 @@ class MedicalCondition implements ModelInterface, ArrayAccess
   protected static $getters = [
     'object' => 'getObject',
     'id' => 'getId',
-    'code' => 'getCode',
-    'name' => 'getName'
+    'student_id' => 'getStudentId',
+    'group_id' => 'getGroupId',
+    'start_date' => 'getStartDate',
+    'end_date' => 'getEndDate'
   ];
 
   /**
@@ -180,10 +190,12 @@ class MedicalCondition implements ModelInterface, ArrayAccess
    */
   public function __construct(array $data = null)
   {
-    $this->container['object'] = isset($data['object']) ? $data['object'] : 'medical_condition';
+    $this->container['object'] = isset($data['object']) ? $data['object'] : 'enrolment';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
-    $this->container['code'] = isset($data['code']) ? $data['code'] : null;
-    $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+    $this->container['student_id'] = isset($data['student_id']) ? $data['student_id'] : null;
+    $this->container['group_id'] = isset($data['group_id']) ? $data['group_id'] : null;
+    $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
+    $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
   }
 
   /**
@@ -260,49 +272,97 @@ class MedicalCondition implements ModelInterface, ArrayAccess
   }
 
   /**
-   * Gets code
+   * Gets student_id
    *
-   * @return string
+   * @return int
    */
-  public function getCode()
+  public function getStudentId()
   {
-    return $this->container['code'];
+    return $this->container['student_id'];
   }
 
   /**
-   * Sets code
+   * Sets student_id
    *
-   * @param string $code The code of the medical condition
+   * @param int $student_id The ID of the student that the enrolment is attached to
    *
    * @return $this
    */
-  public function setCode($code)
+  public function setStudentId($student_id)
   {
-    $this->container['code'] = $code;
+    $this->container['student_id'] = $student_id;
 
     return $this;
   }
 
   /**
-   * Gets name
+   * Gets group_id
    *
-   * @return string
+   * @return int
    */
-  public function getName()
+  public function getGroupId()
   {
-    return $this->container['name'];
+    return $this->container['group_id'];
   }
 
   /**
-   * Sets name
+   * Sets group_id
    *
-   * @param string $name The name of the medical condition
+   * @param int $group_id The ID of the group that the enrolment is attached to
    *
    * @return $this
    */
-  public function setName($name)
+  public function setGroupId($group_id)
   {
-    $this->container['name'] = $name;
+    $this->container['group_id'] = $group_id;
+
+    return $this;
+  }
+
+  /**
+   * Gets start_date
+   *
+   * @return \DateTime
+   */
+  public function getStartDate()
+  {
+    return $this->container['start_date'];
+  }
+
+  /**
+   * Sets start_date
+   *
+   * @param \DateTime $start_date The date on which the enrolment starts
+   *
+   * @return $this
+   */
+  public function setStartDate($start_date)
+  {
+    $this->container['start_date'] = $start_date;
+
+    return $this;
+  }
+
+  /**
+   * Gets end_date
+   *
+   * @return \DateTime
+   */
+  public function getEndDate()
+  {
+    return $this->container['end_date'];
+  }
+
+  /**
+   * Sets end_date
+   *
+   * @param \DateTime $end_date The date on which the enrolment ends
+   *
+   * @return $this
+   */
+  public function setEndDate($end_date)
+  {
+    $this->container['end_date'] = $end_date;
 
     return $this;
   }

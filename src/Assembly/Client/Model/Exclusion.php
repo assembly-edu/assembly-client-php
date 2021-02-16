@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.463
+ * SDK Version 1.2.470
  * API Version 1.1.0
  *
  * Support
@@ -50,6 +50,8 @@ class Exclusion implements ModelInterface, ArrayAccess
     'student_id' => 'int',
     'exclusion_type' => 'string',
     'exclusion_reason' => 'string',
+    'exclusion_reason_2' => 'string',
+    'exclusion_reason_3' => 'string',
     'start_date' => '\DateTime',
     'start_session' => 'string',
     'end_date' => '\DateTime',
@@ -68,6 +70,8 @@ class Exclusion implements ModelInterface, ArrayAccess
     'student_id' => 'int32',
     'exclusion_type' => null,
     'exclusion_reason' => null,
+    'exclusion_reason_2' => null,
+    'exclusion_reason_3' => null,
     'start_date' => 'date-time',
     'start_session' => null,
     'end_date' => 'date-time',
@@ -107,6 +111,8 @@ class Exclusion implements ModelInterface, ArrayAccess
     'student_id' => 'student_id',
     'exclusion_type' => 'exclusion_type',
     'exclusion_reason' => 'exclusion_reason',
+    'exclusion_reason_2' => 'exclusion_reason_2',
+    'exclusion_reason_3' => 'exclusion_reason_3',
     'start_date' => 'start_date',
     'start_session' => 'start_session',
     'end_date' => 'end_date',
@@ -125,6 +131,8 @@ class Exclusion implements ModelInterface, ArrayAccess
     'student_id' => 'setStudentId',
     'exclusion_type' => 'setExclusionType',
     'exclusion_reason' => 'setExclusionReason',
+    'exclusion_reason_2' => 'setExclusionReason2',
+    'exclusion_reason_3' => 'setExclusionReason3',
     'start_date' => 'setStartDate',
     'start_session' => 'setStartSession',
     'end_date' => 'setEndDate',
@@ -143,6 +151,8 @@ class Exclusion implements ModelInterface, ArrayAccess
     'student_id' => 'getStudentId',
     'exclusion_type' => 'getExclusionType',
     'exclusion_reason' => 'getExclusionReason',
+    'exclusion_reason_2' => 'getExclusionReason2',
+    'exclusion_reason_3' => 'getExclusionReason3',
     'start_date' => 'getStartDate',
     'start_session' => 'getStartSession',
     'end_date' => 'getEndDate',
@@ -234,6 +244,8 @@ class Exclusion implements ModelInterface, ArrayAccess
     $this->container['student_id'] = isset($data['student_id']) ? $data['student_id'] : null;
     $this->container['exclusion_type'] = isset($data['exclusion_type']) ? $data['exclusion_type'] : null;
     $this->container['exclusion_reason'] = isset($data['exclusion_reason']) ? $data['exclusion_reason'] : null;
+    $this->container['exclusion_reason_2'] = isset($data['exclusion_reason_2']) ? $data['exclusion_reason_2'] : null;
+    $this->container['exclusion_reason_3'] = isset($data['exclusion_reason_3']) ? $data['exclusion_reason_3'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
     $this->container['start_session'] = isset($data['start_session']) ? $data['start_session'] : null;
     $this->container['end_date'] = isset($data['end_date']) ? $data['end_date'] : null;
@@ -403,6 +415,54 @@ class Exclusion implements ModelInterface, ArrayAccess
   public function setExclusionReason($exclusion_reason)
   {
     $this->container['exclusion_reason'] = $exclusion_reason;
+
+    return $this;
+  }
+
+  /**
+   * Gets exclusion_reason_2
+   *
+   * @return string
+   */
+  public function getExclusionReason2()
+  {
+    return $this->container['exclusion_reason_2'];
+  }
+
+  /**
+   * Sets exclusion_reason_2
+   *
+   * @param string $exclusion_reason_2 The second possible exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS
+   *
+   * @return $this
+   */
+  public function setExclusionReason2($exclusion_reason_2)
+  {
+    $this->container['exclusion_reason_2'] = $exclusion_reason_2;
+
+    return $this;
+  }
+
+  /**
+   * Gets exclusion_reason_3
+   *
+   * @return string
+   */
+  public function getExclusionReason3()
+  {
+    return $this->container['exclusion_reason_3'];
+  }
+
+  /**
+   * Sets exclusion_reason_3
+   *
+   * @param string $exclusion_reason_3 The third possible exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS
+   *
+   * @return $this
+   */
+  public function setExclusionReason3($exclusion_reason_3)
+  {
+    $this->container['exclusion_reason_3'] = $exclusion_reason_3;
 
     return $this;
   }

@@ -17,16 +17,16 @@
 namespace Assembly\Client;
 
 /**
- * StandardErrorDataTest Class Doc Comment
+ * EnrolmentTest Class Doc Comment
  *
  * @category    Class */
-// * @description Present in the case of a 429 error, giving detail of how much the rate limit has been exceeded by and how long the client should wait before retrying
+// * @description An group enrolment of a student from a school.
 /**
  * @package     Assembly\Client
  * @author      Assembly Developer Team
  * @link        https://github.com/assembly-edu/assembly-client-php
  */
-class StandardErrorDataTest extends \PHPUnit_Framework_TestCase
+class EnrolmentTest extends \PHPUnit_Framework_TestCase
 {
 
   /**
@@ -58,30 +58,51 @@ class StandardErrorDataTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test "StandardErrorData"
+   * Test "Enrolment"
    */
-  public function testStandardErrorData()
+  public function testEnrolment()
   {
   }
 
   /**
-   * Test attribute "count"
+   * Test attribute "object"
    */
-  public function testPropertyCount()
+  public function testPropertyObject()
   {
   }
 
   /**
-   * Test attribute "period"
+   * Test attribute "id"
    */
-  public function testPropertyPeriod()
+  public function testPropertyId()
   {
   }
 
   /**
-   * Test attribute "limit"
+   * Test attribute "student_id"
    */
-  public function testPropertyLimit()
+  public function testPropertyStudentId()
+  {
+  }
+
+  /**
+   * Test attribute "group_id"
+   */
+  public function testPropertyGroupId()
+  {
+  }
+
+  /**
+   * Test attribute "start_date"
+   */
+  public function testPropertyStartDate()
+  {
+  }
+
+  /**
+   * Test attribute "end_date"
+   */
+  public function testPropertyEndDate()
   {
   }
 }

@@ -8,6 +8,8 @@ Name | Type | Description | Notes
 **student_id** | **int** | The ID of the student that the exclusion is attached to | [optional] 
 **exclusion_type** | **string** | The exclusions type, where &#x60;Reinstated&#x60; may be from a fixed term or permanent exclusion | [optional] 
 **exclusion_reason** | **string** | The exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS | [optional] 
+**exclusion_reason_2** | **string** | The second possible exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS | [optional] 
+**exclusion_reason_3** | **string** | The third possible exclusion reason, normalized to values as in Pupil Exclusion Reason (CS010/D00024) in CBDS | [optional] 
 **start_date** | [**\DateTime**](\DateTime.md) | The date on which the exclusions starts | [optional] 
 **start_session** | **string** | The session (AM/PM) in which the exclusion starts | [optional] 
 **end_date** | [**\DateTime**](\DateTime.md) | The date on which the exclusion ends | [optional] 
