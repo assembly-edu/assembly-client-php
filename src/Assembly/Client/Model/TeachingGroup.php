@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.473
+ * SDK Version 1.2.474
  * API Version 1.1.0
  *
  * Support
