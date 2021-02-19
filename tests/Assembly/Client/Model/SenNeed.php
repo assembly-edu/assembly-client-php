@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.470
+ * SDK Version 1.2.471
  * API Version 1.1.0
  *
  * Support
@@ -86,16 +86,16 @@ class SenNeedTest extends \PHPUnit_Framework_TestCase
   }
 
   /**
-   * Test attribute "sen_need_code"
+   * Test attribute "sen_need_type_code"
    */
-  public function testPropertySenNeedCode()
+  public function testPropertySenNeedTypeCode()
   {
   }
 
   /**
-   * Test attribute "sen_need_name"
+   * Test attribute "sen_need_type_name"
    */
-  public function testPropertySenNeedName()
+  public function testPropertySenNeedTypeName()
   {
   }
 

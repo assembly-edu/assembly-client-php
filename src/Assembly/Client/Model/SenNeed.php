@@ -2,7 +2,7 @@
 
 /**
  * Assembly Developer API PHP Client
- * SDK Version 1.2.470
+ * SDK Version 1.2.471
  * API Version 1.1.0
  *
  * Support
@@ -48,8 +48,8 @@ class SenNeed implements ModelInterface, ArrayAccess
     'object' => 'string',
     'id' => 'int',
     'start_date' => 'string',
-    'sen_need_code' => 'string',
-    'sen_need_name' => 'string',
+    'sen_need_type_code' => 'string',
+    'sen_need_type_name' => 'string',
     'sen_broad_need_type_code' => 'string',
     'sen_broad_need_type_name' => 'string',
     'priority' => 'int'
@@ -64,8 +64,8 @@ class SenNeed implements ModelInterface, ArrayAccess
     'object' => null,
     'id' => 'int32',
     'start_date' => null,
-    'sen_need_code' => null,
-    'sen_need_name' => null,
+    'sen_need_type_code' => null,
+    'sen_need_type_name' => null,
     'sen_broad_need_type_code' => null,
     'sen_broad_need_type_name' => null,
     'priority' => 'int32'
@@ -101,8 +101,8 @@ class SenNeed implements ModelInterface, ArrayAccess
     'object' => 'object',
     'id' => 'id',
     'start_date' => 'start_date',
-    'sen_need_code' => 'sen_need_code',
-    'sen_need_name' => 'sen_need_name',
+    'sen_need_type_code' => 'sen_need_type_code',
+    'sen_need_type_name' => 'sen_need_type_name',
     'sen_broad_need_type_code' => 'sen_broad_need_type_code',
     'sen_broad_need_type_name' => 'sen_broad_need_type_name',
     'priority' => 'priority'
@@ -117,8 +117,8 @@ class SenNeed implements ModelInterface, ArrayAccess
     'object' => 'setObject',
     'id' => 'setId',
     'start_date' => 'setStartDate',
-    'sen_need_code' => 'setSenNeedCode',
-    'sen_need_name' => 'setSenNeedName',
+    'sen_need_type_code' => 'setSenNeedTypeCode',
+    'sen_need_type_name' => 'setSenNeedTypeName',
     'sen_broad_need_type_code' => 'setSenBroadNeedTypeCode',
     'sen_broad_need_type_name' => 'setSenBroadNeedTypeName',
     'priority' => 'setPriority'
@@ -133,8 +133,8 @@ class SenNeed implements ModelInterface, ArrayAccess
     'object' => 'getObject',
     'id' => 'getId',
     'start_date' => 'getStartDate',
-    'sen_need_code' => 'getSenNeedCode',
-    'sen_need_name' => 'getSenNeedName',
+    'sen_need_type_code' => 'getSenNeedTypeCode',
+    'sen_need_type_name' => 'getSenNeedTypeName',
     'sen_broad_need_type_code' => 'getSenBroadNeedTypeCode',
     'sen_broad_need_type_name' => 'getSenBroadNeedTypeName',
     'priority' => 'getPriority'
@@ -203,8 +203,8 @@ class SenNeed implements ModelInterface, ArrayAccess
     $this->container['object'] = isset($data['object']) ? $data['object'] : 'sen_need';
     $this->container['id'] = isset($data['id']) ? $data['id'] : null;
     $this->container['start_date'] = isset($data['start_date']) ? $data['start_date'] : null;
-    $this->container['sen_need_code'] = isset($data['sen_need_code']) ? $data['sen_need_code'] : null;
-    $this->container['sen_need_name'] = isset($data['sen_need_name']) ? $data['sen_need_name'] : null;
+    $this->container['sen_need_type_code'] = isset($data['sen_need_type_code']) ? $data['sen_need_type_code'] : null;
+    $this->container['sen_need_type_name'] = isset($data['sen_need_type_name']) ? $data['sen_need_type_name'] : null;
     $this->container['sen_broad_need_type_code'] = isset($data['sen_broad_need_type_code']) ? $data['sen_broad_need_type_code'] : null;
     $this->container['sen_broad_need_type_name'] = isset($data['sen_broad_need_type_name']) ? $data['sen_broad_need_type_name'] : null;
     $this->container['priority'] = isset($data['priority']) ? $data['priority'] : null;
@@ -308,49 +308,49 @@ class SenNeed implements ModelInterface, ArrayAccess
   }
 
   /**
-   * Gets sen_need_code
+   * Gets sen_need_type_code
    *
    * @return string
    */
-  public function getSenNeedCode()
+  public function getSenNeedTypeCode()
   {
-    return $this->container['sen_need_code'];
+    return $this->container['sen_need_type_code'];
   }
 
   /**
-   * Sets sen_need_code
+   * Sets sen_need_type_code
    *
-   * @param string $sen_need_code The code of the sen need
+   * @param string $sen_need_type_code The code of the sen need
    *
    * @return $this
    */
-  public function setSenNeedCode($sen_need_code)
+  public function setSenNeedTypeCode($sen_need_type_code)
   {
-    $this->container['sen_need_code'] = $sen_need_code;
+    $this->container['sen_need_type_code'] = $sen_need_type_code;
 
     return $this;
   }
 
   /**
-   * Gets sen_need_name
+   * Gets sen_need_type_name
    *
    * @return string
    */
-  public function getSenNeedName()
+  public function getSenNeedTypeName()
   {
-    return $this->container['sen_need_name'];
+    return $this->container['sen_need_type_name'];
   }
 
   /**
-   * Sets sen_need_name
+   * Sets sen_need_type_name
    *
-   * @param string $sen_need_name The name of the sen need
+   * @param string $sen_need_type_name The name of the sen need
    *
    * @return $this
    */
-  public function setSenNeedName($sen_need_name)
+  public function setSenNeedTypeName($sen_need_type_name)
   {
-    $this->container['sen_need_name'] = $sen_need_name;
+    $this->container['sen_need_type_name'] = $sen_need_type_name;
 
     return $this;
   }
